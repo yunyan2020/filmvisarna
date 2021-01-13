@@ -23,8 +23,7 @@ export default {
   components: { Login },
   methods: {
     toggleLogin() {
-      this.showLogin = !this.showLogin;
-      console.log(showLogin);
+      this.showLogin = !this.showLogin
     },
   },
 };

@@ -13,11 +13,11 @@
         <div class="buttonContainer">
         <button>LOGGA IN</button>
         <p>...eller...</p>
-        <button>BLI MEDLEM</button>
+        <button @click="toggleSignUp">BLI MEDLEM</button>
         </div>
       </div>
     </form>
-    <SignUp/>
+    <SignUp v-if="showSignUp"/>
   </div>
 </template>
 
@@ -30,12 +30,17 @@ export default {
     return {
       email: '',
       password: '',
+      showSignUp: false
     };
   },
   methods: {
     closeBox() {
-      this.$emit("close");
+      this.$emit("close")
+      this.showSignUp = false
     },
+    toggleSignUp() {
+      this.showSignUp = !this.showSignUp
+    }
   },
 };
 </script>
