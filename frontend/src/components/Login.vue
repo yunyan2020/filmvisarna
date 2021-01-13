@@ -7,11 +7,14 @@
           <input v-model="email" type="text" required />
         </label>
         <label>
-          PASSWORD:
+          LÖSENORD:
           <input v-model="password" type="password" required />
         </label>
-        <button>LOG IN</button>
-        <button>SIGN UP</button>
+        <div class="buttonContainer">
+        <button>LOGGA IN</button>
+        <p>...eller...</p>
+        <button>BLI MEDLEM</button>
+        </div>
       </div>
     </form>
     <SignUp/>
@@ -25,8 +28,8 @@ export default {
   components: { SignUp },
   data() {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   },
   methods: {
@@ -39,13 +42,14 @@ export default {
 
 <style scoped>
 .backdrop {
-  background: rgba(0, 0, 0, 0.514);
+  background: rgba(0, 0, 0, 0.342);
   width: 100%;
   height: 100%;
 }
 
 form {
   background: white;
+  color: rgba(128, 128, 128, 0.719);
   max-width: 35em;
   font-size: 10px;
   font-weight: 700;
@@ -67,7 +71,15 @@ input {
   width: 80%;
 }
 
+p {
+  margin: 2em;
+}
+
 button {
+  color: rgba(128, 128, 128, 0.719); 
   cursor: pointer;
+  border-radius: 5px;
+  border: solid rgba(128, 128, 128, 0.24) 1px;
+  user-select: none;
 }
 </style>

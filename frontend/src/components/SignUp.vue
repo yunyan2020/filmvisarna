@@ -1,28 +1,44 @@
 <template>
   <div>
-    <form>
-       <label>
-          E-MAIL:
-          <input v-model="email" type="text" required />
-        </label>
-        <label>
-          PASSWORD:
-          <input v-model="password" type="password" required />
-        </label>
+    <form @submit.prevent>
+      <label>
+        E-MAIL:
+        <input v-model="email" type="text" required />
+      </label>
+      <label>
+        NAMN:
+        <input v-model="name" type="text" required />
+      </label>
+      <label>
+        LÖSENORD:
+        <input v-model="password" type="password" required />
+      </label>
+      <label>
+        BEKRÄFTA LÖSENORD:
+        <input v-model="checkPassword" type="text" required />
+      </label>
+      <button>SPARA</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      email: '',
+      name: '',
+      password: '',
+      checkPassword: ''
+    }
+  }
+};
 </script>
 
 <style scoped>
-
 form {
   background: white;
+  color: rgba(128, 128, 128, 0.719);
   max-width: 35em;
   font-size: 10px;
   font-weight: 700;
@@ -45,7 +61,10 @@ input {
 }
 
 button {
+  color: rgba(128, 128, 128, 0.719); 
   cursor: pointer;
-  margin: 2em;
+  border-radius: 5px;
+  border: solid rgba(128, 128, 128, 0.24) 1px;
+  user-select: none;
 }
 </style>
