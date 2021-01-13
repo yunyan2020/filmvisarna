@@ -1,7 +1,7 @@
 <template>
   <div class="backdrop" @click.self="closeBox">
-    <form @submit.prevent>
-      <div class="container">
+    <div class="container">
+      <form @submit.prevent>
         <label>
           E-MAIL:
           <input v-model="email" type="email" required />
@@ -13,10 +13,10 @@
         <div class="buttonContainer">
           <button>LOGGA IN</button>
           <p>...eller...</p>
-          <button @click="toggleSignUp">BLI MEDLEM</button>
         </div>
-      </div>
-    </form>
+      </form>
+      <button @click="toggleSignUp">BLI MEDLEM</button>
+    </div>
     <SignUp v-if="showSignUp" />
   </div>
 </template>
@@ -28,8 +28,8 @@ export default {
   components: { SignUp },
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       showSignUp: false,
     };
   },
@@ -52,7 +52,7 @@ export default {
   height: 100%;
 }
 
-form {
+.container {
   background: white;
   color: rgba(128, 128, 128, 0.719);
   max-width: 35em;
