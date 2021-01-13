@@ -12,7 +12,7 @@
       <label>
         LÖSENORD:
         <input v-model="password" type="password" required />
-        <div v-if="passwordError" class="error">{{ passwordError }}</div>
+        <div v-if="passwordLength" class="error">{{ passwordLength }}</div>
       </label>
       <label>
         BEKRÄFTA LÖSENORD:
@@ -32,14 +32,21 @@ export default {
       name: '',
       password: '',
       validatePassword: '',
-      passwordError: '',
+      passwordLength: '',
       passwordValidation: ''
     }
   },
   methods: {
     handleSubmit() {
-      this.passwordError = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
+      this.passwordChecks()
+      console.log(this.passwordChecks())
+    },
+    passwordChecks() {
+      this.passwordLength = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
       this.passwordValidation = this.password === this.validatePassword ? '' : 'Dina lösenord matchar inte'
+
+      // If password length is over 6 and it matches password validation, passwordChecks() returns true
+      return !this.passwordLength && !this.passwordValidation ? true : false
     }
 
   }
