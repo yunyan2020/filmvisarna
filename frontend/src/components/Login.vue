@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop">
+  <div class="backdrop" @click.self="closeBox">
     <form @submit.prevent>
       <div class="container">
         <label>
@@ -11,6 +11,7 @@
           <input v-model="password" type="password" required />
         </label>
         <button>LOG IN</button>
+        <button>SIGN UP</button>
       </div>
     </form>
   </div>
@@ -19,7 +20,15 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    closeBox() {
+      this.$emit("close");
+    },
   },
 };
 </script>
@@ -30,6 +39,13 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+form {
+  position: relative;
+  top: 0;
+  height: 0%;
+}
+
 .container {
   background: white;
   max-width: 35em;
