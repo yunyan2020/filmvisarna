@@ -1,8 +1,7 @@
 <template>
-  <div class="backdrop" @click.self="closeBox">
-    <form @submit.prevent>
-      <div class="container">
-        <label>
+  <div>
+    <form>
+       <label>
           E-MAIL:
           <input v-model="email" type="text" required />
         </label>
@@ -10,39 +9,17 @@
           PASSWORD:
           <input v-model="password" type="password" required />
         </label>
-        <button>LOG IN</button>
-        <button>SIGN UP</button>
-      </div>
     </form>
-    <SignUp/>
   </div>
 </template>
 
 <script>
-import SignUp from './SignUp.vue'
-
 export default {
-  components: { SignUp },
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    closeBox() {
-      this.$emit("close");
-    },
-  },
-};
+
+}
 </script>
 
 <style scoped>
-.backdrop {
-  background: rgba(0, 0, 0, 0.514);
-  width: 100%;
-  height: 100%;
-}
 
 form {
   background: white;
@@ -56,8 +33,8 @@ form {
   padding: 2em;
   position: relative;
   top: 20em;
-  right: 5em;
-  float: right;
+  left: 5em;
+  float: left;
 }
 
 input {
@@ -69,5 +46,6 @@ input {
 
 button {
   cursor: pointer;
+  margin: 2em;
 }
 </style>
