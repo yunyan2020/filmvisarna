@@ -1,9 +1,9 @@
 <template>
   <div>
-    <form @submit.prevent>
+    <form @submit.prevent="handleSubmit">
       <label>
         E-MAIL:
-        <input v-model="email" type="text" required />
+        <input v-model="email" type="email" required />
       </label>
       <label>
         NAMN:
@@ -12,10 +12,12 @@
       <label>
         LÖSENORD:
         <input v-model="password" type="password" required />
+        <div v-if="passwordError" class="error">{{ passwordError }}</div>
       </label>
       <label>
         BEKRÄFTA LÖSENORD:
-        <input v-model="checkPassword" type="text" required />
+        <input v-model="validatePassword" type="password" required />
+        <div v-if="passwordValidation" class="error">{{ passwordValidation }}</div>
       </label>
       <button>SPARA</button>
     </form>
@@ -29,8 +31,17 @@ export default {
       email: '',
       name: '',
       password: '',
-      checkPassword: ''
+      validatePassword: '',
+      passwordError: '',
+      passwordValidation: ''
     }
+  },
+  methods: {
+    handleSubmit() {
+      this.passwordError = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
+      this.passwordValidation = this.password === this.validatePassword ? '' : 'Dina lösenord matchar inte'
+    }
+
   }
 };
 </script>
@@ -43,7 +54,6 @@ form {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
-  border: solid gray 2px;
   border-radius: 10px;
   margin: auto;
   padding: 2em;
@@ -55,16 +65,24 @@ form {
 
 input {
   border: none;
-  border-bottom: solid rgba(128, 128, 128, 0.24) 2px;
+  border-bottom: solid rgba(128, 128, 128, 0.24) 1px;
   margin: 2em;
+  margin-bottom: 0.5em;
   width: 80%;
 }
 
 button {
+  padding: 0.5em;
   color: rgba(128, 128, 128, 0.719); 
   cursor: pointer;
   border-radius: 5px;
-  border: solid rgba(128, 128, 128, 0.24) 1px;
+  border: none;
   user-select: none;
+  letter-spacing: 1px;
+}
+
+.error {
+  color: crimson;
+  margin-bottom: 0.5em;
 }
 </style>

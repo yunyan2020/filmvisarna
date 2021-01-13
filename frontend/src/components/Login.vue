@@ -4,25 +4,25 @@
       <div class="container">
         <label>
           E-MAIL:
-          <input v-model="email" type="text" required />
+          <input v-model="email" type="email" required />
         </label>
         <label>
           LÖSENORD:
           <input v-model="password" type="password" required />
         </label>
         <div class="buttonContainer">
-        <button>LOGGA IN</button>
-        <p>...eller...</p>
-        <button @click="toggleSignUp">BLI MEDLEM</button>
+          <button>LOGGA IN</button>
+          <p>...eller...</p>
+          <button @click="toggleSignUp">BLI MEDLEM</button>
         </div>
       </div>
     </form>
-    <SignUp v-if="showSignUp"/>
+    <SignUp v-if="showSignUp" />
   </div>
 </template>
 
 <script>
-import SignUp from './SignUp.vue'
+import SignUp from "./SignUp.vue";
 
 export default {
   components: { SignUp },
@@ -30,17 +30,17 @@ export default {
     return {
       email: '',
       password: '',
-      showSignUp: false
+      showSignUp: false,
     };
   },
   methods: {
     closeBox() {
-      this.$emit("close")
-      this.showSignUp = false
+      this.$emit("close");
+      this.showSignUp = false;
     },
     toggleSignUp() {
-      this.showSignUp = !this.showSignUp
-    }
+      this.showSignUp = !this.showSignUp;
+    },
   },
 };
 </script>
@@ -59,7 +59,6 @@ form {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
-  border: solid gray 2px;
   border-radius: 10px;
   margin: auto;
   padding: 2em;
@@ -71,8 +70,9 @@ form {
 
 input {
   border: none;
-  border-bottom: solid rgba(128, 128, 128, 0.24) 2px;
+  border-bottom: solid rgba(128, 128, 128, 0.24) 1px;
   margin: 2em;
+  margin-bottom: 0.5em;
   width: 80%;
 }
 
@@ -81,10 +81,12 @@ p {
 }
 
 button {
-  color: rgba(128, 128, 128, 0.719); 
+  padding: 0.5em;
+  color: rgba(128, 128, 128, 0.719);
   cursor: pointer;
   border-radius: 5px;
-  border: solid rgba(128, 128, 128, 0.24) 1px;
+  border: none;
   user-select: none;
+  letter-spacing: 1px;
 }
 </style>
