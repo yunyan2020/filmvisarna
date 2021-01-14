@@ -1,17 +1,50 @@
+
 <template>
-  <router-view />
+  <div class="rootElement">
+    <button @click="toggleLogin">Login</button>
+    <div v-if="showLogin" class="login">
+      <Login @close="toggleLogin"> </Login>
+    </div>
+
+    <div v-if="showMember">Member pages dropdown..</div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Login from "./components/Login.vue";
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      showLogin: false,
+      showMember: false,
+    };
   },
-  created() {
+  components: { Login },
+  methods: {
+    toggleLogin() {
+      this.showLogin = !this.showLogin
+    },
+  },
+    created() {
     this.$store.dispatch("fetchMovie");
   },
 };
 </script>
+
+<style scoped>
+.rootElement,
+.login {
+  height: 100%;
+  width: 100%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
+
+
