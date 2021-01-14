@@ -14,10 +14,6 @@ public class Main {
         // start collection database
         app.enableCollections("database/temp/db/awesome.db");
 
-        app.get("/hello", (req, res) -> {
-            res.send("<h1>Hello from Java Express!</h1>");
-        });
-
         app.get("/rest/movieshow",(req,res) ->{
             var movie = collection("Movie").find();
             res.json(movie);
