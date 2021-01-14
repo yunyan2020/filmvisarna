@@ -1,3 +1,4 @@
+
 <template>
   <div class="rootElement">
     <button @click="toggleLogin">Login</button>
@@ -6,6 +7,7 @@
     </div>
 
     <div v-if="showMember">Member pages dropdown..</div>
+    <router-view />
   </div>
 </template>
 
@@ -25,6 +27,9 @@ export default {
     toggleLogin() {
       this.showLogin = !this.showLogin
     },
+  },
+    created() {
+    this.$store.dispatch("fetchMovie");
   },
 };
 </script>
