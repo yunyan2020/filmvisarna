@@ -14,6 +14,11 @@ public class Main {
         // start collection database
         app.enableCollections("database/temp/db/awesome.db");
 
+        app.get("/rest/customerdetails", (req,res) -> {
+            var customerDetails = collection("Customer").find();
+            res.json(customerDetails);
+        });
+
         app.get("/rest/movieshow",(req,res) ->{
             var movie = collection("Movie").find();
             res.json(movie);

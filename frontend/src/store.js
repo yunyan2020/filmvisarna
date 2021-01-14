@@ -1,13 +1,17 @@
 import { createStore } from 'vuex'
 
 const state = {
-  movie: []
+  movie: [],
+  customers: []
 }
 
 //matates state
 const mutations = {
   setMovie(state, list) {
     state.movie = list
+  },
+  setCustomers(state, list) { 
+    state.customers = list
   }
 
 }
@@ -21,6 +25,14 @@ const actions = {
     console.log(list);
 
     store.commit('setMovie', list)
+  },
+  async fetchCustomerDetails(store) { 
+    let list = await fetch('/rest/customerdetails')
+    list = await list.json()
+
+    console.log(list);
+
+    store.commit('setCustomers', list)
   }
 
 }
