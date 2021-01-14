@@ -1,9 +1,11 @@
 <template>
+<div class="rootElement">
   <h1>Home page ></h1>
   <div v-for="item of movie" :key="item.id">
     <router-link :to="'/details/' + item.id">
       <img v-bind:src="'./img/' + item.images" />
     </router-link>
+  </div>
   </div>
 </template>
 
