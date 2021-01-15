@@ -1,10 +1,10 @@
 <template>
+<div>
   <h1>Movie Details Page</h1>
   <h3>Param:{{ id }}</h3>
   <div class="detail-page">
-    <img :src="movie.poster" :alt="movie.titile + 'pic'" />
     <div class="movie-details">
-      <p>Title:{{ movie.title }}</p>
+            <p>Title:{{ movie.title }}</p>
       <p>Countries:{{ movie.countries }}</p>
       <p>productionYear:{{ movie.year }}</p>
       <p>genre:{{ movie.genre }}</p>
@@ -13,18 +13,20 @@
       <p>Len:{{ movie.runtime }}</p>
     </div>
   </div>
+  </div>
 </template>
+
 
 <script>
 export default {
-  computed: {
+computed: {
     id() {
       //get id from url parameter
       return this.$route.params.id;
     },
-  },
-  movie() {
-    return this.$store.state.movie.filter((p) => p.id == this.id)[0];
+    movie() {
+      return this.$store.state.movie.filter((p) => p.id == this.id)[0];
+    },
   },
 };
 </script>
