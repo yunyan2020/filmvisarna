@@ -3,8 +3,9 @@
   <h1>Movie Details Page</h1>
   <h3>Param:{{ id }}</h3>
   <div class="detail-page">
+    <img :src="movie.poster" :alt="movie.titile + 'pic'" />
     <div class="movie-details">
-            <p>Title:{{ movie.title }}</p>
+      <p>Title:{{ movie.title }}</p>
       <p>Countries:{{ movie.countries }}</p>
       <p>productionYear:{{ movie.year }}</p>
       <p>genre:{{ movie.genre }}</p>
