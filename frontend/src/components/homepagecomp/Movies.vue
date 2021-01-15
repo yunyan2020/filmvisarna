@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import moviesjson from '../../../db/movies.json'
+import moviesjson from '../../../movies.json'
 
 export default {
   data() {

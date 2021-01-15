@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import movies from '../../../db/movies.json'
+import movies from '../../../movies.json'
 
 export default {
   data() {

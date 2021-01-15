@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import dates from '../../../db/dates.json'
+import dates from '../../../dates.json'
 
 export default {
   data() {
