@@ -14,19 +14,19 @@ public class Movie {
     public Movie(){  };
 
     private String title;
-    private ArrayList<String> productionCountries;
-    private String productionYear;
-    private int length;
+    private String year;
+    private String rated;
+    private String runtime;
     private String genre;
-    private String distributor;
-    private String language;
-    private String subtitles;
     private String director;
     private ArrayList<String> actors;
-    private String description;
-    private ArrayList<String> images;
+    private String plot;
+    private String language;
+    private String subtitles;
+    private ArrayList<String> countries;
+    private String poster;
     private ArrayList<String> youtubeTrailers;
-    private ArrayList<Review> reviews;
+    private String score;
 
     public String getId() {
         return id;
@@ -44,28 +44,28 @@ public class Movie {
         this.title = title;
     }
 
-    public ArrayList<String> getProductionCountries() {
-        return productionCountries;
+    public String getYear() {
+        return year;
     }
 
-    public void setProductionCountries(ArrayList<String> productionCountries) {
-        this.productionCountries = productionCountries;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public String getProductionYear() {
-        return productionYear;
+    public String getRated() {
+        return rated;
     }
 
-    public void setProductionYear(String productionYear) {
-        this.productionYear = productionYear;
+    public void setRated(String rated) {
+        this.rated = rated;
     }
 
-    public int getLength() {
-        return length;
+    public String getRuntime() {
+        return runtime;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
     }
 
     public String getGenre() {
@@ -74,30 +74,6 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public String getDistributor() {
-        return distributor;
-    }
-
-    public void setDistributor(String distributor) {
-        this.distributor = distributor;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getSubtitles() {
-        return subtitles;
-    }
-
-    public void setSubtitles(String subtitles) {
-        this.subtitles = subtitles;
     }
 
     public String getDirector() {
@@ -116,20 +92,44 @@ public class Movie {
         this.actors = actors;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPlot() {
+        return plot;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPlot(String plot) {
+        this.plot = plot;
     }
 
-    public ArrayList<String> getImages() {
-        return images;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setImages(ArrayList<String> images) {
-        this.images = images;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getSubtitles() {
+        return subtitles;
+    }
+
+    public void setSubtitles(String subtitles) {
+        this.subtitles = subtitles;
+    }
+
+    public ArrayList<String> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(ArrayList<String> countries) {
+        this.countries = countries;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public ArrayList<String> getYoutubeTrailers() {
@@ -140,11 +140,11 @@ public class Movie {
         this.youtubeTrailers = youtubeTrailers;
     }
 
-    public ArrayList<Review> getReviews() {
-        return reviews;
+    public String getScore() {
+        return score;
     }
 
-    public void setReviews(ArrayList<Review> reviews) {
-        this.reviews = reviews;
+    public void setScore(String score) {
+        this.score = score;
     }
 }
