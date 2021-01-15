@@ -17,7 +17,9 @@
       <label>
         BEKRÄFTA LÖSENORD:
         <input v-model="validatePassword" type="password" required />
-        <div v-if="passwordValidation" class="error">{{ passwordValidation }}</div>
+        <div v-if="passwordValidation" class="error">
+          {{ passwordValidation }}
+        </div>
       </label>
       <button>SPARA</button>
     </form>
@@ -28,28 +30,48 @@
 export default {
   data() {
     return {
-      email: '',
-      name: '',
-      password: '',
-      validatePassword: '',
-      passwordLength: '',
-      passwordValidation: ''
-    }
+      email: "",
+      name: "",
+      password: "",
+      validatePassword: "",
+      passwordLength: "",
+      passwordValidation: "",
+    };
   },
   methods: {
     handleSubmit() {
-      this.passwordChecks()
-      console.log(this.passwordChecks())
+      this.passwordChecks();
+      console.log(this.passwordChecks());
+
+      this.passwordChecks = true ? this.addNewCustomer() : "";
     },
     passwordChecks() {
-      this.passwordLength = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
-      this.passwordValidation = this.password === this.validatePassword ? '' : 'Dina lösenord matchar inte'
+      this.passwordLength =
+        this.password.length < 6
+          ? "Ditt lösenord måste innehålla minst 6 tecken"
+          : "";
+      this.passwordValidation =
+        this.password === this.validatePassword
+          ? ""
+          : "Dina lösenord matchar inte";
 
       // If password length is over 6 and it matches password validation, passwordChecks() returns true
-      return !this.passwordLength && !this.passwordValidation ? true : false
-    }
+      return !this.passwordLength && !this.passwordValidation ? true : false;
+    },
+    addNewCustomer() {
+      let newCustomer = {
+        email: this.email,
+        password: this.password,
+        name: this.name,
+      };
 
-  }
+      this.$store.dispatch("setCustomers", newCustomer);
+
+      this.email = "";
+      this.password = "";
+      this.name = "";
+    },
+  },
 };
 </script>
 
@@ -80,7 +102,7 @@ input {
 
 button {
   padding: 0.5em;
-  color: rgba(128, 128, 128, 0.719); 
+  color: rgba(128, 128, 128, 0.719);
   cursor: pointer;
   border-radius: 5px;
   border: none;
