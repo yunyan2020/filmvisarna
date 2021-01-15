@@ -21,8 +21,9 @@
         <div v-if="passwordValidation" class="error">
           {{ passwordValidation }}
         </div>
+        <p v-if="userSaved" class="saved"> {{ userSaved }}</p>
       </label>
-      <button>SPARA</button>
+      <button v-if="!userSaved">SPARA</button>
     </form>
   </div>
 </template>
@@ -38,6 +39,7 @@ export default {
       passwordLength: "",
       passwordValidation: "",
       emailValidation: "",
+      userSaved: ""
     };
   },
   computed: {
@@ -48,17 +50,17 @@ export default {
   methods: {
     handleSubmit() {
       console.log("Handling submit")
-      this.existingCustomerChecks()
 
-      if(this.passwordChecks() === true) {
+      if(this.existingCustomerChecks() && this.passwordChecks()) {
         this.addNewCustomer()
+        this.userSaved = "Sparad!"
       }
     },
     passwordChecks() {
       this.passwordLength = this.password.length < 6 ? "Ditt lösenord måste innehålla minst 6 tecken" : ""
       this.passwordValidation = this.password === this.validatePassword ? "" : "Dina lösenord matchar inte"
 
-      // If password length is over 6 and it matches password validation, passwordChecks() returns true
+      // If password length is over 6 and it matches password validation, passwordChecks() returns true, else false
       return !this.passwordLength && !this.passwordValidation ? true : false
     },
     existingCustomerChecks() {
@@ -126,5 +128,11 @@ button {
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+}
+
+.saved {
+  color: rgb(125, 207, 173);
+  margin-top: 1em;
+  font-size: 20px;
 }
 </style>
