@@ -65,7 +65,7 @@ export default {
         name: this.name,
       };
 
-      this.$store.dispatch("setCustomers", newCustomer);
+      this.$store.dispatch("addCustomer", newCustomer);
 
       this.email = "";
       this.password = "";
