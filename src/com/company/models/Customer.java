@@ -7,6 +7,7 @@ public class Customer {
 
     private String email;
     private String password;
+    private String name;
 
     Customer() {}
 
@@ -26,11 +27,20 @@ public class Customer {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.company;
 
 
+import com.company.models.Customer;
 import com.company.models.Movie;
 import express.Express;
 
@@ -14,6 +15,9 @@ public class Main {
         // start collection database
         app.enableCollections("database/temp/db/awesome.db");
 
+
+        // Endpoints to fetch data from database
+
         app.get("/rest/customerdetails", (req,res) -> {
             var customerDetails = collection("Customer").find();
             res.json(customerDetails);
@@ -22,24 +26,6 @@ public class Main {
         app.get("/rest/movieshow",(req,res) ->{
             var movie = collection("Movie").find();
             res.json(movie);
-        });
-
-        // endpoint to create a new picture
-        app.post("/rest/movieshow",(req,res) ->{
-            var movie = req.body(Movie.class);
-
-            //save an object to the collection, which returns
-            var savedMovie = collection("Movie").save(movie);
-            System.out.println(savedMovie);
-            //respond with saved object
-            res.json(savedMovie);
-        });
-        //delete data from database
-        app.delete("/rest/movie/:id", (req, res) -> {
-            var id = req.params("id");
-            collection("Movie").deleteById(id);
-
-            res.send("delete ok");
         });
 
         app.get("/rest/movie/:id", (req, res) -> {
@@ -51,6 +37,38 @@ public class Main {
             } else {
                 res.send("Movie not found");
             }
+        });
+
+
+        // Endpoints to create new data for database
+
+        app.post("/rest/customerdetails", (req,res) -> {
+            var customer = req.body(Customer.class);
+            var savedCustomer = collection("Customer").save(customer);
+
+            System.out.println(savedCustomer);
+            res.json(savedCustomer);
+
+        });
+
+        app.post("/rest/movieshow",(req,res) ->{
+            var movie = req.body(Movie.class);
+
+            //save an object to the collection, which returns
+            var savedMovie = collection("Movie").save(movie);
+            System.out.println(savedMovie);
+            //respond with saved object
+            res.json(savedMovie);
+        });
+
+
+        // Endpoints to delete data from database
+
+        app.delete("/rest/movie/:id", (req, res) -> {
+            var id = req.params("id");
+            collection("Movie").deleteById(id);
+
+            res.send("delete ok");
         });
 
         app.listen(4000); // Will listen on port 4000
