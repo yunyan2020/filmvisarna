@@ -1,5 +1,5 @@
 [ {
-  "id" : "uh_dG7Sf03KN4WnmZlJCW",
+  "id" : "XkjttHLaJ-fq4JCqiLAxj",
   "title" : "I Am Legend",
   "year" : "2007",
   "rated" : "15 år",
@@ -7,7 +7,7 @@
   "genre" : "Action, Adventure, Drama, Sci-Fi, Thriller",
   "director" : "Francis Lawrence",
   "actors" : [ "Will Smith", "Alice Braga", "Charlie Tahan", "Salli Richardson-Whitfield" ],
-  "plot" : "<p>Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.</p>",
+  "plot" : "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
   "language" : "engelska",
   "subtitles" : "svenska",
   "countries" : [ "USA" ],
@@ -15,7 +15,7 @@
   "youtubeTrailers" : [ "dtKMEAXyPkg" ],
   "score" : "9"
 }, {
-  "id" : "13FfMJzyQ6D1EpWi1_vLx",
+  "id" : "GMiYNtWtDxJRXlC_Gy12V",
   "title" : "Titanic",
   "year" : "1983",
   "rated" : "9 år",
@@ -23,7 +23,7 @@
   "genre" : "Drama, Romance",
   "director" : "James Cameron",
   "actors" : [ "Leonardo DiCaprio", "Billy Zane", "Kate Winslet", "Kathy Bates" ],
-  "plot" : "<p>A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>",
+  "plot" : "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
   "language" : "engelska",
   "subtitles" : "svenska",
   "countries" : [ "USA", "Mexico" ],
@@ -31,7 +31,7 @@
   "youtubeTrailers" : [ "3gK_2XdjOdY" ],
   "score" : "8"
 }, {
-  "id" : "80xi-JRn5W07E6vXi-_w9",
+  "id" : "Yz9HeYEbGnai-ea4m6z2M",
   "title" : "Robocop",
   "year" : "2013",
   "rated" : "13 år",
@@ -39,7 +39,7 @@
   "genre" : "Drama, Romance",
   "director" : "Paul Verhoeven",
   "actors" : [ "Peter Weller", "Nancy Allen", "Dan O'Herlihy", "Ronny Cox" ],
-  "plot" : "<p>In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.</p>",
+  "plot" : "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.",
   "language" : "engelska",
   "subtitles" : "svenska",
   "countries" : [ "USA" ],
@@ -47,7 +47,7 @@
   "youtubeTrailers" : [ "6tC_5mp3udE" ],
   "score" : "4"
 }, {
-  "id" : "F70712jGZ2pPXvnp8exeH",
+  "id" : "wpYGBUzb7HRTrF4YwpQQX",
   "title" : "The Lord of the Rings",
   "year" : "2001",
   "rated" : "13 år",
@@ -55,7 +55,7 @@
   "genre" : "Animation, Adventure, Fantasy",
   "director" : "Ralph Bakshi",
   "actors" : [ "Christopher Guard", "William Squire", "Michael Scholes", "John Hurt" ],
-  "plot" : "<p>The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth</p>",
+  "plot" : "The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth",
   "language" : "engelska",
   "subtitles" : "svenska",
   "countries" : [ "USA", "UK", "Spain" ],
@@ -63,7 +63,7 @@
   "youtubeTrailers" : [ "V75dMMIW2B4" ],
   "score" : "10"
 }, {
-  "id" : "WFysD1n4EfJ3_QqunMsZs",
+  "id" : "rIW3rjql9PwSZ8TtH6qAj",
   "title" : "The Avengers",
   "year" : "2012",
   "rated" : "13 år",
@@ -71,7 +71,7 @@
   "genre" : "Action, Adventure, Sci-Fi",
   "director" : "Joss Whedon",
   "actors" : [ "Robert Downey Jr.", "Chris Evans", "Mark Ruffalo", "Chris Hemsworth" ],
-  "plot" : "<p>Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity</p>",
+  "plot" : "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity",
   "language" : "engelska",
   "subtitles" : "svenska",
   "countries" : [ "USA" ],

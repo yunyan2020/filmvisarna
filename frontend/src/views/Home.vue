@@ -1,10 +1,12 @@
 <template>
   <div class="rootElement">
     <h1>Home page ></h1>
-    <div v-for="item of movie" :key="item.id">
-      <router-link :to="'/details/' + item.id">
-        <p>{{ item.title }}</p>
-        <img v-bind:src="item.poster" />
+    <div class="movie-list" v-for="item of movie" :key="item.id">
+      <router-link :to="'/movieshow/details/' + item.id">
+        <div class="movie-details">
+          <img :src="item.poster" alt="" />
+          <h3 class="movie-name">{{ item.title }}</h3>
+        </div>
       </router-link>
     </div>
   </div>
@@ -12,11 +14,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      imageUrl: "",
-    };
-  },
   computed: {
     movie() {
       return this.$store.state.movie;
@@ -26,6 +23,40 @@ export default {
 </script>
 
 <style scoped>
+.movie-list {
+  padding: 10px;
+  float: left;
+}
+select:focus {
+  outline: none;
+}
+
+.movie-details {
+  height: 260px;
+  width: 200px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding: 1px;
+  text-decoration: none;
+  overflow: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.movie-details,
+img,
+h3,
+p,
+a {
+  background-color: whitesmoke;
+}
+
+img {
+  max-width: 150px;
+  max-height: 100px;
+}
 img {
   max-width: 300px;
 }
