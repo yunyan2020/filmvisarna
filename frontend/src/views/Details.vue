@@ -1,16 +1,17 @@
 <template>
-  <h1>Movie Details Page</h1>
-  <h3>Param:{{ id }}</h3>
+  <h1>{{movie.titile}}</h1>
   <div class="detail-page">
     <img :src="movie.poster" :alt="movie.titile + 'pic'" />
     <div class="movie-details">
-      <p>Title:{{ movie.title }}</p>
-      <p>Countries:{{ movie.countries }}</p>
-      <p>productionYear:{{ movie.year }}</p>
+      <h3>Title:{{ movie.title }}</h3>
       <p>genre:{{ movie.genre }}</p>
+      <p>Countries:{{ movie.countries[0] }}</p>
+      <p>productionYear:{{ movie.year }}</p>
+      <p>Längd {{ movie.runtime }}</p>
       <p>Plot:{{ movie.plot }}</p>
-      <p>direktör:{{ movie.director }}</p>
-      <p>Len:{{ movie.runtime }}</p>
+      <p>Direktör:{{ movie.director }}</p>   
+      <p>Tal:{{ movie.language }}</p>  
+      <p>Text:{{ movie.subtitles }}</p>    
     </div>
   </div>
 </template>
@@ -22,9 +23,9 @@ export default {
       //get id from url parameter
       return this.$route.params.id;
     },
-  },
-  movie() {
-    return this.$store.state.movie.filter((p) => p.id == this.id)[0];
+    movie() {
+      return this.$store.state.movie.filter((p) => p.id == this.id)[0];
+    },
   },
 };
 </script>
