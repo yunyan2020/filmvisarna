@@ -1,15 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <Homepage />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Homepage from './views/Homepage'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { Homepage }
 }
 </script>
+
+<style>
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ddd;
+}
+
+#app {
+  /* width: 100vw;
+  height: 100vh; */
+  /* overflow-x: hidden;
+  overflow-y: auto; */
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  /* font-family: 'PT Sans', sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* text-align: center; */
+  color: #eee;
+  /* margin-top: 60px; */
+}
+
+
+</style>
