@@ -40,10 +40,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.passwordChecks();
-      console.log(this.passwordChecks());
+      console.log("Handling submit")
 
-      this.passwordChecks = true ? this.addNewCustomer() : "";
+      if(this.passwordChecks() === true) {
+        this.addNewCustomer()
+      }
     },
     passwordChecks() {
       this.passwordLength =
@@ -70,6 +71,7 @@ export default {
       this.email = "";
       this.password = "";
       this.name = "";
+      this.validatePassword = "";
     },
   },
 };
