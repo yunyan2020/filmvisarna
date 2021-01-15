@@ -4,6 +4,7 @@
       <label>
         E-MAIL:
         <input v-model="email" type="email" required />
+        <div v-if="emailValidation" class="error">{{ emailValidation }}</div>
       </label>
       <label>
         NAMN:
@@ -36,28 +37,38 @@ export default {
       validatePassword: "",
       passwordLength: "",
       passwordValidation: "",
+      emailValidation: "",
     };
+  },
+  computed: {
+    getCustomers() {
+      return this.$store.state.customers
+    }
   },
   methods: {
     handleSubmit() {
       console.log("Handling submit")
+      this.existingCustomerChecks()
 
       if(this.passwordChecks() === true) {
         this.addNewCustomer()
       }
     },
     passwordChecks() {
-      this.passwordLength =
-        this.password.length < 6
-          ? "Ditt lösenord måste innehålla minst 6 tecken"
-          : "";
-      this.passwordValidation =
-        this.password === this.validatePassword
-          ? ""
-          : "Dina lösenord matchar inte";
+      this.passwordLength = this.password.length < 6 ? "Ditt lösenord måste innehålla minst 6 tecken" : ""
+      this.passwordValidation = this.password === this.validatePassword ? "" : "Dina lösenord matchar inte"
 
       // If password length is over 6 and it matches password validation, passwordChecks() returns true
-      return !this.passwordLength && !this.passwordValidation ? true : false;
+      return !this.passwordLength && !this.passwordValidation ? true : false
+    },
+    existingCustomerChecks() {
+      // If there is any matching e-mail in database to the one added in input, they get added to sameEmails 
+      let sameEmails = this.getCustomers.filter(customer => customer.email === this.email)
+      // If there is anything in sameEmails, responds with a warning message
+      this.emailValidation = sameEmails.length ? "E-mail adressen existerar redan" : ""
+      // If sameEmails has anything in it returns false, if it's empty returns true
+      return sameEmails.length ? false : true
+
     },
     addNewCustomer() {
       let newCustomer = {
