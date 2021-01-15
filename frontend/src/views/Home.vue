@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  props: ["id"],
   computed: {
     movie() {
       return this.$store.state.movie;

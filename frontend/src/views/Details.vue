@@ -14,11 +14,13 @@
       <p>Text:{{ movie.subtitles }}</p>    
     </div>
   </div>
+  </div>
 </template>
+
 
 <script>
 export default {
-  computed: {
+computed: {
     id() {
       //get id from url parameter
       return this.$route.params.id;

@@ -4,6 +4,7 @@
       <label>
         E-MAIL:
         <input v-model="email" type="email" required />
+        <div v-if="emailValidation" class="error">{{ emailValidation }}</div>
       </label>
       <label>
         NAMN:
@@ -17,9 +18,12 @@
       <label>
         BEKRÄFTA LÖSENORD:
         <input v-model="validatePassword" type="password" required />
-        <div v-if="passwordValidation" class="error">{{ passwordValidation }}</div>
+        <div v-if="passwordValidation" class="error">
+          {{ passwordValidation }}
+        </div>
+        <p v-if="userSaved" class="saved"> {{ userSaved }}</p>
       </label>
-      <button>SPARA</button>
+      <button v-if="!userSaved">SPARA</button>
     </form>
   </div>
 </template>
@@ -28,28 +32,61 @@
 export default {
   data() {
     return {
-      email: '',
-      name: '',
-      password: '',
-      validatePassword: '',
-      passwordLength: '',
-      passwordValidation: ''
+      email: "",
+      name: "",
+      password: "",
+      validatePassword: "",
+      passwordLength: "",
+      passwordValidation: "",
+      emailValidation: "",
+      userSaved: ""
+    };
+  },
+  computed: {
+    getCustomers() {
+      return this.$store.state.customers
     }
   },
   methods: {
     handleSubmit() {
-      this.passwordChecks()
-      console.log(this.passwordChecks())
+      console.log("Handling submit")
+
+      if(this.existingCustomerChecks() && this.passwordChecks()) {
+        this.addNewCustomer()
+        this.userSaved = "Sparad!"
+      }
     },
     passwordChecks() {
-      this.passwordLength = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
-      this.passwordValidation = this.password === this.validatePassword ? '' : 'Dina lösenord matchar inte'
+      this.passwordLength = this.password.length < 6 ? "Ditt lösenord måste innehålla minst 6 tecken" : ""
+      this.passwordValidation = this.password === this.validatePassword ? "" : "Dina lösenord matchar inte"
 
-      // If password length is over 6 and it matches password validation, passwordChecks() returns true
+      // If password length is over 6 and it matches password validation, passwordChecks() returns true, else false
       return !this.passwordLength && !this.passwordValidation ? true : false
-    }
+    },
+    existingCustomerChecks() {
+      // If there is any matching e-mail in database to the one added in input, they get added to sameEmails 
+      let sameEmails = this.getCustomers.filter(customer => customer.email === this.email)
+      // If there is anything in sameEmails, responds with a warning message
+      this.emailValidation = sameEmails.length ? "E-mail adressen existerar redan" : ""
+      // If sameEmails has anything in it returns false, if it's empty returns true
+      return sameEmails.length ? false : true
 
-  }
+    },
+    addNewCustomer() {
+      let newCustomer = {
+        email: this.email,
+        password: this.password,
+        name: this.name,
+      };
+
+      this.$store.dispatch("addCustomer", newCustomer);
+
+      this.email = "";
+      this.password = "";
+      this.name = "";
+      this.validatePassword = "";
+    },
+  },
 };
 </script>
 
@@ -80,7 +117,7 @@ input {
 
 button {
   padding: 0.5em;
-  color: rgba(128, 128, 128, 0.719); 
+  color: rgba(128, 128, 128, 0.719);
   cursor: pointer;
   border-radius: 5px;
   border: none;
@@ -91,5 +128,11 @@ button {
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+}
+
+.saved {
+  color: rgb(125, 207, 173);
+  margin-top: 1em;
+  font-size: 20px;
 }
 </style>
