@@ -8,11 +8,18 @@
 
     <div v-if="showMember">Member pages dropdown..</div>
     <router-view />
+<div>
+  <Navbar />
+
+  <main>
+    <router-view />
+  </main>
   </div>
 </template>
 
 <script>
 import Login from "./components/Login.vue";
+import Navbar from "./components/navbar.vue";
 
 export default {
   name: "App",
@@ -22,7 +29,7 @@ export default {
       showMember: false,
     };
   },
-  components: { Login },
+  components: { Login, Navbar },
   methods: {
     toggleLogin() {
       this.showLogin = !this.showLogin
