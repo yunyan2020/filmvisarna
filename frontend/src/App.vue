@@ -2,18 +2,16 @@
 <template>
   <div class="rootElement">
     <Navbar />
-    <Homepage />
     <router-view />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/navbar.vue"
-import Homepage from './views/Homepage.vue'
 
 export default {
   name: "App",
-  components: { Navbar, Homepage },
+  components: { Navbar },
   created() {
     this.$store.dispatch("fetchMovie");
   },

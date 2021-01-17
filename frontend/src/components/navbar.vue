@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <router-link to="/">Home</router-link>
     <router-link to="/films">Filmer</router-link>
     <button @click="toggleLogin">Login</button>
     <div v-if="showLogin" class="login">

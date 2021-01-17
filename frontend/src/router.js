@@ -7,7 +7,7 @@ import Homepage from './views/Homepage.vue'
 const routes = [
   {
     name: 'Homepage',
-    path: '/homepage',
+    path: '/',
     component: Homepage
 
   },
