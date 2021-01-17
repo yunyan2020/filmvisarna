@@ -1,44 +1,27 @@
 
 <template>
   <div class="rootElement">
-    <button @click="toggleLogin">Login</button>
-    <div v-if="showLogin" class="login">
-      <Login @close="toggleLogin"> </Login>
-    </div>
-
     <div v-if="showMember">Member pages dropdown..</div>
+    <Navbar />
     <router-view />
-<div>
-  <Navbar />
-
-  <main>
-    <router-view />
-  </main>
   </div>
 </template>
 
 <script>
-import Login from "./components/Login.vue";
 import Navbar from "./components/navbar.vue";
 
 export default {
   name: "App",
   data() {
     return {
-      showLogin: false,
       showMember: false,
     };
   },
-  components: { Login, Navbar },
-  methods: {
-    toggleLogin() {
-      this.showLogin = !this.showLogin
-    },
-  },
-    created() {
+  components: { Navbar },
+        created() {
     this.$store.dispatch("fetchMovie");
   },
-};
+}
 </script>
 
 <style scoped>

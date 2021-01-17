@@ -1,12 +1,29 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/details">About us</router-link>
+    <router-link to="/films">Filmer</router-link>
+    <button @click="toggleLogin">Login</button>
+    <div v-if="showLogin" class="login">
+      <Login @close="toggleLogin"> </Login>
+    </div>
   </nav>
 </template>
 
 <script>
-export default {};
+import Login from "./Login.vue";
+
+export default {
+  components: { Login },
+  data() {
+    return {
+      showLogin: false,
+    };
+  },
+  methods: {
+    toggleLogin() {
+      this.showLogin = !this.showLogin;
+    },
+  },
+};
 </script>
 
 <style scoped>
