@@ -1,7 +1,6 @@
 
 <template>
   <div class="rootElement">
-    <div v-if="showMember">Member pages dropdown..</div>
     <Navbar />
     <router-view />
   </div>
@@ -12,21 +11,15 @@ import Navbar from "./components/navbar.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      showMember: false,
-    };
-  },
   components: { Navbar },
-        created() {
+  created() {
     this.$store.dispatch("fetchMovie");
   },
-}
+};
 </script>
 
 <style scoped>
-.rootElement,
-.login {
+.rootElement {
   height: 100%;
   width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;

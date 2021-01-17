@@ -5,6 +5,7 @@
     <div v-if="showLogin" class="login">
       <Login @close="toggleLogin"> </Login>
     </div>
+    <div v-if="showMember">Member pages dropdown..</div>
   </nav>
 </template>
 
@@ -16,6 +17,7 @@ export default {
   data() {
     return {
       showLogin: false,
+      showMember: false,
     };
   },
   methods: {
@@ -40,12 +42,19 @@ a:hover {
   color: rgba(27, 45, 201, 0.281);
 }
 
+.login {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+}
+
 nav {
   margin-top: 5px;
   height: 30px;
   text-align: center;
-
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
 }
+
 </style>
