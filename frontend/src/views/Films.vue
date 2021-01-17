@@ -1,6 +1,6 @@
 <template>
   <div class="rootElement">
-    <h1>Home page ></h1>
+    <h1>Aktuella Filmer</h1>
     <div class="movie-list" v-for="item of movie" :key="item.id">
       <router-link :to="'/movieshow/details/' + item.id">
         <div class="movie-details">
