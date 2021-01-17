@@ -74,34 +74,4 @@ export default {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-
-  /* 
-  .movie-details {
-    background: #333;
-    position: relative;
-    bottom: 32px;
-    padding: 0 5px 0 5px;
-    height: 20px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-
-  .component-title {
-    display: flex;
-    justify-content: space-between;
-    color: black;
-    position: relative;
-    top: 25px;
-    padding: 10px;
-  } 
-
-  .component-title p {
-    position: relative;
-    top: 35px;
-    right: 10px;
-  }
-
-  .component-title p:hover {
-    opacity: .5;
-  } */
 </style>

@@ -2,14 +2,14 @@
   {
     "auditorium": "Stora Salongen",
     "film": "I Am Legend",
-    "date": "2020-01-15",
+    "date": "2021-01-15",
     "time": "18.40"
   },
 
   {
     "auditorium": "Stora Salongen",
-    "film": "I Am Legend",
-    "date": "01/16",
+    "film": "Titanic",
+    "date": "2021-01-16",
     "time": "18.40"
   }
 

@@ -22,8 +22,6 @@
         <h4><span class="salon-pill">Stora Salongen</span></h4>
       </div>
       <div class="lilla-salongen">
-        <!-- <h4><span class="salon-pill">Stora Salongen</span></h4>
-        <h5><span class="amount-seats">Platser: 77</span></h5> -->
         <h4><span class="salon-pill">Lilla Salongen</span></h4>
       </div>
     </div>
