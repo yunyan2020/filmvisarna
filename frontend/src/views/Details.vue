@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>{{ movie.titile }}</h1>
+    <h1>{{ movie.title }}</h1>
     <div class="detail-page">
-      <img :src="movie.poster" :alt="movie.titile + 'pic'" />
+      <img :src="movie.poster" :alt="movie.title + 'pic'" />
       <div class="movie-details">
         <h3>Title:{{ movie.title }}</h3>
         <p>genre:{{ movie.genre }}</p>

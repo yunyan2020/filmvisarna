@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-    <div class="component-title">
-      <h1>Just nu</h1>
-      <p>mer...</p>
-    </div>
     <div class="movie-list">
       <div v-for="movie in movies" :key="movie.id" class="movie">
         <router-link :to="'/movieshow/details/' + movie.id">

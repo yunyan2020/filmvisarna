@@ -49,9 +49,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("Handling submit")
-
-      if(this.existingCustomerChecks() && this.passwordChecks()) {
+       if(this.existingCustomerChecks() && this.passwordChecks()) {
         this.addNewCustomer()
         this.userSaved = "Sparad!"
       }

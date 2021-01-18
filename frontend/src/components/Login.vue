@@ -1,7 +1,7 @@
 <template>
   <div class="backdrop" @click.self="closeBox">
     <div class="container">
-      <form @submit.prevent>
+      <form @submit.prevent="handleSubmit">
         <label>
           E-MAIL:
           <input v-model="email" type="email" required />
@@ -33,6 +33,11 @@ export default {
       showSignUp: false,
     };
   },
+  computed: {
+    getCustomer() {
+      return this.$store.state.customers.filter((customer) => customer.email === this.email)[0];
+    }
+  },
   methods: {
     closeBox() {
       this.$emit("close");
@@ -41,6 +46,9 @@ export default {
     toggleSignUp() {
       this.showSignUp = !this.showSignUp;
     },
+    handleSubmit() {
+      console.log( this.getCustomer ? this.getCustomer.email : "No user registered")
+    }
   },
 };
 </script>
