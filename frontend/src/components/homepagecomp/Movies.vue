@@ -7,11 +7,12 @@
       <p>mer...</p>
     </div>
     <div class="movie-list">
-      <div v-for="movie in movies" :key="movie" class="movie">
-        <img :src="movie.Poster" alt="">
+      <div v-for="movie in movies" :key="movie.id" class="movie">
+        <router-link :to="'/movieshow/details/' + movie.id">
+        <img :src="movie.poster" alt="">
         <div class="movie-details">
           <h6 class="title">
-            {{ movie.Title }} | {{ movie.Duration }} | {{ movie.Rated }}
+            {{ movie.title }} | {{ movie.duration }} | {{ movie.rated }}
           </h6>
         </div>
       </div>
@@ -20,14 +21,13 @@
 </template>
 
 <script>
-import moviesjson from '../../../movies.json'
 
 export default {
-  data() {
-    return {
-      movies: moviesjson 
-      
-    }
+  props: ["id"],
+  computed: {
+    movies() {
+      return this.$store.state.movie;
+    },
   }
 }
 </script>
