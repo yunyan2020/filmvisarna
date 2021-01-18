@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Navbar from "./components/navbar.vue"
+import Navbar from "./components/navbar.vue";
 
 export default {
   name: "App",
@@ -20,12 +20,12 @@ export default {
 
 <style scoped>
 /* @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .rootElement {
   height: 100%;
   width: 100%;
-   font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

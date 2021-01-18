@@ -6,6 +6,8 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/films">Filmer</router-link>
+      <router-link to="/biograf">Biograf</router-link>
+      <router-link to="/contact">Kontakt</router-link>
       <button @click="toggleLogin">Login</button>
       <div v-if="showLogin" class="login">
         <Login @close="toggleLogin"> </Login>
@@ -36,13 +38,14 @@ export default {
 
 <style scoped>
 a {
-  margin-top: 50px;
   text-decoration: none;
   font-weight: bald;
-  padding: 20px;
+  padding: 10px;
+
   border: 1px;
   font-size: 20px;
   color: rgb(124, 124, 114);
+  float: left;
 }
 
 a:hover {
@@ -58,15 +61,16 @@ a:hover {
 
 nav {
   padding: 35px;
-  height: 30px;
+  height: 20px;
   text-align: center;
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
   background-color: rgb(54, 41, 41);
+  padding-left: 170px;
 }
 .logoBox {
   float: left;
-  position: absolute;
+  /*position: fixed;*/
 }
 .logo {
   width: 50%;
