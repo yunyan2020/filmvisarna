@@ -1,18 +1,40 @@
 <template>
-  <div>
-    <h1>{{ movie.titile }}</h1>
-    <div class="detail-page">
-      <img :src="movie.poster" :alt="movie.titile + 'pic'" />
-      <div class="movie-details">
-        <h3>Title:{{ movie.title }}</h3>
-        <p>genre:{{ movie.genre }}</p>
-        <p>Countries:{{ movie.countries[0] }}</p>
-        <p>productionYear:{{ movie.year }}</p>
-        <p>Längd {{ movie.runtime }}</p>
-        <p>Plot:{{ movie.plot }}</p>
-        <p>Direktör:{{ movie.director }}</p>
-        <p>Tal:{{ movie.language }}</p>
-        <p>Text:{{ movie.subtitles }}</p>
+  <div class="detail-page">
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <h1 class="title">{{ movie.title }}</h1>
+        <h5 class="subtitle">
+          <p class="subtitle-tag">
+            {{ movie.runtime }}|{{ movie.genre }}|{{ movie.year }}
+          </p>
+        </h5>
+        <div class="intro">
+          <div class="list">
+            <div class="item">
+              <div class="item-detail">Direktör:</div>
+              <div class="name">
+                <span>{{ movie.director }}</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-detail">skådespelare：</div>
+              <div class="name">
+                <span
+                  v-for="actor in movie.actors"
+                  v-bind:key="actor.id"
+                  class="movie"
+                  >{{ actor }}、</span
+                >...
+              </div>
+            </div>
+          </div>
+          <div class="intro_text">{{ movie.plot }}</div>
+          <img :src="movie.poster" :alt="movie.titile + 'pic'" />
+          <div class="language-wrapp">
+            <p>Tal :{{ movie.language }}</p>
+            <p>Text:{{ movie.subtitles }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,9 +57,44 @@ export default {
 
 <style scoped>
 .detail-page {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  justify-items: center;
+  margin: 10px;
+  padding: 1em;
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+  top: 3em;
+  border: 1px solid rgba(0, 0, 0, 0.521);
+}
+.list {
+  padding-top: 15px;
+}
+.item {
+  margin-bottom: 5px;
+  display: flex;
+}
+.item-detail {
+  padding-top: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+.intro_text {
+  max-width: 800px;
+  padding-top: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+.railer-container {
+  background: #333;
+  position: relative;
+  bottom: 32px;
+  /* padding-left: 5px; */
+  padding: 0 5px 0 5px;
+  height: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  /* text-align: center; */
 }
 
 img {
