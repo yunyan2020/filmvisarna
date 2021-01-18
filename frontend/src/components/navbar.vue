@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link>
     <router-link to="/films">Filmer</router-link>
+    <router-link to="/contact">Kontakt</router-link>
     <button @click="toggleLogin">Login</button>
     <div v-if="showLogin" class="login">
       <Login @close="toggleLogin"> </Login>
@@ -57,5 +58,4 @@ nav {
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
 }
-
 </style>
