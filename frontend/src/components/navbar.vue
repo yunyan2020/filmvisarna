@@ -1,11 +1,5 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/films">Filmer</router-link>
-    <button @click="toggleLogin"><i class='fas fa-user-alt'></i></button>
-    <div v-if="showLogin" class="login">
-      <Login @close="toggleLogin"> </Login>
-  <wrapper>
+  <div>
     <div class="logoBox">
       <img class="logo" src="../assets/logo2.png" />
     </div>
@@ -14,13 +8,13 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <button @click="toggleLogin">Login</button>
+      <button @click="toggleLogin"><i class="fas fa-user-alt"></i></button>
       <div v-if="showLogin" class="login">
         <Login @close="toggleLogin"> </Login>
       </div>
       <div v-if="showMember">Member pages dropdown..</div>
     </nav>
-  </wrapper>
+  </div>
 </template>
 
 <script>
@@ -88,11 +82,9 @@ button {
   border: none;
   background: none;
   cursor: pointer;
-} 
+}
 
 .fa-user-alt {
   font-size: 20px;
 }
-
-
 </style>
