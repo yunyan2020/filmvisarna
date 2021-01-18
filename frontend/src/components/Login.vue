@@ -55,6 +55,9 @@ export default {
       if(this.emailCheck())
       {
         console.log(this.passwordCheck() ? "All good!!" : "Wrong password")
+        if (this.passwordCheck()) {
+          this.$store.commit("toggleLoggedIn", true)
+        }
       }
     },
     emailCheck() {

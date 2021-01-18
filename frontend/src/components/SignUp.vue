@@ -52,6 +52,7 @@ export default {
        if(this.existingCustomerChecks() && this.passwordChecks()) {
         this.addNewCustomer()
         this.userSaved = "Sparad!"
+        this.$store.commit("toggleLoggedIn", true)
       }
     },
     passwordChecks() {
