@@ -93,10 +93,10 @@ export default {
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  position: relative;
   top: 20em;
-  right: 5em;
+  right: 30em;
   float: right;
+  position: relative;
 }
 
 input {

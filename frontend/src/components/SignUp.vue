@@ -102,7 +102,7 @@ form {
   padding: 2em;
   position: relative;
   top: 20em;
-  left: 5em;
+  left: 30em;
   float: left;
 }
 

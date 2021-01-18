@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
-a {
+a, button {
   text-decoration: none;
   font-weight: bald;
   padding: 10px;
@@ -57,6 +57,7 @@ a:hover {
   height: 100%;
   width: 100%;
   top: 0;
+  left: 0;
 }
 
 nav {
@@ -82,9 +83,10 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+  float: right;
 }
 
 .fa-user-alt {
-  font-size: 20px;
+  font-size: 30px;
 }
 </style>
