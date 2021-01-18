@@ -57,6 +57,7 @@ export default {
         console.log(this.passwordCheck() ? "All good!!" : "Wrong password")
         if (this.passwordCheck()) {
           this.$store.commit("toggleLoggedIn", true)
+          this.$store.commit("setCurrentUser", this.getCustomer())
         }
       }
     },

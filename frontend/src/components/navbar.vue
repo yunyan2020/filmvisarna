@@ -8,8 +8,11 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <button @click="toggleLogin"><i class="fas fa-user-alt"></i></button>
-      <div v-if="showLogin" class="login">
+      <button @click="toggleLogin">
+        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}   </p>
+        <i class="fas fa-user-alt"></i>
+        </button>
+      <div v-if="showLogin && !getCurrentUserName" class="login">
         <Login @close="toggleLogin"> </Login>
       </div>
       <div v-if="showMember">Member pages dropdown..</div>
@@ -28,6 +31,11 @@ export default {
       showMember: false,
     };
   },
+  computed: {
+    getCurrentUserName() {
+      return this.$store.state.currentUser.name
+    }
+  },
   methods: {
     toggleLogin() {
       this.showLogin = !this.showLogin;
@@ -37,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-a, button {
+a, p, button {
   text-decoration: none;
   font-weight: bald;
   padding: 10px;
