@@ -1,13 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/films">Filmer</router-link>
-    <button @click="toggleLogin">Login</button>
-    <div v-if="showLogin" class="login">
-      <Login @close="toggleLogin"> </Login>
+  <div>
+    <div class="logoBox">
+      <img class="logo" src="../assets/logo2.png" />
     </div>
-    <div v-if="showMember">Member pages dropdown..</div>
-  </nav>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/films">Filmer</router-link>
+      <router-link to="/biograf">Biograf</router-link>
+      <router-link to="/contact">Kontakt</router-link>
+      <button @click="toggleLogin">
+        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}   </p>
+        <i class="fas fa-user-alt"></i>
+        </button>
+      <div v-if="showLogin && !getCurrentUserName" class="login">
+        <Login @close="toggleLogin"> </Login>
+      </div>
+      <div v-if="showMember">Member pages dropdown..</div>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -21,6 +31,11 @@ export default {
       showMember: false,
     };
   },
+  computed: {
+    getCurrentUserName() {
+      return this.$store.state.currentUser.name
+    }
+  },
   methods: {
     toggleLogin() {
       this.showLogin = !this.showLogin;
@@ -30,17 +45,19 @@ export default {
 </script>
 
 <style scoped>
-a {
-  margin-top: 50px;
+a, p, button {
   text-decoration: none;
   font-weight: bald;
-  padding: 20px;
+  padding: 10px;
+  padding-left: 25px;
   border: 1px;
   font-size: 20px;
+  color: rgb(124, 124, 114);
+  float: left;
 }
 
 a:hover {
-  color: rgba(27, 45, 201, 0.281);
+  color: rgba(121, 122, 131, 0.281);
 }
 
 .login {
@@ -48,14 +65,45 @@ a:hover {
   height: 100%;
   width: 100%;
   top: 0;
+  left: 0;
 }
 
 nav {
-  margin-top: 5px;
-  height: 30px;
+  padding: 35px;
+  height: 20px;
   text-align: center;
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
+  background-color: rgb(54, 41, 41);
+  padding-left: 170px;
+}
+.logoBox {
+  float: left;
+  /*position: fixed;*/
+}
+.logo {
+  width: 50%;
+  height: auto;
+  padding-bottom: 20px;
 }
 
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  float: right;
+}
+
+button:focus{
+  outline: none;
+  color: rgba(121, 122, 131, 0.281);
+ }
+
+ button:hover {
+   color: rgba(121, 122, 131, 0.281);
+ }
+
+.fa-user-alt {
+  font-size: 30px;
+}
 </style>

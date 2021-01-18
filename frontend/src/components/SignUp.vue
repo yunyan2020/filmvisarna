@@ -49,11 +49,10 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("Handling submit")
-
-      if(this.existingCustomerChecks() && this.passwordChecks()) {
+       if(this.existingCustomerChecks() && this.passwordChecks()) {
         this.addNewCustomer()
         this.userSaved = "Sparad!"
+        this.$store.commit("toggleLoggedIn", true)
       }
     },
     passwordChecks() {
@@ -79,7 +78,8 @@ export default {
         name: this.name,
       };
 
-      this.$store.dispatch("addCustomer", newCustomer);
+      this.$store.dispatch("addCustomer", newCustomer)
+      this.$store.commit("setCurrentUser", newCustomer)
 
       this.email = "";
       this.password = "";
@@ -103,7 +103,7 @@ form {
   padding: 2em;
   position: relative;
   top: 20em;
-  left: 5em;
+  left: 30em;
   float: left;
 }
 

@@ -2,7 +2,9 @@ import { createStore } from 'vuex'
 
 const state = {
   movie: [],
-  customers: []
+  customers: [],
+  loggedIn: false,
+  currentUser: {}
 }
 
 //mutates state
@@ -15,6 +17,14 @@ const mutations = {
   },
   addCustomer(state, customer) {
     state.customers.push(customer)
+  },
+  toggleLoggedIn(state, trueOrFalse) { 
+    state.loggedIn = trueOrFalse
+    console.log("Customer logged in: ", state.loggedIn)
+  },
+  setCurrentUser(state, currentUser) { 
+    state.currentUser = currentUser
+    console.log("User name: ", state.currentUser.name)
   }
 
 }
