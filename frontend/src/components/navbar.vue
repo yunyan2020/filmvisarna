@@ -94,6 +94,15 @@ button {
   float: right;
 }
 
+button:focus{
+  outline: none;
+  color: rgba(121, 122, 131, 0.281);
+ }
+
+ button:hover {
+   color: rgba(121, 122, 131, 0.281);
+ }
+
 .fa-user-alt {
   font-size: 30px;
 }
