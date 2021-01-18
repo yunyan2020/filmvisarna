@@ -5,28 +5,27 @@
       <p>mer...</p>
     </div>
     <div class="topmovies-list">
-      <div v-for="movie in topmovies" :key="movie.id" class="movie">        
+      <div v-for="movie in movies" :key="movie.id" class="movie">
         <router-link :to="'/movieshow/details/' + movie.id">
-        <img :src="movie.Poster" alt="">
+        <img :src="movie.poster" alt="">
+        </router-link>
         <div class="movie-details">
           <h6 class="title">
-            {{ movie.Title }} | {{ movie.Duration }} | {{ movie.Rated }}
+            {{ movie.title }} | {{ movie.duration }} | {{ movie.rated }}
           </h6>
         </div>
-      </div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
-import movies from "../../../movies.json";
-
 export default {
   props: ["id"],
-  data() {
-    return {
-      topmovies: movies.filter((movie) => movie.Score > 7),
-    };
+  computed: {
+    movies() {
+      return this.$store.state.movie.filter((movie) => movie.score > 7);
+    },
   },
 };
 </script>

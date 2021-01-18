@@ -1,6 +1,4 @@
 <template>
-
-
   <div class="container">
     <div class="component-title">
       <h1>Just nu</h1>
@@ -9,7 +7,8 @@
     <div class="movie-list">
       <div v-for="movie in movies" :key="movie.id" class="movie">
         <router-link :to="'/movieshow/details/' + movie.id">
-        <img :src="movie.poster" alt="">
+          <img :src="movie.poster" alt="" />
+        </router-link>
         <div class="movie-details">
           <h6 class="title">
             {{ movie.title }} | {{ movie.duration }} | {{ movie.rated }}
