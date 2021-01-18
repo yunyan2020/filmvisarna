@@ -41,7 +41,7 @@ a {
   text-decoration: none;
   font-weight: bald;
   padding: 10px;
-
+  padding-left: 25px;
   border: 1px;
   font-size: 20px;
   color: rgb(124, 124, 114);
