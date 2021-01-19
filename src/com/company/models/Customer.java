@@ -13,7 +13,7 @@ public class Customer {
     private String password;
     private String name;
 
-    Customer() {}
+    public Customer() {}
 
     public String getEmail() {
         return email;

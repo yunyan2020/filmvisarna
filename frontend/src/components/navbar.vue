@@ -9,7 +9,7 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <button @click="toggleLogin">
-        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}   </p>
+        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}  </p>
         <i class="fas fa-user-alt"></i>
         </button>
       <div v-if="showLogin && !getCurrentUserName" class="login">
