@@ -4,11 +4,15 @@ const state = {
   movie: [],
   customers: [],
   loggedIn: false,
-  currentUser: {}
+  currentUser: {},
+  viewings: []
 }
 
 //mutates state
 const mutations = {
+  setViewings(state, list) {
+    state.viewings = list
+  },
   setMovie(state, list) {
     state.movie = list
   },
@@ -31,6 +35,7 @@ const mutations = {
 
 //async network requests
 const actions = {
+  // Actions to GET info from database
   async fetchMovie(store) {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
@@ -47,6 +52,15 @@ const actions = {
 
     store.commit('setCustomers', list)
   },
+  async fetchViewings() {
+    let list = await fetch('/rest/viewings')
+    list = await list.json()
+
+    console.log(list)
+
+    store.commit('setViewings', list)
+  },
+// Actions to ADD/POST info to database
   async addCustomer(store, customer) {
 
     let response = await fetch('/rest/customerdetails', {
@@ -55,8 +69,6 @@ const actions = {
     })
 
     let savedCustomer = await response.json()
-
-    console.log("Saved customer: ", savedCustomer)
 
     store.commit('addCustomer', savedCustomer)
   }
