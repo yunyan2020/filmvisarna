@@ -8,8 +8,8 @@ public class Viewing {
 
     @Id
     private String id;
-    private Screen screen;
-    private Movie movie;
+    private transient Screen screen;
+    private transient Movie movie;
     private String date;
     private String time;
     private int seatsTaken;
