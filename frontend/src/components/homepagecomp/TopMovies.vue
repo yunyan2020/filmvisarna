@@ -11,7 +11,7 @@
         </router-link>
         <div class="movie-details">
           <h6 class="title">
-            {{ movie.title }} | {{ movie.duration }} | {{ movie.rated }}
+            {{ movie.title }} | {{ movie.runtime }} | {{ movie.rated }}
           </h6>
         </div>
         </div>
