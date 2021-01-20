@@ -37,9 +37,7 @@ export default {
     t.setDate(t.getDate() + 1)
     return {
       showing: dates,
-      /* tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)); */
       fullDate: current,
-      /* today: current.getDate() + '/' + current.getMonth() + 1, */ 
       today: current,
       tomorow: (t).getDate() + '/' + t.getMonth() + 1,
       aftertomorow: t.getDate() + 1 + '/' + t.getMonth() + 1,

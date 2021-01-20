@@ -8,8 +8,8 @@ public class Viewing {
 
     @Id
     private String id;
-    private transient Screen screen;
-    private transient Movie movie;
+    private String screen;
+    private String movie;
     private String date;
     private String time;
     private int seatsTaken;
@@ -24,19 +24,19 @@ public class Viewing {
         this.id = id;
     }
 
-    public Screen getScreen() {
+    public String getScreen() {
         return screen;
     }
 
-    public void setScreen(Screen screen) {
+    public void setScreen(String screen) {
         this.screen = screen;
     }
 
-    public Movie getMovie() {
+    public String getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(String movie) {
         this.movie = movie;
     }
 
