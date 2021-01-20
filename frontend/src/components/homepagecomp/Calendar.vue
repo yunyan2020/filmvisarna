@@ -6,15 +6,15 @@
     <div class="dates">
       <div class="today">
         <h3>{{ today }}</h3>
-      </div>
-      <div class="tomorow">
-        <h3>{{ tomorrow }}</h3>
-        <!-- <div v-for="" :key="movie" class="movies">
-        
-      </div> -->
-      </div>
-      <div class="aftertomorow">
-        <h3>{{ afterTomorrow }}</h3>
+        <div v-for="view in viewings" :key="view.movie">
+          <p>{{ view.movie }}</p>
+        </div>
+        <div class="tomorow">
+          <h3>{{ tomorrow }}</h3>
+        </div>
+        <div class="aftertomorow">
+          <h3>{{ afterTomorrow }}</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -27,10 +27,21 @@ export default {
       today: "",
       tomorrow: "",
       afterTomorrow: "",
+      todaysMovie: {},
+      tomorrowsMovie: {},
+      afterTomorrowsMovie: {},
     };
   },
+  computed: {
+    viewings() {
+      return this.$store.state.viewings
+    },
+    movies() {
+      return this.$store.state.movie
+    }
+  },
   methods: {
-        setDates() {
+    setDates() {
       // Setting the dates for today and two days ahead
       let tday = new Date();
       let tmorrow = new Date();
@@ -40,12 +51,13 @@ export default {
 
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
       this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow.toJSON().slice(0,10).replace(/-/g,'/')
+      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
     }
   },
   mounted() {
-    this.setDates()
-  }
+    this.setDates();
+    console.log("Mounted...");
+  },
 };
 </script>
 

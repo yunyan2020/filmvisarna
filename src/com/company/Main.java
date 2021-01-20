@@ -22,6 +22,7 @@ public class Main {
         app.get("/rest/viewings", (req,res) -> {
            var viewings = collection("Viewing").find();
            res.json(viewings);
+
         });
 
         app.get("/rest/customerdetails", (req,res) -> {

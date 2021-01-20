@@ -10,11 +10,12 @@ const state = {
 
 //mutates state
 const mutations = {
-  setViewings(state, list) {
-    state.viewings = list
-  },
   setMovie(state, list) {
     state.movie = list
+  },
+  setViewings(state, list) {
+    state.viewings = list
+    console.log("Here it is")
   },
   setCustomers(state, list) {
     state.customers = list
@@ -52,7 +53,7 @@ const actions = {
 
     store.commit('setCustomers', list)
   },
-  async fetchViewings() {
+  async fetchViewings(store) {
     let list = await fetch('/rest/viewings')
     list = await list.json()
 
@@ -60,6 +61,7 @@ const actions = {
 
     store.commit('setViewings', list)
   },
+
 // Actions to ADD/POST info to database
   async addCustomer(store, customer) {
 
