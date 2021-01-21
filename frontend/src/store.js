@@ -3,9 +3,9 @@ import { createStore } from 'vuex'
 const state = {
   movie: [],
   customers: [],
+  viewings: [],
   loggedIn: false,
   currentUser: {},
-  viewings: []
 }
 
 //mutates state

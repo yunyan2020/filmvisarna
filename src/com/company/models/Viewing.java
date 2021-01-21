@@ -8,6 +8,7 @@ public class Viewing {
 
     @Id
     private String id;
+
     private String screen;
     private String movie;
     private String date;
@@ -64,16 +65,16 @@ public class Viewing {
         this.seatsTaken = seatsTaken;
     }
 
-
     @Override
     public String toString() {
         return "Viewing{" +
                 "id='" + id + '\'' +
-                ", screen=" + screen +
-                ", movie=" + movie +
+                ", screen='" + screen + '\'' +
+                ", movie='" + movie + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", seatsTaken=" + seatsTaken +
                 '}';
     }
+
 }
