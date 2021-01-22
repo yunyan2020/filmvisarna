@@ -6,8 +6,8 @@
     <div class="dates">
       <div class="today">
         <h3>{{ today }}</h3>
-        <div v-for="view in viewings" :key="view.movie">
-          <p>{{ view.movie }}</p>
+        <div v-for="movie in movies" :key="movie.title">
+          <p>{{ movie.title }}</p>
         </div>
         <div class="tomorow">
           <h3>{{ tomorrow }}</h3>
@@ -33,12 +33,9 @@ export default {
     };
   },
   computed: {
-    viewings() {
-      return this.$store.state.viewings
-    },
     movies() {
-      return this.$store.state.movie
-    }
+      return this.$store.state.movie;
+    },
   },
   methods: {
     setDates() {
@@ -51,8 +48,11 @@ export default {
 
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
       this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-    }
+      this.afterTomorrow = afterTmorrow
+        .toJSON()
+        .slice(0, 10)
+        .replace(/-/g, "/");
+    },
   },
   mounted() {
     this.setDates();

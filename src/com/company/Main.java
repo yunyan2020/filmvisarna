@@ -19,12 +19,6 @@ public class Main {
 
         // Endpoints to fetch data from database
 
-        app.get("/rest/viewings", (req,res) -> {
-           var viewings = collection("Viewing").find();
-           res.json(viewings);
-
-        });
-
         app.get("/rest/customerdetails", (req,res) -> {
             var customerDetails = collection("Customer").find();
             res.json(customerDetails);
@@ -48,14 +42,6 @@ public class Main {
 
 
         // Endpoints to create new data for database
-
-        app.post("/rest/viewings", (req,res) -> {
-            var viewing = req.body(Viewing.class);
-            var savedViewing = collection("Viewing").save(viewing);
-
-            System.out.println(savedViewing);
-            res.json(savedViewing);
-        });
 
         app.post("/rest/customerdetails", (req,res) -> {
             var customer = req.body(Customer.class);

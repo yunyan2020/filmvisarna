@@ -3,7 +3,6 @@ import { createStore } from 'vuex'
 const state = {
   movie: [],
   customers: [],
-  viewings: [],
   loggedIn: false,
   currentUser: {},
 }
@@ -13,21 +12,17 @@ const mutations = {
   setMovie(state, list) {
     state.movie = list
   },
-  setViewings(state, list) {
-    state.viewings = list
-    console.log("Here it is")
-  },
   setCustomers(state, list) {
     state.customers = list
   },
   addCustomer(state, customer) {
     state.customers.push(customer)
   },
-  toggleLoggedIn(state, trueOrFalse) { 
+  toggleLoggedIn(state, trueOrFalse) {
     state.loggedIn = trueOrFalse
     console.log("Customer logged in: ", state.loggedIn)
   },
-  setCurrentUser(state, currentUser) { 
+  setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
     console.log("User name: ", state.currentUser.name)
   }
@@ -53,16 +48,8 @@ const actions = {
 
     store.commit('setCustomers', list)
   },
-  async fetchViewings(store) {
-    let list = await fetch('/rest/viewings')
-    list = await list.json()
 
-    console.log(list)
-
-    store.commit('setViewings', list)
-  },
-
-// Actions to ADD/POST info to database
+  // Actions to ADD/POST info to database
   async addCustomer(store, customer) {
 
     let response = await fetch('/rest/customerdetails', {
