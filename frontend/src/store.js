@@ -57,8 +57,6 @@ const actions = {
     let list = await fetch('/rest/viewings')
     list = await list.json()
 
-    console.log(list);
-
     store.commit('setViewings', list)
   },
 

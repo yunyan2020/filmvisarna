@@ -5,15 +5,21 @@
     </div>
     <div class="dates">
       <div class="today">
-        <h3>{{ today }}</h3>
-        <div v-for="movie in movies" :key="movie.title">
-          <p>{{ movie.title }}</p>
+        <h3>Idag</h3>
+        <div v-for="view in viewingToday" :key="view.movie">
+          <p>{{ view.movie }}</p>
         </div>
         <div class="tomorow">
-          <h3>{{ tomorrow }}</h3>
+          <h3>Imorgon</h3>
+                  <div v-for="view in viewingTomorrow" :key="view.movie">
+          <p>{{ view.movie }}</p>
+        </div>
         </div>
         <div class="aftertomorow">
-          <h3>{{ afterTomorrow }}</h3>
+          <h3>I Övermorgon</h3>
+                  <div v-for="view in viewingAfterTomorrow" :key="view.movie">
+          <p>{{ view.movie }}</p>
+        </div>
         </div>
       </div>
     </div>
@@ -26,16 +32,22 @@ export default {
     return {
       today: "",
       tomorrow: "",
-      afterTomorrow: "",
-      todaysMovie: {},
-      tomorrowsMovie: {},
-      afterTomorrowsMovie: {},
+      afterTomorrow: ""
     };
   },
   computed: {
     movies() {
-      return this.$store.state.movie;
+      return this.$store.state.movie
     },
+    viewingToday() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)
+    },
+    viewingTomorrow() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)
+    },
+    viewingAfterTomorrow() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)
+    }
   },
   methods: {
     setDates() {
@@ -52,12 +64,12 @@ export default {
         .toJSON()
         .slice(0, 10)
         .replace(/-/g, "/");
-    },
+    }
   },
   mounted() {
-    this.setDates();
-    console.log("Mounted...");
-  },
+    this.setDates()
+    console.log("Mounted...")
+  }
 };
 </script>
 
