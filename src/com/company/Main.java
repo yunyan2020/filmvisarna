@@ -40,6 +40,11 @@ public class Main {
             }
         });
 
+        app.get("/rest/viewings",(req,res) -> {
+            var viewing = collection("Viewing").find();
+            res.json(viewing);
+        });
+
 
         // Endpoints to create new data for database
 

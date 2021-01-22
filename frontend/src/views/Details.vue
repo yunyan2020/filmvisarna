@@ -37,6 +37,10 @@
         </div>
       </div>
     </div>
+    <button>Boka</button>
+    <div v-for="view in viewings" :key="view.movie">
+      {{ view.movie }}
+    </div>
   </div>
 </template>
 
@@ -51,8 +55,11 @@ export default {
     movie() {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
-  },
-};
+    viewings() {
+      return this.$store.state.allViewings;
+    },
+  }
+}
 </script>
 
 <style scoped>
