@@ -1,5 +1,5 @@
 [ {
-  "id" : "hsHYkkYHNTpz38PEaFU9r",
+  "id" : "gkv_IgjPK-Aip8fl5eC9G",
   "title" : "I Am Legend",
   "year" : "2007",
   "rated" : "15 år",
@@ -7,15 +7,15 @@
   "genre" : "Action, Adventure, Drama, Sci-Fi, Thriller",
   "director" : "Francis Lawrence",
   "actors" : [ "Will Smith", "Alice Braga", "Charlie Tahan", "Salli Richardson-Whitfield" ],
-  "plot" : "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
-  "language" : "engelska",
-  "subtitles" : "svenska",
+  "plot" : "Robert Neville is a scientist who was unable to stop the spread of the terrible virus that was incurable and man-made. Immune, Neville is now the last human survivor in what is left of New York City and perhaps the world. For three years, Neville has faithfully sent out daily radio messages, desperate to find any other survivors who might be out there. But he is not alone. Mutant victims of the plague -- The Infected -- lurk in the shadows... watching Neville's every move... waiting for him to make a fatal mistake. Perhaps mankind's last, best hope, Neville is driven by only one remaining mission: to find a way to reverse the effects of the virus using his own immune blood. But he knows he is outnumbered... and quickly running out of time.",
+  "language" : "Engelska",
+  "subtitles" : "Svenska",
   "countries" : [ "USA" ],
   "poster" : "https://m.media-amazon.com/images/M/MV5BYTE1ZTBlYzgtNmMyNS00ZTQ2LWE4NjEtZjUxNDJkNTg2MzlhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
-  "youtubeTrailers" : [ "https://www.youtube.com/watch?v=ewpYq9rgg3w" ],
-  "score" : "9"
+  "youtubeTrailers" : "ewpYq9rgg3w",
+  "score" : 9
 }, {
-  "id" : "SF9NcTH40F2UZcq1enjQA",
+  "id" : "b-7HLJwSxs0vsw38mESp9",
   "title" : "Titanic",
   "year" : "1983",
   "rated" : "9 år",
@@ -23,15 +23,15 @@
   "genre" : "Drama, Romance",
   "director" : "James Cameron",
   "actors" : [ "Leonardo DiCaprio", "Billy Zane", "Kate Winslet", "Kathy Bates" ],
-  "plot" : "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
-  "language" : "engelska",
-  "subtitles" : "svenska",
+  "plot" : "84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine, Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in April 10th 1912, on a ship called Titanic when young Rose boards the departing ship with the upper-class passengers and her mother, Ruth DeWitt Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist named Jack Dawson and his best friend Fabrizio De Rossi win third-class tickets to the ship in a game. And she explains the whole story from departure until the death of Titanic on its first and last voyage April 15th, 1912 at 2:20 in the morning.",
+  "language" : "Engelska",
+  "subtitles" : "Svenska",
   "countries" : [ "USA", "Mexico" ],
   "poster" : "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg",
-  "youtubeTrailers" : [ "https://www.youtube.com/watch?v=CHekzSiZjrY" ],
-  "score" : "8"
+  "youtubeTrailers" : "CHekzSiZjrY",
+  "score" : 8
 }, {
-  "id" : "HLEzV4PRIJTg8cSHe92MP",
+  "id" : "tMS3LrKj0OTODHesqi2w4",
   "title" : "Robocop",
   "year" : "2013",
   "rated" : "13 år",
@@ -39,15 +39,15 @@
   "genre" : "Drama, Romance",
   "director" : "Paul Verhoeven",
   "actors" : [ "Peter Weller", "Nancy Allen", "Dan O'Herlihy", "Ronny Cox" ],
-  "plot" : "In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.",
-  "language" : "engelska",
-  "subtitles" : "svenska",
+  "plot" : "Detroit - in the future - is crime-ridden and run by a massive company. The company has developed a huge crime-fighting robot, which unfortunately develops a rather dangerous glitch. The company sees a way to get back in favor with the public when policeman Alex Murphy is killed by a street gang. Murphy's body is reconstructed within a steel shell and called RoboCop. RoboCop is very successful against criminals and becomes a target of supervillian Boddicker.",
+  "language" : "Engelska",
+  "subtitles" : "Svenska",
   "countries" : [ "USA" ],
   "poster" : "https://m.media-amazon.com/images/M/MV5BZWVlYzU2ZjQtZmNkMi00OTc3LTkwZmYtZDVjNmY4OWFmZGJlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-  "youtubeTrailers" : [ "https://www.youtube.com/watch?v=UuVphAuRo7Q" ],
-  "score" : "4"
+  "youtubeTrailers" : "UuVphAuRo7Q",
+  "score" : 4
 }, {
-  "id" : "l564M_NmdvN-pMIpgQOUn",
+  "id" : "-RiAc8WFz9-E_v7t3KJUc",
   "title" : "The Lord of the Rings",
   "year" : "2001",
   "rated" : "13 år",
@@ -55,15 +55,15 @@
   "genre" : "Animation, Adventure, Fantasy",
   "director" : "Ralph Bakshi",
   "actors" : [ "Christopher Guard", "William Squire", "Michael Scholes", "John Hurt" ],
-  "plot" : "The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth",
-  "language" : "engelska",
-  "subtitles" : "svenska",
+  "plot" : "A young Hobbit named Frodo (Guard) is thrown on an amazing adventure, when he is appointed the job of destroying the one ring which was created by the dark lord Sauron. He is assigned with warriors including Gandalf (Squire), Aragorn (Hurt) and Boromir (Cox). It's not going to be an easy journey for the Fellowship of the Ring, on the ultimate quest to rid Middle-Earth of all evil.",
+  "language" : "Engelska",
+  "subtitles" : "Svenska",
   "countries" : [ "USA", "UK", "Spain" ],
   "poster" : "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
-  "youtubeTrailers" : [ "https://www.youtube.com/watch?v=r5X-hFf6Bwo" ],
-  "score" : "10"
+  "youtubeTrailers" : "r5X-hFf6Bwo",
+  "score" : 10
 }, {
-  "id" : "b1eEeeuX2zT0VCswtUffr",
+  "id" : "vpsheOmIqJyp_BT_6OVEO",
   "title" : "The Avengers",
   "year" : "2012",
   "rated" : "13 år",
@@ -76,6 +76,6 @@
   "subtitles" : "svenska",
   "countries" : [ "USA" ],
   "poster" : "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-  "youtubeTrailers" : [ "https://www.youtube.com/watch?v=eOrNdBpGMv8" ],
-  "score" : "7"
+  "youtubeTrailers" : "eOrNdBpGMv8",
+  "score" : 7
 } ]
