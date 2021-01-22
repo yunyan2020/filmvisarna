@@ -4,25 +4,28 @@
       <h1>Kalender</h1>
     </div>
     <div class="dates">
-      <div class="today">
-        <h3>Idag</h3>
-        <div v-for="view in viewingToday" :key="view.movie">
-          <p>{{ view.movie }}</p>
-        </div>
-        <div class="tomorow">
-          <h3>Imorgon</h3>
-                  <div v-for="view in viewingTomorrow" :key="view.movie">
-          <p>{{ view.movie }}</p>
-        </div>
-        </div>
-        <div class="aftertomorow">
-          <h3>I Övermorgon</h3>
-                  <div v-for="view in viewingAfterTomorrow" :key="view.movie">
-          <p>{{ view.movie }}</p>
-        </div>
-        </div>
+          <div class="today">
+            <h3>Idag</h3>
+            <div v-for="movie in movieToday" :key="movie.title" class="movies">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </div>
+          </div>
+          <div class="tomorow">
+            <h3>Imorgon</h3>
+            <div v-for="movie in movieTomorrow" :key="movie.title">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </div>
+          </div>
+          <div class="aftertomorow">
+            <h3>I Övermorgon</h3>
+            <div v-for="movie in movieAfterTomorrow" :key="movie.title">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </div>
+          </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -32,21 +35,26 @@ export default {
     return {
       today: "",
       tomorrow: "",
-      afterTomorrow: ""
+      afterTomorrow: "",
     };
   },
   computed: {
     movies() {
       return this.$store.state.movie
     },
-    viewingToday() {
-      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)
+    movieToday() {
+      // Filters through viewings json for viewing object on todays date
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)
+      // Checks if there are viewings in tempViewings array, if true filters through the movie json for movie with same title for movie object
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     },
-    viewingTomorrow() {
-      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)
+    movieTomorrow() {
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     },
-    viewingAfterTomorrow() {
-      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)
+    movieAfterTomorrow() {
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     }
   },
   methods: {
@@ -98,6 +106,7 @@ h5 {
   margin: 10px;
   padding: 1em;
   border: 1px solid black;
+  justify-content: space-between;
 }
 
 .dates {

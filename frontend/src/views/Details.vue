@@ -38,9 +38,6 @@
       </div>
     </div>
     <button>Boka</button>
-    <div v-for="view in viewings" :key="view.movie">
-      {{ view.movie }}
-    </div>
   </div>
 </template>
 
