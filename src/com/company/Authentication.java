@@ -80,9 +80,6 @@ public class Authentication {
         });
 
         app.get("/api/whoami", (req, res) -> {
-            if(req.session("currentUser") != null) {
-                return;
-            }
             Customer customer = req.session("currentUser");
             res.json(customer);
         });

@@ -31,6 +31,7 @@ export default {
       email: "",
       password: "",
       showSignUp: false,
+      tempError: ""
     };
   },
   methods: {
@@ -47,6 +48,7 @@ export default {
         password: this.password
       }
       this.$store.dispatch('login', credentials)
+      console.log(this.$store.state.error)
     },
   },
 };

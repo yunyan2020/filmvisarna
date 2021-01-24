@@ -20,7 +20,6 @@ const mutations = {
     state.currentUser = currentUser
     console.log("User name: ", state.currentUser.name)
   }
-
 }
 
 //async network requests
