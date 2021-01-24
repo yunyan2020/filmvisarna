@@ -9,6 +9,7 @@
             <div v-for="movie in movieToday" :key="movie.title" class="movies">
             <router-link :to="'/movieshow/details/' + movie.id">
             <img :src="movie.poster">
+            </router-link>
             </div>
           </div>
           <div class="tomorow">
@@ -16,6 +17,7 @@
             <div v-for="movie in movieTomorrow" :key="movie.title">
             <router-link :to="'/movieshow/details/' + movie.id">
             <img :src="movie.poster">
+            </router-link>
             </div>
           </div>
           <div class="aftertomorow">
@@ -23,6 +25,7 @@
             <div v-for="movie in movieAfterTomorrow" :key="movie.title">
             <router-link :to="'/movieshow/details/' + movie.id">
             <img :src="movie.poster">
+            </router-link>
             </div>
           </div>
       </div>
@@ -82,7 +85,7 @@ export default {
 </script>
 
 <style scoped>
-.movies:hover {
+img:hover {
   opacity: 0.5;
 }
 
