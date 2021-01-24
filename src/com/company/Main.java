@@ -16,13 +16,15 @@ public class Main {
         // start collection database
         app.enableCollections("database/temp/db/awesome.db");
 
+        new Authentication(app);
+
 
         // Endpoints to fetch data from database
 
-        app.get("/rest/customerdetails", (req,res) -> {
-            var customerDetails = collection("Customer").find();
-            res.json(customerDetails);
-        });
+//        app.get("/rest/customerdetails", (req,res) -> {
+//            var customerDetails = collection("Customer").find();
+//            res.json(customerDetails);
+//        });
 
         app.get("/rest/movieshow",(req,res) ->{
             var movie = collection("Movie").find();
@@ -48,14 +50,14 @@ public class Main {
 
         // Endpoints to create new data for database
 
-        app.post("/rest/customerdetails", (req,res) -> {
-            var customer = req.body(Customer.class);
-            var savedCustomer = collection("Customer").save(customer);
-
-            System.out.println(savedCustomer);
-            res.json(savedCustomer);
-
-        });
+//        app.post("/rest/customerdetails", (req,res) -> {
+//            var customer = req.body(Customer.class);
+//            var savedCustomer = collection("Customer").save(customer);
+//
+//            System.out.println(savedCustomer);
+//            res.json(savedCustomer);
+//
+//        });
 
         app.post("/rest/movieshow",(req,res) ->{
             var movie = req.body(Movie.class);
