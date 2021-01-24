@@ -5,12 +5,10 @@
         <label>
           E-MAIL:
           <input v-model="email" type="email" required />
-          <div v-if="emailValidation" class="error">{{ emailValidation }}</div>
         </label>
         <label>
           LÖSENORD:
           <input v-model="password" type="password" required />
-          <div v-if="passwordValidation" class="error"> {{ passwordValidation }} </div>
         </label>
         <div class="buttonContainer">
           <button>LOGGA IN</button>
@@ -33,15 +31,7 @@ export default {
       email: "",
       password: "",
       showSignUp: false,
-      emailValidation: "",
-      passwordValidation: ""
     };
-  },
-  computed: {
-    getCustomer() {
-      // Checks database customerdetails for a matching email address to input email
-      return this.$store.state.customers.filter((customer) => customer.email === this.email)[0];
-    }
   },
   methods: {
     closeBox() {
@@ -52,27 +42,12 @@ export default {
       this.showSignUp = !this.showSignUp;
     },
     handleSubmit() {
-      if(this.emailCheck())
-      {
-        console.log(this.passwordCheck() ? "All good!!" : "Wrong password")
-        if (this.passwordCheck()) {
-          this.$store.commit("toggleLoggedIn", true)
-          this.$store.commit("setCurrentUser", this.getCustomer())
-        }
+      const credentials = {
+        email : this.email,
+        password: this.password
       }
+      this.$store.dispatch('login', credentials)
     },
-    emailCheck() {
-      // Checks if the e-mail address is registered in database, sets emailValidation to error message if not found
-      this.emailValidation = this.getCustomer ? "" : "E-mail addressen finns inte registrerad"
-      // Returns true if it exists, false if not
-      return this.emailValidation ? false : true
-    },
-    passwordCheck() {
-      // Checks input password against database saved customer password, sets passwordValidation to error message if not found
-      this.passwordValidation = this.getCustomer.password === this.password ? "" : "Fel lösenord"
-      // Returns true if passwords matched, false if not
-      return this.passwordValidation ? false : true
-    }
   },
 };
 </script>

@@ -9,13 +9,12 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <button @click="toggleLogin">
-        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}  </p>
+        <p v-if="isLoggedIn">Hej, </p>
         <i class="fas fa-user-alt"></i>
         </button>
-      <div v-if="showLogin && !getCurrentUserName" class="login">
+      <div v-if="showLogin" class="login">
         <Login @close="toggleLogin"> </Login>
       </div>
-      <div v-if="showMember">Member pages dropdown..</div>
     </nav>
   </div>
 </template>
@@ -27,13 +26,15 @@ export default {
   components: { Login },
   data() {
     return {
-      showLogin: false,
-      showMember: false,
+      showLogin: false
     };
   },
   computed: {
     getCurrentUserName() {
       return this.$store.state.currentUser.name
+    },
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
     }
   },
   methods: {
