@@ -38,12 +38,20 @@
       </div>
     </div>
     <button>Boka</button>
+    <div v-for="date in viewingDates" :key="date">
+    <p>{{ date }}</p>
+    </div>
   </div>
 </template>
 
 
 <script>
 export default {
+  data() {
+    return {
+      times: [],
+    }
+  },
   computed: {
     id() {
       //get id from url parameter
@@ -53,8 +61,13 @@ export default {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
     viewings() {
-      return this.$store.state.allViewings;
+      return this.$store.state.allViewings.filter((viewing) => viewing.movie === this.movie.title)
     },
+    viewingDates() {
+      // Sorts the movie viewing dates from earliest to latest
+      let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
+      return tempDates
+    }
   }
 }
 </script>
