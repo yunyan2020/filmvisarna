@@ -7,11 +7,11 @@
         {{ movie.runtime }}|{{ movie.year }}
       </p>
     </h4>
-  </div>  
+  </div> 
   <div class = "wrap">
     <div class="ticket-page"> 
       <p> This position for ticket information This position for ticket information</p> 
-    </div>
+    </div>   
     <div class="movie-detail">
       <div class="trailer">
         <iframe
