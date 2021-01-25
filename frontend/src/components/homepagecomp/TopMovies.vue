@@ -45,6 +45,15 @@ p {
 .component-title {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+.component-title > p {
+  position: relative; 
+  top: 25px;
+  right: 25px;
 }
 
 .topmovies-list {
@@ -70,8 +79,8 @@ img {
 .movie-details {
   background: #333;
   position: relative;
-  bottom: 32px;
-  padding: 0 5px 0 5px;
+  bottom: 6.8px;
+  padding: 3px 5px 0 5px;
   height: 20px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
