@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       times: [],
+      today: ""
     }
   },
   computed: {
@@ -68,7 +69,24 @@ export default {
       let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
       return tempDates
     }
-  }
+  },
+  methods: {
+    setDates() {
+      // Setting the dates for today and two days ahead
+      let tday = new Date();
+      let tmorrow = new Date();
+      tmorrow.setDate(tday.getDate() + 1);
+      let afterTmorrow = new Date();
+      afterTmorrow.setDate(tmorrow.getDate() + 1);
+
+      this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
+      this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
+      this.afterTomorrow = afterTmorrow
+        .toJSON()
+        .slice(0, 10)
+        .replace(/-/g, "/");
+    }
+  },
 }
 </script>
 
