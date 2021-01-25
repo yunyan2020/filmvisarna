@@ -73,8 +73,11 @@ export default {
     movie() {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
-  },
-};
+    viewings() {
+      return this.$store.state.allViewings;
+    },
+  }
+}
 </script>
 
 <style scoped>

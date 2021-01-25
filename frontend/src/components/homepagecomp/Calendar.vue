@@ -4,119 +4,120 @@
       <h1>Kalender</h1>
     </div>
     <div class="dates">
-      <div class="today">
-      <h3>{{ formatedToday }}</h3>
-      <div v-for="movie of movieInDate(today)" :key="movie" class="movies">
-        <h5>{{ movie.film }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.time }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.auditorium }}</h5>
+          <div class="today">
+            <h3>Idag</h3>
+            <div v-for="movie in movieToday" :key="movie.title" class="movies">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </router-link>
+            </div>
+          </div>
+          <div class="tomorow">
+            <h3>Imorgon</h3>
+            <div v-for="movie in movieTomorrow" :key="movie.title">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </router-link>
+            </div>
+          </div>
+          <div class="aftertomorow">
+            <h3>I Övermorgon</h3>
+            <div v-for="movie in movieAfterTomorrow" :key="movie.title">
+            <router-link :to="'/movieshow/details/' + movie.id">
+            <img :src="movie.poster">
+            </router-link>
+            </div>
+          </div>
       </div>
-    </div>
-    <div class="tomorrow">
-      <h3>{{ formatedTomorrow }}</h3>
-      <div v-for="movie of movieInDate(tomorrow)" :key="movie" class="movies">   
-        <h5>{{ movie.film }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.time }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.auditorium }}</h5>
-      </div>  
-    </div>
-    <div class="afterTomorrow">
-      <h3>{{ formatedAfterTomorrow }}</h3>
-      <div v-for="movie of movieInDate(afterTomorrow)" :key="movie" class="movies">   
-        <h5>{{ movie.film }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.time }}</h5>
-        <h3>|</h3>
-        <h5>{{ movie.auditorium }}</h5>
-      </div> 
-    </div>
-    </div>
   </div>
 </template>
 
 <script>
-import dates from '../../../dates.json'
-
 export default {
   data() {
-    let currentDate = new Date()
-    let tomorrowCaculate =  new Date(currentDate.getTime() + 24*60*60*1000)
-    let afterTomorrowCaculate= new Date(currentDate.getTime() + 24*60*60*1000*2 )
     return {
-      showing: dates,
-      /* tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)); */
-      fullDate: currentDate,
-      /* today: current.getDate() + '/' + current.getMonth() + 1, */ 
-      today: currentDate,
-      tomorrow:tomorrowCaculate ,
-      afterTomorrow: afterTomorrowCaculate
-    }
+      today: "",
+      tomorrow: "",
+      afterTomorrow: "",
+    };
   },
   computed: {
-    formatedToday: function() {
-      return this.today.getDate() + '/' + (this.today.getMonth() + 1)
+    movies() {
+      return this.$store.state.movie
     },
-    formatedTomorrow: function() {
-      return this.today.getDate() + 1 + '/' + (this.today.getMonth() + 1)
+    movieToday() {
+      // Filters through viewings json for viewing object on todays date
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)
+      // Checks if there are viewings in tempViewings array, if true filters through the movie json for movie with same title for movie object
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     },
-    formatedAfterTomorrow: function() {
-      return this.today.getDate() + 2 + '/' + (this.today.getMonth() + 1)
+    movieTomorrow() {
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
+    },
+    movieAfterTomorrow() {
+      let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)
+      return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     }
   },
   methods: {
-    movieInDate: function(inDate) {
-      return dates.filter(function(currentDate) {
-        let test = (new Date(currentDate.date))
-        let currentYear = (new Date(inDate)).getFullYear()  
-        let y = test.getFullYear() == (new Date(inDate)).getFullYear()  
-        console.log(y, test.getFullYear(), (new Date(inDate)).getFullYear() ) 
-        return test.getFullYear() == (new Date(inDate)).getFullYear()  && test.getMonth() ==(new Date(inDate)).getMonth() && test.getDate() == (new Date(inDate)).getDate()
-      })
-  
+    setDates() {
+      // Setting the dates for today and two days ahead
+      let tday = new Date();
+      let tmorrow = new Date();
+      tmorrow.setDate(tday.getDate() + 1);
+      let afterTmorrow = new Date();
+      afterTmorrow.setDate(tmorrow.getDate() + 1);
+
+      this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
+      this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
+      this.afterTomorrow = afterTmorrow
+        .toJSON()
+        .slice(0, 10)
+        .replace(/-/g, "/");
     }
+  },
+  mounted() {
+    this.setDates()
+    console.log("Mounted...")
   }
-}
+};
 </script>
 
 <style scoped>
-  
-  .movies:hover {
-    opacity: .5;
-    text-align: left;
-  }
+img:hover {
+  opacity: 0.5;
+}
 
-  h5 {
-    display: inline-block;
-    padding-left: 5px;
-  }
+h5 {
+  display: inline-block;
+  padding-left: 5px;
+}
 
-  .movies > h3 {
-    display: inline-block;
-    padding: 0 5px 0 5px;
-  }
+.movies > h3 {
+  display: inline-block;
+  padding: 0 5px 0 5px;
+}
 
-  h1, h3, h5 {
-    color: black;
-  }
+h1,
+h3,
+h5 {
+  color: black;
+}
 
- .container {
-   margin: 10px;
-   padding: 1em;
-   border: 1px solid black;
- }
+.container {
+  margin: 10px;
+  padding: 1em;
+  border: 1px solid black;
+  justify-content: space-between;
+}
 
- .dates {
-   display: flex;
-   justify-content: space-around;
-   
- }
+.dates {
+  display: flex;
+  justify-content: space-around;
+}
 
- .container-title {
-   display: inline-block;
- }
-
+.container-title {
+  display: inline-block;
+}
 </style>

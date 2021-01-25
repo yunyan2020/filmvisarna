@@ -3,6 +3,7 @@ package com.company;
 
 import com.company.models.Customer;
 import com.company.models.Movie;
+import com.company.models.Viewing;
 import express.Express;
 
 import static express.database.Database.collection;
@@ -37,6 +38,11 @@ public class Main {
             } else {
                 res.send("Movie not found");
             }
+        });
+
+        app.get("/rest/viewings",(req,res) -> {
+            var viewing = collection("Viewing").find();
+            res.json(viewing);
         });
 
 

@@ -14,6 +14,7 @@ export default {
   components: { Navbar },
   created() {
     this.$store.dispatch("fetchMovie");
+    this.$store.dispatch("fetchViewings");
   },
 };
 </script>

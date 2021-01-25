@@ -3,8 +3,9 @@ import { createStore } from 'vuex'
 const state = {
   movie: [],
   customers: [],
+  allViewings: [],
   loggedIn: false,
-  currentUser: {}
+  currentUser: {},
 }
 
 //mutates state
@@ -18,11 +19,15 @@ const mutations = {
   addCustomer(state, customer) {
     state.customers.push(customer)
   },
-  toggleLoggedIn(state, trueOrFalse) { 
+  setViewings(state, list) {
+    state.allViewings = list
+    console.log("Viewings list saved")
+  },
+  toggleLoggedIn(state, trueOrFalse) {
     state.loggedIn = trueOrFalse
     console.log("Customer logged in: ", state.loggedIn)
   },
-  setCurrentUser(state, currentUser) { 
+  setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
     console.log("User name: ", state.currentUser.name)
   }
@@ -31,6 +36,7 @@ const mutations = {
 
 //async network requests
 const actions = {
+  // Actions to GET info from database
   async fetchMovie(store) {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
@@ -47,6 +53,14 @@ const actions = {
 
     store.commit('setCustomers', list)
   },
+  async fetchViewings(store) {
+    let list = await fetch('/rest/viewings')
+    list = await list.json()
+
+    store.commit('setViewings', list)
+  },
+
+  // Actions to ADD/POST info to database
   async addCustomer(store, customer) {
 
     let response = await fetch('/rest/customerdetails', {
@@ -55,8 +69,6 @@ const actions = {
     })
 
     let savedCustomer = await response.json()
-
-    console.log("Saved customer: ", savedCustomer)
 
     store.commit('addCustomer', savedCustomer)
   }
