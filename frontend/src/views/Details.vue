@@ -87,7 +87,8 @@
         <h3>{{ movie.year }}</h3>
       </div>  
     </div>
-    <div class="dates-list">
+    <div v-for="date in viewingDates" :key="date" class="dates-list">
+      {{ date }}
       <!-- <div class="header">
         <div class="back">
           <i class="fas fa-chevron-left"></i>
@@ -128,19 +129,15 @@ export default {
     }
   },
   methods: {
-    setDates() {
-      // Setting the dates for today and two days ahead
+    setTodaysDate() {
+      // Setting the dates for today
       let tday = new Date();
-      let tmorrow = new Date();
-      tmorrow.setDate(tday.getDate() + 1);
-      let afterTmorrow = new Date();
-      afterTmorrow.setDate(tmorrow.getDate() + 1);
-
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
     }
   },
+  mounted() {
+    this.setTodaysDate()
+  }
 }
 </script>
 

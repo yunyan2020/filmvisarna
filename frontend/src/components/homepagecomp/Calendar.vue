@@ -79,7 +79,6 @@ export default {
   },
   mounted() {
     this.setDates()
-    console.log("Mounted...")
   }
 };
 </script>
