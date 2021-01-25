@@ -62,7 +62,7 @@
   </div>  --> 
   <div class="container">
     <div class="scene-image">
-      <img :src="movie.movieScene" alt="" class="scene">
+    <img :src="movie.movieScene" alt="" class="scene">
     </div>
     <div class="movie">
       <div class="poster">
@@ -130,6 +130,7 @@ export default {
       let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
       // Gets rid of dates from the past
       tempDates = tempDates.filter( date => date >= this.today)
+      this.formatViewingDates()
       return tempDates
     }
   },
@@ -138,6 +139,11 @@ export default {
       // Setting the dates for today
       let tday = new Date();
       this.today = tday.toJSON().slice(5, 10).replace(/-/g, "");
+    },
+    formatViewingDates() {
+      for(date in this.viewingDates) {
+        console.log(date)
+      }
     }
   },
   mounted() {
