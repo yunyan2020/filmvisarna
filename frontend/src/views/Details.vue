@@ -87,8 +87,10 @@
         <h3>{{ movie.year }}</h3>
       </div>  
     </div>
-    <div v-for="date in viewingDates" :key="date" class="dates-list">
+    <div class="dates-list">
+      <div  v-for="date in viewingDates" :key="date">
       {{ date }}
+      </div>
       <!-- <div class="header">
         <div class="back">
           <i class="fas fa-chevron-left"></i>
