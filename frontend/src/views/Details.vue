@@ -1,5 +1,5 @@
 <template> 
-  <div class="movie-head">
+  <!-- <div class="movie-head">
     <h1 class="title">{{ movie.title }}</h1>   
     <h3 class = "genre">{{ movie.genre }}</h3> 
     <h4 class="subtitle"> 
@@ -59,7 +59,46 @@
         </a>  
       </div>
     </div> 
-  </div>   
+  </div>  --> 
+  <div class="container">
+    <div class="scene-image">
+      <img :src="movie.movieScene" alt="" class="scene">
+    </div>
+    <div class="movie">
+      <div class="poster">
+        <img :src="movie.poster" alt="" class="movie-poster">
+      </div>
+      <div class="movie-information">
+        <h1>{{ movie.title }}</h1>
+        <h4>{{ movie.genre }}</h4>
+        <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
+      </div>
+    </div>
+    <div class="movie-detail">
+      <h3>{{ movie.plot }}</h3>
+      <div class="information">
+        <h5>Regi: </h5>
+        <h3> {{ movie.director }}</h3>
+        <h5>Skådespelare: </h5>
+        <h3>{{ movie.actors.join(' - ') }}</h3>
+        <h5>Språk: </h5>
+        <h3>{{ movie.language }}</h3>
+        <h5>Premiär: </h5>
+        <h3>{{ movie.year }}</h3>
+      </div>  
+    </div>
+    <div class="dates-list">
+      <!-- <div class="header">
+        <div class="back">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <h1>25/1</h1>
+        <div class="forward">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div> -->
+    </div>
+  </div>
 </template>
 
 
@@ -75,13 +114,13 @@ export default {
     },
     viewings() {
       return this.$store.state.allViewings;
-    },
+    }
   }
 }
 </script>
 
 <style scoped>
-.movie-head {
+/* .movie-head {
   margin: 5px;
   padding: 1em;
   max-width: 50em;
@@ -206,5 +245,67 @@ export default {
 img {
   max-width: 400px;
   max-height: 400px;
+} */
+.container {
+  background: #0f0f0f;
+  color: white;
+  margin: 0;
+}
+
+.scene-image {
+  width: 100%;
+  height: 700px;
+  border: 1px solid black;
+}
+
+.scene {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  bottom: 35px;
+  
+}
+
+.movie {
+  width: 50%;
+  height: 500px;
+  border: 1px solid red;
+  margin: 0 auto;
+  position: relative;
+  bottom: 200px;
+  display: flex;
+}
+
+.movie-poster {
+  border-radius: 8px;
+}
+
+.movie-information {
+  margin-left: 10px;
+  position: relative;
+  top: 200px;
+}
+
+.movie-detail {
+  width: 50%;
+  height: 450px;
+  border: 1px solid green;
+  margin: 0 auto;
+  position: relative;
+  bottom: 150px;
+}
+
+h5 {
+  opacity: 0.6;
+}
+
+.information {
+  margin-top: 40px;
+}
+
+.dates-list {
+  width: 100%;
+  height: 400px;
+  border: 1px solid orange;
 }
 </style>
