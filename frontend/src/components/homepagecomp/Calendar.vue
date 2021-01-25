@@ -14,14 +14,25 @@
         <h5>{{ movie.auditorium }}</h5>
       </div>
     </div>
-    <div class="tomorow">
-      <h3>{{ tomorow }}</h3>
-      <!-- <div v-for="" :key="movie" class="movies">
-        
-      </div> -->
+    <div class="tomorrow">
+      <h3>{{ formatedTomorrow }}</h3>
+      <div v-for="movie of movieInDate(tomorrow)" :key="movie" class="movies">   
+        <h5>{{ movie.film }}</h5>
+        <h3>|</h3>
+        <h5>{{ movie.time }}</h5>
+        <h3>|</h3>
+        <h5>{{ movie.auditorium }}</h5>
+      </div>  
     </div>
-    <div class="aftertomorow">
-      <h3>{{ aftertomorow }}</h3>
+    <div class="afterTomorrow">
+      <h3>{{ formatedAfterTomorrow }}</h3>
+      <div v-for="movie of movieInDate(afterTomorrow)" :key="movie" class="movies">   
+        <h5>{{ movie.film }}</h5>
+        <h3>|</h3>
+        <h5>{{ movie.time }}</h5>
+        <h3>|</h3>
+        <h5>{{ movie.auditorium }}</h5>
+      </div> 
     </div>
     </div>
   </div>
@@ -32,31 +43,38 @@ import dates from '../../../dates.json'
 
 export default {
   data() {
-    let current = new Date()
-    let t = new Date(current)
-    t.setDate(t.getDate() + 1)
+    let currentDate = new Date()
+    let tomorrowCaculate =  new Date(currentDate.getTime() + 24*60*60*1000)
+    let afterTomorrowCaculate= new Date(currentDate.getTime() + 24*60*60*1000*2 )
     return {
       showing: dates,
       /* tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)); */
-      fullDate: current,
+      fullDate: currentDate,
       /* today: current.getDate() + '/' + current.getMonth() + 1, */ 
-      today: current,
-      tomorow: (t).getDate() + '/' + t.getMonth() + 1,
-      aftertomorow: t.getDate() + 1 + '/' + t.getMonth() + 1,
+      today: currentDate,
+      tomorrow:tomorrowCaculate ,
+      afterTomorrow: afterTomorrowCaculate
     }
   },
   computed: {
     formatedToday: function() {
       return this.today.getDate() + '/' + (this.today.getMonth() + 1)
+    },
+    formatedTomorrow: function() {
+      return this.today.getDate() + 1 + '/' + (this.today.getMonth() + 1)
+    },
+    formatedAfterTomorrow: function() {
+      return this.today.getDate() + 2 + '/' + (this.today.getMonth() + 1)
     }
   },
   methods: {
-    movieInDate: function(date) {
+    movieInDate: function(inDate) {
       return dates.filter(function(currentDate) {
         let test = (new Date(currentDate.date))
-        let y = test.getFullYear() == date.getFullYear()
-        console.log(y, test.getFullYear(), date.getFullYear())
-        return test.getFullYear() == date.getFullYear() && test.getMonth() == date.getMonth() && test.getDate() == date.getDate()
+        let currentYear = (new Date(inDate)).getFullYear()  
+        let y = test.getFullYear() == (new Date(inDate)).getFullYear()  
+        console.log(y, test.getFullYear(), (new Date(inDate)).getFullYear() ) 
+        return test.getFullYear() == (new Date(inDate)).getFullYear()  && test.getMonth() ==(new Date(inDate)).getMonth() && test.getDate() == (new Date(inDate)).getDate()
       })
   
     }
@@ -68,6 +86,7 @@ export default {
   
   .movies:hover {
     opacity: .5;
+    text-align: left;
   }
 
   h5 {
