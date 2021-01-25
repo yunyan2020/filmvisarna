@@ -48,7 +48,6 @@ export default {
         password: this.password
       }
       this.$store.dispatch('login', credentials)
-      console.log(this.$store.state.error)
     },
   },
 };

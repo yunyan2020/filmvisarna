@@ -12,7 +12,7 @@
         <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
         <i class="fas fa-user-alt"></i>
         </button>
-      <div v-if="showLogin" class="login">
+      <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLogin"> </Login>
       </div>
     </nav>

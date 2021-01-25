@@ -40,6 +40,11 @@ export default {
       userSaved: "",
     };
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
+    }
+  },
   methods: {
     handleSubmit() {
       if (this.passwordChecks()) {
