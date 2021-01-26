@@ -336,7 +336,6 @@ h5 {
   border: 1px solid orange;
 }
 
-<<<<<<< HEAD
 .viewing {
   cursor: pointer;
   height: 5em;
@@ -349,7 +348,6 @@ h5 {
 .viewing:hover {
   background: rgba(255, 255, 255, 0.308);
 }
-=======
 .boka {
   width: 100px;
   position: relative;
@@ -366,5 +364,4 @@ h5 {
   cursor: pointer;
 }
 
->>>>>>> d96f585... working on booking
 </style>
