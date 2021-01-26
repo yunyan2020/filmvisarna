@@ -88,8 +88,8 @@
       </div>  
     </div>
     <div class="dates-list">
-      <div  v-for="date in viewingDates" :key="date">
-      {{ date }}
+      <div  v-for="view in sortViewings()" :key="view.date">
+      {{ view.date }}
       </div>
       <!-- <div class="header">
         <div class="back">
@@ -122,29 +122,20 @@ export default {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
     viewings() {
-      // Returns all viewings for this movie
+      // Returns all viewings for this movie for dates in present and future
       return this.$store.state.allViewings.filter((viewing) => viewing.movie === this.movie.title)
-    },
-    viewingDates() {
-      // Sorts the movie viewing dates from earliest to latest
-      let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
-      // Gets rid of dates from the past
-      tempDates = tempDates.filter( date => date >= this.today)
-      this.formatViewingDates()
-      return tempDates
     }
   },
   methods: {
+    sortViewings() {
+      this.viewings.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
+      return this.viewings
+    },
     setTodaysDate() {
       // Setting the dates for today
       let tday = new Date();
       this.today = tday.toJSON().slice(5, 10).replace(/-/g, "");
     },
-    formatViewingDates() {
-      for(date in this.viewingDates) {
-        console.log(date)
-      }
-    }
   },
   mounted() {
     this.setTodaysDate()
