@@ -32,5 +32,6 @@ export default {
   /* text-align: center; */
   color: white;
   box-sizing: border-box;
+  background: #0f0f0f;
 }
 </style>

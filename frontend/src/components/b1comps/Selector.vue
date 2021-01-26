@@ -7,7 +7,7 @@
 
     <div class="buttons">
       <button class="add" @click="add">+</button>
-      <p>{{ counter }}</p>
+      <h1>{{ counter }}</h1>
       <button class="remove" @click="remove">-</button>
     </div>
   </div>
@@ -45,6 +45,7 @@ export default {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid black;
+    margin-bottom: 20px;
   }
 
   .buttons {

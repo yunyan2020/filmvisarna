@@ -9,9 +9,9 @@
 
 <script>
 import App from '../App.vue'
-import Selector from '../components/b1comps/Selector'
-import Price from '../components/b1comps/Price'
-import Confirm from '../components/b1comps/Confirm'
+import Selector from '../components/b1comps/Selector.vue'
+import Price from '../components/b1comps/Price.vue'
+import Confirm from '../components/b1comps/Confirm.vue'
 
 export default {
   components: { Selector, Price, Confirm },
@@ -38,9 +38,11 @@ export default {
 
 <style scoped>
   .container {
+    margin: 0 auto;
+    width: 50%;
     position: relative;
     border: 1px solid #eee;
     border-radius: 10px;
-  
+    background: black;
   }
 </style>

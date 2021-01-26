@@ -74,6 +74,11 @@
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
     </div>
+    <router-link :to="'/bokning'">
+      <div class="boka">
+        Boka
+      </div>
+    </router-link>  
     <div class="movie-detail">
       <h3>{{ movie.plot }}</h3>
       <div class="information">
@@ -276,6 +281,10 @@ img {
   border: 1px solid black;
 }
 
+.scene-image::after {
+  background: linear-gradient();
+}
+
 .scene {
   width: 100vw;
   height: 100%;
@@ -327,6 +336,7 @@ h5 {
   border: 1px solid orange;
 }
 
+<<<<<<< HEAD
 .viewing {
   cursor: pointer;
   height: 5em;
@@ -339,4 +349,22 @@ h5 {
 .viewing:hover {
   background: rgba(255, 255, 255, 0.308);
 }
+=======
+.boka {
+  width: 100px;
+  position: relative;
+  left: 1300px;
+  bottom: 180px;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 2px 10px 2px 10px;
+  text-align: center;
+}
+
+.boka:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+>>>>>>> d96f585... working on booking
 </style>
