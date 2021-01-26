@@ -38,8 +38,9 @@ const routes = [
   },
   {
     name: 'Bokning',
-    path: '/bokning',
-    component: NewBooking1
+    path: '/bokning/:id',
+    component: NewBooking1,
+    props: true
   },
   {
     name: 'Bokning2',

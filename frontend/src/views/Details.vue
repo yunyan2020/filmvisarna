@@ -93,9 +93,11 @@
       </div>  
     </div>
     <div class="dates-list">
-      <div  v-for="view in sortViewings()" :key="view.date" class="viewing">
+      <div  v-for="view in sortViewings()" :key="view.id" class="viewing">
+        <router-link :to="{ name: 'Bokning', params: { id: view.id } }">
       <h5>{{ view.date }} | {{ view.time }}</h5>
       <p>{{ view.screen }}</p>
+        </router-link>
   </div>
 </template>
 
