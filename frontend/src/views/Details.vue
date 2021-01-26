@@ -138,10 +138,7 @@ export default {
 
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
       this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow
-        .toJSON()
-        .slice(0, 10)
-        .replace(/-/g, "/");
+      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
     }
   },
 }
