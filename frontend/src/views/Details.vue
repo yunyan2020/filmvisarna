@@ -88,19 +88,9 @@
       </div>  
     </div>
     <div class="dates-list">
-      <div  v-for="view in sortViewings()" :key="view.date">
-      {{ view.date }}
-      </div>
-      <!-- <div class="header">
-        <div class="back">
-          <i class="fas fa-chevron-left"></i>
-        </div>
-        <h1>25/1</h1>
-        <div class="forward">
-          <i class="fas fa-chevron-right"></i>
-        </div>
-      </div> -->
-    </div>
+      <div  v-for="view in sortViewings()" :key="view.date" class="viewing">
+      <h5>{{ view.date }} | {{ view.time }}</h5>
+      <p>{{ view.screen }}</p>
   </div>
 </template>
 
@@ -335,5 +325,18 @@ h5 {
   width: 100%;
   height: 400px;
   border: 1px solid orange;
+}
+
+.viewing {
+  cursor: pointer;
+  height: 5em;
+  width: 10em;
+  border: solid orange;
+  margin: 2px;
+  float: left;
+}
+
+.viewing:hover {
+  background: rgba(255, 255, 255, 0.308);
 }
 </style>
