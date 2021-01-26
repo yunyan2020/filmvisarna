@@ -128,13 +128,17 @@ export default {
   },
   methods: {
     sortViewings() {
+      // Sorts viewings by date
       this.viewings.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
-      return this.viewings
+      // Filters out dates from the past
+      let tempViewings = this.viewings.filter((viewing) => viewing.date >= this.today)
+
+      return tempViewings
     },
     setTodaysDate() {
-      // Setting the dates for today
+      // Setting the date for today
       let tday = new Date();
-      this.today = tday.toJSON().slice(5, 10).replace(/-/g, "");
+      this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
     },
   },
   mounted() {
