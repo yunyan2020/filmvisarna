@@ -43,6 +43,5 @@ export default {
     position: relative;
     border: 1px solid #eee;
     border-radius: 10px;
-    background: black;
   }
 </style>
