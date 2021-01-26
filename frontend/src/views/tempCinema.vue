@@ -13,6 +13,13 @@
           <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
             <div v-for="seat in row" :key="seat" class="seat"></div>
           </div>
+          <div><h4>Detta är den Stora salongen</h4></div>
+        </div>
+        <div v-show="!toggle">
+          <div v-for="row in small[0].seatsPerRow" :key="row" class="row">
+            <div v-for="seat in row" :key="seat" class="seat"></div>
+          </div>
+          <div><h4>Detta är den Lilla salongen</h4></div>
         </div>
       </div>
     </div>
@@ -30,6 +37,13 @@ export default {
           name: "Stora Salongen",
           seats: 81,
           seatsPerRow: [8, 9, 10, 10, 10, 10, 12, 12],
+        },
+      ],
+      small: [
+        {
+          name: "Lilla Salongen",
+          seats: 56,
+          seatsPerRow: [6, 8, 9, 10, 10, 12],
         },
       ],
       toggle: true,
