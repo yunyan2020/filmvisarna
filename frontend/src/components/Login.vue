@@ -9,6 +9,7 @@
         <label>
           LÖSENORD:
           <input v-model="password" type="password" required />
+          <div v-if="tempError" class="error">{{ tempError }}</div>
         </label>
         <div class="buttonContainer">
           <button>LOGGA IN</button>
@@ -48,6 +49,9 @@ export default {
         password: this.password
       }
       this.$store.dispatch('login', credentials)
+      if(!this.$store.state.currentUser) {
+        this.tempError = "Fel uppgifter"
+      }
     },
   },
 };
