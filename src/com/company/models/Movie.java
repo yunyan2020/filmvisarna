@@ -25,8 +25,9 @@ public class Movie {
     private String subtitles;
     private ArrayList<String> countries;
     private String poster;
-    private ArrayList<String> youtubeTrailers;
+    private String youtubeTrailers;
     private int score;
+    private String movieScene;
 
     public String getId() {
         return id;
@@ -132,11 +133,11 @@ public class Movie {
         this.poster = poster;
     }
 
-    public ArrayList<String> getYoutubeTrailers() {
+    public String getYoutubeTrailers() {
         return youtubeTrailers;
     }
 
-    public void setYoutubeTrailers(ArrayList<String> youtubeTrailers) {
+    public void setYoutubeTrailers(String youtubeTrailers) {
         this.youtubeTrailers = youtubeTrailers;
     }
 
@@ -147,4 +148,13 @@ public class Movie {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public String getMovieScene() {
+        return movieScene;
+    }
+
+    public void setMovieScene(String movieScene) {
+        this.movieScene = movieScene;
+    }
+
 }
