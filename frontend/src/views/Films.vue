@@ -33,6 +33,7 @@
             <i class="fab fa-youtube"></i>
           </div>
         </div>
+        <i class="fas fa-caret-right"></i>
       </div>
     </div>
   </div>
@@ -88,6 +89,15 @@ img {
 img {
   max-width: 300px;
 } */
+
+.fa-caret-right {
+  margin: auto 0;
+  width: 30px;
+  font-size: 40px;
+  color: white;
+  pointer-events: auto;
+}
+
 .fade {
   opacity: 0.5;
 }
@@ -125,14 +135,17 @@ img {
 }
 
 .movie {
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  border: 1px solid #333;
   display: flex;
   border-radius: 8px;
+  pointer-events: none;
+  box-shadow: 0 0 10px 2px black;
 }
 
-/* .movie:hover {
+.movie:hover {
   opacity: 0.7;
-} */
+}
 
 .poster > img {
   width: 200px;
