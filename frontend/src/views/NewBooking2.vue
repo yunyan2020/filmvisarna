@@ -34,8 +34,11 @@ export default {
     return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
     },
     price() {
-      return this.$store.state.booking.price;
+      return this.$store.state.booking.price
     },
+    nrOfSeats() {
+      return this.$store.state.booking.nrOfSeats
+    }
   },
 };
 </script>

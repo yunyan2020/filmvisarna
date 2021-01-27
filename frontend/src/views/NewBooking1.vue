@@ -11,9 +11,9 @@
         <h6>{{ ageGroup.price }}kr/st</h6>
       </div>
       <div class="buttons">
-        <button @click="remove(ageGroup.price, ageGroup)">-</button>
+        <button @click="remove(ageGroup.price, ageGroup), counter--">-</button>
         <h1>{{ ageGroup.counter }}</h1>
-        <button @click="add(ageGroup.price, ageGroup)">+</button>
+        <button @click="add(ageGroup.price, ageGroup), counter++">+</button>
       </div>
     </div>
     <div class="totalt-pris">
@@ -24,7 +24,9 @@
       <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
         <button class="vidare" v-on:click="addBookingInfo()"><h1>Vidare</h1></button>
       </router-link>
-      <button class="avsluta"><h3>Avsluta</h3></button>
+      <router-link :to="'/'">
+      <button class="avsluta" v-on:click="resetBookingInfo()"><h3>Avsluta</h3></button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -63,6 +65,11 @@ export default {
     },
     addBookingInfo() {
       this.$store.commit('setBookingPrice', this.sum)
+      this.$store.commit('setNrOfSeats', this.counter)
+    },
+    resetBookingInfo() {
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
     }
   }
 }

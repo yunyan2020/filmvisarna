@@ -6,7 +6,7 @@ const state = {
   allViewings: [],
   loggedIn: false,
   currentUser: {},
-  booking: { price: 0, seats: [] }
+  booking: { price: 0, nrOfSeats: 0, seats: [] }
 }
 
 //mutates state
@@ -34,6 +34,9 @@ const mutations = {
   },
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
+  },
+  setNrOfSeats(state, nrOfSeats) { 
+    state.booking.nrOfSeats = nrOfSeats
   }
 
 }

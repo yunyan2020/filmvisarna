@@ -13,9 +13,6 @@
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
     </div>
-    <router-link :to="'/bokning'">
-      <div class="boka">Boka</div>
-    </router-link>
     <div class="movie-detail">
       <h3>{{ movie.plot }}</h3>
       <div class="information">
@@ -30,8 +27,8 @@
       </div>
     </div>
     <div class="dates-list">
-      <div v-for="view in sortViewings()" :key="view.id" class="viewing">
-        <router-link :to="{ name: 'Bokning', params: { id: view.id } }">
+      <div v-for="view in sortViewings()" :key="view.id">
+        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="viewing">
           <h5>{{ view.date }} | {{ view.time }}</h5>
           <p>{{ view.screen }}</p>
         </router-link>
