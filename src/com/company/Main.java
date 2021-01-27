@@ -19,6 +19,11 @@ public class Main {
 
         // Endpoints to fetch data from database
 
+        app.get("/rest/screens", (req, res) -> {
+            var screens = collection("Screen").find();
+            res.json(screens);
+        });
+
         app.get("/rest/customerdetails", (req,res) -> {
             var customerDetails = collection("Customer").find();
             res.json(customerDetails);

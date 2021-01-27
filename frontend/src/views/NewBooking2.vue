@@ -2,7 +2,7 @@
   <div class="container">
     <div class="booking-information">
       <h1>{{ viewing.movie }}</h1>
-      <p>{{ viewing.date }} {{ viewing.time }} {{ price }}SEK</p>
+      <p>{{ viewing.date }}  |  {{ viewing.time }}  |  {{ price }}SEK</p>
     </div>
     <div class="selection">
       <div class="scene">
