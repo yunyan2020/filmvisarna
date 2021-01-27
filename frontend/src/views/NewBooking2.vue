@@ -2,7 +2,7 @@
   <div class="container">
     <div class="booking-information">
       <h1>{{ viewing.movie }}</h1>
-      <p>{{ viewing.date }}  |  {{ viewing.time }}  |  {{ price }}SEK</p>
+      <p>{{ viewing.date }}  |  {{ viewing.time }}  |  {{ price }}SEK | {{ screen.name }}</p>
     </div>
     <div class="selection">
       <div class="scene">
@@ -16,10 +16,11 @@
     </div>
     <div class="submit-exit">
       <button class="vidare">Vidare</button>
-      <button class="avsluta">Avsluta</button>
+      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -27,7 +28,7 @@ export default {
   data() {
     return {
       salong: [{ seatsPerRow: [8, 9, 10, 10, 10, 10, 12, 12] }],
-    };
+    }
   },
   computed: {
     viewing() {
@@ -38,9 +39,18 @@ export default {
     },
     nrOfSeats() {
       return this.$store.state.booking.nrOfSeats
+    },
+    screen() {
+      return this.$store.state.screens.filter((s) => s.name === this.viewing.screen)[0]
     }
   },
-};
+  methods: {
+  resetBookingInfo() {
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
+    }
+  }
+}
 </script>
 
 <style scoped>
