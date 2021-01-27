@@ -1,7 +1,7 @@
 <template>
-  <div class="dropdown">
-    <label for="selectSalon">Välja Salongen</label>
-    <select v-model="selected" name="salons" @change="onChange($event)">
+  <div class="dropdown"> 
+    <label for="selectSalon">Välja Salongen</label>   
+    <select v-model="selected" name="salons" @change="onChange($event)" class="select-css" >      
       <option
         v-for="option in options"
         v-bind:value="option.value"
@@ -12,24 +12,29 @@
       </option>
     </select>
   </div>
+  <div v-if="isBigSalon">
+    <h3><u>Stora Salongen</u></h3>
+  </div>  
+   <div v-else>
+      <h3><u>Lilla Salongen</u></h3>
+    </div>   
   <div class="scene">
     <div class="display">scene</div>
   </div>
   <div class="seats">
-    <div v-if="bigSalon">
-      <u>Stora Salongen</u>
+    <div v-if="isBigSalon">
       <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
       </div>
       <p>{{ x[0].name }} har {{ x[0].seats }} plats</p>
     </div>
     <div v-else>
-      <u>Lilla Salongen</u>
+     
       <div v-for="row in y[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
       </div>
+      <p>{{ y[0].name }} har {{ y[0].seats }} plats</p>      
     </div>
-    <p>{{ y[0].name }} har {{ y[0].seats }} plats</p>
   </div>
 </template>
 
@@ -56,14 +61,15 @@ export default {
         { text: "Stora", value: "big" },
         { text: "Lilla", value: "small" },
       ],
+    isBigSalon:true,
     };
   },
   methods: {
-    onChange(event) {
+    onChange(event) {      
       if (event.target.value == "big") {
-        let bigSalon = true;
-        console.log('bigSalon',bigSalon);
+        this.isBigSalon = true;
       }
+      else  this.isBigSalon = false;
     },
   },
 };
@@ -72,10 +78,6 @@ export default {
 <style>
 * {
   box-sizing: border-box;
-}
-.dropdown {
-  color: chocolate;
-  margin: 2px;
 }
 .scene {
   display: flex;
@@ -104,10 +106,50 @@ export default {
 .seat:hover {
   background: rgba(51, 51, 51, 0.534);
 }
+.dropdown {
+  padding-top:5px;
+  padding-bottom:5px;
+  color:rgb(133, 82, 17) ;
+  margin: 8px;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 600;
+  text-align: right;
+}
+.select-css { 
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 600;
+  text-align: left;
+  color:white;
+  padding: .6em 1.4em .5em .8em;
+  line-height: 1.3;  
+  width: 10%;
+  max-width: 100%; /* useful when width is set to anything other than 100% */  
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgb(112, 97, 97);
+  background-position: right .7em top 50%, 0 0;
+  /* icon size, then gradient */
+  background-size: .65em auto, 100%;
+}
 
-/* .click {
-  background: rgba(0, 128, 0, 0.767);
-} */
+u {
+  padding-top:5px;
+  padding-bottom:5px;
+  text-decoration:none;
+  border-bottom:3px solid #000;
+}
+p {
+  padding-top:10px;
+  padding-bottom:10px;
+  }
 
 .display {
   border: 1px solid black;
