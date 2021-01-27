@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <div class="title">
-      <h1>{{ viewing.movie }}<h1>
-      <h1>Antal platser</h1>
+      <h1>{{ viewing.movie }}</h1>
+      <p>{{ viewing.date }} {{ viewing.time }}</p>
+      <h2>Antal platser</h2>
     </div>
     <div class="selection" v-for="ageGroup of agePrice" :key="ageGroup">
       <div class="age">
