@@ -9,7 +9,7 @@
         <h6>skärm</h6>
       </div>
       <div class="seats">
-        <div v-for="row in salong[0].seatsPerRow" :key="row" class="row">
+        <div v-for="row in screen.seatsPerRow" :key="row" class="row">
           <div v-for="seat in row" :key="seat" class="seat"></div>
         </div>
       </div>
@@ -25,11 +25,6 @@
 <script>
 export default {
   props: ['id'],
-  data() {
-    return {
-      salong: [{ seatsPerRow: [8, 9, 10, 10, 10, 10, 12, 12] }],
-    }
-  },
   computed: {
     viewing() {
     return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
