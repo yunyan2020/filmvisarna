@@ -4,24 +4,10 @@
       <h1>Biograf</h1>
     </div>
     <div class="secondDiv">
-      <div class="scene">
-        <div class="display">scene</div>
-      </div>
-      <div class="toggleButton">
-        <button @click="toggle = !toggle">CLICK ME</button>
-        <div v-show="toggle">
-          <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
-            <div v-for="seat in row" :key="seat" class="seat"></div>
-          </div>
-          <div><h4>Detta är den Stora salongen</h4></div>
-        </div>
-        <div v-show="!toggle">
-          <div v-for="row in small[0].seatsPerRow" :key="row" class="row">
-            <div v-for="seat in row" :key="seat" class="seat"></div>
-          </div>
-          <div><h4>Detta är den Lilla salongen</h4></div>
-        </div>
-      </div>
+      <Salon/>
+    </div>
+    <div class="thirdDiv">
+      <h1>Third Div</h1>
     </div>
 
     <div class="seats"></div>
@@ -29,37 +15,22 @@
 </template>
 
 <script>
+//import Seats from "../components/b2comps/Seats.vue";
+import Salon from "../components/Cinema/Salon.vue";
 export default {
-  data() {
-    return {
-      x: [
-        {
-          name: "Stora Salongen",
-          seats: 81,
-          seatsPerRow: [8, 9, 10, 10, 10, 10, 12, 12],
-        },
-      ],
-      small: [
-        {
-          name: "Lilla Salongen",
-          seats: 56,
-          seatsPerRow: [6, 8, 9, 10, 10, 12],
-        },
-      ],
-      toggle: true,
-    };
-  },
+  components:{Salon}
 };
 </script>
 
 <style scoped>
 .background {
-  background-color: rgb(173, 173, 173);
-  border: 1px solid black;
+  background-color: #adadad;
+  border: 1px solid grey;
   height: 100vh;
   margin: 10px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   position: relative;
+  border-radius: 5px;
 }
 
 .firstDiv {
@@ -68,8 +39,14 @@ export default {
 .secondDiv,
 .thirdDiv {
   background-color: rgb(173, 173, 173);
-  border: 1px solid black;
+  border: 1px solid grey; 
   margin: 19px;
+  width: 900px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  float: left;
 }
 
 h1 {

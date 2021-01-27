@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-    <div class="component-title">
-      <h1>Just nu</h1>
-      <p>mer...</p>
-    </div>
     <div class="movie-list">
       <div v-for="movie in movies" :key="movie.id" class="movie">
         <router-link :to="'/movieshow/details/' + movie.id">
@@ -60,12 +56,13 @@ img {
 .movie-details {
   background: #333;
   position: relative;
-  bottom: 6.8px;
+  bottom: 32px;
   /* padding-left: 5px; */
-  padding: 3px 5px 0 5px;
+  padding: 0 5px 0 5px;
   height: 20px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  /* text-align: center; */
 }
 
 .component-title {
@@ -73,14 +70,14 @@ img {
   justify-content: space-between;
   color: black;
   position: relative;
-  top: 20px;
+  top: 25px;
   padding: 10px;
 }
 
 .component-title p {
   position: relative;
-  top: 20px;
-  right: 5px;
+  top: 35px;
+  right: 10px;
 }
 
 .component-title p:hover {
