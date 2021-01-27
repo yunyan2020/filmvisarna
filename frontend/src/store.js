@@ -6,6 +6,7 @@ const state = {
   allViewings: [],
   loggedIn: false,
   currentUser: {},
+  booking: { price: 0, seats: [] }
 }
 
 //mutates state
@@ -30,6 +31,9 @@ const mutations = {
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
     console.log("User name: ", state.currentUser.name)
+  },
+  setBookingPrice(state, bookingPrice) { 
+    state.booking.price = bookingPrice
   }
 
 }
