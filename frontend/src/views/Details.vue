@@ -1,72 +1,11 @@
-<template> 
-  <!-- <div class="movie-head">
-    <h1 class="title">{{ movie.title }}</h1>   
-    <h3 class = "genre">{{ movie.genre }}</h3> 
-    <h4 class="subtitle"> 
-      <p class="subtitle-tag">        
-        {{ movie.runtime }}|{{ movie.year }}
-      </p>
-    </h4>
-  </div>  
-  <div class = "wrap">
-    <div class="ticket-page"> 
-      <p> This position for ticket information This position for ticket information</p> 
-    </div>
-    <div class="movie-detail">
-      <div class="trailer">
-        <iframe
-          frameborder="0"
-          allowFullScreen
-          autoplay
-          height="350"
-          :src="'https://www.youtube.com/embed/'+movie.youtubeTrailers"
-          style="width: 100%; min-width: 300px"
-        />
-      </div>  
-      <div class="col movie-info">
-        <div class="col p-0">
-          <strong>Tal<strong> 
-          <p> {{ movie.language }} </p> 
-        </div> 
-        <div class="col p-1">
-          <strong>Text<strong>
-          <p> {{ movie.subtitles }}</p> 
-        </div>
-        <div class="col p-2">
-          <strong>Längd<strong>
-          <p> {{ movie.runtime }}</p> 
-        </div>
-      </div>
-      <div class="intro">        
-        <hr/>
-        <div class="item-detail">Direktör:
-          <div class="item-name">
-            <span>  {{ movie.director }}</span>
-        </div>    
-        <div class="item-detail">Skådespelare：
-          <div class="item-name">
-           <span 
-              v-for="actor in movie.actors"
-              v-bind:key="actor.id"
-              class="movie"
-              >{{ actor }}、
-            </span>...
-          </div>      
-        </div>  
-        <div class="intro_text">{{ movie.plot }}</div>
-        <p> Dela</p>         
-        <a href = "mailto:?subject=Jag vill tipsa dig om filmen" class='mailTo'>✉
-        </a>  
-      </div>
-    </div> 
-  </div>  --> 
+<template>
   <div class="container">
     <div class="scene-image">
-    <img :src="movie.movieScene" alt="" class="scene">
+      <img :src="movie.movieScene" alt="" class="scene" />
     </div>
     <div class="movie">
       <div class="poster">
-        <img :src="movie.poster" alt="" class="movie-poster">
+        <img :src="movie.poster" alt="" class="movie-poster" />
       </div>
       <div class="movie-information">
         <h1>{{ movie.title }}</h1>
@@ -75,29 +14,29 @@
       </div>
     </div>
     <router-link :to="'/bokning'">
-      <div class="boka">
-        Boka
-      </div>
-    </router-link>  
+      <div class="boka">Boka</div>
+    </router-link>
     <div class="movie-detail">
       <h3>{{ movie.plot }}</h3>
       <div class="information">
-        <h5>Regi: </h5>
-        <h3> {{ movie.director }}</h3>
-        <h5>Skådespelare: </h5>
-        <h3>{{ movie.actors.join(' - ') }}</h3>
-        <h5>Språk: </h5>
+        <h5>Regi:</h5>
+        <h3>{{ movie.director }}</h3>
+        <h5>Skådespelare:</h5>
+        <h3>{{ movie.actors.join(" - ") }}</h3>
+        <h5>Språk:</h5>
         <h3>{{ movie.language }}</h3>
-        <h5>Premiär: </h5>
+        <h5>Premiär:</h5>
         <h3>{{ movie.year }}</h3>
-      </div>  
+      </div>
     </div>
     <div class="dates-list">
-      <div  v-for="view in sortViewings()" :key="view.id" class="viewing">
+      <div v-for="view in sortViewings()" :key="view.id" class="viewing">
         <router-link :to="{ name: 'Bokning', params: { id: view.id } }">
-      <h5>{{ view.date }} | {{ view.time }}</h5>
-      <p>{{ view.screen }}</p>
+          <h5>{{ view.date }} | {{ view.time }}</h5>
+          <p>{{ view.screen }}</p>
         </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -107,8 +46,8 @@ export default {
   data() {
     return {
       times: [],
-      today: ""
-    }
+      today: "",
+    };
   },
   computed: {
     id() {
@@ -120,17 +59,23 @@ export default {
     },
     viewings() {
       // Returns all viewings for this movie for dates in present and future
-      return this.$store.state.allViewings.filter((viewing) => viewing.movie === this.movie.title)
-    }
+      return this.$store.state.allViewings.filter(
+        (viewing) => viewing.movie === this.movie.title
+      );
+    },
   },
   methods: {
     sortViewings() {
       // Sorts viewings by date
-      this.viewings.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
+      this.viewings.sort((a, b) =>
+        a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+      );
       // Filters out dates from the past
-      let tempViewings = this.viewings.filter((viewing) => viewing.date >= this.today)
+      let tempViewings = this.viewings.filter(
+        (viewing) => viewing.date >= this.today
+      );
 
-      return tempViewings
+      return tempViewings;
     },
     setTodaysDate() {
       // Setting the date for today
@@ -139,9 +84,9 @@ export default {
     },
   },
   mounted() {
-    this.setTodaysDate()
-  }
-}
+    this.setTodaysDate();
+  },
+};
 </script>
 
 <style scoped>
@@ -292,7 +237,6 @@ img {
   height: 100%;
   position: relative;
   bottom: 35px;
-  
 }
 
 .movie {
@@ -362,8 +306,7 @@ h5 {
 }
 
 .boka:hover {
-  opacity: .5;
+  opacity: 0.5;
   cursor: pointer;
 }
-
 </style>
