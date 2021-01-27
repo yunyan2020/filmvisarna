@@ -4,6 +4,7 @@ const state = {
   movie: [],
   customers: [],
   allViewings: [],
+  screens: [],
   loggedIn: false,
   currentUser: {},
   booking: { price: 0, nrOfSeats: 0, seats: [] }
@@ -19,6 +20,9 @@ const mutations = {
   },
   addCustomer(state, customer) {
     state.customers.push(customer)
+  },
+  setScreens(state, list) {
+    state.screens = list
   },
   setViewings(state, list) {
     state.allViewings = list
@@ -44,11 +48,15 @@ const mutations = {
 //async network requests
 const actions = {
   // Actions to GET info from database
+  async fetchScreens(store) { 
+    let list = await fetch('/rest/screens')
+    list = await list.json()
+
+    store.commit('setScreens', list)
+  },
   async fetchMovie(store) {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
-    //debug list
-    console.log(list);
 
     store.commit('setMovie', list)
   },
