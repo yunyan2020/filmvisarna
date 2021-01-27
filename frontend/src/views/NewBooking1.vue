@@ -21,8 +21,8 @@
       <div class="price-pill"><h4>{{ sum }}kr/st</h4></div>
     </div>
     <div class="submit-exit">
-      <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" @click="addBookingInfo()" class="router-link">
-        <button class="vidare"><h1>Vidare</h1></button>
+      <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
+        <button class="vidare" v-on:click="addBookingInfo()"><h1>Vidare</h1></button>
       </router-link>
       <button class="avsluta"><h3>Avsluta</h3></button>
     </div>
