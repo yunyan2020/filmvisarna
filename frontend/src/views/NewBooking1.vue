@@ -1,43 +1,9 @@
 <template>
   <div class="container">
     <div class="title">
+      <h1>{{ viewing.movie }}<h1>
       <h1>Antal platser</h1>
     </div>
-    <!-- <div class="selection">
-      <div class="vuxen">
-        <div class="agegroup">
-          <h2>Vuxen</h2>
-          <h6>125kr/st</h6>
-        </div>
-        <div class="buttons">
-          <button><h1>-</h1></button>
-          <h1 class="counter">{{ counter }}</h1>
-          <button><h1>+</h1></button>
-        </div>
-      </div>
-      <div class="barn">
-        <div class="agegroup">
-          <h2>Barn</h2>
-          <h6>75kr/st</h6>
-        </div>
-        <div class="buttons">
-          <button><h1>-</h1></button>
-          <h1 class="counter">{{ counter }}</h1>
-          <button><h1>+</h1></button>
-        </div>
-      </div>
-      <div class="pensionär">
-        <div class="agegroup">
-          <h2>Pensionär</h2>
-          <h6>100kr/st</h6>
-        </div>
-        <div class="buttons">
-          <button><h1>-</h1></button>
-          <h1 class="counter">{{ counter }}</h1>
-          <button><h1>+</h1></button>
-        </div>
-      </div>
-    </div> -->
     <div class="selection" v-for="ageGroup of agePrice" :key="ageGroup">
       <div class="age">
         <h2>{{ ageGroup.label }}</h2>
@@ -64,20 +30,21 @@
 
 <script>
 export default {
+  props: ['id'],
   data() {
     return {
       counter: 0,
       sum: 0,
-      /* agePrice: [
-        { agegroup: "Vuxen", price: 125},
-        { ageGroup: "Barn", price: 75},
-        { ageGroup: "Pensionär", price: 100}
-      ], */
       agePrice: {
         Adult: { label: "Vuxen", price: 125, counter: 0 },
         Child: { label: "Barn", price: 75, counter: 0 },
         Senior: { label: "Pensionär", price: 100, counter: 0 }
       }
+    }
+  },
+  computed: {
+    viewing() {
+    return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
     }
   },
   methods: {

@@ -38,7 +38,7 @@ const routes = [
   },
   {
     name: 'Bokning',
-    path: '/bokning/:id',
+    path: '/bokning',
     component: NewBooking1,
     props: true
   },
