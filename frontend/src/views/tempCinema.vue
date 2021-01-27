@@ -22,12 +22,13 @@ export default {
 
 <style scoped>
 .background {
-  background-color: rgb(173, 173, 173);
-  border: 1px solid black;
+  background-color: #adadad;
+  border: 1px solid grey;
   height: 100vh;
   margin: 10px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   position: relative;
+  border-radius: 5px;
 }
 
 .firstDiv {
@@ -36,9 +37,10 @@ export default {
 .secondDiv,
 .thirdDiv {
   background-color: rgb(173, 173, 173);
-  border: 1px solid black;
+  border: 1px solid grey; 
   margin: 19px;
   width: 900px;
+  border-radius: 5px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
