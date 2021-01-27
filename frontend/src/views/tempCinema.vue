@@ -4,7 +4,7 @@
       <h1>Biograf</h1>
     </div>
     <div class="secondDiv">
-      <h1>Second Div</h1>
+      <Salon/>
     </div>
     <div class="thirdDiv">
       <h1>Third Div</h1>
@@ -13,7 +13,11 @@
 </template>
 
 <script>
-export default {};
+//import Seats from "../components/b2comps/Seats.vue";
+import Salon from "../components/Cinema/Salon.vue";
+export default {
+  components:{Salon}
+};
 </script>
 
 <style scoped>
