@@ -44,8 +44,9 @@ const routes = [
   },
   {
     name: 'Bokning2',
-    path: '/bokning2',
-    component: NewBooking2
+    path: '/bokning/:id',
+    component: NewBooking2,
+    props: true
   }
 
 
