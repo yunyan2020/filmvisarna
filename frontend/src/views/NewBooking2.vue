@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="booking-information">
-
+      <h1>{{viewing.movie}}</h1>
+      <p>{{ viewing.date }} {{ viewing.time }}</p>
     </div>
     <div class="selection">
       <div class="scene">
@@ -22,13 +23,19 @@
 
 <script>
 export default {
+  props: ['id'],
   data() {
     return {
       salong: [
         { seatsPerRow: [8, 9, 10, 10, 10, 10, 12, 12] }
       ]
     }
-  }
+  },
+    computed: {
+    viewing() {
+    return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
+    }
+  },
 }
 </script>
 
@@ -38,6 +45,10 @@ export default {
     height: 90vh;
     border: 1px solid white;
     margin: 50px auto;
+  }
+
+  h1 p {
+    color: white;
   }
 
   .booking-information {
