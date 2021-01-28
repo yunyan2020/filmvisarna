@@ -1,13 +1,21 @@
 <template>
   <div class="grid-container">
-    <div class="grid-item grid-item-1">
+    <div class="title"><b>kontakt</b><h1/>
       <p><b>Tel.nr:</b> 0123456789</p>
       <br />
-      <p><b>Emial:</b> Snälla.maila@intehit.com</p>
+      <p><b>Emial:</b> support@filmvisarna.se</p>
       <br />
-      <p><b>Adress:</b> Skogen</p>
-
-      <p></p>
+      <p><b>Adress:</b> Teknikhögskolan Lund</p>
+     <p><b>Öppettider:</b>
+     Måndag och tisdag-stängt
+     Onsdag till lördag(16-20)
+     Söndag(13-20) </p>
+     <p><b> Vi har nya rutiner med anledning av corona </b></p>
+      <p><b>
+      vår Biosida gjorde av:</b> </p>
+      <p>
+      Denise,Yunyan,Hanan,Ermin,Edvin och Tobias :)
+      </p>
     </div>
     <!--<div class="grid-item grid-item-2">
       <p></p>
@@ -20,6 +28,15 @@ export default {};
 </script>
 
 <style scoped>
+.title{
+  padding-block: 30px;
+  color: black;
+}
+.contact{
+  padding-top: 50px;
+  font-size:10px;
+  color: azure;
+}
 * {
   box-sizing: border-box;
 }
@@ -38,9 +55,9 @@ export default {};
   font-size: 2em;
 }
 .grid-item-1 {
-  background-color: #eee;
+  background-color: rgb(19, 18, 18);
 }
 .grid-item-2 {
-  background-color: #eee;
+  background-color: rgb(7, 7, 7);
 }
 </style>
