@@ -120,7 +120,6 @@ export default {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
     viewings() {
-      return this.$store.state.allViewings;
       // Returns all viewings for this movie for dates in present and future
       return this.$store.state.allViewings.filter(
         (viewing) => viewing.movie === this.movie.title

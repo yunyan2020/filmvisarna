@@ -4,10 +4,9 @@ import { createStore } from 'vuex'
 const state = {
   movie: [],
   allViewings: [],
-  currentUser: null
+  currentUser: null,
   screens: [],
   loggedIn: false,
-  currentUser: {},
   booking: { price: 0, nrOfSeats: 0, seats: [] }
 }
 
