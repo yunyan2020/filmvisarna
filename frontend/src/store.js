@@ -75,7 +75,6 @@ const actions = {
     store.commit('setViewings', list)
   },
 
-  // Actions to ADD/POST info to database
   async addCustomer(store, customer) {
 
     let response = await fetch('/rest/customerdetails', {
