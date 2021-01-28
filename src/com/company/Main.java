@@ -19,7 +19,7 @@ public class Main {
         new Authentication(app);
 
 
-        // Endpoints to fetch data from database
+        
         
         app.get("/rest/screens", (req, res) -> {
             var screens = collection("Screen").find();

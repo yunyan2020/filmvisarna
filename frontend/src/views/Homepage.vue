@@ -16,10 +16,13 @@ import Calendar from "../components/homepagecomp/Calendar.vue";
 
 export default {
   components: { Movies,TopMovies, Calendar },
-  // components: { Movies, Carousel, TopMovies, Calendar },
-  //components: { Movies, Info, TopMovies, Calendar }
 };
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+  height: 100%;
+  background: black;
+}
 </style>

@@ -2,7 +2,9 @@
   <div class="container">
     <div class="component-title">
       <h1>Topp</h1>
+      <router-link class="more" :to="'/films'">
       <p>mer...</p>
+      </router-link>
     </div>
     <div class="topmovies-list">
       <div v-for="movie in movies" :key="movie.id" class="movie">
@@ -28,7 +30,7 @@ export default {
 <style scoped>
 h1,
 p {
-  color: black;
+  color: rgb(216, 137, 63);
 }
 
 .container {
@@ -62,13 +64,7 @@ img {
   max-height: 400px;
 }
 
-.movie-details {
-  background: #333;
-  position: relative;
-  bottom: 32px;
-  padding: 0 5px 0 5px;
-  height: 20px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+.more {
+  text-decoration: none;
 }
 </style>

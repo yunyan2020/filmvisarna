@@ -16,7 +16,9 @@
     </div>
     <div class="submit-exit">
       <button class="vidare">Vidare</button>
+      <router-link :to="'/'">
       <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -138,4 +140,5 @@ h1 p {
   margin-bottom: 15px;
   font-size: 20px;
 }
+
 </style>

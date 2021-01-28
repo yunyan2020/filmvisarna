@@ -101,7 +101,7 @@ h5 {
 h1,
 h3,
 h5 {
-  color: black;
+  color: rgb(216, 137, 63);
 }
 
 .container {

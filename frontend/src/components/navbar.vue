@@ -77,12 +77,13 @@ a:hover {
 
 nav {
   padding: 35px;
-  height: 20px;
+  height: 30px;
   text-align: center;
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
   background-color: rgb(54, 41, 41);
   padding-left: 170px;
+  
 }
 .logoBox {
   float: left;
