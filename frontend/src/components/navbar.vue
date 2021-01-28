@@ -8,14 +8,14 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <button v-on:click="toggleLogin">
-        <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
+      <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
+      <button v-on:click="toggleLoginPage">
         <i class="fas fa-user-alt"></i>
         </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
-        <Login @close="toggleLogin"> </Login>
+        <Login @close="toggleLoginPage"> </Login>
       </div>
-      <div v-else> (Member dropdown) 
+      <div v-if="isLoggedIn">
         <button v-on:click="logout">Log out</button>
       </div>
     </nav>
@@ -34,20 +34,21 @@ export default {
   },
   computed: {
     getCurrentUserName() {
-      return this.$store.state.currentUser.name
+      return this.isLoggedIn ? this.$store.state.currentUser.name : ""
     },
     isLoggedIn() {
       return this.$store.state.currentUser != null
     }
   },
   methods: {
-    toggleLogin() {
+    toggleLoginPage() {
       this.showLogin = !this.showLogin;
+      console.log("Show login: ", this.showLogin)
     },
     logout() {
       fetch('/api/logout')
       this.$store.commit('setCurrentUser', null)
-      
+      console.log(this.getCurrentUserName)
     }
   },
 };

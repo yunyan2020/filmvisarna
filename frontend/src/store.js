@@ -24,7 +24,6 @@ const mutations = {
   },
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
-    console.log("User name: ", state.currentUser.name)
   },
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice

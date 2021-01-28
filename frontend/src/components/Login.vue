@@ -35,6 +35,11 @@ export default {
       tempError: ""
     };
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
+    },
+  },
   methods: {
     closeBox() {
       this.$emit("close");
@@ -49,7 +54,7 @@ export default {
         password: this.password
       }
       this.$store.dispatch('login', credentials)
-      if(!this.$store.state.currentUser) {
+      if(!this.isLoggedIn) {
         this.tempError = "Fel uppgifter"
       }
     },
