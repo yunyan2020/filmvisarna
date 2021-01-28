@@ -9,11 +9,6 @@
         <router-link :to="'/movieshow/details/' + movie.id">
         <img :src="movie.poster" alt="">
         </router-link>
-        <div class="movie-details">
-          <h6 class="title">
-            {{ movie.title }} | {{ movie.runtime }} | {{ movie.rated }}
-          </h6>
-        </div>
         </div>
     </div>
   </div>
