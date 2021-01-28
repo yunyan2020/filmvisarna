@@ -27,6 +27,7 @@ public class Authentication {
                 return;
             }
 
+
             // Validating that email isn't already taken
             var customer = req.body(Customer.class);
             System.out.println(customer);

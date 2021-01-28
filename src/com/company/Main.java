@@ -1,6 +1,7 @@
 package com.company;
 
 
+import com.company.models.Booking;
 import com.company.models.Customer;
 import com.company.models.Movie;
 import com.company.models.Viewing;
@@ -18,8 +19,10 @@ public class Main {
 
         new Authentication(app);
 
-
-        
+        app.get("/rest/bookings", (req, res) -> {
+            var bookings = collection("Booking").find();
+            res.json(bookings);
+        });
         
         app.get("/rest/screens", (req, res) -> {
             var screens = collection("Screen").find();
@@ -53,17 +56,6 @@ public class Main {
         });
 
 
-        // Endpoints to create new data for database
-
-//        app.post("/rest/customerdetails", (req,res) -> {
-//            var customer = req.body(Customer.class);
-//            var savedCustomer = collection("Customer").save(customer);
-//
-//            System.out.println(savedCustomer);
-//            res.json(savedCustomer);
-//
-//        });
-
         app.post("/rest/movieshow",(req,res) ->{
             var movie = req.body(Movie.class);
 
@@ -72,6 +64,21 @@ public class Main {
             System.out.println(savedMovie);
             //respond with saved object
             res.json(savedMovie);
+        });
+
+        app.post("/rest/bookings", (req, res) -> {
+            Customer customer = req.session("currentUser");
+
+            if(customer == null) {
+                res.send("Must be logged in to book");
+                return;
+            }
+
+            Booking booking = req.body(Booking.class);
+            booking.setCustomer(customer);
+
+            collection("Booking").save(booking);
+            res.send("Post ok");
         });
 
 
