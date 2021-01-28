@@ -105,6 +105,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      times: [],
+      today: "",
+    };
+  },
   computed: {
     id() {
       //get id from url parameter
@@ -115,28 +121,35 @@ export default {
     },
     viewings() {
       return this.$store.state.allViewings;
+      // Returns all viewings for this movie for dates in present and future
+      return this.$store.state.allViewings.filter(
+        (viewing) => viewing.movie === this.movie.title
+      );
     },
-    viewingDates() {
-      // Sorts the movie viewing dates from earliest to latest
-      let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
-      return tempDates
-    }
   },
   methods: {
-    setDates() {
-      // Setting the dates for today and two days ahead
-      let tday = new Date();
-      let tmorrow = new Date();
-      tmorrow.setDate(tday.getDate() + 1);
-      let afterTmorrow = new Date();
-      afterTmorrow.setDate(tmorrow.getDate() + 1);
+    sortViewings() {
+      // Sorts viewings by date
+      this.viewings.sort((a, b) =>
+        a.date > b.date ? 1 : b.date > a.date ? -1 : 0
+      );
+      // Filters out dates from the past
+      let tempViewings = this.viewings.filter(
+        (viewing) => viewing.date >= this.today
+      );
 
+      return tempViewings;
+    },
+    setTodaysDate() {
+      // Setting the date for today
+      let tday = new Date();
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-    }
+    },
   },
-}
+  mounted() {
+    this.setTodaysDate();
+  },
+};
 </script>
 
 <style scoped>
@@ -265,5 +278,98 @@ export default {
 img {
   max-width: 400px;
   max-height: 400px;
+} */
+.container {
+  background: #0f0f0f;
+  color: white;
+  margin: 0;
+}
+
+.scene-image {
+  width: 100%;
+  height: 700px;
+  border: 1px solid black;
+}
+
+.scene-image::after {
+  background: linear-gradient();
+}
+
+.scene {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  bottom: 35px;
+}
+
+.movie {
+  width: 50%;
+  height: 500px;
+  border: 1px solid red;
+  margin: 0 auto;
+  position: relative;
+  bottom: 200px;
+  display: flex;
+}
+
+.movie-poster {
+  border-radius: 8px;
+}
+
+.movie-information {
+  margin-left: 10px;
+  position: relative;
+  top: 200px;
+}
+
+.movie-detail {
+  width: 50%;
+  height: 450px;
+  border: 1px solid green;
+  margin: 0 auto;
+  position: relative;
+  bottom: 150px;
+}
+
+h5 {
+  opacity: 0.6;
+}
+
+.information {
+  margin-top: 40px;
+}
+
+.dates-list {
+  width: 100%;
+  height: 400px;
+  border: 1px solid orange;
+}
+
+.viewing {
+  cursor: pointer;
+  height: 5em;
+  width: 10em;
+  border: solid orange;
+  margin: 2px;
+  float: left;
+}
+
+.viewing:hover {
+  background: rgba(255, 255, 255, 0.308);
+}
+.boka {
+  width: 100px;
+  position: relative;
+  left: 1300px;
+  bottom: 180px;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 2px 10px 2px 10px;
+  text-align: center;
+}
+
+.boka:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 </style>

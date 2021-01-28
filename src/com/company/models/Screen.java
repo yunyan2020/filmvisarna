@@ -8,11 +8,21 @@ import java.util.Arrays;
 public class Screen {
 
     @Id
+    private String id;
+
     private String name;
     private int seats;
     private int[] seatsPerRow;
 
     public Screen() {}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -42,7 +52,8 @@ public class Screen {
     @Override
     public String toString() {
         return "Screen{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", seats=" + seats +
                 ", seatsPerRow=" + Arrays.toString(seatsPerRow) +
                 '}';

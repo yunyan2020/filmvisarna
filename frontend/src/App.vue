@@ -16,6 +16,7 @@ export default {
     this.$store.dispatch("fetchMovie")
     this.$store.dispatch("fetchViewings")
     this.$store.dispatch("whoAmI")
+    this.$store.dispatch("fetchScreens")
   },
 };
 </script>
@@ -33,5 +34,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   box-sizing: border-box;
+  background: #0f0f0f;
 }
 </style>
