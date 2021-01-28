@@ -9,6 +9,7 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
+      
       <button v-on:click="toggleLoginPage">
         <i class="fas fa-user-alt"></i>
         </button>

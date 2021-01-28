@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="dropdown"> 
     <label for="selectSalon">Välja Salongen</label>   
     <select v-model="selected" name="salons" @change="onChange($event)" class="select-css" >      
@@ -36,6 +37,7 @@
       <p>{{ y[0].name }} har {{ y[0].seats }} plats</p>      
     </div>
   </div>
+</div>
 </template>
 
 <script>
