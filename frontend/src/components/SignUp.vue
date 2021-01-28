@@ -58,7 +58,7 @@ export default {
         this.$store.dispatch("register", credentials);
         if(!this.$store.state.currentUser) {
         this.tempError = "Email adressen finns redan registrerad"
-        } else {this.userSaved = "Registrerad!";}
+        }
       }
     },
     passwordChecks() {

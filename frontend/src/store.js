@@ -15,12 +15,6 @@ const mutations = {
   setMovie(state, list) {
     state.movie = list
   },
-  setCustomers(state, list) {
-    state.customers = list
-  },
-  addCustomer(state, customer) {
-    state.customers.push(customer)
-  },
   setScreens(state, list) {
     state.screens = list
   },

@@ -8,12 +8,15 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <button @click="toggleLogin">
+      <button v-on:click="toggleLogin">
         <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
         <i class="fas fa-user-alt"></i>
         </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLogin"> </Login>
+      </div>
+      <div v-else> (Member dropdown) 
+        <button v-on:click="logout">Log out</button>
       </div>
     </nav>
   </div>
@@ -41,6 +44,11 @@ export default {
     toggleLogin() {
       this.showLogin = !this.showLogin;
     },
+    logout() {
+      fetch('/api/logout')
+      this.$store.commit('setCurrentUser', null)
+      
+    }
   },
 };
 </script>
