@@ -148,7 +148,6 @@ li {
   width: 30%; 
   display: flex;
   justify-content: space-evenly;
-  margin-left: auto;
   margin-right: auto;
   padding-top: 25%;
   filter: drop-shadow(0 0 10px #0003);
