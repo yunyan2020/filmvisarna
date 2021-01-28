@@ -48,16 +48,16 @@ export default {
     toggleSignUp() {
       this.showSignUp = !this.showSignUp;
     },
-    handleSubmit() {
+    async handleSubmit() {
       const credentials = {
         email : this.email,
         password: this.password
       }
-      this.$store.dispatch('login', credentials)
+      await this.$store.dispatch('login', credentials)
       if(!this.isLoggedIn) {
         this.tempError = "Fel uppgifter"
       }
-    },
+    }
   },
 };
 </script>

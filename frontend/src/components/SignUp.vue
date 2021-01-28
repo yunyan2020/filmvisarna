@@ -48,14 +48,14 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       if (this.passwordChecks()) {
         const credentials = {
           email: this.email,
           password: this.password,
           name: this.name,
         };
-        this.$store.dispatch("register", credentials);
+        await this.$store.dispatch("register", credentials);
         if(!this.$store.state.currentUser) {
         this.tempError = "Email adressen finns redan registrerad"
         }

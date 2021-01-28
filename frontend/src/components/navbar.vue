@@ -8,16 +8,12 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <p v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
-      
-      <button v-on:click="toggleLoginPage">
+      <p class="helloUser" v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
+      <button v-on:click="!isLoggedIn ? toggleLoginPage() : logout()">
         <i class="fas fa-user-alt"></i>
         </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLoginPage"> </Login>
-      </div>
-      <div v-if="isLoggedIn">
-        <button v-on:click="logout">Log out</button>
       </div>
     </nav>
   </div>
@@ -98,11 +94,19 @@ nav {
   padding-bottom: 20px;
 }
 
+.helloUser {
+  float: right;
+  position: absolute;
+  right: 4em;
+}
+
 button {
   border: none;
   background: none;
   cursor: pointer;
   float: right;
+  right: 2em;
+  position: absolute;
 }
 
 button:focus{
