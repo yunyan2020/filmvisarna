@@ -1,3 +1,43 @@
+<template>
+  <div class="container">
+    <div class="scene-image">
+      <img :src="movie.movieScene" alt="" class="scene" />
+    </div>
+    <div class="movie">
+      <div class="poster">
+        <img :src="movie.poster" alt="" class="movie-poster" />
+      </div>
+      <div class="movie-information">
+        <h1>{{ movie.title }}</h1>
+        <h4>{{ movie.genre }}</h4>
+        <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
+      </div>
+    </div>
+    <div class="movie-detail">
+      <h3>{{ movie.plot }}</h3>
+      <div class="information">
+        <h5>Regi:</h5>
+        <h3>{{ movie.director }}</h3>
+        <h5>Skådespelare:</h5>
+        <h3>{{ movie.actors.join(" - ") }}</h3>
+        <h5>Språk:</h5>
+        <h3>{{ movie.language }}</h3>
+        <h5>Premiär:</h5>
+        <h3>{{ movie.year }}</h3>
+      </div>
+    </div>
+    <div class="dates-list">
+      <div v-for="view in sortViewings()" :key="view.id">
+        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="viewing">
+          <h5>{{ view.date }} | {{ view.time }}</h5>
+          <p>{{ view.screen }}</p>
+        </router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!---
 <template> 
   <div class="movie-head">
     <h1 class="title">{{ movie.title }}</h1>   
@@ -61,7 +101,7 @@
     </div> 
   </div>   
 </template>
-
+--->
 
 <script>
 export default {
