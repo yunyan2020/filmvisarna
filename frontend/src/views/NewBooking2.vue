@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="submit-exit">
-      <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
+      <button class="vidare">Vidare</button>
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
       <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
@@ -54,6 +54,7 @@ export default {
     }
   },
   methods: {
+    // ADD THIS TO VIDARE!! v-on:click="addBookingInfo()"
     addBookingInfo() {
       if(this.isLoggedIn) {
       this.mustLogin = ""
