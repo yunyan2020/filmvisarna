@@ -8,7 +8,10 @@ const state = {
   screens: [],
   loggedIn: false,
   booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
-  allBookings: []
+  allBookings: [],
+  currentUser: {},
+  bookingDetails: {},
+  booking: { price: 0, seats: 0 } // seats: []
 }
 
 //mutates state
@@ -41,8 +44,18 @@ const mutations = {
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
   },
+
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
+  },
+  setAllBookings(state, booking) { 
+    state.allBookings.push(booking)
+  },
+  setSeatAmount(state, amount) {
+    state.booking.seats = amount;
+  },
+  setBookingDetails(state, bookingDetails) {
+    state.bookingDetails = bookingDetails
   }
 }
 

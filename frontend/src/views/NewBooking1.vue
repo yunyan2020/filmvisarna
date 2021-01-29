@@ -24,7 +24,7 @@
     <div class="submit-exit">
       <div v-if="counter">
       <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
-        <button class="vidare" v-on:click="addBookingInfo()"><h1>Vidare</h1></button>
+        <button class="vidare" v-on:click="addBookingInfo(), seatAmount(), bookingDetails()"><h1>Vidare</h1></button>
       </router-link>
       </div>
       <router-link :to="'/'">
@@ -51,14 +51,14 @@ export default {
   },
   computed: {
     viewing() {
-    return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
+      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
     }
   },
   methods: {
     add(price, ageGroup) {
       this.sum += price
-      console.log(ageGroup)
       ageGroup.counter += 1
+<<<<<<< HEAD
       this.counter += 1
     },
     remove(price, ageGroup) {
@@ -67,11 +67,39 @@ export default {
       ageGroup.counter -= 1; 
       this.counter -= 1;
       }  
+=======
+      this.counter++;
+      console.log(ageGroup)
+    },
+    remove(price, ageGroup) {
+      if(ageGroup.counter == 0) {
+        return
+      }
+      this.sum -= price
+      ageGroup.counter -= 1; 
+      this.counter--;  
+>>>>>>> e90b52e... branch-feature: still under development
     },
     addBookingInfo() {
       this.$store.commit('setBookingPrice', this.sum)
       this.$store.commit('setNrOfSeats', this.counter)
+<<<<<<< HEAD
       this.$store.commit('setBookingViewing', this.viewing) 
+=======
+      this.$store.commit('setBookingViewing', this.viewing)
+    },
+    resetBookingInfo() {
+      this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
+    },
+    seatAmount() {
+      this.$store.commit('setSeatAmount', this.counter)
+    },
+    bookingDetails() {
+      this.$store.commit('setBookingDetails', this.agePrice)
+>>>>>>> e90b52e... branch-feature: still under development
     }
   }
 }

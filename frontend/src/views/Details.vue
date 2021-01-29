@@ -26,11 +26,14 @@
         <h3>{{ movie.year }}</h3>
       </div>
     </div>
+    <div class="booking-section-title">
+      <h1>Välj spelning</h1>
+    </div>
     <div class="dates-list">
-      <div v-for="view in sortViewings()" :key="view.id">
-        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="viewing">
-          <h5>{{ view.date }} | {{ view.time }}</h5>
-          <p>{{ view.screen }}</p>
+      <div v-for="view in sortViewings()" :key="view.id" class="viewing">
+        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="router-link">
+          <h3>{{ view.screen }} {{ view.time }}</h3>
+          <h5>{{ view.date }}</h5>
         </router-link>
       </div>
     </div>
@@ -44,6 +47,7 @@ export default {
     return {
       times: [],
       today: "",
+      
     };
   },
   computed: {
@@ -78,6 +82,7 @@ export default {
       // Setting the date for today
       let tday = new Date();
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
+
     },
     resetBookingInfo() {
       //Sets all current booking info to null, to start a new booking
@@ -96,132 +101,7 @@ export default {
 </script>
 
 <style scoped>
-/* .movie-head {
-  margin: 5px;
-  padding: 1em;
-  max-width: 50em;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-}
-.wrap {
-  position: relative;
-  width: 70%;
-  height: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-.ticket-page {
-  float: left;
-  position: absolute;
-  margin: 10px;
-  padding: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
 
-.movie-detail {  
-  float: left;  
-  height:90%;
-  position: absolute;
-  background: #333;
-  overflow: hidden;
-  left: 50%;
-  margin: 5px;
-  padding:10px;
-  max-width: 50%;  
-  top: 1px;
-  border-radius: 5px;
-}
-
-.item-detail { 
-  margin-bottom: 1px;
-  padding-top: 0;
-  font-size: 15px;
-  text-align: left;
-  color: rgb(243, 220, 11);
-  font-weight: normal;
-}
-.item-name {
-  display: inline;
-  font-size: 13px;
-  color: white;
-}
-
-.intro{
-  border:1px solid rgba(80, 76, 76, 0.521);
-  margin-top: 60px;
-  position:relativ;
-}
-
-.intro_text {
-  max-width: 800px;
-  padding-top: 15px;
-  overflow: hidden;
-  display: -webkit-box;
-  font-size: 13px;
-  color: white;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
-.intro .a {
- cursor: hand;
-  color: #000000;
-  font-size: 34px;
-  transition:0.5s; 
-}
- a:hover{
-    color:blue;
-    text-decoration: none;
-}
-
-.intro .mailTo{
-  margin-top:1px;
-  font-size: 30px;
-  color:white;
-  font-weight:bold;
-}
-
-.p-0{
-  float:left;
-  position:absolute;
-  text-align: left;
-  color:white;
-  margin: 2px;
-  padding: 2px;
-}
-
-.p-1{
-  position:absolute;
-  color:thistle;
-  left:40%;
-  width: 100%;
-  text-align: left;
-  margin: 2px;
-  padding: 2px;
-}
-
-.p-2{  
-  float:right;  
-  color:white;
-  left:30%;
-  text-align: left;
-  margin: 2px;
-  padding: 2px;
-  margin-left: -300px;
-  right:300px
-}
-
-img {
-  max-width: 400px;
-  max-height: 400px;
-} */
 .container {
   background: #0f0f0f;
   color: white;
@@ -282,24 +162,49 @@ h5 {
   margin-top: 40px;
 }
 
+.booking-section-title {
+  position: relative;
+  left: 25%;
+  bottom: 35px;
+}
+
 .dates-list {
-  width: 100%;
-  height: 400px;
-  border: 1px solid orange;
+  position: relative;
+  bottom: 25px;
+  width: 50%;
+  /* height: 400px; */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* border: 1px solid #333;
+  border-radius: 5px; */
 }
 
 .viewing {
   cursor: pointer;
   height: 5em;
-  width: 10em;
-  border: solid orange;
+  border: 1px solid rgb(26, 25, 25);
+  border-radius: 5px;
   margin: 2px;
   float: left;
+  padding: 4px 0 0 8px;
+}
+
+.router-link {
+  text-decoration: none;
+  color: white;
 }
 
 .viewing:hover {
-  background: rgba(255, 255, 255, 0.308);
+  /* background: rgba(255, 255, 255, 0.082); */
+  /* opacity: 0.1; */
+  border: 1px solid #333;
 }
+
+/* .viewing:active {
+  background: rgba(238, 238, 238, 0.062);
+} */
+
 .boka {
   width: 100px;
   position: relative;
@@ -315,4 +220,19 @@ h5 {
   opacity: 0.5;
   cursor: pointer;
 }
+
+/* ::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(37, 37, 37);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 8px;
+  border: 1px solid #0f0f0f;
+} */
 </style>

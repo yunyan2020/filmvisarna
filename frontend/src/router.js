@@ -7,6 +7,7 @@ import Contact from './views/tempContact.vue'
 import Biograf from './views/tempCinema.vue'
 import NewBooking1 from './views/NewBooking1.vue'
 import NewBooking2 from './views/NewBooking2.vue'
+import NewBooking3 from './views/NewBooking3.vue'
 
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     name: 'Bokning2',
     path: '/bokning/:id',
     component: NewBooking2,
+    props: true
+  },
+  {
+    name: 'Bokning3',
+    path: '/bokning3/:id',
+    component: NewBooking3,
     props: true
   }
 
