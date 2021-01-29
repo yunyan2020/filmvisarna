@@ -7,11 +7,15 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 }
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
+  allBookings: []
 }
 
 //mutates state
 const mutations = {
+  setBookings(state, list) { 
+    state.allBookings = list
+  },
   setMovie(state, list) {
     state.movie = list
   },
@@ -35,7 +39,12 @@ const mutations = {
 
 //async network requests
 const actions = {
-  // Actions to GET info from database
+  async fetchBookings(store) { 
+    let list = await fetch('/rest/bookings')
+    list = await list.json()
+    console.log(list)
+    store.commit('setBookings', list)
+  },
   async fetchScreens(store) { 
     let list = await fetch('/rest/screens')
     list = await list.json()
