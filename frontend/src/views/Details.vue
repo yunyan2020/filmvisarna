@@ -1,51 +1,70 @@
-<template>
-  <div class="container">
-    <div class="scene-image">
-      <img :src="movie.movieScene" alt="" class="scene" />
-    </div>
-    <div class="movie">
-      <div class="poster">
-        <img :src="movie.poster" alt="" class="movie-poster" />
-      </div>
-      <div class="movie-information">
-        <h1>{{ movie.title }}</h1>
-        <h4>{{ movie.genre }}</h4>
-        <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
-      </div>
-    </div>
+<template> 
+  <div class="movie-head">
+    <h1 class="title">{{ movie.title }}</h1>   
+    <h3 class = "genre">{{ movie.genre }}</h3> 
+    <h4 class="subtitle"> 
+      <p class="subtitle-tag">        
+        {{ movie.runtime }}|{{ movie.year }}
+      </p>
+    </h4>
+  </div> 
+  <div class = "wrap">
+    <div class="ticket-page"> 
+      <p> This position for ticket information This position for ticket information</p> 
+    </div>   
     <div class="movie-detail">
-      <h3>{{ movie.plot }}</h3>
-      <div class="information">
-        <h5>Regi:</h5>
-        <h3>{{ movie.director }}</h3>
-        <h5>Skådespelare:</h5>
-        <h3>{{ movie.actors.join(" - ") }}</h3>
-        <h5>Språk:</h5>
-        <h3>{{ movie.language }}</h3>
-        <h5>Premiär:</h5>
-        <h3>{{ movie.year }}</h3>
+      <div class="trailer">
+        <iframe
+          frameborder="0"
+          allowFullScreen
+          autoplay
+          height="350"
+          :src="'https://www.youtube.com/embed/'+movie.youtubeTrailers"
+          style="width: 100%; min-width: 300px"
+        />
+      </div>  
+      <div class="col movie-info">
+        <div class="col p-0">
+          <strong>Tal<strong> 
+          <p> {{ movie.language }} </p> 
+        </div> 
+        <div class="col p-1">
+          <strong>Text<strong>
+          <p> {{ movie.subtitles }}</p> 
+        </div>
+        <div class="col p-2">
+          <strong>Längd<strong>
+          <p> {{ movie.runtime }}</p> 
+        </div>
       </div>
-    </div>
-    <div class="dates-list">
-      <div v-for="view in sortViewings()" :key="view.id">
-        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="viewing">
-          <h5>{{ view.date }} | {{ view.time }}</h5>
-          <p>{{ view.screen }}</p>
-        </router-link>
+      <div class="intro">        
+        <hr/>
+        <div class="item-detail">Direktör:
+          <div class="item-name">
+            <span>  {{ movie.director }}</span>
+        </div>    
+        <div class="item-detail">Skådespelare：
+          <div class="item-name">
+           <span 
+              v-for="actor in movie.actors"
+              v-bind:key="actor.id"
+              class="movie"
+              >{{ actor }}、
+            </span>...
+          </div>      
+        </div>  
+        <div class="intro_text">{{ movie.plot }}</div>
+        <p> Dela</p>         
+        <a href = "mailto:?subject=Jag vill tipsa dig om filmen" class='mailTo'>✉
+        </a>  
       </div>
-    </div>
-  </div>
+    </div> 
+  </div>   
 </template>
 
 
 <script>
 export default {
-  data() {
-    return {
-      times: [],
-      today: "",
-    };
-  },
   computed: {
     id() {
       //get id from url parameter
@@ -55,39 +74,33 @@ export default {
       return this.$store.state.movie.filter((p) => p.id == this.id)[0];
     },
     viewings() {
-      // Returns all viewings for this movie for dates in present and future
-      return this.$store.state.allViewings.filter(
-        (viewing) => viewing.movie === this.movie.title
-      );
+      return this.$store.state.allViewings;
     },
+    viewingDates() {
+      // Sorts the movie viewing dates from earliest to latest
+      let tempDates = this.viewings.map( viewing => viewing.date.slice(5,10).replace(/\//g, "")).sort((a,b) => a-b)
+      return tempDates
+    }
   },
   methods: {
-    sortViewings() {
-      // Sorts viewings by date
-      this.viewings.sort((a, b) =>
-        a.date > b.date ? 1 : b.date > a.date ? -1 : 0
-      );
-      // Filters out dates from the past
-      let tempViewings = this.viewings.filter(
-        (viewing) => viewing.date >= this.today
-      );
-
-      return tempViewings;
-    },
-    setTodaysDate() {
-      // Setting the date for today
+    setDates() {
+      // Setting the dates for today and two days ahead
       let tday = new Date();
+      let tmorrow = new Date();
+      tmorrow.setDate(tday.getDate() + 1);
+      let afterTmorrow = new Date();
+      afterTmorrow.setDate(tmorrow.getDate() + 1);
+
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
-    },
+      this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
+      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
+    }
   },
-  mounted() {
-    this.setTodaysDate();
-  },
-};
+}
 </script>
 
 <style scoped>
-/* .movie-head {
+.movie-head {
   margin: 5px;
   padding: 1em;
   max-width: 50em;
@@ -212,98 +225,5 @@ export default {
 img {
   max-width: 400px;
   max-height: 400px;
-} */
-.container {
-  background: #0f0f0f;
-  color: white;
-  margin: 0;
-}
-
-.scene-image {
-  width: 100%;
-  height: 700px;
-  border: 1px solid black;
-}
-
-.scene-image::after {
-  background: linear-gradient();
-}
-
-.scene {
-  width: 100vw;
-  height: 100%;
-  position: relative;
-  bottom: 35px;
-}
-
-.movie {
-  width: 50%;
-  height: 500px;
-  border: 1px solid red;
-  margin: 0 auto;
-  position: relative;
-  bottom: 200px;
-  display: flex;
-}
-
-.movie-poster {
-  border-radius: 8px;
-}
-
-.movie-information {
-  margin-left: 10px;
-  position: relative;
-  top: 200px;
-}
-
-.movie-detail {
-  width: 50%;
-  height: 450px;
-  border: 1px solid green;
-  margin: 0 auto;
-  position: relative;
-  bottom: 150px;
-}
-
-h5 {
-  opacity: 0.6;
-}
-
-.information {
-  margin-top: 40px;
-}
-
-.dates-list {
-  width: 100%;
-  height: 400px;
-  border: 1px solid orange;
-}
-
-.viewing {
-  cursor: pointer;
-  height: 5em;
-  width: 10em;
-  border: solid orange;
-  margin: 2px;
-  float: left;
-}
-
-.viewing:hover {
-  background: rgba(255, 255, 255, 0.308);
-}
-.boka {
-  width: 100px;
-  position: relative;
-  left: 1300px;
-  bottom: 180px;
-  border: 1px solid #333;
-  border-radius: 15px;
-  padding: 2px 10px 2px 10px;
-  text-align: center;
-}
-
-.boka:hover {
-  opacity: 0.5;
-  cursor: pointer;
 }
 </style>

@@ -5,8 +5,6 @@ import Details from './views/Details.vue'
 import Homepage from './views/Homepage.vue'
 import Contact from './views/tempContact.vue'
 import Biograf from './views/tempCinema.vue'
-import NewBooking1 from './views/NewBooking1.vue'
-import NewBooking2 from './views/NewBooking2.vue'
 
 const routes = [
   {
@@ -35,20 +33,7 @@ const routes = [
     name: 'Biograf',
     path: '/biograf',
     component: Biograf
-  },
-  {
-    name: 'Bokning',
-    path: '/bokning',
-    component: NewBooking1,
-    props: true
-  },
-  {
-    name: 'Bokning2',
-    path: '/bokning/:id',
-    component: NewBooking2,
-    props: true
   }
-
 
 ]
 

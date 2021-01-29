@@ -9,8 +9,7 @@ public class Booking {
     private String id;
     private Customer customer;
     private Viewing viewing;
-    private int nrOfSeats;
-    private int price;
+    private int tickets;
 
     public Booking(){}
 
@@ -38,20 +37,12 @@ public class Booking {
         this.viewing = viewing;
     }
 
-    public int getNrOfSeats() {
-        return nrOfSeats;
+    public int getTickets() {
+        return tickets;
     }
 
-    public void setNrOfSeats(int nrOfSeats) {
-        this.nrOfSeats = nrOfSeats;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
     }
 
 
@@ -61,8 +52,7 @@ public class Booking {
                 "id='" + id + '\'' +
                 ", customer=" + customer +
                 ", viewing=" + viewing +
-                ", tickets=" + nrOfSeats +
-                ", price=" + price +
+                ", tickets=" + tickets +
                 '}';
     }
 }

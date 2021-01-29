@@ -13,16 +13,16 @@ export default {
   name: "App",
   components: { Navbar },
   created() {
-    this.$store.dispatch("fetchMovie")
-    this.$store.dispatch("fetchViewings")
-    this.$store.dispatch("whoAmI")
-    this.$store.dispatch("fetchScreens")
-    this.$store.dispatch("fetchBookings")
+    this.$store.dispatch("fetchMovie");
+    this.$store.dispatch("fetchViewings");
+    this.$store.dispatch("fetchMyBookings");
+
   },
 };
 </script>
 
 <style scoped>
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap'); */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .rootElement {
@@ -34,6 +34,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   box-sizing: border-box;
-  background: #0f0f0f;
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="rootElement">
     <h1>Aktuella Filmer</h1>
-    <div class="container">
     <div class="movie-list" v-for="item of movie" :key="item.id">
       <router-link :to="'/movieshow/details/' + item.id">
         <div class="movie-details">
@@ -25,30 +24,41 @@ export default {
 </script>
 
 <style scoped>
-
-.container {
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  width: 95vw;
-  height: 95vh;
+.movie-list {
+  padding: 10px;
+  float: left;
 }
-
 select:focus {
   outline: none;
 }
 
-h1, h3 {
-  color: orange;
-  }
-
+.movie-details {
+  height: 260px;
+  width: 200px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding: 1px;
+  text-decoration: none;
+  overflow: hidden;
+}
 a {
+  color: inherit;
   text-decoration: inherit;
 }
 
-img {
-  width: 200px;
-  margin: 2em 2em 1em 2em;
+.movie-details,
+img,
+h3,
+p,
+a {
+  background-color: whitesmoke;
 }
 
+img {
+  max-width: 150px;
+  max-height: 100px;
+}
+img {
+  max-width: 300px;
+}
 </style>

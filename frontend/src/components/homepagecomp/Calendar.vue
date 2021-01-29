@@ -79,6 +79,7 @@ export default {
   },
   mounted() {
     this.setDates()
+    console.log("Mounted...")
   }
 };
 </script>
@@ -101,7 +102,7 @@ h5 {
 h1,
 h3,
 h5 {
-  color: rgb(216, 137, 63);
+  color: black;
 }
 
 .container {

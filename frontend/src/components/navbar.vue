@@ -8,13 +8,14 @@
       <router-link to="/films">Filmer</router-link>
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
-      <p class="helloUser" v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
-      <button v-on:click="!isLoggedIn ? toggleLoginPage() : logout()">
+      <button @click="toggleLogin">
+        <p v-if="getCurrentUserName">Hej, {{ getCurrentUserName }}  </p>
         <i class="fas fa-user-alt"></i>
         </button>
-      <div v-if="showLogin && !isLoggedIn" class="login">
-        <Login @close="toggleLoginPage"> </Login>
+      <div v-if="showLogin && !getCurrentUserName" class="login">
+        <Login @close="toggleLogin"> </Login>
       </div>
+      <div v-if="showMember">Member pages dropdown..</div>
     </nav>
   </div>
 </template>
@@ -26,27 +27,19 @@ export default {
   components: { Login },
   data() {
     return {
-      showLogin: false
+      showLogin: false,
+      showMember: false,
     };
   },
   computed: {
     getCurrentUserName() {
-      return this.isLoggedIn ? this.$store.state.currentUser.name : ""
-    },
-    isLoggedIn() {
-      return this.$store.state.currentUser != null
+      return this.$store.state.currentUser.name
     }
   },
   methods: {
-    toggleLoginPage() {
+    toggleLogin() {
       this.showLogin = !this.showLogin;
-      console.log("Show login: ", this.showLogin)
     },
-    logout() {
-      fetch('/api/logout')
-      this.$store.commit('setCurrentUser', null)
-      console.log(this.getCurrentUserName)
-    }
   },
 };
 </script>
@@ -77,13 +70,12 @@ a:hover {
 
 nav {
   padding: 35px;
-  height: 30px;
+  height: 20px;
   text-align: center;
   border-bottom: 2px solid rgb(99, 96, 96);
   box-shadow: 1px 3px 3px grey;
   background-color: rgb(54, 41, 41);
   padding-left: 170px;
-  
 }
 .logoBox {
   float: left;
@@ -95,19 +87,11 @@ nav {
   padding-bottom: 20px;
 }
 
-.helloUser {
-  float: right;
-  position: absolute;
-  right: 4em;
-}
-
 button {
   border: none;
   background: none;
   cursor: pointer;
   float: right;
-  right: 2em;
-  position: absolute;
 }
 
 button:focus{
