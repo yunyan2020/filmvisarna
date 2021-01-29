@@ -110,7 +110,7 @@ const actions = {
     }
   },
   async addBooking(store, booking) { 
-    let newBooking = await fetch('/api/bookings', {
+    let newBooking = await fetch('/rest/bookings', {
       method: 'POST',
       body: JSON.stringify(booking)
     })

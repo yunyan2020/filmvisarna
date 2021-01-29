@@ -57,7 +57,7 @@ export default {
     addBookingInfo() {
       if(this.isLoggedIn) {
       this.mustLogin = ""
-      this.$store.state.commit('setBookingCustomer', this.customer)
+      this.$store.commit('setBookingCustomer', this.customer)
       this.completeBooking()
       }
       else {
