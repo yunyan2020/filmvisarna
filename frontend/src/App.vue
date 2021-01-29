@@ -15,6 +15,8 @@ export default {
   created() {
     this.$store.dispatch("fetchMovie");
     this.$store.dispatch("fetchViewings");
+    this.$store.dispatch("fetchMyBookings");
+
   },
 };
 </script>

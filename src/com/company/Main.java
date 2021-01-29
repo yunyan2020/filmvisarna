@@ -16,6 +16,8 @@ public class Main {
         // start collection database
         app.enableCollections("database/temp/db/awesome.db");
 
+        new ShowMyBookings(app);
+
 
         // Endpoints to fetch data from database
 

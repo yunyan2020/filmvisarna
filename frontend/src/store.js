@@ -6,6 +6,7 @@ const state = {
   allViewings: [],
   loggedIn: false,
   currentUser: {},
+  myBookings:[],
 }
 
 //mutates state
@@ -30,6 +31,9 @@ const mutations = {
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
     console.log("User name: ", state.currentUser.name)
+  },
+  setMyBookings(state, myBookings) {
+    state.myBookings = myBookings
   }
 
 }
@@ -58,6 +62,18 @@ const actions = {
     list = await list.json()
 
     store.commit('setViewings', list)
+  },
+
+  async fetchMyBookings(store) {
+    let list = await fetch('/rest/bookings')
+    list = await list.json()
+    let currentUserBookings = list.filter((booking) => {
+      if (booking.customer.email === state.currentUser.email) {
+        return myBookings  
+      }             
+    })
+    console.log('currentUserBookings', currentUserBookings);
+    store.commit('setMyBookings', currentUserBookings)
   },
 
   // Actions to ADD/POST info to database
