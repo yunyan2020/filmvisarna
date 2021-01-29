@@ -30,14 +30,28 @@ const mutations = {
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
   },
+  setCurrentUserBooking(state, booking) { 
+    state.currentUser.booking = booking  // Test
+  },
+  setBookingCustomer(state, customer) { 
+    state.booking.customer = customer
+  },
+  setBookingViewing(state, viewing) { 
+    state.booking.viewing = viewing
+  },
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
   },
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
   },
+
   setMyBookings(state, myBookings) {
     state.myBookings = myBookings
+  },
+  setAllBookings(state, booking) { 
+    state.allBookings.push(booking)
+
   }
 }
 
@@ -104,6 +118,7 @@ const actions = {
       console.warn("Inte inloggad")
     }
   },
+
   async fetchMyBookings(store) {
     let list = await fetch('/rest/bookings')
     list = await list.json()
@@ -116,6 +131,21 @@ const actions = {
     })
     console.log('currentUserBookings', currentUserBookings);
     store.commit('setMyBookings', currentUserBookings)
+
+  async addBooking(store, booking) { 
+    let newBooking = await fetch('/rest/bookings', {
+      method: 'POST',
+      body: JSON.stringify(booking)
+    })
+    try {
+      newBooking = await newBooking.json()
+      console.log(newBooking)
+      /*store.commit('setCurrentUserBooking', newBooking) // Test
+      store.dispatch('fetchBookings') // Test*/
+    } catch { 
+      console.warn("Booking failed")
+    }
+
   }
 
 

@@ -12,9 +12,11 @@
         Filmvisarna <br />
         Box 829<br />
         211 20 Malmö<br />
-        Sverige<br />
+        Sverige<br />https://css-tricks.com/css-only-carousel/
         Org.nr: 42051-5555
       </p>
+      <p><b> Vi som har jobbat med vår projekt är:</b></p>
+      <p> Denise,Yunyan,Hanan,Ermin,Edvin och Tobias:)</p>
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ export default {};
 
 <style scoped>
 .title {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 .content {
   padding-top: 50px;
