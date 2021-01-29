@@ -1,7 +1,7 @@
 
 <template>
   <div class="rootElement">
-    <Navbar />
+    <Navbar/>
     <router-view />
   </div>
 </template>

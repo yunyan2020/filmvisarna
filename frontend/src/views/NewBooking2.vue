@@ -18,7 +18,7 @@
       <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
-      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      <button class="avsluta">Avsluta</button>
       </router-link>
     </div>
   </div>
@@ -65,16 +65,17 @@ export default {
         this.mustLogin = "Du måste logga in för att fortsätta"
       }
     },
-    resetBookingInfo() {
-      this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
-    },
     completeBooking() {
       let booking = this.$store.state.booking
       this.$store.dispatch('addBooking', booking)
     }
+  },
+  unmounted() {
+          this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
+      console.log(this.$store.booking)
   }
 }
 </script>
