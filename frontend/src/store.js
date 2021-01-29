@@ -29,6 +29,9 @@ const mutations = {
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
   },
+  setCurrentUserBooking(state, booking) { 
+    state.currentUser.booking = booking  // Test
+  },
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
   },
@@ -98,6 +101,20 @@ const actions = {
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Inte inloggad")
+    }
+  },
+  async addBooking(store, booking) { 
+    let newBooking = await fetch('/api/bookings', {
+      method: 'POST',
+      body: JSON.stringify(booking)
+    })
+    try {
+      newBooking = await newBooking.json()
+      console.log(newBooking)
+      store.commit('setCurrentUserBooking', newBooking) // Test
+      store.dispatch('fetchBookings') // Test
+    } catch { 
+      console.warn("Booking failed")
     }
   }
 

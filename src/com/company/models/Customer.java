@@ -14,7 +14,7 @@ public class Customer {
     private String email;
     private String password;
     private String name;
-    private List <Booking> bookings;
+    private Booking booking;
 
     public Customer() {}
 
@@ -42,12 +42,12 @@ public class Customer {
         this.name = name;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public String getId() {
@@ -66,7 +66,7 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", bookings=" + bookings +
+                ", booking=" + booking +
                 '}';
     }
 }

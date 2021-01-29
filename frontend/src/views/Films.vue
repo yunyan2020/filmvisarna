@@ -2,13 +2,14 @@
   <div class="rootElement">
     <h1>Aktuella Filmer</h1>
     <div class="container">
-    <div class="movie-list" v-for="item of movie" :key="item.id">
-      <router-link :to="'/movieshow/details/' + item.id">
-        <div class="movie-details">
-          <img :src="item.poster" alt="" />
-          <h3 class="movie-name">{{ item.title }}</h3>
-        </div>
-      </router-link>
+      <div class="movie-list" v-for="item of movie" :key="item.id">
+        <router-link :to="'/movieshow/details/' + item.id">
+          <div class="movie-details">
+            <img :src="item.poster" alt="" />
+            <h3 class="movie-name">{{ item.title }}</h3>
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +26,6 @@ export default {
 </script>
 
 <style scoped>
-
 .container {
   text-align: center;
   display: flex;
@@ -38,9 +38,10 @@ select:focus {
   outline: none;
 }
 
-h1, h3 {
+h1,
+h3 {
   color: orange;
-  }
+}
 
 a {
   text-decoration: inherit;
@@ -50,5 +51,4 @@ img {
   width: 200px;
   margin: 2em 2em 1em 2em;
 }
-
 </style>
