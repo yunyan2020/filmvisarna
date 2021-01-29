@@ -7,7 +7,7 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { price: 0, nrOfSeats: 0, seats: [] }
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 }
 }
 
 //mutates state
