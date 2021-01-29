@@ -107,9 +107,11 @@ const actions = {
   async fetchMyBookings(store) {
     let list = await fetch('/rest/bookings')
     list = await list.json()
+    console.log('bookings', list);
+    console.log('currentUser.email', state.currentUser.email);
     let currentUserBookings = list.filter((booking) => {
       if (booking.customer.email === state.currentUser.email) {
-        return myBookings
+        return booking
       }
     })
     console.log('currentUserBookings', currentUserBookings);

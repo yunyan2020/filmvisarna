@@ -1,7 +1,7 @@
 <template>
   <div class="container">    
-   <!-- <Carousel />   -->
-   <MyBookings />
+   <!-- <Carousel />   -->    
+    <MyBookings />
     <Movies />
     <TopMovies />
     <Calendar />

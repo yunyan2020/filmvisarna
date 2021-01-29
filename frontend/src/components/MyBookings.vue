@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="bookings-list">
-      <div v-for="booking in MyBookings" :key="booking.id" class="booking">
+      <div v-for="booking in myBookings" :key="booking.id" class="booking">
         <h6>
           {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
           {{ booking.viewing.time }} | {{ booking.viewing.screen }}
@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     myBookings() {
-      return this.$store.state.MyBookings;
+      return this.$store.state.myBookings;
     },
   },
 };
