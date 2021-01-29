@@ -32,6 +32,12 @@ const mutations = {
   setCurrentUserBooking(state, booking) { 
     state.currentUser.booking = booking  // Test
   },
+  setBookingCustomer(state, customer) { 
+    state.booking.customer = customer
+  },
+  setBookingViewing(state, viewing) { 
+    state.booking.viewing = viewing
+  },
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
   },

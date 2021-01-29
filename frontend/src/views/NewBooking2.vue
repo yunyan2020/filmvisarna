@@ -15,7 +15,8 @@
       </div>
     </div>
     <div class="submit-exit">
-      <button class="vidare">Vidare</button>
+      <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
+      <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
       <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
       </router-link>
@@ -26,10 +27,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      mustLogin: ""
+    }
+  },
   props: ['id'],
   computed: {
+    customer() {
+      return this.$store.state.currentUser
+    },
     viewing() {
-    return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
+    return this.$store.state.booking.viewing
     },
     price() {
       return this.$store.state.booking.price
@@ -39,12 +48,31 @@ export default {
     },
     screen() {
       return this.$store.state.screens.filter((s) => s.name === this.viewing.screen)[0]
+    },
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
     }
   },
   methods: {
-  resetBookingInfo() {
+    addBookingInfo() {
+      if(this.isLoggedIn) {
+      this.mustLogin = ""
+      this.$store.state.commit('setBookingCustomer', this.customer)
+      this.completeBooking()
+      }
+      else {
+        this.mustLogin = "Du måste logga in för att fortsätta"
+      }
+    },
+    resetBookingInfo() {
+      this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
       this.$store.commit('setBookingPrice', 0)
       this.$store.commit('setNrOfSeats', 0)
+    },
+    completeBooking() {
+      let booking = this.$store.state.booking
+      this.$store.dispatch('addBooking', booking)
     }
   }
 }
@@ -139,6 +167,11 @@ h1 p {
   height: 40px;
   margin-bottom: 15px;
   font-size: 20px;
+}
+
+.error {
+  color: crimson;
+  margin-bottom: 0.5em;
 }
 
 </style>
