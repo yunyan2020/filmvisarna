@@ -4,6 +4,7 @@
       <label>
         E-MAIL:
         <input v-model="email" type="email" required />
+        <div v-if="tempError" class="error">{{ tempError }}</div>
       </label>
       <label>
         NAMN:
@@ -17,9 +18,12 @@
       <label>
         BEKRÄFTA LÖSENORD:
         <input v-model="validatePassword" type="password" required />
-        <div v-if="passwordValidation" class="error">{{ passwordValidation }}</div>
+        <div v-if="passwordValidation" class="error">
+          {{ passwordValidation }}
+        </div>
+        <p v-if="userSaved" class="saved">{{ userSaved }}</p>
       </label>
-      <button>SPARA</button>
+      <button v-if="!userSaved">SPARA</button>
     </form>
   </div>
 </template>
@@ -28,28 +32,49 @@
 export default {
   data() {
     return {
-      email: '',
-      name: '',
-      password: '',
-      validatePassword: '',
-      passwordLength: '',
-      passwordValidation: ''
-    }
+      email: "",
+      name: "",
+      password: "",
+      validatePassword: "",
+      passwordLength: "",
+      passwordValidation: "",
+      tempError: "",
+      userSaved: "",
+    };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
+    },
   },
   methods: {
-    handleSubmit() {
-      this.passwordChecks()
-      console.log(this.passwordChecks())
+    async handleSubmit() {
+      if (this.passwordChecks()) {
+        const credentials = {
+          email: this.email,
+          password: this.password,
+          name: this.name,
+        };
+        await this.$store.dispatch("register", credentials);
+        if(!this.$store.state.currentUser) {
+        this.tempError = "Email adressen finns redan registrerad"
+        }
+      }
     },
     passwordChecks() {
-      this.passwordLength = this.password.length < 6 ? 'Ditt lösenord måste innehålla minst 6 tecken' : ''
-      this.passwordValidation = this.password === this.validatePassword ? '' : 'Dina lösenord matchar inte'
+      this.passwordLength =
+        this.password.length < 6
+          ? "Ditt lösenord måste innehålla minst 6 tecken"
+          : "";
+      this.passwordValidation =
+        this.password === this.validatePassword
+          ? ""
+          : "Dina lösenord matchar inte";
 
-      // If password length is over 6 and it matches password validation, passwordChecks() returns true
-      return !this.passwordLength && !this.passwordValidation ? true : false
-    }
-
-  }
+      // If password length is over 6 and it matches password validation, passwordChecks() returns true, else false
+      return !this.passwordLength && !this.passwordValidation ? true : false;
+    },
+  },
 };
 </script>
 
@@ -66,7 +91,7 @@ form {
   padding: 2em;
   position: relative;
   top: 20em;
-  left: 5em;
+  left: 30em;
   float: left;
 }
 
@@ -80,7 +105,7 @@ input {
 
 button {
   padding: 0.5em;
-  color: rgba(128, 128, 128, 0.719); 
+  color: rgba(128, 128, 128, 0.719);
   cursor: pointer;
   border-radius: 5px;
   border: none;
@@ -91,5 +116,11 @@ button {
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+}
+
+.saved {
+  color: rgb(125, 207, 173);
+  margin-top: 1em;
+  font-size: 20px;
 }
 </style>

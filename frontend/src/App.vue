@@ -1,50 +1,39 @@
 
 <template>
   <div class="rootElement">
-    <button @click="toggleLogin">Login</button>
-    <div v-if="showLogin" class="login">
-      <Login @close="toggleLogin"> </Login>
-    </div>
-
-    <div v-if="showMember">Member pages dropdown..</div>
+    <Navbar />
     <router-view />
   </div>
 </template>
 
 <script>
-import Login from "./components/Login.vue";
+import Navbar from "./components/navbar.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      showLogin: false,
-      showMember: false,
-    };
-  },
-  components: { Login },
-  methods: {
-    toggleLogin() {
-      this.showLogin = !this.showLogin
-    },
-  },
-    created() {
-    this.$store.dispatch("fetchMovie");
+  components: { Navbar },
+  created() {
+    this.$store.dispatch("fetchMovie")
+    this.$store.dispatch("fetchViewings")
+    this.$store.dispatch("whoAmI")
+    this.$store.dispatch("fetchScreens")
+    this.$store.dispatch("fetchBookings")
   },
 };
 </script>
 
 <style scoped>
-.rootElement,
-.login {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.rootElement {
   height: 100%;
   width: 100%;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  box-sizing: border-box;
+  background: #0f0f0f;
 }
 </style>
-
-
