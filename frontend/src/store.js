@@ -54,7 +54,7 @@ const actions = {
   async fetchBookings(store) { 
     let list = await fetch('/rest/bookings')
     list = await list.json()
-    console.log(list)
+
     store.commit('setBookings', list)
   },
   async fetchScreens(store) { 

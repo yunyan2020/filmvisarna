@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="submit-exit">
-      <button class="vidare">Vidare</button>
+      <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
       <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
