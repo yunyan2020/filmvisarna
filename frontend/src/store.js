@@ -43,9 +43,6 @@ const mutations = {
   },
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
-  },
-  setAllBookings(state, booking) { 
-    state.allBookings.push(booking)
   }
 }
 
@@ -54,7 +51,7 @@ const actions = {
   async fetchBookings(store) { 
     let list = await fetch('/rest/bookings')
     list = await list.json()
-    console.log(list)
+
     store.commit('setBookings', list)
   },
   async fetchScreens(store) { 
@@ -83,7 +80,6 @@ const actions = {
     try {
       customer = await customer.json()
       console.log(customer)
-      
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Fel uppgifter")
@@ -120,11 +116,13 @@ const actions = {
     try {
       newBooking = await newBooking.json()
       console.log(newBooking)
-      /*store.commit('setCurrentUserBooking', newBooking) // Test
-      store.dispatch('fetchBookings') // Test*/
+      store.commit('setCurrentUserBooking', newBooking) // Test
+      store.dispatch('fetchBookings') // Test
     } catch { 
       console.warn("Booking failed")
+
     }
+
   }
 
 
