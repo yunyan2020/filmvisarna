@@ -80,7 +80,6 @@ const actions = {
     try {
       customer = await customer.json()
       console.log(customer)
-      
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Fel uppgifter")
