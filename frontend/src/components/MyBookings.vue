@@ -1,12 +1,14 @@
 <template>
   <div class="container">
     <div class="bookings-list">
-      <div v-for="booking in myBookings" :key="booking.id" class="booking">
-        <h6>
-          {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-          {{ booking.viewing.time }} | {{ booking.viewing.screen }}
-        </h6>
-      </div>
+      <div v-if = "isMybookings" >
+        <div v-for="booking in myBookings" :key="booking.id" class="booking">
+          <h6>
+            {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
+            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }}
+          </h6>
+        </div>
+      </div>  
     </div>
   </div>
 </template>
@@ -14,14 +16,18 @@
 <script>
 export default {
   props: ["id"],
-  data() {
+  data(){
     return {
-      email: "",
-    };
+      isMyBookings:false
+    }
   },
   computed: {
     myBookings() {
-      return this.$store.state.myBookings;
+      if (this.$store.state.myBookings){
+        this.isMyBookings=true;
+        return this.$store.state.myBookings;
+      }
+      else {this.isMyBookings=false}      
     },
   },
 };

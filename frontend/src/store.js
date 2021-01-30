@@ -122,16 +122,20 @@ const actions = {
   async fetchMyBookings(store) {
     let list = await fetch('/rest/bookings')
     list = await list.json()
+    let currentUserBookings =  [];
     console.log('bookings', list);
-    console.log('currentUser.email', state.currentUser.email);
-    let currentUserBookings = list.filter((booking) => {
-      if (booking.customer.email === state.currentUser.email) {
-        return booking
-      }
-    })
+    
+    if(state.currentUser && state.currentUser.email) {
+        currentUserBookings = list.filter((booking) => {
+        if (booking.customer.email === state.currentUser.email) {
+          return booking
+        }
+      })     
+    }    
+    
     console.log('currentUserBookings', currentUserBookings);
     store.commit('setMyBookings', currentUserBookings)
-
+  },
   async addBooking(store, booking) { 
     let newBooking = await fetch('/rest/bookings', {
       method: 'POST',
