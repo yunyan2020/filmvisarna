@@ -6,9 +6,6 @@
     <div class="secondDiv">
       <Salon />
     </div>
-    <div class="thirdDiv">
-      <h1>Third Div</h1>
-    </div>
 
     <div class="seats"></div>
   </div>
@@ -36,17 +33,14 @@ export default {
 .firstDiv {
   margin: 50px;
 }
-.secondDiv,
-.thirdDiv {
+.secondDiv {
   background-color: rgb(173, 173, 173);
   border: 1px solid grey;
-  margin: 19px;
-  width: 900px;
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+
   border-radius: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  float: left;
 }
 
 h1 {
