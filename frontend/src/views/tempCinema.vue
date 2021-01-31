@@ -4,7 +4,7 @@
       <h1>Biograf</h1>
     </div>
     <div class="secondDiv">
-      <Salon/>
+      <Salon />
     </div>
     <div class="thirdDiv">
       <h1>Third Div</h1>
@@ -18,7 +18,7 @@
 //import Seats from "../components/b2comps/Seats.vue";
 import Salon from "../components/Cinema/Salon.vue";
 export default {
-  components:{Salon}
+  components: { Salon },
 };
 </script>
 
@@ -39,7 +39,7 @@ export default {
 .secondDiv,
 .thirdDiv {
   background-color: rgb(173, 173, 173);
-  border: 1px solid grey; 
+  border: 1px solid grey;
   margin: 19px;
   width: 900px;
   border-radius: 5px;
