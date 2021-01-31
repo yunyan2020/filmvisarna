@@ -81,12 +81,6 @@ export default {
       this.$store.commit('setBookingPrice', 0)
       this.$store.commit('setNrOfSeats', 0)
     }
-  },
-    unmounted() {
-          this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
   }
 }
 </script>
