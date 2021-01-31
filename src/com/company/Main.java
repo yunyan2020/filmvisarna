@@ -78,7 +78,7 @@ public class Main {
             booking.setCustomer(customer);
 
             collection("Booking").save(booking);
-            res.send("Post ok");
+            res.json(booking);
         });
 
 

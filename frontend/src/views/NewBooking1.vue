@@ -24,8 +24,9 @@
       <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
         <button class="vidare" v-on:click="addBookingInfo()"><h1>Vidare</h1></button>
       </router-link>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <router-link :to="'/'">
-      <button class="avsluta" v-on:click="resetBookingInfo()"><h3>Avsluta</h3></button>
+      <button class="avsluta"><h3>Avsluta</h3></button>
       </router-link>
     </div>
   </div>
@@ -42,7 +43,8 @@ export default {
         Adult: { label: "Vuxen", price: 125, counter: 0 },
         Child: { label: "Barn", price: 75, counter: 0 },
         Senior: { label: "Pensionär", price: 100, counter: 0 }
-      }
+      },
+      errorMessage: ""
     }
   },
   computed: {
@@ -64,9 +66,14 @@ export default {
       ageGroup.counter -= 1;   
     },
     addBookingInfo() {
+      if(this.counter){
       this.$store.commit('setBookingPrice', this.sum)
       this.$store.commit('setNrOfSeats', this.counter)
       this.$store.commit('setBookingViewing', this.viewing)
+      }
+      else {
+        this.errorMessage = "Vänligen välj en biljett för att gå vidare"
+      }
     },
     resetBookingInfo() {
       this.$store.commit('setBookingCustomer', null)
@@ -74,6 +81,12 @@ export default {
       this.$store.commit('setBookingPrice', 0)
       this.$store.commit('setNrOfSeats', 0)
     }
+  },
+    unmounted() {
+          this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
   }
 }
 </script>
@@ -186,5 +199,10 @@ export default {
   .avsluta {
     width: 100px;
   }
+
+  .error {
+  color: crimson;
+  margin-bottom: 0.5em;
+}
   
 </style>

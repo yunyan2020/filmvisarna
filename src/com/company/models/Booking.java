@@ -7,8 +7,8 @@ public class Booking {
 
     @Id
     private String id;
-    private transient Customer customer;
-    private transient Viewing viewing;
+    private Customer customer;
+    private Viewing viewing;
     private int nrOfSeats;
     private int price;
 
