@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit">
         <label>
           E-MAIL:
-          <input v-model="email" type="email" required />
+          <input v-model="email" type="email" required maxlength="100"/>
         </label>
         <label>
           LÖSENORD:
@@ -82,7 +82,7 @@ export default {
   top: 20em;
   right: 30em;
   float: right;
-  position: relative;
+  position: absolute;
 }
 
 input {

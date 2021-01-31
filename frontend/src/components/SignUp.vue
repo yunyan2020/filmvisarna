@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="container">
     <form @submit.prevent="handleSubmit">
       <label>
         E-MAIL:
-        <input v-model="email" type="email" required />
+        <input v-model="email" type="email" maxlength="100" required />
         <div v-if="tempError" class="error">{{ tempError }}</div>
       </label>
       <label>
         NAMN:
-        <input v-model="name" type="text" required />
+        <input v-model="name" type="text" required maxlength="25"/>
       </label>
       <label>
         LÖSENORD:
@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style scoped>
-form {
+.container {
   background: white;
   color: rgba(128, 128, 128, 0.719);
   max-width: 35em;
@@ -89,10 +89,10 @@ form {
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  position: relative;
   top: 20em;
-  left: 30em;
-  float: left;
+  right: 30em;
+  float: right;
+  position: inherit;
 }
 
 input {
@@ -101,6 +101,10 @@ input {
   margin: 2em;
   margin-bottom: 0.5em;
   width: 80%;
+}
+
+p {
+  margin: 2em;
 }
 
 button {
@@ -116,11 +120,5 @@ button {
 .error {
   color: crimson;
   margin-bottom: 0.5em;
-}
-
-.saved {
-  color: rgb(125, 207, 173);
-  margin-top: 1em;
-  font-size: 20px;
 }
 </style>
