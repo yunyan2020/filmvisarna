@@ -70,6 +70,7 @@ export default {
       this.$store.commit('setBookingPrice', this.sum)
       this.$store.commit('setNrOfSeats', this.counter)
       this.$store.commit('setBookingViewing', this.viewing)
+      console.log(this.$store.state.booking.viewing)
       }
       else {
         this.errorMessage = "Vänligen välj en biljett för att gå vidare"
@@ -81,12 +82,6 @@ export default {
       this.$store.commit('setBookingPrice', 0)
       this.$store.commit('setNrOfSeats', 0)
     }
-  },
-    unmounted() {
-          this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
   }
 }
 </script>
