@@ -67,6 +67,12 @@ export default {
   background: rgba(0, 0, 0, 0.342);
   width: 100%;
   height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "overlap";
 }
 
 .container {
@@ -79,10 +85,7 @@ export default {
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  top: 20em;
-  right: 30em;
-  float: right;
-  position: absolute;
+  grid-area: overlap;
 }
 
 input {

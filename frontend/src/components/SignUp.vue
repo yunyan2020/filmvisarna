@@ -89,10 +89,7 @@ export default {
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  top: 20em;
-  right: 30em;
-  float: right;
-  position: inherit;
+  grid-area: overlap;
 }
 
 input {
