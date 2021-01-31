@@ -80,10 +80,10 @@ export default {
 
 <style scoped>
 .container {
-  background: white;
-  color: rgba(128, 128, 128, 0.719);
+  background: rgb(12, 12, 12);
+  color: orange;
   max-width: 35em;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   border-radius: 10px;
@@ -97,7 +97,9 @@ export default {
 
 input {
   border: none;
-  border-bottom: solid rgba(128, 128, 128, 0.24) 1px;
+  color: white;
+  background:  rgb(12, 12, 12);
+  border-bottom: solid orange 1px;
   margin: 2em;
   margin-bottom: 0.5em;
   width: 80%;
@@ -108,13 +110,19 @@ p {
 }
 
 button {
-  padding: 0.5em;
-  color: rgba(128, 128, 128, 0.719);
+  padding: 0.8em;
+  color: white;
+  font-weight: 700;
+  background: rgba(255, 166, 0, 0.644);
   cursor: pointer;
   border-radius: 5px;
   border: none;
   user-select: none;
   letter-spacing: 1px;
+}
+
+button:hover{
+  background: rgb(255, 166, 0);
 }
 
 .error {
