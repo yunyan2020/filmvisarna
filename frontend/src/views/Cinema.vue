@@ -11,7 +11,7 @@
 
 <script>
 //import Seats from "../components/b2comps/Seats.vue";
-import Salon from "../components/Cinema/Salon.vue";
+import Salon from "../components/Salon.vue";
 export default {
   components: { Salon },
 };

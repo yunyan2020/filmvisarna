@@ -4,7 +4,7 @@ import Films from './views/Films.vue'
 import Details from './views/Details.vue'
 import Homepage from './views/Homepage.vue'
 import Contact from './views/tempContact.vue'
-import Salon from './components/Salon.vue'
+import Cinema from './views/Cinema.vue'
 import NewBooking1 from './views/NewBooking1.vue'
 import NewBooking2 from './views/NewBooking2.vue'
 import MyBookings from './views/MyBookings.vue'
@@ -34,9 +34,9 @@ const routes = [
     component: Contact
   },
   {
-    name: 'Salon',
+    name: 'Cinema',
     path: '/biograf',
-    component: Salon
+    component: Cinema
   },
   {
     name: 'Bokning',
