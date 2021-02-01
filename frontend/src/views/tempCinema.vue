@@ -1,8 +1,6 @@
 <template>
   <div class="background">
-    <div class="firstDiv">
-      <h1>Biograf</h1>
-    </div>
+    <div class="titel"><h1>Biograf</h1></div>
     <div class="secondDiv">
       <Salon />
     </div>
@@ -22,32 +20,38 @@ export default {
 <style scoped>
 .background {
   height: 100vh;
-  margin: 10px;
+  margin: 5px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  position: relative;
   border-radius: 5px;
   background-image: url("../assets/Cinema-Background.png");
   background-size: cover;
 }
+.titel {
+  width: 28%;
+  border-radius: 5px;
 
-.firstDiv {
-  margin: 50px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+h1 {
+  color: white;
+  font-size: 5em;
+}
+
 .secondDiv {
   background-color: rgba(34, 34, 34, 0.829);
-  margin: auto;
-  margin-top: 150px;
   width: 50%;
-  border-radius: 5px;
-}
-
-h1 {
-  color: rgb(36, 36, 36);
-  margin: 10px;
-  font-family: sans-serif;
-}
-* {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  /*margin: auto;
+  width: 50%;
+  border-radius: 5px;*/
 }
 
 .scene {
