@@ -21,7 +21,7 @@ export default {
 .background {
   height: 100vh;
   margin: 5px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   border-radius: 5px;
   background-image: url("../assets/Cinema-Background.png");
   background-size: cover;
