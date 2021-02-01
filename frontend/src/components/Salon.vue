@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="dropdown"> 
-    <label for="selectSalon">Välja Salongen</label>   
+    <label for="selectSalon">Välj Salong</label>   
     <select v-model="selected" name="salons" @change="onChange($event)" class="select-css" >      
       <option
         v-for="option in options"
@@ -27,14 +27,13 @@
       <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
       </div>
-      <p>{{ x[0].name }} har {{ x[0].seats }} plats</p>
+      <p>{{ x[0].name }} har {{ x[0].seats }} platser</p>
     </div>
-    <div v-else>
-     
+    <div v-else> 
       <div v-for="row in y[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
       </div>
-      <p>{{ y[0].name }} har {{ y[0].seats }} plats</p>      
+      <p>{{ y[0].name }} har {{ y[0].seats }} platser</p>      
     </div>
   </div>
 </div>
