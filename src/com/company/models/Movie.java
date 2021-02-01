@@ -27,6 +27,7 @@ public class Movie {
     private String poster;
     private String youtubeTrailers;
     private int score;
+    private String movieScene;
 
     public String getId() {
         return id;
@@ -148,4 +149,11 @@ public class Movie {
         this.score = score;
     }
 
+    public String getMovieScene() {
+        return movieScene;
+    }
+
+    public void setMovieScene(String movieScene) {
+        this.movieScene = movieScene;
+    }
 }
