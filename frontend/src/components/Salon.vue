@@ -27,6 +27,12 @@
       </select>
     </div>
     <div v-if="isBigSalon">
+      <h1><u>Stora Salongen</u></h1>
+    </div>
+    <div v-else>
+      <h1><u>Lilla Salongen</u></h1>
+    </div>
+    <div v-if="isBigSalon">
       <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
       </div>
