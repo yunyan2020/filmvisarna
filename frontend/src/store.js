@@ -44,13 +44,20 @@ const mutations = {
   setBookingPrice(state, bookingPrice) { 
     state.booking.price = bookingPrice
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 68e3d26... store.js addition/s
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
   },
   setAllBookings(state, booking) { 
     state.allBookings.push(booking)
+<<<<<<< HEAD
   },
+=======
+  },  
+>>>>>>> 68e3d26... store.js addition/s
   setSeatAmount(state, amount) {
     state.booking.seats = amount;
   },
