@@ -9,11 +9,14 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <p class="helloUser" v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
-      <button v-on:click="!isLoggedIn ? toggleLoginPage() : logout()">
+      <button v-on:click="!isLoggedIn ? toggleLoginPage() : memberPage()">
         <i class="fas fa-user-alt"></i>
         </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLoginPage"> </Login>
+      </div>
+      <div v-if="showMemberPage && isLoggedIn" class="memberPage">
+        <MemberPage @close="toggleLoginPage"> </MemberPage>
       </div>
     </nav>
   </div>
@@ -21,12 +24,14 @@
 
 <script>
 import Login from "./Login.vue";
+import MemberPage from "./memberPage.vue"
 
 export default {
-  components: { Login },
+  components: { Login ,MemberPage},
   data() {
     return {
-      showLogin: false
+      showLogin: false,
+      showMemberPage:false
     };
   },
   computed: {
@@ -41,6 +46,9 @@ export default {
     toggleLoginPage() {
       this.showLogin = !this.showLogin;
       console.log("Show login: ", this.showLogin)
+    },
+    memberPage() {
+      this.showMemberPage = !this.showMemberPage;   
     },
     logout() {
       fetch('/api/logout')
