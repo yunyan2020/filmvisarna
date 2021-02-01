@@ -5,8 +5,8 @@
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
           <h6>
-            {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }}
+           Price: {{ booking.price }}
+            Seats: {{ booking.nrOfSeats }}
           </h6>
         </div>
       </div>
@@ -15,21 +15,22 @@
 
 <script>
 export default {
+    /*  LÄGG TILL I TEMPLATE ISTÄLLET FÖR booking.price
+             {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
+            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }} */
   props: ["id"],
   computed: {
     myBookings() {
-        return this.$store.state.myBookings != null   
+      return this.$store.state.myBookings
     },
   },
-};
+  created() {
+    this.$store.dispatch("fetchMyBookings")
+  }
+}
 </script >
 
 <style scoped>
-
-h3 {
-  color: orange;
-  font-weight: 500;
-}
 
 </style>
 
