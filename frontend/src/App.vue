@@ -17,6 +17,8 @@ export default {
     this.$store.dispatch("fetchViewings")
     this.$store.dispatch("whoAmI")
     this.$store.dispatch("fetchScreens")
+    this.$store.dispatch("fetchBookings")
+    this.$store.dispatch("fetchMyBookings")
   },
 };
 </script>

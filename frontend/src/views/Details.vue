@@ -79,18 +79,9 @@ export default {
       let tday = new Date();
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
     },
-    resetBookingInfo() {
-      //Sets all current booking info to null, to start a new booking
-      this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
-    }
   },
   mounted() {
     this.setTodaysDate();
-    this.resetBookingInfo()
-    console.log(this.$store.state.booking)
   },
 };
 </script>

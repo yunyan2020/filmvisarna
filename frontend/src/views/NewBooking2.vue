@@ -69,6 +69,13 @@ export default {
       let booking = this.$store.state.booking
       this.$store.dispatch('addBooking', booking)
     }
+  },
+  unmounted() {
+          this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
+      console.log(this.$store.booking)
   }
 }
 </script>

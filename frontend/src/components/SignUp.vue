@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
+  <div>
     <form @submit.prevent="handleSubmit">
       <label>
         E-MAIL:
-        <input v-model="email" type="email" maxlength="100" required />
+        <input v-model="email" type="email" required />
         <div v-if="tempError" class="error">{{ tempError }}</div>
       </label>
       <label>
         NAMN:
-        <input v-model="name" type="text" required maxlength="25"/>
+        <input v-model="name" type="text" required />
       </label>
       <label>
         LÖSENORD:
@@ -79,38 +79,33 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  background: rgb(12, 12, 12);
-  color: orange;
+form {
+  background: white;
+  color: rgba(128, 128, 128, 0.719);
   max-width: 35em;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 2px;
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  grid-area: overlap;
+  position: relative;
+  top: 20em;
+  left: 30em;
+  float: left;
 }
 
 input {
   border: none;
-  color: white;
-  background:  rgb(12, 12, 12);
-  border-bottom: solid orange 1px;
+  border-bottom: solid rgba(128, 128, 128, 0.24) 1px;
   margin: 2em;
   margin-bottom: 0.5em;
   width: 80%;
 }
 
-p {
-  margin: 2em;
-}
-
 button {
-  padding: 0.8em;
-  color: white;
-  font-weight: 700;
-  background: rgba(255, 166, 0, 0.644);
+  padding: 0.5em;
+  color: rgba(128, 128, 128, 0.719);
   cursor: pointer;
   border-radius: 5px;
   border: none;
@@ -118,12 +113,14 @@ button {
   letter-spacing: 1px;
 }
 
-button:hover{
-  background: rgb(255, 166, 0);
-}
-
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+}
+
+.saved {
+  color: rgb(125, 207, 173);
+  margin-top: 1em;
+  font-size: 20px;
 }
 </style>

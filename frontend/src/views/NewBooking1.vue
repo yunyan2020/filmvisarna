@@ -11,22 +11,20 @@
         <h6>{{ ageGroup.price }}kr/st</h6>
       </div>
       <div class="buttons">
-        <button @click="remove(ageGroup.price, ageGroup)">-</button>
+        <button @click="remove(ageGroup.price, ageGroup), counter--">-</button>
         <h1>{{ ageGroup.counter }}</h1>
-        <button @click="add(ageGroup.price, ageGroup)">+</button>
+        <button @click="add(ageGroup.price, ageGroup), counter++">+</button>
       </div>
     </div>
     <div class="totalt-pris">
       <h6>totalt:</h6>
       <div class="price-pill"><h4>{{ sum }}kr/st</h4></div>
-      <p>{{ counter }}</p>
     </div>
     <div class="submit-exit">
-      <div v-if="counter">
       <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
         <button class="vidare" v-on:click="addBookingInfo()"><h1>Vidare</h1></button>
       </router-link>
-      </div>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
       <router-link :to="'/'">
       <button class="avsluta"><h3>Avsluta</h3></button>
       </router-link>
@@ -59,20 +57,36 @@ export default {
       this.sum += price
       console.log(ageGroup)
       ageGroup.counter += 1
-      this.counter += 1
     },
     remove(price, ageGroup) {
-      if(ageGroup.counter > 0 && this.counter > 0) {
-        this.sum -= price
-      ageGroup.counter -= 1; 
-      this.counter -= 1;
-      }  
+      if(ageGroup.counter == 0) {
+        return
+      }
+      this.sum -= price
+      ageGroup.counter -= 1;   
     },
     addBookingInfo() {
+      if(this.counter){
       this.$store.commit('setBookingPrice', this.sum)
       this.$store.commit('setNrOfSeats', this.counter)
-      this.$store.commit('setBookingViewing', this.viewing) 
+      this.$store.commit('setBookingViewing', this.viewing)
+      }
+      else {
+        this.errorMessage = "Vänligen välj en biljett för att gå vidare"
+      }
+    },
+    resetBookingInfo() {
+      this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
     }
+  },
+    unmounted() {
+          this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
   }
 }
 </script>
