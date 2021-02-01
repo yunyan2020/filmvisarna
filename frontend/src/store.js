@@ -1,55 +1,130 @@
+import { registerRuntimeCompiler } from 'vue'
 import { createStore } from 'vuex'
 
 const state = {
   movie: [],
-  customers: []
+  allViewings: [],
+  currentUser: null,
+  screens: [],
+  loggedIn: false,
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
+  allBookings: []
 }
 
 //mutates state
 const mutations = {
+  setBookings(state, list) { 
+    state.allBookings = list
+  },
   setMovie(state, list) {
     state.movie = list
   },
-  setCustomers(state, list) {
-    state.customers = list
+  setScreens(state, list) {
+    state.screens = list
   },
-  addCustomer(state, customer) {
-    state.customers.push(customer)
+  setViewings(state, list) {
+    state.allViewings = list
+    console.log("Viewings list saved")
+  },
+  setCurrentUser(state, currentUser) {
+    state.currentUser = currentUser
+  },
+  setCurrentUserBooking(state, booking) { 
+    state.currentUser.booking = booking  // Test
+  },
+  setBookingCustomer(state, customer) { 
+    state.booking.customer = customer
+  },
+  setBookingViewing(state, viewing) { 
+    state.booking.viewing = viewing
+  },
+  setBookingPrice(state, bookingPrice) { 
+    state.booking.price = bookingPrice
+  },
+  setNrOfSeats(state, nrOfSeats) { 
+    state.booking.nrOfSeats = nrOfSeats
   }
-
 }
 
 //async network requests
 const actions = {
+  async fetchBookings(store) { 
+    let list = await fetch('/rest/bookings')
+    list = await list.json()
+
+    store.commit('setBookings', list)
+  },
+  async fetchScreens(store) { 
+    let list = await fetch('/rest/screens')
+    list = await list.json()
+
+    store.commit('setScreens', list)
+  },
   async fetchMovie(store) {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
-    //debug list
-    console.log(list);
 
     store.commit('setMovie', list)
   },
-  async fetchCustomerDetails(store) {
-    let list = await fetch('/rest/customerdetails')
+  async fetchViewings(store) {
+    let list = await fetch('/rest/viewings')
     list = await list.json()
 
-    console.log(list);
-
-    store.commit('setCustomers', list)
+    store.commit('setViewings', list)
   },
-  async addCustomer(store, customer) {
-
-    let response = await fetch('/rest/customerdetails', {
+  async login(store, credentials) { 
+    let customer = await fetch('/api/login', {
       method: 'POST',
-      body: JSON.stringify(customer)
+      body: JSON.stringify(credentials)
     })
+    try {
+      customer = await customer.json()
+      console.log(customer)
+      store.commit('setCurrentUser', customer)
+    } catch { 
+      console.warn("Fel uppgifter")
+    }
+  },
+  async register(store, credentials) { 
+    let customer = await fetch('/api/register', {
+      method: 'POST',
+      body: JSON.stringify(credentials)
+    })
+    try {
+      customer = await customer.json()
+      console.log(customer)
+      store.commit('setCurrentUser', customer)
+    } catch { 
+      console.warn("Fel uppgifter")
+    }
+  },
+  async whoAmI(store) { 
+    let customer = await fetch('/api/whoami') 
+    try {
+      customer = await customer.json()
+      console.log(customer)
+      store.commit('setCurrentUser', customer)
+    } catch { 
+      console.warn("Inte inloggad")
+    }
+  },
+  async addBooking(store, booking) { 
+    let newBooking = await fetch('/rest/bookings', {
+      method: 'POST',
+      body: JSON.stringify(booking)
+    })
+    try {
+      newBooking = await newBooking.json()
+      console.log(newBooking)
+      store.commit('setCurrentUserBooking', newBooking) // Test
+      store.dispatch('fetchBookings') // Test
+    } catch { 
+      console.warn("Booking failed")
 
-    let savedCustomer = await response.json()
+    }
 
-    console.log("Saved customer: ", savedCustomer)
-
-    store.commit('addCustomer', savedCustomer)
   }
+
 
 }
 

@@ -3,6 +3,8 @@ package com.company.models;
 import express.database.Model;
 import org.dizitart.no2.objects.Id;
 
+import java.util.List;
+
 @Model
 public class Customer {
 
@@ -13,7 +15,7 @@ public class Customer {
     private String password;
     private String name;
 
-    Customer() {}
+    public Customer() {}
 
     public String getEmail() {
         return email;
@@ -39,10 +41,20 @@ public class Customer {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
     @Override
     public String toString() {
         return "Customer{" +
-                "email='" + email + '\'' +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 '}';

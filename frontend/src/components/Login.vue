@@ -1,7 +1,7 @@
 <template>
   <div class="backdrop" @click.self="closeBox">
     <div class="container">
-      <form @submit.prevent>
+      <form @submit.prevent="handleSubmit">
         <label>
           E-MAIL:
           <input v-model="email" type="email" required />
@@ -9,6 +9,7 @@
         <label>
           LÖSENORD:
           <input v-model="password" type="password" required />
+          <div v-if="tempError" class="error">{{ tempError }}</div>
         </label>
         <div class="buttonContainer">
           <button>LOGGA IN</button>
@@ -31,7 +32,13 @@ export default {
       email: "",
       password: "",
       showSignUp: false,
+      tempError: ""
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.currentUser != null
+    },
   },
   methods: {
     closeBox() {
@@ -41,6 +48,16 @@ export default {
     toggleSignUp() {
       this.showSignUp = !this.showSignUp;
     },
+    async handleSubmit() {
+      const credentials = {
+        email : this.email,
+        password: this.password
+      }
+      await this.$store.dispatch('login', credentials)
+      if(!this.isLoggedIn) {
+        this.tempError = "Fel uppgifter"
+      }
+    }
   },
 };
 </script>
@@ -62,10 +79,10 @@ export default {
   border-radius: 10px;
   margin: auto;
   padding: 2em;
-  position: relative;
   top: 20em;
-  right: 5em;
+  right: 30em;
   float: right;
+  position: relative;
 }
 
 input {
@@ -88,5 +105,10 @@ button {
   border: none;
   user-select: none;
   letter-spacing: 1px;
+}
+
+.error {
+  color: crimson;
+  margin-bottom: 0.5em;
 }
 </style>
