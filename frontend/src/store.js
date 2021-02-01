@@ -8,7 +8,8 @@ const state = {
   screens: [],
   loggedIn: false,
   booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
-  allBookings: []
+  allBookings: [],
+  myBookings: []
 }
 
 //mutates state
@@ -43,6 +44,14 @@ const mutations = {
   },
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
+  },
+
+  setMyBookings(state, myBookings) {
+    state.myBookings = myBookings
+  },
+  setAllBookings(state, booking) { 
+    state.allBookings.push(booking)
+
   }
 }
 
@@ -107,6 +116,24 @@ const actions = {
     } catch { 
       console.warn("Inte inloggad")
     }
+  },
+
+  async fetchMyBookings(store) {
+    let list = await fetch('/rest/bookings')
+    list = await list.json()
+    let currentUserBookings =  [];
+    console.log('bookings', list);
+    
+    if(state.currentUser && state.currentUser.email) {
+        currentUserBookings = list.filter((booking) => {
+        if (booking.customer.email === state.currentUser.email) {
+          return booking
+        }
+      })     
+    }    
+    
+    console.log('currentUserBookings', currentUserBookings);
+    store.commit('setMyBookings', currentUserBookings)
   },
   async addBooking(store, booking) { 
     let newBooking = await fetch('/rest/bookings', {

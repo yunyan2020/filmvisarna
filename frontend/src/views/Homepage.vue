@@ -1,6 +1,7 @@
 <template>
   <div class="container">    
-   <!-- <Carousel />   -->
+   <!-- <Carousel />   -->    
+    <MyBookings />
     <Movies />
     <TopMovies />
     <Calendar />
@@ -13,9 +14,11 @@ import Movies from "../components/homepagecomp/Movies.vue";
 import TopMovies from "../components/homepagecomp/TopMovies.vue";
 import Calendar from "../components/homepagecomp/Calendar.vue";
 //import Carousel from "../components/homepagecomp/Carousel.vue";
+import MyBookings from "../components/MyBookings.vue";
 
 export default {
-  components: { Movies,TopMovies, Calendar },
+  //components: { Movies,TopMovies, Calendar },
+  components: { MyBookings,Movies,TopMovies, Calendar },
 };
 </script>
 

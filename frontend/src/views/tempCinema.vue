@@ -7,9 +7,17 @@
       <Salon/>
     </div>
     <div class="thirdDiv">
-      <h1>Third Div</h1>
+        <div class="openhrs-details"> 
+        <h2>Öppettider</h2>
+        <h5>Måndag: 15:00 - 23:30</h5>
+        <h5>Tisdag: 15:00 - 23:30</h5>
+        <h5>Onsdag: 15:00 - 23:30</h5>
+        <h5>Torsdag: 15:00 - 23:30</h5>
+        <h5>Fredag: 15:00 - 02:00</h5>
+        <h5>Lördag: 15:00 - 02:00</h5>
+        <h5>Söndag: 15:00 - 02:00</h5>
+      </div>
     </div>
-
     <div class="seats"></div>
   </div>
 </template>
@@ -101,4 +109,5 @@ h1 {
   box-shadow: 0 5px 5px #333;
   /* clip-path: polygon(0 0, 100% 0%, 91% 100%, 10% 100%); */
 }
+
 </style>
