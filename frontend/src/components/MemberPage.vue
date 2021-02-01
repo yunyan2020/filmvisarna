@@ -2,9 +2,9 @@
   <div class="backdrop" @click.self="closeBox">   
     <div class="container">     
       <div class="sub-menu">  
-        <div v-for="(item,i) in dropDowns" :key = "i" class = "menu-item">
-          <a :href= "item.link" >{{item.title}}</a>
-        </div>  
+        <router-link :to="{name:'MyBookings'}" @click="toggleMyBookings" >Mina beställningar</router-link>
+        <router-link :to="{name:'MyProfile'}" @click="toggleProfile">Mina uppgifter</router-link>
+        <router-link @click="logout">Logga ut</router-link> 
       </div>
     </div>  
     <MyBookings v-if="isLoggedIn && hasBookings && showMyBookings"/>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import MyBookings from "./MyBookings.vue";
-import MyProfile from "./MyProfile.vue";
+import MyBookings from "../views/MyBookings.vue";
+import MyProfile from "../views/MyProfile.vue";
 
 export default {
   components: { MyBookings,MyProfile },
@@ -25,9 +25,9 @@ export default {
       hasBookings:false,
       showMyProfile:false,
       dropDowns: [
-        { title: "Mina beställningar", link:'#MyBookings' },
-        { title: "Mina uppgifter", link:'#MyProfile' },
-        { title: "Logga ut", link:'#logout' },
+        { title: "Mina beställningar", link:'/MyBookings' },
+        { title: "Mina uppgifter", link:'/MyProfile' },
+        { title: "Logga ut", link:'/logout' },
       ],
     };
   },
