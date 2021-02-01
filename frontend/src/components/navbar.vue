@@ -49,11 +49,6 @@ export default {
     toggleMemberPage() {
       this.showMemberPage = !this.showMemberPage;
     },
-    logout() {
-      fetch("/api/logout");
-      this.$store.commit("setCurrentUser", null);
-      console.log(this.getCurrentUserName);
-    },
   },
 };
 </script>
