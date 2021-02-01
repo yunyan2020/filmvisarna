@@ -21,25 +21,23 @@ export default {
 
 <style scoped>
 .background {
-  background-color: #adadad;
-  border: 1px solid grey;
   height: 100vh;
   margin: 10px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   position: relative;
   border-radius: 5px;
+  background-image: url("../assets/Cinema-Background.png");
+  background-size: cover;
 }
 
 .firstDiv {
   margin: 50px;
 }
 .secondDiv {
-  background-color: rgb(173, 173, 173);
-  border: 1px solid grey;
+  background-color: rgba(34, 34, 34, 0.829);
   margin: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   width: 50%;
-
   border-radius: 5px;
 }
 
