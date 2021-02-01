@@ -9,11 +9,14 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <p class="helloUser" v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
-      <button v-on:click="!isLoggedIn ? toggleLoginPage() : logout()">
+      <button v-on:click="!isLoggedIn ? toggleLoginPage() : memberPage()">
         <i class="fas fa-user-alt"></i>
-        </button>
+      </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLoginPage"> </Login>
+      </div>
+      <div v-if="showMemberPage && isLoggedIn" class="memberPage">
+        <MemberPage @close="toggleLoginPage"> </MemberPage>
       </div>
     </nav>
   </div>
@@ -21,38 +24,44 @@
 
 <script>
 import Login from "./Login.vue";
-
+import MemberPage from "./MemberPage.vue";
 export default {
-  components: { Login },
+  components: { Login, MemberPage },
   data() {
     return {
-      showLogin: false
+      showLogin: false,
+      showMemberPage: false,
     };
   },
   computed: {
     getCurrentUserName() {
-      return this.isLoggedIn ? this.$store.state.currentUser.name : ""
+      return this.isLoggedIn ? this.$store.state.currentUser.name : "";
     },
     isLoggedIn() {
-      return this.$store.state.currentUser != null
-    }
+      return this.$store.state.currentUser != null;
+    },
   },
   methods: {
     toggleLoginPage() {
       this.showLogin = !this.showLogin;
-      console.log("Show login: ", this.showLogin)
+      console.log("Show login: ", this.showLogin);
+    },
+    memberPage() {
+      this.showMemberPage = !this.showMemberPage;
     },
     logout() {
-      fetch('/api/logout')
-      this.$store.commit('setCurrentUser', null)
-      console.log(this.getCurrentUserName)
-    }
+      fetch("/api/logout");
+      this.$store.commit("setCurrentUser", null);
+      console.log(this.getCurrentUserName);
+    },
   },
 };
 </script>
 
 <style scoped>
-a, p, button {
+a,
+p,
+button {
   text-decoration: none;
   font-weight: bald;
   padding: 10px;
@@ -83,7 +92,6 @@ nav {
   box-shadow: 1px 3px 3px grey;
   background-color: rgb(54, 41, 41);
   padding-left: 170px;
-  
 }
 .logoBox {
   float: left;
@@ -110,14 +118,14 @@ button {
   position: absolute;
 }
 
-button:focus{
+button:focus {
   outline: none;
   color: rgba(121, 122, 131, 0.281);
- }
+}
 
- button:hover {
-   color: rgba(121, 122, 131, 0.281);
- }
+button:hover {
+  color: rgba(121, 122, 131, 0.281);
+}
 
 .fa-user-alt {
   font-size: 30px;

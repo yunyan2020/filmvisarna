@@ -1,6 +1,6 @@
 <template>
   <div class="container">    
-   <!-- <Carousel />   -->
+   <!-- <Carousel />   --> 
     <Movies />
     <TopMovies />
     <Calendar />
