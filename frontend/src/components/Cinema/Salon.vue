@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="dropdown">
-      <label for="selectSalon">Välj Salong</label>
+      <label for="selectSalon">Välj Salong </label>
       <select
         v-model="selected"
         name="salons"
@@ -19,13 +19,13 @@
       </select>
     </div>
     <div v-if="isBigSalon">
-      <h3><u>Stora Salongen</u></h3>
+      <h1><u>Stora Salongen</u></h1>
     </div>
     <div v-else>
-      <h3><u>Lilla Salongen</u></h3>
+      <h1><u>Lilla Salongen</u></h1>
     </div>
     <div class="scene">
-      <div class="display">scene</div>
+      <div class="display"></div>
     </div>
     <div class="seats">
       <div v-if="isBigSalon">
@@ -109,12 +109,12 @@ export default {
 }
 
 .seat:hover {
-  background: rgba(51, 51, 51, 0.534);
+  background: rgba(197, 54, 54, 0.534);
 }
 .dropdown {
   padding-top: 5px;
   padding-bottom: 5px;
-  color: rgb(133, 82, 17);
+  color: rgb(221, 221, 221);
   margin: 8px;
   font-size: 20px;
   font-family: sans-serif;
@@ -132,14 +132,14 @@ export default {
   width: 10%;
   max-width: 100%; /* useful when width is set to anything other than 100% */
   box-sizing: border-box;
-  margin: 0;
-  border: 1px solid #aaa;
+  margin-right: 5px;
+  border: 2px solid rgb(93, 93, 93);
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-  border-radius: 0.5em;
+  border-radius: 4px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-color: rgb(112, 97, 97);
+  background-color: rgb(54, 41, 41);
   background-position: right 0.7em top 50%, 0 0;
   /* icon size, then gradient */
   background-size: 0.65em auto, 100%;
@@ -148,12 +148,15 @@ export default {
 u {
   padding-top: 5px;
   padding-bottom: 5px;
+  color: rgb(124, 124, 114);
   text-decoration: none;
   border-bottom: 3px solid #000;
 }
 p {
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 20px;
+  color: rgb(124, 124, 114);
 }
 
 .display {
