@@ -2,13 +2,16 @@
   <div class="backdrop" @click.self="closeBox">   
     <div class="container">     
       <div class="sub-menu">  
-        <router-link :to="{name:'MyBookings'}" @click="toggleMyBookings" >Mina beställningar</router-link>
-        <router-link :to="{name:'MyProfile'}" @click="toggleProfile">Mina uppgifter</router-link>
-        <router-link @click="logout">Logga ut</router-link> 
+        <div v-for="(item,i) in dropDowns" :key = "i" class = "menu-item">
+          <router-link :to="item.link">
+            <p class="routerLinks">{{item.title}}</p>
+            </router-link>
+        </div>
+      <div v-on:click="logout()">
+        <p>Logga ut</p>
+      </div>  
       </div>
     </div>  
-    <MyBookings v-if="isLoggedIn && hasBookings && showMyBookings"/>
-    <MyProfile  v-if="isLoggedIn && showMyProfile"/>
   </div>
 </template>
 
@@ -20,14 +23,12 @@ export default {
   components: { MyBookings,MyProfile },
   data() {
     return {
-      isLoggedIn: false,
       showMyBookings:false,
-      hasBookings:false,
       showMyProfile:false,
+      showMemberPage: false,
       dropDowns: [
-        { title: "Mina beställningar", link:'/MyBookings' },
-        { title: "Mina uppgifter", link:'/MyProfile' },
-        { title: "Logga ut", link:'/logout' },
+        { title: "Mina beställningar", link:'MyBookings' },
+        { title: "Mina uppgifter", link:'MyProfile' }
       ],
     };
   },
@@ -41,7 +42,7 @@ export default {
   },  
   methods: {
     closeBox() {
-      this.$emit("close");
+      this.$emit("close")
       this.showMemberPage = false;
     },
     toggleMyBookings() {     
@@ -54,7 +55,8 @@ export default {
     logout() {
       fetch('/api/logout')
       this.$store.commit('setCurrentUser', null)
-      //console.log(this.getCurrentUserName)
+      this.showMyBookings = false
+      this.$router.push('/')
     },    
   },
 };
@@ -62,27 +64,40 @@ export default {
 
 <style scoped>
 .backdrop {
-  background: rgba(0, 0, 0, 0.342);
+  background: rgba(0, 0, 0, 0.384);
   width: 100%;
   height: 100%;
 }
 
-.container{
-  background: white;
-  color: rgba(128, 128, 128, 0.719);
-  max-width: 35em;
-  font-size: 10px;
-  font-weight: 700;
+.container {
+  background: rgb(34, 34, 34);
+  color: orange;
+  max-width: 20em;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 2px;
   border-radius: 10px;
-  margin: auto;
-  padding: 2em;
-  line-height:31px;
-  text-align: left;
-  top: 5em;
-  right: 3em;
+  margin-top: 8em;
+  margin-right: 2em;
+  padding: 1em;
+  top: 2em;
+  right: 2em;
   float: right;
-  position:relative ;
+}
+
+p {
+  margin: 1em;
+  cursor: pointer; 
+}
+
+p:hover {
+  color:rgba(255, 166, 0, 0.664);
+}
+
+a, .routerLinks {
+  text-decoration: none;
+  color: orange;
+  text-decoration-line: none;
 }
 
 

@@ -4,7 +4,7 @@ import Films from './views/Films.vue'
 import Details from './views/Details.vue'
 import Homepage from './views/Homepage.vue'
 import Contact from './views/tempContact.vue'
-import Biograf from './views/tempCinema.vue'
+import Cinema from './views/Cinema.vue'
 import NewBooking1 from './views/NewBooking1.vue'
 import NewBooking2 from './views/NewBooking2.vue'
 import MyBookings from './views/MyBookings.vue'
@@ -34,9 +34,9 @@ const routes = [
     component: Contact
   },
   {
-    name: 'Biograf',
+    name: 'Cinema',
     path: '/biograf',
-    component: Biograf
+    component: Cinema
   },
   {
     name: 'Bokning',
@@ -49,18 +49,16 @@ const routes = [
     path: '/bokning/:id',
     component: NewBooking2,
     props: true
-  }, 
+  },
   {
     name: 'MyBookings',
     path: '/MyBookings',
-    component: MyBookings,
-    props: true
+    component: MyBookings
   },
   {
     name: 'MyProfile',
     path: '/MyProfile',
-    component: MyProfile,
-    props: true
+    component: MyProfile
   }
 ]
 
