@@ -8,8 +8,6 @@
       <div>Logga ut</div>  
       </div>
     </div>  
-    <MyBookings v-if="isLoggedIn && hasBookings && showMyBookings"/>
-    <MyProfile  v-if="isLoggedIn && showMyProfile"/>
   </div>
 </template>
 
@@ -23,6 +21,7 @@ export default {
     return {
       showMyBookings:false,
       showMyProfile:false,
+      showMemberPage: false,
       dropDowns: [
         { title: "Mina beställningar", link:'MyBookings' },
         { title: "Mina uppgifter", link:'MyProfile' }

@@ -9,14 +9,14 @@
       <router-link to="/biograf">Biograf</router-link>
       <router-link to="/contact">Kontakt</router-link>
       <p class="helloUser" v-if="isLoggedIn">Hej, {{ getCurrentUserName }}</p>
-      <button v-on:click="!isLoggedIn ? toggleLoginPage() : memberPage()">
+      <button v-on:click="!isLoggedIn ? toggleLoginPage() : toggleMemberPage()">
         <i class="fas fa-user-alt"></i>
       </button>
       <div v-if="showLogin && !isLoggedIn" class="login">
         <Login @close="toggleLoginPage"> </Login>
       </div>
       <div v-if="showMemberPage && isLoggedIn" class="memberPage">
-        <MemberPage/>
+        <MemberPage @close="toggleMemberPage"></MemberPage>
       </div>
     </nav>
   </div>
@@ -46,7 +46,7 @@ export default {
       this.showLogin = !this.showLogin;
       console.log("Show login: ", this.showLogin);
     },
-    memberPage() {
+    toggleMemberPage() {
       this.showMemberPage = !this.showMemberPage;
     },
     logout() {
@@ -76,14 +76,6 @@ a:hover {
   color: rgba(121, 122, 131, 0.281);
 }
 
-.login {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
 nav {
   padding: 35px;
   height: 30px;
@@ -93,6 +85,7 @@ nav {
   background-color: rgb(54, 41, 41);
   padding-left: 170px;
 }
+
 .logoBox {
   float: left;
   /*position: fixed;*/
@@ -130,4 +123,13 @@ button:hover {
 .fa-user-alt {
   font-size: 30px;
 }
+
+.login, .memberPage {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
 </style>
