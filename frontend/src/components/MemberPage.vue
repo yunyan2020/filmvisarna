@@ -13,16 +13,14 @@
 </template>
 
 <script>
-import MyBookings from "./MyBookings.vue";
-import MyProfile from "./MyProfile.vue";
+import MyBookings from "../views/MyBookings.vue";
+import MyProfile from "../views/MyProfile.vue";
 
 export default {
   components: { MyBookings,MyProfile },
   data() {
     return {
-      isLoggedIn: false,
       showMyBookings:false,
-      hasBookings:false,
       showMyProfile:false,
       dropDowns: [
         { title: "Mina beställningar", link:'#MyBookings' },
