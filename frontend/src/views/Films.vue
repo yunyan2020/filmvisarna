@@ -33,7 +33,6 @@
             <i class="fab fa-youtube"></i>
           </div>
         </div>
-        <i class="fas fa-caret-right"></i>
       </div>
     </div>
   </div>
@@ -51,66 +50,19 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-.container {
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  width: 95vw;
-  height: 95vh;
-=======
-/* .movie-list {
-  padding: 10px;
-  float: left;
->>>>>>> fe6c585... movie listing vue update
-}
-
-select:focus {
-  outline: none;
-}
-
-h1,
-h3 {
-  color: orange;
-}
-
-a {
-  text-decoration: inherit;
-}
-
-img {
-<<<<<<< HEAD
-  width: 200px;
-  margin: 2em 2em 1em 2em;
-=======
-  max-width: 150px;
-  max-height: 100px;
-}
-img {
-  max-width: 300px;
-} */
-
-.fa-caret-right {
-  margin: auto 0;
-  width: 30px;
-  font-size: 40px;
-  color: white;
-  pointer-events: auto;
-}
-
 .fade {
   opacity: 0.5;
 }
 
 .break {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .vertical-line {
   position: relative;
   top: 8px;
   width: 1px;
-  height: 240px;
+  height: 95%;
   background: rgba(255, 255, 255, 0.178);
   margin-right: 10px;
 }
@@ -131,33 +83,32 @@ img {
   padding: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 255px;
   grid-gap: 1em;
 }
 
 .movie {
-  /* border: 1px solid white; */
   border: 1px solid #333;
   display: flex;
   border-radius: 8px;
-  pointer-events: none;
   box-shadow: 0 0 10px 2px black;
 }
 
 .movie:hover {
   opacity: 0.7;
+  cursor: pointer;
 }
 
 .poster > img {
   width: 200px;
-  height: 250px;
+  height: 100%;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
   margin-right: 7px;
->>>>>>> fe6c585... movie listing vue update
 }
 
 .movie-details {
-  margin: 5px auto 0 5px;
+  margin: 5px auto 0 0;
 }
 
 .links {
