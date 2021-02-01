@@ -12,26 +12,26 @@
         <h6>skärm</h6>
       </div>
       <div class="seats">
-        <div v-for="row in screen.seatsPerRow" :key="row" class="row">
-          <div v-for="seat in row" :key="seat" class="seat"></div>
+        <div v-for="(row, rowNum) in screen.seatsPerRow" :key="rowNum" class="row">
+          <div v-for="(seat, i) in row" :key="i" :class="{ marked: checkSeat(rowNum, i)}" class="seat" @click="mark(rowNum, i)"></div>
         </div>
       </div>
     </div>
     <div class="submit-exit">
-<<<<<<< HEAD
-      <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
+      <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">  
+        <button class="vidare" v-on:click="addBookingInfo(), row(), seating()">Vidare</button>
+      </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
-      <button class="avsluta">Avsluta</button>
-=======
-      <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
+      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      </router-link>
+      <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
         <button class="vidare">Vidare</button>
       </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
         <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
->>>>>>> e90b52e... branch-feature: still under development
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -43,7 +43,8 @@ export default {
     return {
       mustLogin: "",
       marked: [],
-      seatCount: 0
+      seatCount: 0,
+      seatsDetails: { row: [], seats: [] }
     }
   },
   props: ['id'],
@@ -86,11 +87,10 @@ export default {
       let booking = this.$store.state.booking
       this.$store.dispatch('addBooking', booking)
     },
-    mark(row, i, list) {
+    mark(row, i) {
       console.log("index: " + i)
       console.log("row length: " + row)
-      console.log(list);
-
+      console.log(this.nrOfSeats);
       
       /* if(this.seatCount >= this.seatAmount) {
         return
@@ -104,9 +104,22 @@ export default {
       });
 
       if (index === -1) {
-        this.marked.push({ row, i });
+        if(this.seatCount >= this.nrOfSeats) {
+          return
+        } else {
+          this.marked.push({ row, i });
+          this.seatCount++
+          this.seatsDetails.row.push(row + 1)
+          this.seatsDetails.seats.push(i + 1)
+          console.log(this.seatsDetails)
+          console.log("seatCount: " + this.seatCount);
+        }
+        
       } else {
         this.marked.splice(index, 1);
+        this.seatsDetails.row.splice(index, 1)
+        this.seatsDetails.seats.splice(index, 1)
+        this.seatCount--
       }
 
       /* this.marked.push({row, i})
@@ -116,6 +129,12 @@ export default {
       return this.marked.some((markedSeat) => {
         return markedSeat.row === row && markedSeat.i === i
       })
+    },
+    row() {
+      this.$store.commit('setRow', this.seatsDetails.row)
+    },
+    seating() {
+      this.$store.commit('setSeat', this.seatsDetails.seats)
     }
   }
 }

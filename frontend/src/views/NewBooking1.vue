@@ -58,7 +58,6 @@ export default {
     add(price, ageGroup) {
       this.sum += price
       ageGroup.counter += 1
-<<<<<<< HEAD
       this.counter += 1
     },
     remove(price, ageGroup) {
@@ -67,7 +66,6 @@ export default {
       ageGroup.counter -= 1; 
       this.counter -= 1;
       }  
-=======
       this.counter++;
       console.log(ageGroup)
     },
@@ -78,14 +76,11 @@ export default {
       this.sum -= price
       ageGroup.counter -= 1; 
       this.counter--;  
->>>>>>> e90b52e... branch-feature: still under development
     },
     addBookingInfo() {
       this.$store.commit('setBookingPrice', this.sum)
       this.$store.commit('setNrOfSeats', this.counter)
-<<<<<<< HEAD
       this.$store.commit('setBookingViewing', this.viewing) 
-=======
       this.$store.commit('setBookingViewing', this.viewing)
     },
     resetBookingInfo() {
@@ -99,7 +94,6 @@ export default {
     },
     bookingDetails() {
       this.$store.commit('setBookingDetails', this.agePrice)
->>>>>>> e90b52e... branch-feature: still under development
     }
   }
 }
