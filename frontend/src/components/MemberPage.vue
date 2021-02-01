@@ -3,8 +3,9 @@
     <div class="container">     
       <div class="sub-menu">  
         <div v-for="(item,i) in dropDowns" :key = "i" class = "menu-item">
-          <a :href= "item.link" >{{item.title}}</a>
-        </div>  
+          <router-link :to="item.link">{{item.title}}</router-link>
+        </div>
+      <div>Logga ut</div>  
       </div>
     </div>  
     <MyBookings v-if="isLoggedIn && hasBookings && showMyBookings"/>
@@ -23,9 +24,8 @@ export default {
       showMyBookings:false,
       showMyProfile:false,
       dropDowns: [
-        { title: "Mina beställningar", link:'#MyBookings' },
-        { title: "Mina uppgifter", link:'#MyProfile' },
-        { title: "Logga ut", link:'#logout' },
+        { title: "Mina beställningar", link:'MyBookings' },
+        { title: "Mina uppgifter", link:'MyProfile' }
       ],
     };
   },

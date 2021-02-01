@@ -16,7 +16,7 @@
         <Login @close="toggleLoginPage"> </Login>
       </div>
       <div v-if="showMemberPage && isLoggedIn" class="memberPage">
-        <MemberPage @close="toggleLoginPage"> </MemberPage>
+        <MemberPage/>
       </div>
     </nav>
   </div>
