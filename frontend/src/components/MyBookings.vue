@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="bookings-list">
-      <div v-if = "isMybookings" >
+      <p>MyBooking page </p>
+      <div v-if = "hasMybookings" >
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
           <h6>
             {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
@@ -18,16 +19,16 @@ export default {
   props: ["id"],
   data(){
     return {
-      isMyBookings:false
+      hasMyBookings:false
     }
   },
   computed: {
     myBookings() {
       if (this.$store.state.myBookings){
-        this.isMyBookings=true;
+        this.hasMyBookings=true;
         return this.$store.state.myBookings;
       }
-      else {this.isMyBookings=false}      
+      else {this.hasMyBookings=false}      
     },
   },
 };
