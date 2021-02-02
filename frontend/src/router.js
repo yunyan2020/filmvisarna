@@ -67,8 +67,6 @@ const routes = [
     component: NewBooking3,
     props: true
   }
-
-
 ]
 
 export default createRouter({
