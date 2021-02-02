@@ -18,10 +18,10 @@
         </option>
       </select>
     </div>
-    <div v-if="isBigSalon">
+    <div class="salonTitel" v-if="isBigSalon">
       <h1><u>Stora Salongen</u></h1>
     </div>
-    <div v-else>
+    <div class="salonTitel" v-else>
       <h1><u>Lilla Salongen</u></h1>
     </div>
     <div class="scene">
@@ -141,18 +141,25 @@ export default {
   background-size: 0.65em auto, 100%;
 }
 
-u {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.salonTitel {
   color: rgb(124, 124, 114);
-  text-decoration: none;
-  border-bottom: 3px solid #000;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
+
 p {
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 20px;
   color: rgb(124, 124, 114);
+  position: absolute;
+  top: 90%;
+  left: 15%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .display {
