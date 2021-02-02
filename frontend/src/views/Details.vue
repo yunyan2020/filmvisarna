@@ -1,22 +1,22 @@
 <template>
   <div class="container">
-    <div class="scene-image">
+    <div class="scene-image" v-if="movie">
       <img :src="movie.movieScene" alt="" class="scene" />
     </div>
-    <div class="movie">
+    <div class="movie" v-if="movie">
       <div class="poster">
         <img :src="movie.poster" alt="" class="movie-poster" />
       </div>
-      <div class="movie-information">
+      <div class="movie-information" v-if="movie">
         <h1>{{ movie.title }}</h1>
         <h4>{{ movie.genre }}</h4>
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
       <button class="trailer-button" @click="viewTrailer()">Trailer <i class="far fa-play-circle"></i></button>
     </div>
-    <div class="movie-detail">
+    <div class="movie-detail" v-if="movie">
       <h3>{{ movie.plot }}</h3>
-      <div class="information">
+      <div class="information" v-if="movie">
         <h5>Regi:</h5>
         <h3>{{ movie.director }}</h3>
         <h5>Skådespelare:</h5>
@@ -99,10 +99,9 @@ export default {
       this.showTrailer = !this.showTrailer
     }
   },
-  mounted() {
+    mounted() {
     this.setTodaysDate();
     this.resetBookingInfo()
-    console.log(this.$store.state.booking)
   }
 };
 </script>

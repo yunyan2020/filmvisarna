@@ -12,7 +12,6 @@ const state = {
   allBookings: [],
   currentUser: {},
   bookingDetails: {},
-  booking: { price: 0, seats: 0 }, // seats: []
   bookedSeat: { row: [], seats: [] }
 }
 
@@ -82,6 +81,7 @@ const actions = {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
 
+    console.log(list)
     store.commit('setMovie', list)
   },
   async fetchViewings(store) {
