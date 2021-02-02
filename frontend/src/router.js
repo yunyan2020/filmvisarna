@@ -9,6 +9,7 @@ import NewBooking1 from './views/NewBooking1.vue'
 import NewBooking2 from './views/NewBooking2.vue'
 import MyBookings from './views/MyBookings.vue'
 import MyProfile from './views/MyProfile.vue'
+import NewBooking3 from './views/NewBooking3.vue'
 
 const routes = [
   {
@@ -59,6 +60,12 @@ const routes = [
     name: 'MyProfile',
     path: '/MyProfile',
     component: MyProfile
+  },
+  {  
+    name: 'Bokning3',
+    path: '/bokning3/:id',
+    component: NewBooking3,
+    props: true
   }
 
 

@@ -2,24 +2,36 @@
   <div class="container">
     <div class="booking-information">
       <h1>{{ viewing.movie }}</h1>
-      <p>{{ viewing.date }}  |  {{ viewing.time }}  |  {{ price }}SEK | {{ screen.name }}</p>
+      <h3>{{ viewing.date }} - {{ viewing.time }}</h3>
+      <h4>{{ viewing.screen }}</h4>
+      <p>{{ price }}kr</p>
+      <!-- <p>{{ viewing.date }} {{ viewing.time }} {{ price }}SEK</p> -->
     </div>
     <div class="selection">
       <div class="scene">
         <h6>skärm</h6>
       </div>
       <div class="seats">
-        <div v-for="row in screen.seatsPerRow" :key="row" class="row">
-          <div v-for="seat in row" :key="seat" class="seat"></div>
+        <div v-for="(row, rowNum) in screen.seatsPerRow" :key="rowNum" class="row">
+          <div v-for="(seat, i) in row" :key="i" :class="{ marked: checkSeat(rowNum, i)}" class="seat" @click="mark(rowNum, i)"></div>
         </div>
       </div>
     </div>
     <div class="submit-exit">
-      <button class="vidare" v-on:click="addBookingInfo()">Vidare</button>
+      <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">  
+        <button class="vidare" v-on:click="addBookingInfo(), row(), seating()">Vidare</button>
+      </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
-      <button class="avsluta">Avsluta</button>
+      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
       </router-link>
+      <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
+        <button class="vidare">Vidare</button>
+      </router-link>  
+      <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
+      <router-link :to="'/'">
+        <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -29,7 +41,10 @@
 export default {
   data() {
     return {
-      mustLogin: ""
+      mustLogin: "",
+      marked: [],
+      seatCount: 0,
+      seatsDetails: { row: [], seats: [] }
     }
   },
   props: ['id'],
@@ -48,6 +63,9 @@ export default {
     },
     screen() {
       return this.$store.state.screens.filter((s) => s.name === this.viewing.screen)[0]
+    },
+    seatAmount() {
+      return this.$store.state.booking.seats
     },
     isLoggedIn() {
       return this.$store.state.currentUser != null
@@ -68,12 +86,66 @@ export default {
     completeBooking() {
       let booking = this.$store.state.booking
       this.$store.dispatch('addBooking', booking)
+    },
+    mark(row, i) {
+      console.log("index: " + i)
+      console.log("row length: " + row)
+      console.log(this.nrOfSeats);
+      
+      /* if(this.seatCount >= this.seatAmount) {
+        return
+      } else {
+        this.marked.push({row, i})
+        this.seatCount++
+      } */
+      
+      let index = this.marked.findIndex((seat) => {
+        return seat.row === row && seat.i === i;
+      });
+
+      if (index === -1) {
+        if(this.seatCount >= this.nrOfSeats) {
+          return
+        } else {
+          this.marked.push({ row, i });
+          this.seatCount++
+          this.seatsDetails.row.push(row + 1)
+          this.seatsDetails.seats.push(i + 1)
+          console.log(this.seatsDetails)
+          console.log("seatCount: " + this.seatCount);
+        }
+        
+      } else {
+        this.marked.splice(index, 1);
+        this.seatsDetails.row.splice(index, 1)
+        this.seatsDetails.seats.splice(index, 1)
+        this.seatCount--
+      }
+
+      /* this.marked.push({row, i})
+      console.log(this.seatAmount); */
+    },
+    checkSeat(row, i) {
+      return this.marked.some((markedSeat) => {
+        return markedSeat.row === row && markedSeat.i === i
+      })
+    },
+    row() {
+      this.$store.commit('setRow', this.seatsDetails.row)
+    },
+    seating() {
+      this.$store.commit('setSeat', this.seatsDetails.seats)
     }
   }
 }
 </script>
 
 <style scoped>
+
+.marked {
+  background: #f7aa0393;
+}
+
 .container {
   width: 75%;
   height: 90vh;
@@ -88,6 +160,15 @@ h1 p {
 .booking-information {
   height: 15%;
   border: 1px solid yellow;
+  opacity: 0.5;
+  margin: 5px 0 0 10px;
+}
+
+.booking-information > h4{
+  padding: 2px 4px;
+  border-radius: 8px;
+  border: 1px solid whitesmoke;
+  display: inline-block;
 }
 
 .selection {
