@@ -19,7 +19,7 @@
     </div>
     <div class="submit-exit" v-if="viewing && screen">
       <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">  
-        <button class="vidare" v-on:click="addBookingInfo(), row(), seating()">Vidare</button>
+        <button class="vidare" v-on:click="addBookingInfo(), row(), seating(), closeComponent()">Vidare</button>
       </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
@@ -137,6 +137,9 @@ export default {
     },
     seating() {
       this.$store.commit('setSeat', this.seatsDetails.seats)
+    },
+    closeComponent() {
+      this.$emit("close2");
     }
   }
 }

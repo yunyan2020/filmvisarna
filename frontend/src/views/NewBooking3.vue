@@ -16,7 +16,7 @@
       <div></div> -->
     </div>
     <div class="breakline"></div>
-    <div class="booking-movie-details">
+    <div class="booking-movie-details" v-if="viewing">
       <!-- <h1>{{viewing.movie}}</h1>
       <h3>{{ movieDetails.runtime }}</h3>
       <h6></h6> -->
