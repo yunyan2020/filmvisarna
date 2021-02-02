@@ -12,7 +12,7 @@
         <h4>{{ movie.genre }}</h4>
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
-      <button class="trailer-button"> Trailer <i class="far fa-play-circle"></i> </button>
+      <button class="trailer-button" @click="viewTrailer()">Trailer <i class="far fa-play-circle"></i></button>
     </div>
     <div class="movie-detail">
       <h3>{{ movie.plot }}</h3>
@@ -35,6 +35,9 @@
         </router-link>
       </div>
     </div>
+    <div class="video-container" v-if="showTrailer">
+      <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
+    </div>
   </div>
 </template>
 
@@ -45,6 +48,7 @@ export default {
     return {
       times: [],
       today: "",
+      showTrailer: false
     };
   },
   computed: {
@@ -86,17 +90,33 @@ export default {
       this.$store.commit('setBookingViewing', null)
       this.$store.commit('setBookingPrice', 0)
       this.$store.commit('setNrOfSeats', 0)
+    },
+    viewTrailer() {
+      this.showTrailer = !this.showTrailer
     }
   },
   mounted() {
     this.setTodaysDate();
     this.resetBookingInfo()
     console.log(this.$store.state.booking)
-  },
+  }
 };
 </script>
 
 <style scoped>
+.video-container {
+  z-index: 10;
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  top: 800px;
+  margin: 0 auto;
+}
+
+.trailer {
+  width: 100%;
+  height: 100%;
+}
 /* .movie-head {
   margin: 5px;
   padding: 1em;
@@ -265,10 +285,9 @@ img {
 .trailer-button {
   position: relative;
   bottom: 20px;
-  left: 10px;
+  left: 150px;
   font-family: "Poppins", sans-serif;
   margin: auto 0;
-  margin-left: 270px;
   padding: 3px 30px;
   font-size: 20px;
   background: #0f0f0f;
@@ -343,5 +362,12 @@ h5 {
 .boka:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.video {
+  border: 1px solid purple;
+  width: 50%;
+  height:500px;
+  margin: 20px auto;
 }
 </style>
