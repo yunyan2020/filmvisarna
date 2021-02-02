@@ -7,7 +7,7 @@
             <p class="routerLinks">{{item.title}}</p>
             </router-link>
         </div>
-      <div v-on:click="logout()">
+      <div @click="logout()">
         <p>Logga ut</p>
       </div>  
       </div>

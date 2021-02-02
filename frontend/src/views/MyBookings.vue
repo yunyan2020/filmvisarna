@@ -1,16 +1,13 @@
-<template>
+<template>  
   <div class="container">
+    <h2>Mina beställningar </h2>
     <div class="bookings-list">
-      <p>MyBooking page </p>
-      <div v-if = "hasMybookings" >
-        <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h6>
-            {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }}
-          </h6>
-        </div>
-      </div>  
-    </div>
+      <div v-for="booking in myBookings" :key="booking.id" class="booking">
+        <h6>
+          {{ booking.nrOfSeats }} | {{ booking.price }} 
+        </h6>
+      </div>
+    </div>        
   </div>
 </template>
 
@@ -24,16 +21,26 @@ export default {
   },
   computed: {
     myBookings() {
-      if (this.$store.state.myBookings){
-        this.hasMyBookings=true;
-        return this.$store.state.myBookings;
-      }
-      else {this.hasMyBookings=false}      
-    },
-  },
-};
+       return this.$store.state.myBookings;
+    }    
+  }
+}  
 </script >
 
 <style scoped>
+.container {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 200px; 
+  display: flex;
+  margin: 10px;
+  padding: 1em;
+  left:50%;
+  top:20%;
+  border: 1px solid rgba(114, 112, 112, 0.521);
+}
+
 </style>
 
