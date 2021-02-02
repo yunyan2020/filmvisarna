@@ -10,7 +10,6 @@ const state = {
   booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
   myBookings: [],
   allBookings: [],
-  currentUser: {},
   bookingDetails: {},
   bookedSeat: { row: [], seats: [] }
 }
