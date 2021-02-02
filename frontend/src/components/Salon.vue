@@ -107,9 +107,6 @@ export default {
   padding: 10px;
 }
 
-.seat:hover {
-  background: rgba(197, 54, 54, 0.534);
-}
 .dropdown {
   padding-top: 5px;
   padding-bottom: 5px;

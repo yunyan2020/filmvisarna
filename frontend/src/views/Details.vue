@@ -105,7 +105,7 @@ export default {
 
 <style scoped>
 .video-container {
-  z-index: 10;
+  z-index: 5;
   width: 50%;
   height: 500px;
   position: absolute;

@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="titel"><h1>Biograf</h1></div>
+    <div class="titel"></div>
     <div class="secondDiv">
       <Salon />
     </div>
@@ -8,7 +8,6 @@
 </template>
 
 <script>
-//import Seats from "../components/b2comps/Seats.vue";
 import Salon from "../components/Salon.vue";
 export default {
   components: { Salon },
@@ -40,7 +39,7 @@ h1 {
 
 .secondDiv {
   background-color: rgba(34, 34, 34, 0.829);
-  width: 50%;
+  width: 60vw;
   margin: 0;
   padding: 0;
   position: absolute;
