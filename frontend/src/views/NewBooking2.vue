@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="booking-information">
+    <div class="booking-information" v-if="viewing && screen">
       <h1>{{ viewing.movie }}</h1>
       <h3>{{ viewing.date }} - {{ viewing.time }}</h3>
       <h4>{{ viewing.screen }}</h4>
@@ -11,19 +11,19 @@
       <div class="scene">
         <h6>skärm</h6>
       </div>
-      <div class="seats">
+      <div class="seats" v-if="viewing && screen">
         <div v-for="(row, rowNum) in screen.seatsPerRow" :key="rowNum" class="row">
           <div v-for="(seat, i) in row" :key="i" :class="{ marked: checkSeat(rowNum, i)}" class="seat" @click="mark(rowNum, i)"></div>
         </div>
       </div>
     </div>
-    <div class="submit-exit">
+    <div class="submit-exit" v-if="viewing && screen">
       <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">  
         <button class="vidare" v-on:click="addBookingInfo(), row(), seating()">Vidare</button>
       </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
-      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      <button class="avsluta">Avsluta</button>
       </router-link>
       <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
         <button class="vidare">Vidare</button>
@@ -47,8 +47,10 @@ export default {
       seatsDetails: { row: [], seats: [] }
     }
   },
-  props: ['id'],
   computed: {
+    id() {
+      return this.$route.params.id;
+    },
     customer() {
       return this.$store.state.currentUser
     },

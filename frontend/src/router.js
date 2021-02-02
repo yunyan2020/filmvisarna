@@ -5,8 +5,7 @@ import Details from './views/Details.vue'
 import Homepage from './views/Homepage.vue'
 import Contact from './views/tempContact.vue'
 import Cinema from './views/Cinema.vue'
-import NewBooking1 from './views/NewBooking1.vue'
-import NewBooking2 from './views/NewBooking2.vue'
+import Booking from './views/Booking.vue'
 import MyBookings from './views/MyBookings.vue'
 import MyProfile from './views/MyProfile.vue'
 import NewBooking3 from './views/NewBooking3.vue'
@@ -41,14 +40,8 @@ const routes = [
   },
   {
     name: 'Bokning',
-    path: '/bokning',
-    component: NewBooking1,
-    props: true
-  },
-  {
-    name: 'Bokning2',
     path: '/bokning/:id',
-    component: NewBooking2,
+    component: Booking,
     props: true
   },
   {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="title">
+    <div class="title" v-if="viewing">
       <h1>{{ viewing.movie }}</h1>
       <p>{{ viewing.date }}  |  {{ viewing.time }}</p>
       <h2>Antal platser</h2>
@@ -19,13 +19,12 @@
     <div class="totalt-pris">
       <h6>totalt:</h6>
       <div class="price-pill"><h4>{{ sum }}kr/st</h4></div>
-      <p>{{ counter }}</p>
     </div>
     <div class="submit-exit">
       <div v-if="counter">
-      <router-link :to="{ name: 'Bokning2', params: { id: viewing.id } }" class="router-link">
-        <button class="vidare" v-on:click="addBookingInfo(), seatAmount(), bookingDetails()"><h1>Vidare</h1></button>
-      </router-link>
+        <button v-if="counter" class="vidare" v-on:click="addBookingInfo(), seatAmount(), bookingDetails(), closeComponent()">
+           <h2>Vidare</h2>
+          </button>
       </div>
       <router-link :to="'/'">
       <button class="avsluta"><h3>Avsluta</h3></button>
@@ -35,8 +34,8 @@
 </template>
 
 <script>
+
 export default {
-  props: ['id'],
   data() {
     return {
       counter: 0,
@@ -50,6 +49,10 @@ export default {
     }
   },
   computed: {
+    id() {
+      
+      return this.$route.params.id;
+    },
     viewing() {
       return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
     }
@@ -83,17 +86,14 @@ export default {
       this.$store.commit('setBookingViewing', this.viewing) 
       this.$store.commit('setBookingViewing', this.viewing)
     },
-    resetBookingInfo() {
-      this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
-    },
     seatAmount() {
       this.$store.commit('setSeatAmount', this.counter)
     },
     bookingDetails() {
       this.$store.commit('setBookingDetails', this.agePrice)
+    },
+    closeComponent() {
+      this.$emit("close1");
     }
   }
 }
