@@ -12,6 +12,7 @@
         <h4>{{ movie.genre }}</h4>
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
+      <button class="trailer-button"> Trailer <i class="far fa-play-circle"></i> </button>
     </div>
     <div class="movie-detail">
       <h3>{{ movie.plot }}</h3>
@@ -234,10 +235,6 @@ img {
   border: 1px solid black;
 }
 
-.scene-image::after {
-  background: linear-gradient();
-}
-
 .scene {
   width: 100vw;
   height: 100%;
@@ -263,6 +260,38 @@ img {
   margin-left: 10px;
   position: relative;
   top: 200px;
+}
+
+.trailer-button {
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+  font-family: "Poppins", sans-serif;
+  margin: auto 0;
+  margin-left: 270px;
+  padding: 3px 30px;
+  font-size: 20px;
+  background: #0f0f0f;
+  color: white;
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px 2px black; 
+  cursor: pointer;
+  /* letter-spacing: 2px;
+  text-transform: uppercase; */
+}
+
+.trailer-button:hover {
+  opacity: 0.5;
+}
+
+.fa-play-circle {
+  font-size: 17px;
+  margin: auto 0;
+  position: relative; 
+  left: 15px;
 }
 
 .movie-detail {
