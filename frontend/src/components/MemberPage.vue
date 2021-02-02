@@ -1,17 +1,14 @@
 <template>
-  <div class="backdrop" @click.self="closeBox">   
-    <div class="container">     
-      <div class="sub-menu">  
-        <div v-for="(item,i) in dropDowns" :key = "i" class = "menu-item">
-          <router-link :to="item.link">
-            <p class="routerLinks">{{item.title}}</p>
-            </router-link>
+  <div class="backdrop" @click.self="closeBox">
+    <div class="container">
+      <div class="sub-menu">
+          <p class="routerLinks" @click="toggleMyBookings">Mina beställningar</p>
+          <p class="routerLinks" @click="toggleProfile">Mina uppgifter</p>
+        <div @click="logout()">
+          <p>Logga ut</p>
         </div>
-      <div @click="logout()">
-        <p>Logga ut</p>
-      </div>  
       </div>
-    </div>  
+    </div>
   </div>
 </template>
 
@@ -20,44 +17,42 @@ import MyBookings from "../views/MyBookings.vue";
 import MyProfile from "../views/MyProfile.vue";
 
 export default {
-  components: { MyBookings,MyProfile },
+  components: { MyBookings, MyProfile },
   data() {
     return {
-      showMyBookings:false,
-      showMyProfile:false,
-      showMemberPage: false,
-      dropDowns: [
-        { title: "Mina beställningar", link:'MyBookings' },
-       /* { title: "Mina uppgifter", link:'MyProfile' }  COMMENTED OUT until page is complete*/
-      ],
+      showMyBookings: false,
+      showMyProfile: false,
+      showMemberPage: false
     };
   },
   computed: {
     isLoggedIn() {
-      return this.$store.state.currentUser != null
+      return this.$store.state.currentUser != null;
     },
     hasBookings() {
-      return this.$store.state.myBookings != null
+      return this.$store.state.myBookings != null;
     },
-  },  
+  },
   methods: {
     closeBox() {
-      this.$emit("close")
+      this.$emit("close");
       this.showMemberPage = false;
     },
-    toggleMyBookings() {     
-      this.showMyBookings=!this.showMyBookings;
-      console.log('bookings status', isLoggedIn,hasBookings)
+    toggleMyBookings() {
+      this.showMyBookings = !this.showMyBookings;
+      this.$router.push("/MyBookings");
+      console.log("bookings status", isLoggedIn, hasBookings);
     },
     toggleProfile() {
       this.showMyProfile = !this.showMyProfile;
+      this.$router.push("/MyProfile");
     },
     logout() {
-      fetch('/api/logout')
-      this.$store.commit('setCurrentUser', null)
-      this.showMyBookings = false
-      this.$router.push('/')
-    },    
+      fetch("/api/logout");
+      this.$store.commit("setCurrentUser", null);
+      this.showMyBookings = false;
+      this.$router.push("/");
+    },
   },
 };
 </script>
@@ -87,19 +82,17 @@ export default {
 
 p {
   margin: 1em;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 p:hover {
-  color:rgba(255, 166, 0, 0.664);
+  color: rgba(255, 166, 0, 0.664);
 }
 
-a, .routerLinks {
+a,
+.routerLinks {
   text-decoration: none;
   color: orange;
   text-decoration-line: none;
 }
-
-
-
 </style>

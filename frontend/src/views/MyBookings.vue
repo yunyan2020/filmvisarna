@@ -1,11 +1,10 @@
-<template>  
-  <div class="container">
-    <h2>Mina beställningar </h2>
+<template>
+  <div class="myBookings">
     <div class="bookings-list">
-      <h3>Mina bokningar</h3>
+      <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h6>Price: {{ booking.price }} Seats: {{ booking.nrOfSeats }}</h6>
+          <h4>Price: {{ booking.price }} Seats: {{ booking.nrOfSeats }}</h4>
         </div>
       </div>
     </div>
@@ -18,10 +17,10 @@ export default {
              {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
             {{ booking.viewing.time }} | {{ booking.viewing.screen.name }} */
   props: ["id"],
-  data(){
+  data() {
     return {
-      hasMyBookings:false
-    }
+      hasMyBookings: false,
+    };
   },
   computed: {
     myBookings() {
@@ -35,18 +34,19 @@ export default {
 </script >
 
 <style scoped>
-.container {
+.myBookings {
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   width: 500px;
-  height: 200px; 
+  height: 200px;
   display: flex;
-  margin: 10px;
+  padding: 2em;
+  left: 50%;
+  top: 20%;
+  margin-top: 1em;
+  margin-right: 0.1em;
   padding: 1em;
-  left:50%;
-  top:20%;
-  border: 1px solid rgba(114, 112, 112, 0.521);
+  letter-spacing: 2px;
 }
 </style>
 

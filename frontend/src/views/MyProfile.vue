@@ -1,8 +1,14 @@
 <template>
-  <h3>Mina uppgifter</h3>
-  <div class="container">
-    <h4>Din E-post: {{currentUser.email}}</h4>
-    <h4>Ditt Namn:  {{currentUser.name}}</h4>
+  <div class="Myprofile">
+    <div class="header">
+      <h3>Mina uppgifter</h3>
+      <div v-if="currentUser">
+        <div class="myProfile-detail">
+          <h4>E-post: {{ currentUser.email }}</h4>
+          <h4>Namnet: {{ currentUser.name }}</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,26 +16,33 @@
 export default {
   props: ["id"],
   computed: {
+    closeBox() {
+      this.$emit("close")
+    },
     currentUser() {
       return this.$store.state.currentUser;
     },
   },
-}
+};
 </script>
 
 <style>
-.container {
+.Myprofile{
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   width: 500px;
-  height: 200px; 
+  height: 200px;
   display: flex;
-  margin: 10px;
+  padding: 2em;
+  left: 50%;
+  top: 20%;
+  margin-top: 1em;
+  margin-right:0.1em;
   padding: 1em;
-  left:50%;
-  top:20%;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
+  letter-spacing: 2px;
 
+}
+.myProfile-detail {
+  text-align: left;
+}
 </style>
