@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="dropdown">
-      <label for="selectSalon">Välj Salong</label>
+      <label for="selectSalon">Välj Salong </label>
       <select
         v-model="selected"
         name="salons"
@@ -13,19 +13,21 @@
           v-bind:value="option.value"
           :key="option"
           name="salons"
-          @change="onChange($event)"
-          class="select-css"
-        ></option>
-        <option
-          v-for="option in options"
-          v-bind:value="option.value"
-          :key="option"
-          name="salons"
         >
           {{ option.text }}
         </option>
       </select>
     </div>
+    <div v-if="isBigSalon">
+      <h1><u>Stora Salongen</u></h1>
+    </div>
+    <div v-else>
+      <h1><u>Lilla Salongen</u></h1>
+    </div>
+    <div class="scene">
+      <div class="display"></div>
+    </div>
+
     <div v-if="isBigSalon">
       <div v-for="row in x[0].seatsPerRow" :key="row" class="row">
         <div v-for="seat in row" :key="seat" class="seat"></div>
@@ -77,10 +79,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 * {
   box-sizing: border-box;
 }
+
 .scene {
   display: flex;
   justify-content: center;
@@ -91,48 +94,44 @@ export default {
 .row {
   display: flex;
   justify-content: center;
-  padding: 5px;
+  padding: 3px;
 }
 
 .seat {
-  width: 15px;
-  height: 20px;
+  height: 30px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background: #eee;
+  background: rgb(187, 187, 187);
   border: 1px solid black;
-  margin: 5px;
+  margin: 4px;
   padding: 10px;
 }
 
-.seat:hover {
-  background: rgba(197, 54, 54, 0.534);
-}
 .dropdown {
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgb(221, 221, 221);
   margin: 8px;
   font-size: 20px;
-  font-family: sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 600;
   text-align: right;
 }
 .select-css {
   font-size: 16px;
-  font-family: sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
   color: white;
   padding: 0.6em 1.4em 0.5em 0.8em;
   line-height: 1.3;
-  width: 10%;
+  width: 12%;
   max-width: 100%; /* useful when width is set to anything other than 100% */
   box-sizing: border-box;
   margin-right: 5px;
   border: 2px solid rgb(93, 93, 93);
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-  border-radius: 4px;
+  border-radius: 3px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -157,19 +156,18 @@ p {
 }
 
 .display {
-  border: 1px solid black;
   position: relative;
-  background-color: whitesmoke;
+  background-color: rgb(192, 192, 192);
   color: black;
   bottom: 5px;
   margin: 2em;
   width: 50%;
   border-top-width: 50%;
   border-bottom-width: 30%;
-  height: 60px;
+  height: 40px;
   display: flex;
   justify-content: center;
-  box-shadow: 0 5px 5px #333;
+  box-shadow: 0 10px 10px rgba(187, 187, 187, 0.452);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 70px;

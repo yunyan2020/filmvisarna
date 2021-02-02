@@ -28,7 +28,7 @@ export default {
       showMemberPage: false,
       dropDowns: [
         { title: "Mina beställningar", link:'MyBookings' },
-        { title: "Mina uppgifter", link:'MyProfile' }
+       /* { title: "Mina uppgifter", link:'MyProfile' }  COMMENTED OUT until page is complete*/
       ],
     };
   },
