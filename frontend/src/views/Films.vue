@@ -76,13 +76,13 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #0f0f0f;
+  /* background: #0f0f0f; */
+  background: black;
   /* border: 1px solid white; */
 }
 
 .page-title {
   margin: 17px;
-  text-align: center;
 }
 
 .movies {

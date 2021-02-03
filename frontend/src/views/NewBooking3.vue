@@ -112,7 +112,7 @@ export default {
     width: 98%;
     height: 1px;
     background: white;
-    margin: 5px auto 5px auto;
+    margin: 10px auto 10px auto;
     opacity: 0.1;
     border-radius: 10px;
   }
@@ -121,7 +121,7 @@ export default {
     border: 1px solid white;
     margin: 0 auto;
     width: 50%;
-    
+    padding: 10px;
   }
 
   .booking-id {
@@ -130,6 +130,17 @@ export default {
     padding: 0 30px 0 30px;
     display: inline-block;
 
+  }
+
+  .customer {
+    margin: 4px;
+    margin-left: 0;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1px 6px 1px 6px;
+    display: flex;
+    justify-content: space-between;
+    width: 125px;
   }
 
   /* .title-container {

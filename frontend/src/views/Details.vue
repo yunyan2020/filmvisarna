@@ -39,6 +39,7 @@
       </div>
     </div>
     <div class="video-container" v-if="showTrailer">
+      <div class="close-trailer-view"> <i class="far fa-times-circle" @click="viewTrailer()"></i> </div>
       <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
     </div>
   </div>
@@ -111,70 +112,35 @@ export default {
   z-index: 5;
   width: 50%;
   height: 500px;
+  /* margin: 0 auto; */
   position: absolute;
-  top: 800px;
-  margin: 0 auto;
+  top: 554px;
+  left: 475px;
+  display: block;
+}
+
+.close-trailer-view {
+  width: 100%;
+  height: 50px;
+}
+
+.fa-times-circle {
+  font-size: 30px;
+  position: relative;
+  left: 915px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.fa-times-circle:hover {
+  opacity: 0.5;
 }
 
 .trailer {
   width: 100%;
   height: 100%;
-}
-/* .movie-head {
-  margin: 5px;
-  padding: 1em;
-  max-width: 50em;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-}
-.wrap {
-  position: relative;
-  width: 70%;
-  height: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-.ticket-page {
-  float: left;
-  position: absolute;
-  margin: 10px;
-  padding: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-
-.movie-detail {  
-  float: left;  
-  height:90%;
-  position: absolute;
-  background: #333;
-  overflow: hidden;
-  left: 50%;
-  margin: 5px;
-  padding:10px;
-  max-width: 50%;  
-  top: 1px;
-  border-radius: 5px;
-}
-
-.item-detail { 
-  margin-bottom: 1px;
-  padding-top: 0;
-  font-size: 15px;
-  text-align: left;
-  color: rgb(243, 220, 11);
-  font-weight: normal;
-}
-.item-name {
-  display: inline;
-  font-size: 13px;
-  color: white;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px 2px black;
 }
 
 .container {
@@ -234,7 +200,7 @@ export default {
   cursor: pointer;
   /* letter-spacing: 2px;
   text-transform: uppercase; */
-/* } */
+} 
 
 .trailer-button:hover {
   opacity: 0.5;
