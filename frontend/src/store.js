@@ -7,9 +7,8 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: "" },
   myBookings: [],
-  allBookings: [],
   bookingDetails: {},
   bookedSeat: { row: [], seats: [] }
 }
@@ -23,9 +22,6 @@ const mutations = {
     console.log(state.allViewings.filter((v) => v.id == viewing.id)[0]) // Test!
     
    },
-  setBookings(state, list) { 
-    state.allBookings = list
-  },
   setMovie(state, list) {
     state.movie = list
   },
@@ -52,6 +48,9 @@ const mutations = {
   },
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
+  },
+  setBookingRef(state, bookingRef) { 
+    state.booking.bookingRef = bookingRef
   },
   setMyBookings(state, myBookings) {
     state.myBookings = myBookings

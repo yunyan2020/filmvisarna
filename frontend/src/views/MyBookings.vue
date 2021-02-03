@@ -4,9 +4,11 @@
       <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h4>Price: {{ booking.price }} Seats: {{ booking.nrOfSeats }}
+          <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}
              {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }}  </h4>
+            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }} |
+            Bokningsnummer:  {{ booking.bookingRef }}  </h4>
+            
         </div>
       </div>
     </div>
@@ -15,9 +17,6 @@
 
 <script>
 export default {
-  /*  LÄGG TILL I TEMPLATE ISTÄLLET FÖR booking.price
-             {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }} */
   props: ["id"],
   data() {
     return {
