@@ -1,21 +1,22 @@
 <template>
   <div class="container">
-    <div class="scene-image">
+    <div class="scene-image" v-if="movie">
       <img :src="movie.movieScene" alt="" class="scene" />
     </div>
-    <div class="movie">
+    <div class="movie" v-if="movie">
       <div class="poster">
         <img :src="movie.poster" alt="" class="movie-poster" />
       </div>
-      <div class="movie-information">
+      <div class="movie-information" v-if="movie">
         <h1>{{ movie.title }}</h1>
         <h4>{{ movie.genre }}</h4>
         <h6>{{ movie.runtime }} | {{ movie.rated }}</h6>
       </div>
+      <button class="trailer-button" @click="viewTrailer()">Trailer <i class="far fa-play-circle"></i></button>
     </div>
-    <div class="movie-detail">
+    <div class="movie-detail" v-if="movie">
       <h3>{{ movie.plot }}</h3>
-      <div class="information">
+      <div class="information" v-if="movie">
         <h5>Regi:</h5>
         <h3>{{ movie.director }}</h3>
         <h5>Skådespelare:</h5>
@@ -26,13 +27,19 @@
         <h3>{{ movie.year }}</h3>
       </div>
     </div>
+    <div class="booking-section-title">
+      <h1>Välj spelning</h1>
+    </div>
     <div class="dates-list">
-      <div v-for="view in sortViewings()" :key="view.id">
-        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="viewing">
-          <h5>{{ view.date }} | {{ view.time }}</h5>
-          <p>{{ view.screen }}</p>
+      <div v-for="view in sortViewings()" :key="view.id" class="viewing">
+        <router-link :to="{ name: 'Bokning', params: { id: view.id } }" class="router-link">
+          <h3>{{ view.screen }} {{ view.time }}</h3>
+          <h5>{{ view.date }}</h5>
         </router-link>
       </div>
+    </div>
+    <div class="video-container" v-if="showTrailer">
+      <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
     </div>
   </div>
 </template>
@@ -44,6 +51,7 @@ export default {
     return {
       times: [],
       today: "",
+      showTrailer: false
     };
   },
   computed: {
@@ -78,15 +86,40 @@ export default {
       // Setting the date for today
       let tday = new Date();
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
+
     },
+    resetBookingInfo() {
+      //Sets all current booking info to null, to start a new booking
+      this.$store.commit('setBookingCustomer', null)
+      this.$store.commit('setBookingViewing', null)
+      this.$store.commit('setBookingPrice', 0)
+      this.$store.commit('setNrOfSeats', 0)
+    },
+    viewTrailer() {
+      this.showTrailer = !this.showTrailer
+    }
   },
-  mounted() {
+    mounted() {
     this.setTodaysDate();
-  },
+    this.resetBookingInfo()
+  }
 };
 </script>
 
 <style scoped>
+.video-container {
+  z-index: 5;
+  width: 50%;
+  height: 500px;
+  position: absolute;
+  top: 800px;
+  margin: 0 auto;
+}
+
+.trailer {
+  width: 100%;
+  height: 100%;
+}
 /* .movie-head {
   margin: 5px;
   padding: 1em;
@@ -144,75 +177,6 @@ export default {
   color: white;
 }
 
-.intro{
-  border:1px solid rgba(80, 76, 76, 0.521);
-  margin-top: 60px;
-  position:relativ;
-}
-
-.intro_text {
-  max-width: 800px;
-  padding-top: 15px;
-  overflow: hidden;
-  display: -webkit-box;
-  font-size: 13px;
-  color: white;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
-.intro .a {
- cursor: hand;
-  color: #000000;
-  font-size: 34px;
-  transition:0.5s; 
-}
- a:hover{
-    color:blue;
-    text-decoration: none;
-}
-
-.intro .mailTo{
-  margin-top:1px;
-  font-size: 30px;
-  color:white;
-  font-weight:bold;
-}
-
-.p-0{
-  float:left;
-  position:absolute;
-  text-align: left;
-  color:white;
-  margin: 2px;
-  padding: 2px;
-}
-
-.p-1{
-  position:absolute;
-  color:thistle;
-  left:40%;
-  width: 100%;
-  text-align: left;
-  margin: 2px;
-  padding: 2px;
-}
-
-.p-2{  
-  float:right;  
-  color:white;
-  left:30%;
-  text-align: left;
-  margin: 2px;
-  padding: 2px;
-  margin-left: -300px;
-  right:300px
-}
-
-img {
-  max-width: 400px;
-  max-height: 400px;
-} */
 .container {
   background: #0f0f0f;
   color: white;
@@ -223,10 +187,6 @@ img {
   width: 100%;
   height: 700px;
   border: 1px solid black;
-}
-
-.scene-image::after {
-  background: linear-gradient();
 }
 
 .scene {
@@ -256,6 +216,37 @@ img {
   top: 200px;
 }
 
+.trailer-button {
+  position: relative;
+  bottom: 20px;
+  left: 150px;
+  font-family: "Poppins", sans-serif;
+  margin: auto 0;
+  padding: 3px 30px;
+  font-size: 20px;
+  background: #0f0f0f;
+  color: white;
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px 2px black; 
+  cursor: pointer;
+  /* letter-spacing: 2px;
+  text-transform: uppercase; */
+/* } */
+
+.trailer-button:hover {
+  opacity: 0.5;
+}
+
+.fa-play-circle {
+  font-size: 17px;
+  margin: auto 0;
+  position: relative; 
+  left: 15px;
+}
+
 .movie-detail {
   width: 50%;
   height: 450px;
@@ -273,24 +264,49 @@ h5 {
   margin-top: 40px;
 }
 
+.booking-section-title {
+  position: relative;
+  left: 25%;
+  bottom: 35px;
+}
+
 .dates-list {
-  width: 100%;
-  height: 400px;
-  border: 1px solid orange;
+  position: relative;
+  bottom: 25px;
+  width: 50%;
+  /* height: 400px; */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* border: 1px solid #333;
+  border-radius: 5px; */
 }
 
 .viewing {
   cursor: pointer;
   height: 5em;
-  width: 10em;
-  border: solid orange;
+  border: 1px solid rgb(26, 25, 25);
+  border-radius: 5px;
   margin: 2px;
   float: left;
+  padding: 4px 0 0 8px;
+}
+
+.router-link {
+  text-decoration: none;
+  color: white;
 }
 
 .viewing:hover {
-  background: rgba(255, 255, 255, 0.308);
+  /* background: rgba(255, 255, 255, 0.082); */
+  /* opacity: 0.1; */
+  border: 1px solid #333;
 }
+
+/* .viewing:active {
+  background: rgba(238, 238, 238, 0.062);
+} */
+
 .boka {
   width: 100px;
   position: relative;
@@ -306,4 +322,25 @@ h5 {
   opacity: 0.5;
   cursor: pointer;
 }
+
+.video {
+  border: 1px solid purple;
+  width: 50%;
+  height:500px;
+  margin: 20px auto;
+}
+/* ::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(37, 37, 37);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 8px;
+  border: 1px solid #0f0f0f;
+} */
 </style>

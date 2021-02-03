@@ -8,8 +8,10 @@ const state = {
   screens: [],
   loggedIn: false,
   booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
+  myBookings: [],
   allBookings: [],
-  myBookings: []
+  bookingDetails: {},
+  bookedSeat: { row: [], seats: [] }
 }
 
 //mutates state
@@ -45,24 +47,26 @@ const mutations = {
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
   },
-
   setMyBookings(state, myBookings) {
     state.myBookings = myBookings
-  },
+  },  
   setAllBookings(state, booking) { 
     state.allBookings.push(booking)
-
+  }, 
+  setBookingDetails(state, bookingDetails) {
+    state.bookingDetails = bookingDetails
+  },
+  setRow(state, row) {
+    state.bookedSeat.row = row
+  },
+  setSeat(state, seat) {
+    state.bookedSeat.seats = seat
   }
 }
 
 //async network requests
 const actions = {
-  async fetchBookings(store) { 
-    let list = await fetch('/rest/bookings')
-    list = await list.json()
-    console.log(list)
-    store.commit('setBookings', list)
-  },
+
   async fetchScreens(store) { 
     let list = await fetch('/rest/screens')
     list = await list.json()
@@ -73,6 +77,7 @@ const actions = {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
 
+    console.log(list)
     store.commit('setMovie', list)
   },
   async fetchViewings(store) {
@@ -89,7 +94,6 @@ const actions = {
     try {
       customer = await customer.json()
       console.log(customer)
-      
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Fel uppgifter")
@@ -118,21 +122,19 @@ const actions = {
       console.warn("Inte inloggad")
     }
   },
-
   async fetchMyBookings(store) {
     let list = await fetch('/rest/bookings')
     list = await list.json()
     let currentUserBookings =  [];
     console.log('bookings', list);
     
-    if(state.currentUser && state.currentUser.email) {
+    if(state.currentUser && state.currentUser.id) {
         currentUserBookings = list.filter((booking) => {
-        if (booking.customer.email === state.currentUser.email) {
+        if (booking.customer.id === state.currentUser.id) {
           return booking
         }
       })     
     }    
-    
     console.log('currentUserBookings', currentUserBookings);
     store.commit('setMyBookings', currentUserBookings)
   },
@@ -145,9 +147,10 @@ const actions = {
       newBooking = await newBooking.json()
       console.log(newBooking)
       /*store.commit('setCurrentUserBooking', newBooking) // Test
-      store.dispatch('fetchBookings') // Test*/
+      store.dispatch('fetchMyBookings') // Test*/
     } catch { 
       console.warn("Booking failed")
+
     }
 
   }

@@ -13,12 +13,10 @@ export default {
   name: "App",
   components: { Navbar },
   created() {
-    this.$store.dispatch("fetchMovie")
-    this.$store.dispatch("fetchViewings")
-    this.$store.dispatch("whoAmI")
-    this.$store.dispatch("fetchScreens")
-    this.$store.dispatch("fetchBookings")
-    this.$store.dispatch("fetchMyBookings")
+    this.$store.dispatch("fetchMovie");
+    this.$store.dispatch("fetchViewings");
+    this.$store.dispatch("whoAmI");
+    this.$store.dispatch("fetchScreens");
   },
 };
 </script>
@@ -32,8 +30,7 @@ export default {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: white;
   box-sizing: border-box;
   background: #0f0f0f;
 }

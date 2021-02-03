@@ -1,25 +1,35 @@
 <template>
   <div class="container">
-    <div class="booking-information">
+    <div class="booking-information" v-if="viewing && screen">
       <h1>{{ viewing.movie }}</h1>
-      <p>{{ viewing.date }}  |  {{ viewing.time }}  |  {{ price }}SEK | {{ screen.name }}</p>
+      <h3>{{ viewing.date }} - {{ viewing.time }}</h3>
+      <h4>{{ viewing.screen }}</h4>
+      <p>{{ price }}kr</p>
+      <!-- <p>{{ viewing.date }} {{ viewing.time }} {{ price }}SEK</p> -->
     </div>
     <div class="selection">
       <div class="scene">
         <h6>skärm</h6>
       </div>
-      <div class="seats">
-        <div v-for="row in screen.seatsPerRow" :key="row" class="row">
-          <div v-for="seat in row" :key="seat" class="seat"></div>
+      <div class="seats" v-if="viewing && screen">
+        <div v-for="(row, rowNum) in screen.seatsPerRow" :key="rowNum" class="row">
+          <div v-for="(seat, i) in row" :key="i" :class="{ marked: checkSeat(rowNum, i)}" class="seat" @click="mark(rowNum, i)"></div>
         </div>
       </div>
     </div>
-    <div class="submit-exit">
-      <button class="vidare">Vidare</button>
+    <div class="submit-exit" v-if="viewing && screen">
+        <button class="vidare" v-on:click="addBookingInfo(), row(), seating(), closeComponent()">Vidare</button>
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
-      <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      <button class="avsluta">Avsluta</button>
       </router-link>
+      <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
+        <button class="vidare">Vidare</button>
+      </router-link>  
+      <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
+      <router-link :to="'/'">
+        <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -29,11 +39,16 @@
 export default {
   data() {
     return {
-      mustLogin: ""
+      mustLogin: "",
+      marked: [],
+      seatCount: 0,
+      seatsDetails: { row: [], seats: [] }
     }
   },
-  props: ['id'],
   computed: {
+    id() {
+      return this.$route.params.id;
+    },
     customer() {
       return this.$store.state.currentUser
     },
@@ -54,32 +69,79 @@ export default {
     }
   },
   methods: {
-    // ADD THIS TO VIDARE!! v-on:click="addBookingInfo()"
     addBookingInfo() {
       if(this.isLoggedIn) {
       this.mustLogin = ""
       this.$store.commit('setBookingCustomer', this.customer)
-      this.completeBooking()
       }
       else {
         this.mustLogin = "Du måste logga in för att fortsätta"
       }
     },
-    resetBookingInfo() {
-      this.$store.commit('setBookingCustomer', null)
-      this.$store.commit('setBookingViewing', null)
-      this.$store.commit('setBookingPrice', 0)
-      this.$store.commit('setNrOfSeats', 0)
+    mark(row, i) {
+      console.log("index: " + i)
+      console.log("row length: " + row)
+      console.log(this.nrOfSeats);
+      
+      /* if(this.seatCount >= this.seatAmount) {
+        return
+      } else {
+        this.marked.push({row, i})
+        this.seatCount++
+      } */
+      
+      let index = this.marked.findIndex((seat) => {
+        return seat.row === row && seat.i === i;
+      });
+
+      if (index === -1) {
+        if(this.seatCount >= this.nrOfSeats) {
+          return
+        } else {
+          this.marked.push({ row, i });
+          this.seatCount++
+          this.seatsDetails.row.push(row + 1)
+          this.seatsDetails.seats.push(i + 1)
+          console.log(this.seatsDetails)
+          console.log("seatCount: " + this.seatCount);
+        }
+        
+      } else {
+        this.marked.splice(index, 1);
+        this.seatsDetails.row.splice(index, 1)
+        this.seatsDetails.seats.splice(index, 1)
+        this.seatCount--
+      }
+
+      /* this.marked.push({row, i})
+      console.log(this.seatAmount); */
     },
-    completeBooking() {
-      let booking = this.$store.state.booking
-      this.$store.dispatch('addBooking', booking)
+    checkSeat(row, i) {
+      return this.marked.some((markedSeat) => {
+        return markedSeat.row === row && markedSeat.i === i
+      })
+    },
+    row() {
+      this.$store.commit('setRow', this.seatsDetails.row)
+    },
+    seating() {
+      this.$store.commit('setSeat', this.seatsDetails.seats)
+    },
+    closeComponent() {
+      if(!this.mustLogin){
+      this.$emit("close2");
+      }
     }
   }
 }
 </script>
 
 <style scoped>
+
+.marked {
+  background: #f7aa0393;
+}
+
 .container {
   width: 75%;
   height: 90vh;
@@ -94,6 +156,15 @@ h1 p {
 .booking-information {
   height: 15%;
   border: 1px solid yellow;
+  opacity: 0.5;
+  margin: 5px 0 0 10px;
+}
+
+.booking-information > h4{
+  padding: 2px 4px;
+  border-radius: 8px;
+  border: 1px solid whitesmoke;
+  display: inline-block;
 }
 
 .selection {

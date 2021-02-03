@@ -14,7 +14,6 @@ public class Customer {
     private String email;
     private String password;
     private String name;
-    private Booking booking;
 
     public Customer() {}
 
@@ -42,14 +41,6 @@ public class Customer {
         this.name = name;
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
     public String getId() {
         return id;
     }
@@ -66,7 +57,6 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", booking=" + booking +
                 '}';
     }
 }

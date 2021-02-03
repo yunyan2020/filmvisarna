@@ -1,10 +1,7 @@
 package com.company;
 
 
-import com.company.models.Booking;
-import com.company.models.Customer;
-import com.company.models.Movie;
-import com.company.models.Viewing;
+import com.company.models.*;
 import express.Express;
 
 import static express.database.Database.collection;
@@ -76,9 +73,21 @@ public class Main {
 
             Booking booking = req.body(Booking.class);
             booking.setCustomer(customer);
+            // Getting viewing from new booking
+//            Viewing tempViewing = booking.getViewing();
+//            // Finding the saved viewing in collection to add number of seats taken
+//            Viewing viewingInColl = collection("Viewing").findById(tempViewing.getId());
+//            int totalSeatsTaken = viewingInColl.getSeatsTaken() + booking.getNrOfSeats();
+//
+//            // If Stora Salongen with 81 seats, make sure there are seats left to book
+//           // if ((tempViewing.getScreen().equals("Stora Salongen")) && (81 - totalSeatsTaken >= 0))
+//
+//                // Add seats to the viewings seats taken
+//            viewingInColl.setSeatsTaken(totalSeatsTaken);
+//            System.out.println(viewingInColl.getSeatsTaken());
 
             collection("Booking").save(booking);
-            res.send("Post ok");
+            res.json(booking);
         });
 
 
