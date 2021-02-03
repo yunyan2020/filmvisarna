@@ -56,7 +56,7 @@ export default {
       return this.$route.params.id;
     },
     viewing() {
-    return this.$store.state.booking.viewing
+      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0];
     },
     price() {
       return this.$store.state.booking.price;
@@ -83,12 +83,21 @@ export default {
       return Math.random().toString(36).substr(2, 25).toUpperCase()
     },
     completeBooking() {
+    this.setBookingViewing()
+
     let booking = this.$store.state.booking
-    console.log("In newbooking3:", booking)
+
     this.$store.dispatch('addBooking', booking)
     this.$store.dispatch('updateViewing', this.viewing)
     },
-  }
+    setBookingViewing() {
+    let tempViewing = this.viewing
+    tempViewing.seatsTaken +=  this.seatAmount
+    console.log("NewBooking3 tempviewing seatstaken: ", tempViewing.seatsTaken)
+
+    this.$store.commit("setBookingViewing", tempViewing);
+    }
+  } 
 }
 </script>
 

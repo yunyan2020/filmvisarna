@@ -71,7 +71,7 @@ export default {
       }
       this.counter++;
       console.log(ageGroup);
-    },
+    },/*
     remove(price, ageGroup) {
       if (ageGroup.counter == 0) {
         return;
@@ -79,12 +79,8 @@ export default {
       this.sum -= price;
       ageGroup.counter -= 1;
       this.counter--;
-    },
+    },*/
     addBookingInfo() {
-      let tempViewing = this.viewing
-      tempViewing.seatsTaken += this.counter
-      this.$store.commit("setBookingViewing", tempViewing);
-
       this.$store.commit("setBookingPrice", this.sum);
       this.$store.commit("setNrOfSeats", this.counter);
       this.$store.commit("setBookingViewing", this.viewing);
@@ -95,7 +91,7 @@ export default {
     closeComponent() {
       this.$emit("close1");
     },
-  },
+  }
 };
 </script>
 

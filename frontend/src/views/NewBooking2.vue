@@ -53,7 +53,7 @@ export default {
       return this.$store.state.currentUser
     },
     viewing() {
-    return this.$store.state.booking.viewing
+      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0];
     },
     price() {
       return this.$store.state.booking.price

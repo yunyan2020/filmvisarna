@@ -101,7 +101,7 @@ public class Main {
             viewingInColl.setSeatsTaken((int)body.get("seatsTaken"));
 
             collection("Viewing").save(viewingInColl);
-            
+
             res.send("Ok");
         });
 

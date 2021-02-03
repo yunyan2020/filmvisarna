@@ -17,8 +17,11 @@ const state = {
 //mutates state
 const mutations = {
   updateViewings(state, viewing) {
-    let tempViewing = state.allViewings.filter((v) => v.id == viewing.id)[0]
-    tempViewing.seatsTaken += viewing.seatsTaken
+    let tempViewing = state.allViewings.filter((v) => v.id == viewing.id)[0]  
+    tempViewing.seatsTaken = viewing.seatsTaken
+
+    console.log(state.allViewings.filter((v) => v.id == viewing.id)[0]) // Test!
+    
    },
   setBookings(state, list) { 
     state.allBookings = list
@@ -31,7 +34,6 @@ const mutations = {
   },
   setViewings(state, list) {
     state.allViewings = list
-    console.log("Viewings list saved")
   },
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
@@ -130,7 +132,6 @@ const actions = {
     let list = await fetch('/rest/bookings')
     list = await list.json()
     let currentUserBookings =  [];
-    console.log('bookings', list);
     
     if(state.currentUser && state.currentUser.id) {
         currentUserBookings = list.filter((booking) => {
@@ -139,7 +140,6 @@ const actions = {
         }
       })     
     }    
-    console.log('currentUserBookings', currentUserBookings);
     store.commit('setMyBookings', currentUserBookings)
   },
   async addBooking(store, booking) { 
@@ -149,7 +149,6 @@ const actions = {
     })
     try {
       newBooking = await newBooking.json()
-      console.log(newBooking)
       /*store.commit('setCurrentUserBooking', newBooking) // Test
       store.dispatch('fetchMyBookings') // Test*/
     } catch { 
@@ -158,6 +157,7 @@ const actions = {
     }
   },
   async updateViewing(store, viewing) { 
+    console.log("Viewing i updateViewing: ", viewing.seatsTaken)
     let res = await fetch("/rest/viewings/" + viewing.id,
     {
       method: "PUT",
@@ -165,7 +165,6 @@ const actions = {
       })
     if (res.ok) { 
       store.commit('updateViewings', viewing)
-      console.log('Viewings updated')
     }
   }
 
