@@ -11,6 +11,7 @@ import MyBookings from './views/MyBookings.vue'
 import MyProfile from './views/MyProfile.vue'
 import NewBooking3 from './views/NewBooking3.vue'
 
+
 const routes = [
   {
     name: 'Homepage',

@@ -1,4 +1,6 @@
 <template>
+   
+<!---
   <div class="container">
     <div class="scene-image">
       <img :src="movie.movieScene" alt="" class="scene" />
@@ -27,6 +29,7 @@
         <h3>{{ movie.year }}</h3>
       </div>
     </div>
+    -->
     <div class="booking-section-title">
       <h1>Välj spelning</h1>
     </div>
@@ -40,18 +43,27 @@
     </div>
     <div class="video-container" v-if="showTrailer">
       <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
-    </div>
+    </div> 
+    <div class="Trailer">   
+      <Trailer v-bind:parentID="id"></Trailer>  
+    </div> 
+  <!---   
+  
   </div>
+  -->
 </template>
 
 
 <script>
+import Trailer from "../components/Trailer.vue"
 export default {
+  components: { Trailer },
   data() {
     return {
       times: [],
       today: "",
-      showTrailer: false
+      showTrailer: false,
+      parentID:this.id
     };
   },
   computed: {
