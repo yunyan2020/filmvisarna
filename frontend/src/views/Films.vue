@@ -17,15 +17,18 @@
     <div class="movies">
       <div class="movie" v-for="m of movie" :key="m">
         <div class="poster">
-          <img :src="m.poster" alt="">
+          <img :src="m.poster" alt="" />
         </div>
         <div class="vertical-line" />
         <div class="movie-details">
           <h1 class="movie-title">{{ m.title }}</h1>
           <h4>{{ m.genre }}</h4>
-          <h5 class="break"> <i class="fas fa-video"></i> {{ m.runtime }} | {{ m.year }} | {{ m.rated }}</h5>
+          <h5 class="break">
+            <i class="fas fa-video"></i> {{ m.runtime }} | {{ m.year }} |
+            {{ m.rated }}
+          </h5>
           <h6 class="fade">Skådespelare:</h6>
-          <p>{{ m.actors.join(', ')}}</p>
+          <p>{{ m.actors.join(", ") }}</p>
           <h6 class="fade">Språk | Översättning</h6>
           <p>{{ m.language }} | {{ m.subtitles }}</p>
           <div class="links">
@@ -76,7 +79,8 @@ export default {
 }
 
 .page-title {
-  margin: 17px
+  margin: 17px;
+  text-align: center;
 }
 
 .movies {
@@ -124,7 +128,7 @@ export default {
 
 .fa-youtube:hover {
   /* color: #ec0101; */
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .fa-imdb:hover {
@@ -134,5 +138,4 @@ export default {
 .fas {
   margin-right: 5px;
 }
-
 </style>
