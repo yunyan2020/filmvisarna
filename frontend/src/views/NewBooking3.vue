@@ -56,7 +56,7 @@ export default {
       return this.$route.params.id;
     },
     viewing() {
-    return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
+    return this.$store.state.booking.viewing
     },
     price() {
       return this.$store.state.booking.price;
@@ -86,6 +86,7 @@ export default {
     let booking = this.$store.state.booking
     console.log("In newbooking3:", booking)
     this.$store.dispatch('addBooking', booking)
+    this.$store.dispatch('updateViewing', this.viewing)
     },
   }
 }

@@ -16,6 +16,10 @@ const state = {
 
 //mutates state
 const mutations = {
+  updateViewings(state, viewing) {
+    let tempViewing = state.allViewings.filter((v) => v.id == viewing.id)[0]
+    tempViewing.seatsTaken += viewing.seatsTaken
+   },
   setBookings(state, list) { 
     state.allBookings = list
   },
@@ -152,7 +156,17 @@ const actions = {
       console.warn("Booking failed")
 
     }
-
+  },
+  async updateViewing(store, viewing) { 
+    let res = await fetch("/rest/viewings/" + viewing.id,
+    {
+      method: "PUT",
+      body: JSON.stringify(viewing)
+      })
+    if (res.ok) { 
+      store.commit('updateViewings', viewing)
+      console.log('Viewings updated')
+    }
   }
 
 

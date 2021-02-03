@@ -4,6 +4,8 @@ package com.company;
 import com.company.models.*;
 import express.Express;
 
+import java.util.Map;
+
 import static express.database.Database.collection;
 
 public class Main {
@@ -88,6 +90,19 @@ public class Main {
 
             collection("Booking").save(booking);
             res.json(booking);
+        });
+
+        app.put("rest/viewings/:id", (req, res) -> {
+            String id = req.params("id");
+            Map body = req.body();
+            System.out.println(body);
+
+            Viewing viewingInColl = collection("Viewing").findById(id);
+            viewingInColl.setSeatsTaken((int)body.get("seatsTaken"));
+
+            collection("Viewing").save(viewingInColl);
+            
+            res.send("Ok");
         });
 
 
