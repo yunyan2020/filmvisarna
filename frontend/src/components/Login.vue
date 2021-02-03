@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop" @click.self="closeBox">
+  <div class="backdrop" @mousedown.self="closeBox">
     <div class="container">
       <form @submit.prevent="handleSubmit">
         <label>
