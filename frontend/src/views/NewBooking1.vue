@@ -202,7 +202,7 @@ export default {
 }
 
 .vidare {
-  width: 400px;
+  width: auto;
 }
 
 .avsluta {
