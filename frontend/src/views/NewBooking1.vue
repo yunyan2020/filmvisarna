@@ -120,8 +120,6 @@ export default {
   border: 1px solid green;
 }
 
-.totalt-pris {
-}
 
 .buttons {
   display: flex;
