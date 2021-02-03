@@ -1,4 +1,14 @@
-<template>
+<template> 
+  <div class="movie-head">    
+    <h1 class="title">{{movie.title}}</h1>   
+    <h3 class = "genre">{{ movie.genre }}</h3> 
+    <h4 class="subtitle"> 
+      <p class="subtitle-tag">        
+        {{ movie.runtime }}|{{ movie.year }}
+      </p>
+    </h4>
+  </div>  
+  
    
 <!---
   <div class="container">
@@ -44,7 +54,7 @@
     <div class="video-container" v-if="showTrailer">
       <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
     </div> 
-    <div class="Trailer">   
+    <div class="Trailer-part">   
       <Trailer v-bind:parentID="id"></Trailer>  
     </div> 
   <!---   
@@ -63,7 +73,7 @@ export default {
       times: [],
       today: "",
       showTrailer: false,
-      parentID:this.id
+      parentID:this.$route.params.id
     };
   },
   computed: {
@@ -133,7 +143,11 @@ export default {
   width: 100%;
   height: 100%;
 }
-/* .movie-head {
+.Trailer-part {
+  position:relative;
+  margin-top:100px;
+}
+.movie-head {
   margin: 5px;
   padding: 1em;
   max-width: 50em;
@@ -141,113 +155,6 @@ export default {
   margin-right: auto;
   top: 1em;
 }
-.wrap {
-  position: relative;
-  width: 70%;
-  height: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-.ticket-page {
-  float: left;
-  position: absolute;
-  margin: 10px;
-  padding: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-
-.movie-detail {  
-  float: left;  
-  height:90%;
-  position: absolute;
-  background: #333;
-  overflow: hidden;
-  left: 50%;
-  margin: 5px;
-  padding:10px;
-  max-width: 50%;  
-  top: 1px;
-  border-radius: 5px;
-}
-
-.item-detail { 
-  margin-bottom: 1px;
-  padding-top: 0;
-  font-size: 15px;
-  text-align: left;
-  color: rgb(243, 220, 11);
-  font-weight: normal;
-}
-.item-name {
-  display: inline;
-  font-size: 13px;
-  color: white;
-}
-
-.container {
-  background: #0f0f0f;
-  color: white;
-  margin: 0;
-}
-
-.scene-image {
-  width: 100%;
-  height: 700px;
-  border: 1px solid black;
-}
-
-.scene {
-  width: 100vw;
-  height: 100%;
-  position: relative;
-  bottom: 35px;
-}
-
-.movie {
-  width: 50%;
-  height: 500px;
-  border: 1px solid red;
-  margin: 0 auto;
-  position: relative;
-  bottom: 200px;
-  display: flex;
-}
-
-.movie-poster {
-  border-radius: 8px;
-}
-
-.movie-information {
-  margin-left: 10px;
-  position: relative;
-  top: 200px;
-}
-
-.trailer-button {
-  position: relative;
-  bottom: 20px;
-  left: 150px;
-  font-family: "Poppins", sans-serif;
-  margin: auto 0;
-  padding: 3px 30px;
-  font-size: 20px;
-  background: #0f0f0f;
-  color: white;
-  outline: none;
-  border: 1px solid #333;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 0 10px 2px black; 
-  cursor: pointer;
-  /* letter-spacing: 2px;
-  text-transform: uppercase; */
-/* } */
 
 .trailer-button:hover {
   opacity: 0.5;
@@ -279,18 +186,20 @@ h5 {
 
 .booking-section-title {
   position: relative;
-  left: 25%;
+  top:5em;
+  left:30px;
   bottom: 35px;
 }
 
 .dates-list {
   position: relative;
+  left:30px;
   bottom: 25px;
-  width: 50%;
+  width: 40%;
   /* height: 400px; */
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;  
+  top:6em;
   /* border: 1px solid #333;
   border-radius: 5px; */
 }

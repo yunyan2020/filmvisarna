@@ -1,20 +1,4 @@
 <template> 
-  <div class="movie-head">
-    <h1 class="title">{{ movie.title }}</h1>   
-    <h3 class = "genre">{{ movie.genre }}</h3> 
-    <h4 class="subtitle"> 
-      <p class="subtitle-tag">        
-        {{ movie.runtime }}|{{ movie.year }}
-      </p>
-    </h4>
-  </div>  
-  <!---
-  <div class = "wrap">
-   
-   <div class="ticket-page"> 
-      <p> This position for ticket information This position for ticket information</p> 
-    </div>
-     --->
     <div class="movie-detail">
       <div class="trailer">
         <iframe
@@ -61,66 +45,29 @@
         <a href = "mailto:?subject=Jag vill tipsa dig om filmen" class='mailTo'>✉
         </a>  
       </div>
-    </div> 
-  <!---  
-  </div>   
-   --->
+    </div>  
+ 
 </template>
 
 
 <script>
 export default {
-  props: ["parentID"],
+  props: ["parentID"],  
   computed: {    
     movie() {
-      return this.$store.state.movie.filter((p) => p.parentID == this.parentID)[0];
+      return this.$store.state.movie.filter((p) => p.id == this.parentID)[0];      
     },
   },
 };
 </script>
 
 <style scoped>
-.movie-head {
-  margin: 5px;
-  padding: 1em;
-  max-width: 50em;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-}
-.wrap {
-  position: relative;
-  width: 70%;
-  height: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-.ticket-page {
-  float: left;
-  position: absolute;
-  margin: 10px;
-  padding: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
 
-.movie-detail {  
-  float: left;  
-  height:90%;
-  position: absolute;
-  background: #333;
-  overflow: hidden;
-  left: 50%;
-  margin: 5px;
-  padding:10px;
-  max-width: 50%;  
-  top: 1px;
-  border-radius: 5px;
+
+.movie-detail { 
+  position: relative;
+  float:left;
+  left: 45%; 
 }
 
 .item-detail { 
