@@ -109,13 +109,14 @@ export default {
 .container {
   width: 30%;
   margin: 0 auto;
-  border: 1px solid black;
   background: #1f1f1f;
   margin-top: 100px;
 }
-
+.title {
+  border-bottom: 20px solid #141414;
+}
 .selection {
-  border: 1px solid black;
+  border-bottom: 20px solid #141414;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,7 +131,6 @@ export default {
 }
 
 .totalt-pris {
-  border: 1px solid black;
 }
 
 .buttons {
@@ -211,7 +211,7 @@ export default {
 }
 
 .vidare {
-  width: 400px;
+  width: 100px;
 }
 
 .avsluta {
