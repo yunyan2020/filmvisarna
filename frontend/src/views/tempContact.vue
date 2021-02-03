@@ -47,25 +47,9 @@
 export default {};
 </script>
 
-<style>
-.title{
-  display: inline;
-  justify-content: center;
-  padding: 50px;
-  margin: auto;
-  grid-area: auto;
 
 }
-      <p><b> Vi som har jobbat med vår projekt är:</b></p>
-      <p>Denise,Yunyan,Hanan,Ermin,Edvin och Tobias:)</p>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {};
-</script>
-
+    
 <style scoped>
 .title {
   padding-bottom: 30px;
