@@ -15,27 +15,29 @@
   <div class="container">
     <h1 class="page-title">Aktuella filmer</h1>
     <div class="movies">
-      <div class="movie" v-for="m of movie" :key="m">
-        <div class="poster">
-          <img :src="m.poster" alt="" />
-        </div>
-        <div class="vertical-line" />
-        <div class="movie-details">
-          <h1 class="movie-title">{{ m.title }}</h1>
-          <h4>{{ m.genre }}</h4>
-          <h5 class="break">
-            <i class="fas fa-video"></i> {{ m.runtime }} | {{ m.year }} |
-            {{ m.rated }}
-          </h5>
-          <h6 class="fade">Skådespelare:</h6>
-          <p>{{ m.actors.join(", ") }}</p>
-          <h6 class="fade">Språk | Översättning</h6>
-          <p>{{ m.language }} | {{ m.subtitles }}</p>
-          <div class="links">
-            <i class="fab fa-imdb"></i>
-            <i class="fab fa-youtube"></i>
-          </div>
-        </div>
+      <div class="movie" v-for="m of movie" :key="m">   
+          <router-link :to="'/movieshow/details/' + m.id">               
+            <div class="poster">
+              <img :src="m.poster" alt="" />
+            </div>           
+         </router-link>              
+          <div class="vertical-line" />
+          <div class="movie-details">
+            <h1 class="movie-title">{{ m.title }}</h1>
+            <h4>{{ m.genre }}</h4>
+            <h5 class="break">
+              <i class="fas fa-video"></i> {{ m.runtime }} | {{ m.year }} |
+              {{ m.rated }}
+            </h5>
+            <h6 class="fade">Skådespelare:</h6>
+            <p>{{ m.actors.join(", ") }}</p>
+            <h6 class="fade">Språk | Översättning</h6>
+            <p>{{ m.language }} | {{ m.subtitles }}</p>
+            <div class="links">
+              <i class="fab fa-imdb"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div> 
       </div>
     </div>
   </div>
