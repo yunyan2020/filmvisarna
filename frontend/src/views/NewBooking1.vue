@@ -64,22 +64,13 @@ export default {
       this.counter += 1;
     },
     remove(price, ageGroup) {
-      if (ageGroup.counter > 0 && this.counter > 0) {
-        this.sum -= price;
-        ageGroup.counter -= 1;
-        this.counter -= 1;
-      }
-      this.counter++;
-      console.log(ageGroup);
-    },/*
-    remove(price, ageGroup) {
       if (ageGroup.counter == 0) {
         return;
       }
       this.sum -= price;
       ageGroup.counter -= 1;
       this.counter--;
-    },*/
+    },
     addBookingInfo() {
       this.$store.commit("setBookingPrice", this.sum);
       this.$store.commit("setNrOfSeats", this.counter);
@@ -127,6 +118,7 @@ export default {
   display: flex;
   margin: auto 0;
   align-items: center;
+  user-select: none;
 }
 
 .buttons > button {

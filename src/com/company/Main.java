@@ -75,18 +75,6 @@ public class Main {
 
             Booking booking = req.body(Booking.class);
             booking.setCustomer(customer);
-            // Getting viewing from new booking
-//            Viewing tempViewing = booking.getViewing();
-//            // Finding the saved viewing in collection to add number of seats taken
-//            Viewing viewingInColl = collection("Viewing").findById(tempViewing.getId());
-//            int totalSeatsTaken = viewingInColl.getSeatsTaken() + booking.getNrOfSeats();
-//
-//            // If Stora Salongen with 81 seats, make sure there are seats left to book
-//           // if ((tempViewing.getScreen().equals("Stora Salongen")) && (81 - totalSeatsTaken >= 0))
-//
-//                // Add seats to the viewings seats taken
-//            viewingInColl.setSeatsTaken(totalSeatsTaken);
-//            System.out.println(viewingInColl.getSeatsTaken());
 
             collection("Booking").save(booking);
             res.json(booking);
@@ -100,9 +88,23 @@ public class Main {
             Viewing viewingInColl = collection("Viewing").findById(id);
             viewingInColl.setSeatsTaken((int)body.get("seatsTaken"));
 
-            collection("Viewing").save(viewingInColl);
+            int totalSeatsTaken = viewingInColl.getSeatsTaken();
+            System.out.println(totalSeatsTaken);
+            String screen = viewingInColl.getScreen();
 
-            res.send("Ok");
+            if(screen.equals("Stora Salongen") && totalSeatsTaken <= 81) {
+                collection("Viewing").save(viewingInColl);
+                res.send("Ok");
+            }
+            else if(screen.equals("Lilla Salongen") && totalSeatsTaken <= 56) {
+                collection("Viewing").save(viewingInColl);
+                res.send("Ok");
+            }
+            else {
+                res.status(400).send("Inga lediga platser");
+            }
+
+
         });
 
 
