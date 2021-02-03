@@ -110,7 +110,12 @@ export default {
   width: 30%;
   margin: 0 auto;
   background: #1f1f1f;
-  margin-top: 100px;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 .title {
   border-bottom: 20px solid #141414;
