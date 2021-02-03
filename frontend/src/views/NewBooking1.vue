@@ -24,9 +24,13 @@
     </div>
     <div class="submit-exit">
       <div v-if="counter">
-        <button v-if="counter" class="vidare" v-on:click="addBookingInfo(), bookingDetails(), closeComponent()">
-           <h2>Vidare</h2>
-          </button>
+        <button
+          v-if="counter"
+          class="vidare"
+          v-on:click="addBookingInfo(), bookingDetails(), closeComponent()"
+        >
+          <h2>Vidare</h2>
+        </button>
       </div>
       <router-link :to="'/'">
         <button class="avsluta"><h3>Avsluta</h3></button>
@@ -71,7 +75,7 @@ export default {
       }
       this.counter++;
       console.log(ageGroup);
-    },/*
+    } /*
     remove(price, ageGroup) {
       if (ageGroup.counter == 0) {
         return;
@@ -79,7 +83,7 @@ export default {
       this.sum -= price;
       ageGroup.counter -= 1;
       this.counter--;
-    },*/
+    },*/,
     addBookingInfo() {
       this.$store.commit("setBookingPrice", this.sum);
       this.$store.commit("setNrOfSeats", this.counter);
@@ -91,7 +95,7 @@ export default {
     closeComponent() {
       this.$emit("close1");
     },
-  }
+  },
 };
 </script>
 
@@ -99,13 +103,19 @@ export default {
 .container {
   width: 30%;
   margin: 0 auto;
-  border: 1px solid black;
   background: #1f1f1f;
-  margin-top: 100px;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-
+.title {
+  border-bottom: 20px solid #141414;
+}
 .selection {
-  border: 1px solid black;
+  border-bottom: 20px solid #141414;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,7 +130,6 @@ export default {
 }
 
 .totalt-pris {
-  border: 1px solid black;
 }
 
 .buttons {
