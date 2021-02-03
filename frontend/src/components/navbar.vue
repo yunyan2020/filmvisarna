@@ -83,6 +83,7 @@ nav {
 
 .logoBox {
   float: left;
+  text-align: center;
   /*position: fixed;*/
 }
 .logo {
@@ -119,7 +120,8 @@ button:hover {
   font-size: 30px;
 }
 
-.login, .memberPage {
+.login,
+.memberPage {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -127,5 +129,4 @@ button:hover {
   left: 0;
   z-index: 10 !important;
 }
-
 </style>

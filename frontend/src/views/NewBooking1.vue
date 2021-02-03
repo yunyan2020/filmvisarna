@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title" v-if="viewing">
       <h1>{{ viewing.movie }}</h1>
-      <p>{{ viewing.date }}  |  {{ viewing.time }}</p>
+      <p>{{ viewing.date }} | {{ viewing.time }}</p>
       <h2>Antal platser</h2>
     </div>
     <div class="selection" v-for="ageGroup of agePrice" :key="ageGroup">
@@ -18,23 +18,30 @@
     </div>
     <div class="totalt-pris">
       <h6>totalt:</h6>
-      <div class="price-pill"><h4>{{ sum }}kr/st</h4></div>
+      <div class="price-pill">
+        <h4>{{ sum }}kr/st</h4>
+      </div>
     </div>
     <div class="submit-exit">
       <div v-if="counter">
-        <button v-if="counter" class="vidare" v-on:click="addBookingInfo(), seatAmount(), bookingDetails(), closeComponent()">
-           <h2>Vidare</h2>
-          </button>
+        <button
+          v-if="counter"
+          class="vidare"
+          v-on:click="
+            addBookingInfo(), seatAmount(), bookingDetails(), closeComponent()
+          "
+        >
+          <h2>Vidare</h2>
+        </button>
       </div>
       <router-link :to="'/'">
-      <button class="avsluta"><h3>Avsluta</h3></button>
+        <button class="avsluta"><h3>Avsluta</h3></button>
       </router-link>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -43,174 +50,176 @@ export default {
       agePrice: {
         Adult: { label: "Vuxen", price: 125, counter: 0 },
         Child: { label: "Barn", price: 75, counter: 0 },
-        Senior: { label: "Pensionär", price: 100, counter: 0 }
+        Senior: { label: "Pensionär", price: 100, counter: 0 },
       },
-      errorMessage: ""
-    }
+      errorMessage: "",
+    };
   },
   computed: {
     id() {
-      
       return this.$route.params.id;
     },
     viewing() {
-      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
-    }
+      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0];
+    },
   },
   methods: {
     add(price, ageGroup) {
-      this.sum += price
-      ageGroup.counter += 1
-      this.counter += 1
+      this.sum += price;
+      ageGroup.counter += 1;
+      this.counter += 1;
     },
     remove(price, ageGroup) {
-      if(ageGroup.counter > 0 && this.counter > 0) {
-        this.sum -= price
-      ageGroup.counter -= 1; 
-      this.counter -= 1;
-      }  
-      this.counter++;
-      console.log(ageGroup)
-    },
-    remove(price, ageGroup) {
-      if(ageGroup.counter == 0) {
-        return
+      if (ageGroup.counter > 0 && this.counter > 0) {
+        this.sum -= price;
+        ageGroup.counter -= 1;
+        this.counter -= 1;
       }
-      this.sum -= price
-      ageGroup.counter -= 1; 
-      this.counter--;  
+      this.counter++;
+      console.log(ageGroup);
+    },
+    remove(price, ageGroup) {
+      if (ageGroup.counter == 0) {
+        return;
+      }
+      this.sum -= price;
+      ageGroup.counter -= 1;
+      this.counter--;
     },
     addBookingInfo() {
-      this.$store.commit('setBookingPrice', this.sum)
-      this.$store.commit('setNrOfSeats', this.counter)
-      this.$store.commit('setBookingViewing', this.viewing) 
-      this.$store.commit('setBookingViewing', this.viewing)
+      this.$store.commit("setBookingPrice", this.sum);
+      this.$store.commit("setNrOfSeats", this.counter);
+      this.$store.commit("setBookingViewing", this.viewing);
+      this.$store.commit("setBookingViewing", this.viewing);
     },
     seatAmount() {
-      this.$store.commit('setSeatAmount', this.counter)
+      this.$store.commit("setSeatAmount", this.counter);
     },
     bookingDetails() {
-      this.$store.commit('setBookingDetails', this.agePrice)
+      this.$store.commit("setBookingDetails", this.agePrice);
     },
     closeComponent() {
       this.$emit("close1");
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-  
-  .container {
-    width: 50%;
-    margin: 0 auto;
-    border: 1px solid black;
-    margin-top: 100px;
-  }
+.container {
+  width: 30%;
+  margin: 0 auto;
+  border: 1px solid black;
+  background: #1f1f1f;
+  margin-top: 100px;
+}
 
-  .selection {
-    border: 1px solid red;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-  }
+.selection {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f1f1f;
+  height: 100px;
+}
 
-  .vuxen, .barn, .pensionär {
-    border: 1px solid green;
-  }
+.vuxen,
+.barn,
+.pensionär {
+  border: 1px solid green;
+}
 
-  .totalt-pris {
-    border: 1px solid orange;
-  }
+.totalt-pris {
+  border: 1px solid black;
+}
 
-  .buttons {
-    border: 1px solid purple;
-    display: flex;
-    margin: auto 0;
-    align-items: center;
-  }
+.buttons {
+  display: flex;
+  margin: auto 0;
+  align-items: center;
+}
 
-  .buttons > button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    outline: none;
-    border: 1px solid rgba(238, 238, 238, 0.1);
-    text-align: center;
-    margin: 0 20px 0 20px;
-    background: #0f0f0f;
-    color: white;
-  }
+.buttons > button {
+  width: 30px;
+  height: 30px;
+  border-radius: 10%;
+  outline: none;
+  border: 2px solid rgb(5, 5, 5);
+  text-align: center;
+  margin: 0 20px 0 20px;
+  background: white;
+  color: black;
+}
 
-  .buttons > button:hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
+.buttons > button:hover {
+  background: #3d3d3d;
+  cursor: pointer;
+}
 
-  .vuxen, .barn, .pensionär {
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-  }
+.vuxen,
+.barn,
+.pensionär {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
 
-  .agegroup {
-    margin: auto 0;
-  }
+.agegroup {
+  margin: auto 0;
+}
 
-  .counter {
-    margin: auto 0;
-  }
+.counter {
+  margin: auto 0;
+}
 
-  .price-pill {
-    display: inline-block;
-    padding: 2px 4px 2px 4px;
-    border: 1px solid #eee;
-    border-radius: 15px;
-    text-align: center;
-    margin: 5px 0 5px 0;
-  }
+.price-pill {
+  display: inline-block;
+  padding: 2px 4px 2px 4px;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  text-align: center;
+  margin: 5px 0 5px 0;
+}
 
-  .submit-exit > button {
-    font-family: "Poppins", sans-serif;
-    display: block;
-    margin: 0 auto;
-    color: #eee;
-    background: #0f0f0f;
-    outline: none;
-    border-radius: 8px;
-    border: 1px solid rgba(238, 238, 238, 0.1);
-    margin-top: 20px;
-  }
+.submit-exit > button {
+  font-family: "Poppins", sans-serif;
+  display: block;
+  margin: 0 auto;
+  color: #eee;
+  background: #0f0f0f;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  margin-top: 20px;
+}
 
-  .router-link > button {
-    font-family: "Poppins", sans-serif;
-    display: block;
-    margin: 0 auto;
-    color: #eee;
-    background: #0f0f0f;
-    outline: none;
-    border-radius: 8px;
-    border: 1px solid rgba(238, 238, 238, 0.1);
-    margin-top: 20px;
-  }
+.router-link > button {
+  font-family: "Poppins", sans-serif;
+  display: block;
+  margin: 0 auto;
+  color: #eee;
+  background: #0f0f0f;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  margin-top: 20px;
+}
 
-  .submit-exit > button:hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
+.submit-exit > button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
 
-  .vidare {
-    width: 400px;
-  }
+.vidare {
+  width: 400px;
+}
 
-  .avsluta {
-    width: 100px;
-  }
+.avsluta {
+  width: 100px;
+}
 
-  .error {
+.error {
   color: crimson;
   margin-bottom: 0.5em;
 }
-  
 </style>

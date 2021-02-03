@@ -156,10 +156,11 @@ p {
   padding-bottom: 10px;
   font-size: 20px;
   color: rgb(124, 124, 114);
-  position: absolute;
+  text-align: center;
+  /*position: absolute;
   top: 90%;
   left: 15%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);*/
 }
 
 .display {
