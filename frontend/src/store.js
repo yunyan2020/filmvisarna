@@ -52,10 +52,7 @@ const mutations = {
   },  
   setAllBookings(state, booking) { 
     state.allBookings.push(booking)
-  },  
-  setSeatAmount(state, amount) {
-    state.booking.seats = amount;
-  },
+  }, 
   setBookingDetails(state, bookingDetails) {
     state.bookingDetails = bookingDetails
   },
@@ -149,8 +146,8 @@ const actions = {
     try {
       newBooking = await newBooking.json()
       console.log(newBooking)
-      store.commit('setCurrentUserBooking', newBooking) // Test
-      store.dispatch('fetchMyBookings') // Test
+      /*store.commit('setCurrentUserBooking', newBooking) // Test
+      store.dispatch('fetchMyBookings') // Test*/
     } catch { 
       console.warn("Booking failed")
 

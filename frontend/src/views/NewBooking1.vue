@@ -22,7 +22,7 @@
     </div>
     <div class="submit-exit">
       <div v-if="counter">
-        <button v-if="counter" class="vidare" v-on:click="addBookingInfo(), seatAmount(), bookingDetails(), closeComponent()">
+        <button v-if="counter" class="vidare" v-on:click="addBookingInfo(), bookingDetails(), closeComponent()">
            <h2>Vidare</h2>
           </button>
       </div>
@@ -85,9 +85,6 @@ export default {
       this.$store.commit('setNrOfSeats', this.counter)
       this.$store.commit('setBookingViewing', this.viewing) 
       this.$store.commit('setBookingViewing', this.viewing)
-    },
-    seatAmount() {
-      this.$store.commit('setSeatAmount', this.counter)
     },
     bookingDetails() {
       this.$store.commit('setBookingDetails', this.agePrice)

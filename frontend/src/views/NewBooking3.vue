@@ -35,7 +35,7 @@
     <div class="breakline"></div>
     <div class="buttons">
       <router-link :to="'/'">
-        <button>Bekräfta</button>
+        <button v-on:click="completeBooking()">Bekräfta</button>
       </router-link>
       <router-link :to="'/'" >
         <button>Avsluta</button>
@@ -46,15 +46,14 @@
 
 <script>
 export default {
-  props: ['id'],
   data() {
     return {
       bookingId: this.generateId(),
     }
   },
   computed: {
-    m() {
-      return this.$store.state.movie.filter((p) => p.id == this.id)[0];
+    id() {
+      return this.$route.params.id;
     },
     viewing() {
     return this.$store.state.allViewings.filter((v) => v.id === this.id)[0]
@@ -63,7 +62,7 @@ export default {
       return this.$store.state.booking.price;
     },
     seatAmount() {
-      return this.$store.state.booking.seats
+      return this.$store.state.booking.nrOfSeats
     },
     movieDetails() {
        return this.$store.state.movie.filter((movie) => movie.title == this.viewing.movie)[0]
@@ -82,7 +81,12 @@ export default {
   methods: {
     generateId() {
       return Math.random().toString(36).substr(2, 25).toUpperCase()
-    }
+    },
+    completeBooking() {
+    let booking = this.$store.state.booking
+    console.log("In newbooking3:", booking)
+    this.$store.dispatch('addBooking', booking)
+    },
   }
 }
 </script>

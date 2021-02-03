@@ -4,7 +4,9 @@
       <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h4>Price: {{ booking.price }} Seats: {{ booking.nrOfSeats }}</h4>
+          <h4>Price: {{ booking.price }} Seats: {{ booking.nrOfSeats }}
+             {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
+            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }}  </h4>
         </div>
       </div>
     </div>

@@ -41,7 +41,6 @@ export default {
     toggleMyBookings() {
       this.showMyBookings = !this.showMyBookings;
       this.$router.push("/MyBookings");
-      console.log("bookings status", isLoggedIn, hasBookings);
     },
     toggleProfile() {
       this.showMyProfile = !this.showMyProfile;

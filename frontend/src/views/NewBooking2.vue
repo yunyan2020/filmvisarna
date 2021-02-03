@@ -18,9 +18,7 @@
       </div>
     </div>
     <div class="submit-exit" v-if="viewing && screen">
-      <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">  
         <button class="vidare" v-on:click="addBookingInfo(), row(), seating(), closeComponent()">Vidare</button>
-      </router-link>  
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
       <router-link :to="'/'">
       <button class="avsluta">Avsluta</button>
@@ -66,28 +64,19 @@ export default {
     screen() {
       return this.$store.state.screens.filter((s) => s.name === this.viewing.screen)[0]
     },
-    seatAmount() {
-      return this.$store.state.booking.seats
-    },
     isLoggedIn() {
       return this.$store.state.currentUser != null
     }
   },
   methods: {
-    // ADD THIS TO VIDARE!! v-on:click="addBookingInfo()"
     addBookingInfo() {
       if(this.isLoggedIn) {
       this.mustLogin = ""
       this.$store.commit('setBookingCustomer', this.customer)
-      this.completeBooking()
       }
       else {
         this.mustLogin = "Du måste logga in för att fortsätta"
       }
-    },
-    completeBooking() {
-      let booking = this.$store.state.booking
-      this.$store.dispatch('addBooking', booking)
     },
     mark(row, i) {
       console.log("index: " + i)
@@ -139,7 +128,9 @@ export default {
       this.$store.commit('setSeat', this.seatsDetails.seats)
     },
     closeComponent() {
+      if(!this.mustLogin){
       this.$emit("close2");
+      }
     }
   }
 }
