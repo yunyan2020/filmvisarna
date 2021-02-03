@@ -41,6 +41,5 @@ export default {
 }
 .contain {
   text-align: center;
-  margin-top: ;
 }
 </style>

@@ -13,9 +13,10 @@
       <div class="buttons">
         <button @click="remove(ageGroup.price, ageGroup)">-</button>
         <h1>{{ ageGroup.counter }}</h1>
-        <button @click="add(ageGroup.price, ageGroup)">+</button>
+        <button :disabled="!anySeatsLeft()" @click="add(ageGroup.price, ageGroup)">+</button>
       </div>
     </div>
+    <div class="error" v-if="!anySeatsLeft()">Inga platser kvar</div>
     <div class="totalt-pris">
       <h6>totalt:</h6>
       <div class="price-pill">
@@ -60,12 +61,17 @@ export default {
     viewing() {
       return this.$store.state.allViewings.filter((v) => v.id === this.id)[0];
     },
+    screen() {
+      return this.$store.state.screens.filter((s) => s.name === this.viewing.screen)[0]
+    },
   },
   methods: {
     add(price, ageGroup) {
       this.sum += price;
       ageGroup.counter += 1;
       this.counter += 1;
+
+      console.log(this.anySeatsLeft())
     },
     remove(price, ageGroup) {
       if (ageGroup.counter == 0) {
@@ -74,6 +80,8 @@ export default {
       this.sum -= price;
       ageGroup.counter -= 1;
       this.counter--;
+
+      console.log(this.anySeatsLeft())
     },
     addBookingInfo() {
       this.$store.commit("setBookingPrice", this.sum);
@@ -86,6 +94,10 @@ export default {
     closeComponent() {
       this.$emit("close1");
     },
+    anySeatsLeft() {
+      // Returns true if there are seats left, false if not
+      return this.viewing.seatsTaken + this.counter < this.screen.seats ? true : false
+    }
   },
 };
 </script>
@@ -210,5 +222,6 @@ export default {
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+  font-size: 15px;
 }
 </style>

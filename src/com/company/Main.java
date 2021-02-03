@@ -101,7 +101,8 @@ public class Main {
                 res.send("Ok");
             }
             else {
-                res.status(400).send("Inga lediga platser");
+                res.send("No seats left");
+                return;
             }
 
 

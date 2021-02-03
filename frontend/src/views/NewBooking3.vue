@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       bookingId: this.generateId(),
+      noSeatsLeft: ""
     }
   },
   computed: {
@@ -84,11 +85,13 @@ export default {
     },
     completeBooking() {
     this.setBookingViewing()
+     let booking = this.$store.state.booking
 
-    let booking = this.$store.state.booking
-
-    this.$store.dispatch('addBooking', booking)
     this.$store.dispatch('updateViewing', this.viewing)
+    
+    this.$store.dispatch('addBooking', booking)
+  
+    
     },
     setBookingViewing() {
     let tempViewing = this.viewing

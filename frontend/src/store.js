@@ -163,7 +163,7 @@ const actions = {
       method: "PUT",
       body: JSON.stringify(viewing)
       })
-    if (res.ok) { 
+    if (res.ok) {
       store.commit('updateViewings', viewing)
     }
   }
