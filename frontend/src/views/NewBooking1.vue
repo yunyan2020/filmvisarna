@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="title" v-if="viewing">
+    <div class="title" v-if="viewing && screen">
       <p class="description-p film-p">Film:</p>
       <h1 class="movie-title">{{ viewing.movie }}</h1>
       <p class="description-p date-p">Datum & Tid</p>
@@ -18,10 +18,10 @@
       <div class="buttons">
         <button @click="remove(ageGroup.price, ageGroup)">-</button>
         <h1 class="counter">{{ ageGroup.counter }}</h1>
-        <button :disabled="!anySeatsLeft()" @click="add(ageGroup.price, ageGroup)">+</button>
+        <button v-if="viewing && screen" :disabled="!anySeatsLeft()" @click="add(ageGroup.price, ageGroup)">+</button>
       </div>
     </div>
-    <div class="error" v-if="!anySeatsLeft()">Inga platser kvar</div>
+    <div  class="error" v-if="!anySeatsLeft() && viewing && screen">Inga platser kvar</div>
     <div class="totalt-pris">
       <h6 class="sum">totalt:</h6>
       <div class="price-pill">
@@ -101,7 +101,8 @@ export default {
     },
     anySeatsLeft() {
       // Returns true if there are seats left, false if not
-      return this.viewing.seatsTaken + this.counter < this.screen.seats ? true : false
+      if (this.viewing && this.screen){
+      return this.viewing.seatsTaken + this.counter < this.screen.seats ? true : false}
     }
   },
 };
