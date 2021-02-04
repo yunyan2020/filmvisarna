@@ -7,18 +7,21 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0 },
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: "" },
   myBookings: [],
-  allBookings: [],
   bookingDetails: {},
   bookedSeat: { row: [], seats: [] }
 }
 
 //mutates state
 const mutations = {
-  setBookings(state, list) { 
-    state.allBookings = list
-  },
+  updateViewings(state, viewing) {
+    let tempViewing = state.allViewings.filter((v) => v.id == viewing.id)[0]  
+    tempViewing.seatsTaken = viewing.seatsTaken
+
+    console.log(state.allViewings.filter((v) => v.id == viewing.id)[0]) // Test!
+    
+   },
   setMovie(state, list) {
     state.movie = list
   },
@@ -27,7 +30,6 @@ const mutations = {
   },
   setViewings(state, list) {
     state.allViewings = list
-    console.log("Viewings list saved")
   },
   setCurrentUser(state, currentUser) {
     state.currentUser = currentUser
@@ -46,6 +48,9 @@ const mutations = {
   },
   setNrOfSeats(state, nrOfSeats) { 
     state.booking.nrOfSeats = nrOfSeats
+  },
+  setBookingRef(state, bookingRef) { 
+    state.booking.bookingRef = bookingRef
   },
   setMyBookings(state, myBookings) {
     state.myBookings = myBookings
@@ -126,7 +131,6 @@ const actions = {
     let list = await fetch('/rest/bookings')
     list = await list.json()
     let currentUserBookings =  [];
-    console.log('bookings', list);
     
     if(state.currentUser && state.currentUser.id) {
         currentUserBookings = list.filter((booking) => {
@@ -135,7 +139,6 @@ const actions = {
         }
       })     
     }    
-    console.log('currentUserBookings', currentUserBookings);
     store.commit('setMyBookings', currentUserBookings)
   },
   async addBooking(store, booking) { 
@@ -145,14 +148,23 @@ const actions = {
     })
     try {
       newBooking = await newBooking.json()
-      console.log(newBooking)
       /*store.commit('setCurrentUserBooking', newBooking) // Test
       store.dispatch('fetchMyBookings') // Test*/
     } catch { 
       console.warn("Booking failed")
 
     }
-
+  },
+  async updateViewing(store, viewing) { 
+    console.log("Viewing i updateViewing: ", viewing.seatsTaken)
+    let res = await fetch("/rest/viewings/" + viewing.id,
+    {
+      method: "PUT",
+      body: JSON.stringify(viewing)
+      })
+    if (res.ok) {
+      store.commit('updateViewings', viewing)
+    }
   }
 
 

@@ -7,6 +7,7 @@
       <div class="poster">
         <img :src="movie.poster" alt="" class="movie-poster" />
       </div>
+      <div class="line"></div>
       <div class="movie-information" v-if="movie">
         <h1>{{ movie.title }}</h1>
         <h4>{{ movie.genre }}</h4>
@@ -16,6 +17,7 @@
     </div>
     <div class="movie-detail" v-if="movie">
       <h3>{{ movie.plot }}</h3>
+      <hr>
       <div class="information" v-if="movie">
         <h5>Regi:</h5>
         <h3>{{ movie.director }}</h3>
@@ -39,6 +41,7 @@
       </div>
     </div>
     <div class="video-container" v-if="showTrailer">
+      <div class="close-trailer-view"> <i class="far fa-times-circle" @click="viewTrailer()"></i> </div>
       <iframe :src="'https://www.youtube.com/embed/' + movie.youtubeTrailers" class="trailer"/>
     </div>
   </div>
@@ -107,78 +110,55 @@ export default {
 </script>
 
 <style scoped>
+
+hr {
+  position: relative;
+  border-color: rgba(51, 51, 51, 0.363);
+  top: 25px;
+}
+
+.movie-detail {
+  padding-top: 25px;
+  border-top: 1px solid #333;
+}
+
 .video-container {
   z-index: 5;
   width: 50%;
   height: 500px;
+  /* margin: 0 auto; */
   position: absolute;
-  top: 800px;
-  margin: 0 auto;
+  top: 554px;
+  left: 475px;
+  display: block;
+}
+
+.close-trailer-view {
+  width: 100%;
+  height: 50px;
+}
+
+.fa-times-circle {
+  font-size: 30px;
+  position: relative;
+  left: 915px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.fa-times-circle:hover {
+  opacity: 0.5;
 }
 
 .trailer {
   width: 100%;
   height: 100%;
-}
-/* .movie-head {
-  margin: 5px;
-  padding: 1em;
-  max-width: 50em;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-}
-.wrap {
-  position: relative;
-  width: 70%;
-  height: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-.ticket-page {
-  float: left;
-  position: absolute;
-  margin: 10px;
-  padding: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 1em;
-  border: 1px solid rgba(114, 112, 112, 0.521);
-}
-
-.movie-detail {  
-  float: left;  
-  height:90%;
-  position: absolute;
-  background: #333;
-  overflow: hidden;
-  left: 50%;
-  margin: 5px;
-  padding:10px;
-  max-width: 50%;  
-  top: 1px;
-  border-radius: 5px;
-}
-
-.item-detail { 
-  margin-bottom: 1px;
-  padding-top: 0;
-  font-size: 15px;
-  text-align: left;
-  color: rgb(243, 220, 11);
-  font-weight: normal;
-}
-.item-name {
-  display: inline;
-  font-size: 13px;
-  color: white;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px 2px black;
 }
 
 .container {
-  background: #0f0f0f;
+  background: black;
   color: white;
   margin: 0;
 }
@@ -199,7 +179,6 @@ export default {
 .movie {
   width: 50%;
   height: 500px;
-  border: 1px solid red;
   margin: 0 auto;
   position: relative;
   bottom: 200px;
@@ -208,6 +187,7 @@ export default {
 
 .movie-poster {
   border-radius: 8px;
+  box-shadow: 0 0 30px 10px black;
 }
 
 .movie-information {
@@ -224,17 +204,17 @@ export default {
   margin: auto 0;
   padding: 3px 30px;
   font-size: 20px;
-  background: #0f0f0f;
+  background: black;
   color: white;
   outline: none;
-  border: 1px solid #333;
+  border: 1px solid rgba(51, 51, 51, 0.479);
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 0 10px 2px black; 
   cursor: pointer;
   /* letter-spacing: 2px;
   text-transform: uppercase; */
-/* } */
+} 
 
 .trailer-button:hover {
   opacity: 0.5;
@@ -249,8 +229,7 @@ export default {
 
 .movie-detail {
   width: 50%;
-  height: 450px;
-  border: 1px solid green;
+  height: 350px;
   margin: 0 auto;
   position: relative;
   bottom: 150px;
@@ -265,9 +244,12 @@ h5 {
 }
 
 .booking-section-title {
+  width: 50%;
   position: relative;
   left: 25%;
   bottom: 35px;
+  border-top: 1px solid #eee;
+  padding-top: 50px;
 }
 
 .dates-list {

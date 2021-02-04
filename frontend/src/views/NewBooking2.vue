@@ -1,12 +1,17 @@
 <template>
   <div class="container">
     <div class="booking-information" v-if="viewing && screen">
+      <p class="label film">Film:</p>
       <h1>{{ viewing.movie }}</h1>
+      <p class="label">Datum & Tid:</p>
       <h3>{{ viewing.date }} - {{ viewing.time }}</h3>
+      <p class="label topmarg salong">Salong:</p>
       <h4>{{ viewing.screen }}</h4>
-      <p>{{ price }}kr</p>
+      <p class="label topmarg">Pris:</p>
+      <h5>{{ price }}kr</h5>
       <!-- <p>{{ viewing.date }} {{ viewing.time }} {{ price }}SEK</p> -->
     </div>
+    <hr>
     <div class="selection">
       <div class="scene">
         <h6>skärm</h6>
@@ -18,10 +23,10 @@
       </div>
     </div>
     <div class="submit-exit" v-if="viewing && screen">
-        <button class="vidare" v-on:click="addBookingInfo(), row(), seating(), closeComponent()">Vidare</button>
+      <button class="vidare" v-on:click="addBookingInfo(), row(), seating(), closeComponent()">Vidare</button>
       <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
-      <router-link :to="'/'">
-      <button class="avsluta">Avsluta</button>
+      <router-link :to="'/'" class="router-link">
+        <button class="avsluta">Avsluta</button>
       </router-link>
       <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
         <button class="vidare">Vidare</button>
@@ -31,6 +36,7 @@
         <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
       </router-link> -->
     </div>
+    <div class="whitespace"></div>
   </div>
 </template>
 
@@ -53,7 +59,7 @@ export default {
       return this.$store.state.currentUser
     },
     viewing() {
-    return this.$store.state.booking.viewing
+      return this.$store.state.allViewings.filter((v) => v.id === this.id)[0];
     },
     price() {
       return this.$store.state.booking.price
@@ -138,6 +144,37 @@ export default {
 
 <style scoped>
 
+.whitespace {
+  width: 100%;
+  height: 150px;
+  background: black;
+}
+
+hr {
+  opacity: 0.2;
+  margin: 10px 0 30px 0;
+}
+
+.salong {
+  position: relative;
+  top: 2px;
+}
+
+.topmarg {
+  margin-top: 2px;
+}
+
+.film {
+  position: relative;
+  top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
 .marked {
   background: #f7aa0393;
 }
@@ -145,7 +182,6 @@ export default {
 .container {
   width: 75%;
   height: 90vh;
-  border: 1px solid white;
   margin: 50px auto;
 }
 
@@ -154,22 +190,11 @@ h1 p {
 }
 
 .booking-information {
-  height: 15%;
-  border: 1px solid yellow;
-  opacity: 0.5;
   margin: 5px 0 0 10px;
 }
 
-.booking-information > h4{
-  padding: 2px 4px;
-  border-radius: 8px;
-  border: 1px solid whitesmoke;
-  display: inline-block;
-}
-
 .selection {
-  height: 75%;
-  border: 1px solid red;
+  margin-bottom: 40px;
 }
 
 .scene {
@@ -185,10 +210,11 @@ h1 p {
 
 .seats {
   margin: 50px auto 10px auto;
-  border: 1px solid purple;
+  border: 1px solid rgba(51, 51, 51, 0.2);
   width: 60%;
-  height: 80%;
   padding-top: 50px;
+  padding-bottom: 30px;
+  border-radius: 10px;
 }
 
 .row {
@@ -213,19 +239,22 @@ h1 p {
 }
 
 .submit-exit {
-  position: relative;
-  bottom: 25px;
+  width:100%;
+}
+
+.submit-exit .router-link {
+  margin: 0 auto;
 }
 
 .submit-exit > button {
   font-family: "Poppins", sans-serif;
   display: block;
   margin: 0 auto;
-  color: #eee;
-  background: #0f0f0f;
+  color: white;
+  background: black;
   outline: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 15px;
   border: 1px solid rgba(238, 238, 238, 0.1);
   padding: 4px 8px 4px 8px;
 }
@@ -238,12 +267,54 @@ h1 p {
   width: 200px;
   height: 40px;
   margin-bottom: 15px;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 900;
+  padding: 2px;
+}
+
+/* .submit-exit .avsluta {
+  width: 100px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  border-radius: 15px;
+  background: black;
+  color: white;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  margin: 0 auto;
+} */
+
+.submit-exit .router-link {
+  margin: 0 auto;
+}
+
+.router-link button {
+  margin: 0 auto;
+}
+
+.router-link .avsluta {
+  width: 100px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: 1px solid rgba(238, 238, 238, 0.1);
+  margin: 0 auto;
+  padding: 2px;
+}
+
+.router-link .avsluta:hover {
+  opacity: 0.5;
 }
 
 .error {
   color: crimson;
   margin-bottom: 0.5em;
+  
 }
+
 
 </style>

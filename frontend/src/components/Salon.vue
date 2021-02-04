@@ -113,13 +113,11 @@ export default {
   color: rgb(221, 221, 221);
   margin: 8px;
   font-size: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 600;
   text-align: right;
 }
 .select-css {
   font-size: 16px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 600;
   text-align: center;
   color: white;

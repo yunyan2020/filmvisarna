@@ -11,6 +11,7 @@ public class Booking {
     private Viewing viewing;
     private int nrOfSeats;
     private int price;
+    private String bookingRef;
 
     public Booking(){}
 
@@ -54,6 +55,14 @@ public class Booking {
         this.price = price;
     }
 
+    public String getBookingRef() {
+        return bookingRef;
+    }
+
+    public void setBookingRef(String bookingRef) {
+        this.bookingRef = bookingRef;
+    }
+
 
     @Override
     public String toString() {
@@ -61,8 +70,9 @@ public class Booking {
                 "id='" + id + '\'' +
                 ", customer=" + customer +
                 ", viewing=" + viewing +
-                ", tickets=" + nrOfSeats +
+                ", nrOfSeats=" + nrOfSeats +
                 ", price=" + price +
+                ", bookingRef='" + bookingRef + '\'' +
                 '}';
     }
 }

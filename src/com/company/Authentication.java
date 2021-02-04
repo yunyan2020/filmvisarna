@@ -30,7 +30,6 @@ public class Authentication {
 
             // Validating that email isn't already taken
             var customer = req.body(Customer.class);
-            System.out.println(customer);
 
             Customer customerInCollection = collection("Customer").findOne(ObjectFilters.eq("email", customer.getEmail()));
             if(customerInCollection != null) {

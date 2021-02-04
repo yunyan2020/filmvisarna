@@ -4,28 +4,55 @@
       <h1>Kalender</h1>
     </div>
     <div class="dates">
-          <div class="today">
-            <h3>Idag</h3>
-            <div v-for="movie in movieToday" :key="movie.title" class="movies">
+          <div class="today date">
+            <h6>{{today}}</h6>
+            <h2>Idag</h2>
+            <div v-for="movie in movieToday" :key="movie.title" class="movie-container">
             <router-link :to="'/movieshow/details/' + movie.id">
-            <img :src="movie.poster">
+              <img :src="movie.poster" class="poster">
             </router-link>
+            <div v-if="movieTodayDetails" class="details">
+              <p>Salong & tid:</p>
+              <h1>{{movieTodayDetails.screen}} {{movieTodayDetails.time}}</h1>
+              <p>Film:</p>
+              <h3>{{ movie.title }}</h3>
+              <p>Speltid:</p>
+              <h4>{{movieToday[0].runtime}}</h4>
+            </div>
             </div>
           </div>
-          <div class="tomorow">
-            <h3>Imorgon</h3>
-            <div v-for="movie in movieTomorrow" :key="movie.title">
+          <div class="tomorow date">
+            <h6>{{tomorrow}}</h6>
+            <h2>Imorgon</h2>
+            <div v-for="movie in movieTomorrow" :key="movie.title" class="movie-container">
             <router-link :to="'/movieshow/details/' + movie.id">
-            <img :src="movie.poster">
+              <img :src="movie.poster" class="poster">
             </router-link>
+            <div v-if="movieTomorrowDetails" class="details">
+              <p>Salong & tid:</p>
+              <h1>{{movieTomorrowDetails.screen}} {{movieTomorrowDetails.time}}</h1>
+              <p>Film:</p>
+              <h3>{{ movie.title }}</h3>
+              <p>Speltid:</p>
+              <h4>{{movieTomorrow[0].runtime}}</h4>
+            </div>
             </div>
           </div>
-          <div class="aftertomorow">
-            <h3>I Övermorgon</h3>
-            <div v-for="movie in movieAfterTomorrow" :key="movie.title">
-            <router-link :to="'/movieshow/details/' + movie.id">
-            <img :src="movie.poster">
-            </router-link>
+          <div class="aftertomorow date">
+            <h6>{{afterTomorrow}}</h6>
+            <h2>I Övermorgon</h2>
+            <div v-for="movie in movieAfterTomorrow" :key="movie.title" class="movie-container">
+              <router-link :to="'/movieshow/details/' + movie.id">
+                <img :src="movie.poster" class="poster">
+              </router-link>
+              <div v-if="movieAfterTomorrowDetails" class="details">
+                <p>Salong & tid:</p>
+                <h1>{{ movieAfterTomorrowDetails.screen }} {{ movieAfterTomorrowDetails.time }}</h1>
+                <p>Film:</p>
+                <h3>{{ movie.title }}</h3>
+                <p>Speltid:</p>
+                <h4>{{ movieAfterTomorrow[0].runtime }}</h4>
+              </div>
             </div>
           </div>
       </div>
@@ -45,19 +72,33 @@ export default {
     movies() {
       return this.$store.state.movie
     },
+    thisMovieAfterTomorrow() {
+      /* let test = this.movies.filter((movie) => movie.titel === this.movieToday.title)
+      return test */
+      return this.movieAfterTomorrow
+    },
     movieToday() {
       // Filters through viewings json for viewing object on todays date
       let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)
       // Checks if there are viewings in tempViewings array, if true filters through the movie json for movie with same title for movie object
       return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     },
+    movieTodayDetails() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.today)[0]
+    },
     movieTomorrow() {
       let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)
       return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
     },
+    movieTomorrowDetails() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.tomorrow)[0]
+    },
     movieAfterTomorrow() {
       let tempViewing = this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)
       return tempViewing[0] ? this.movies.filter((movie) => movie.title === tempViewing[0].movie) : "Inget visas idag"
+    },
+    movieAfterTomorrowDetails() {
+      return this.$store.state.allViewings.filter((viewing) => viewing.date === this.afterTomorrow)[0]
     }
   },
   methods: {
@@ -84,6 +125,17 @@ export default {
 </script>
 
 <style scoped>
+
+p {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+h1 {
+  color: white;
+}
+
 img:hover {
   opacity: 0.5;
 }
@@ -98,25 +150,49 @@ h5 {
   padding: 0 5px 0 5px;
 }
 
-h1,
-h3,
-h5 {
-  color: rgb(216, 137, 63);
-}
-
 .container {
   margin: 10px;
   padding: 1em;
-  border: 1px solid black;
   justify-content: space-between;
 }
 
 .dates {
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  justify-content: center;
 }
 
 .container-title {
   display: inline-block;
+}
+
+.date h2 {
+  text-align: center;
+  margin: 10px 0 40px 0;
+  color: #f9f6f7; 
+}
+
+.date h6 {
+  text-align: center;
+}
+
+.poster {
+  width: 125px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.movie-container {
+  display: flex;
+  gap: 1em;
+  margin-left: 50px;
+}
+
+.details {
+  position: relative;
+  top: 20px;
 }
 </style>
