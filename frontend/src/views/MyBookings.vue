@@ -6,7 +6,7 @@
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
           <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}
              {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen.name }} |
+            {{ booking.viewing.time }} | {{ booking.viewing.screen }} |
             Bokningsnummer:  {{ booking.bookingRef }}  </h4>
             
         </div>
