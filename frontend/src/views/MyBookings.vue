@@ -5,10 +5,12 @@
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
           <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}
-             {{ booking.viewing.movie }} | {{ booking.viewing.date }} |
-            {{ booking.viewing.time }} | {{ booking.viewing.screen }} |
-            Bokningsnummer:  {{ booking.bookingRef }}  </h4>
-            
+            Film: {{ booking.viewing.movie }} 
+            Tid:{{ booking.viewing.date }} 
+            {{ booking.viewing.time }} 
+            Salon: {{ booking.viewing.screen }} 
+            Bokningsnummer: {{ booking.bookingRef }}
+            </h4>            
         </div>
       </div>
     </div>
@@ -48,6 +50,19 @@ export default {
   margin-right: 0.1em;
   padding: 1em;
   letter-spacing: 2px;
+}
+
+.booking{
+  text-align: left;
+  border: 1px solid #333;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 2px black;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 150px;
+  grid-gap: 1em;
 }
 </style>
 
