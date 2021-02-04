@@ -15,12 +15,12 @@
   <div class="container">
     <h1 class="page-title">Aktuella filmer</h1>
     <div class="movies">
-      <div class="movie" v-for="m of movie" :key="m">   
+      <div class="movie" v-for="m of movie" :key="m.id">   
           <router-link :to="'/movieshow/details/' + m.id">               
             <div class="poster">
               <img :src="m.poster" alt="" />
             </div>           
-         </router-link>              
+          </router-link>              
           <div class="vertical-line" />
           <div class="movie-details">
             <h1 class="movie-title">{{ m.title }}</h1>
@@ -33,10 +33,6 @@
             <p>{{ m.actors.join(", ") }}</p>
             <h6 class="fade">Språk | Översättning</h6>
             <p>{{ m.language }} | {{ m.subtitles }}</p>
-            <div class="links">
-              <i class="fab fa-imdb"></i>
-              <i class="fab fa-youtube"></i>
-            </div>
           </div> 
       </div>
     </div>
@@ -100,7 +96,7 @@ export default {
   box-shadow: 0 0 10px 2px black;
 }
 
-.movie:hover {
+img:hover {
   opacity: 0.7;
   cursor: pointer;
 }
@@ -113,29 +109,38 @@ export default {
   margin-right: 7px;
 }
 
+.poster {
+  height: 100%;
+}
+
 .movie-details {
   margin: 5px auto 0 0;
+  /* margin: auto auto 0 auto; */
 }
 
 .links {
+  margin:0;
   position: relative;
   top: 25px;
 }
 
+.trailer-txt-btn {
+  font-size: 12px;
+}
+
 .fab {
-  font-size: 35px;
+  font-size: 12px;
   margin-right: 20px;
   cursor: pointer;
 }
 
-.fa-youtube:hover {
-  /* color: #ec0101; */
+/* .fa-youtube:hover {
   color: #ff0000;
 }
 
 .fa-imdb:hover {
   color: #f0a500;
-}
+} */
 
 .fas {
   margin-right: 5px;

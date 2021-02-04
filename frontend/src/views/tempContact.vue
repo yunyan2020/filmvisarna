@@ -41,7 +41,7 @@ export default {};
 }
 .content {
   padding-top: 50px;
-  font-size: 5 px;
+  font-size: 20px;
   text-align: center;
 }
 </style>

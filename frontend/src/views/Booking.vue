@@ -34,12 +34,12 @@ export default {
 <style scoped>
 .wrapper {
   height: 800px;
-  background-color: #141414;
+  background-color: black;
 }
 .titel {
   color: black;
 }
-.contain {
+/* .contain {
   text-align: center;
-}
+} */
 </style>

@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .Myprofile{
   position: absolute;
   text-align: center;
