@@ -139,7 +139,7 @@ hr {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-
+  margin-top: 8em;
 }
 .title {
   border-bottom: 1px solid rgba(51, 51, 51, 0.3);
@@ -236,7 +236,7 @@ hr {
   margin-bottom: 10px;
   font-size: 25px;
   font-weight: 900;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .submit-exit .avsluta {

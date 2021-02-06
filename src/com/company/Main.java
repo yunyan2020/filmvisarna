@@ -89,7 +89,6 @@ public class Main {
             viewingInColl.setSeatsTaken((int)body.get("seatsTaken"));
 
             int totalSeatsTaken = viewingInColl.getSeatsTaken();
-            System.out.println(totalSeatsTaken);
             String screen = viewingInColl.getScreen();
 
             if(screen.equals("Stora Salongen") && totalSeatsTaken <= 81) {
