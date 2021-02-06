@@ -155,10 +155,6 @@ p {
   font-size: 20px;
   color: rgb(124, 124, 114);
   text-align: center;
-  /*position: absolute;
-  top: 90%;
-  left: 15%;
-  transform: translateX(-50%) translateY(-50%);*/
 }
 
 .display {
@@ -178,6 +174,5 @@ p {
   border-top-right-radius: 10px;
   border-bottom-left-radius: 70px;
   border-bottom-right-radius: 70px;
-  /* clip-path: polygon(0 0, 100% 0%, 91% 100%, 10% 100%); */
 }
 </style>

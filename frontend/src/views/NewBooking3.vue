@@ -11,15 +11,9 @@
         <h3>{{customer.label}}</h3>
         <h3>{{customer.counter}}</h3>
       </div>
-      <!-- <div><h3>{{getBookingDetails.label}}</h3></div>
-      <div></div>
-      <div></div> -->
     </div>
     <div class="breakline"></div>
     <div class="booking-movie-details" v-if="viewing">
-      <!-- <h1>{{viewing.movie}}</h1>
-      <h3>{{ movieDetails.runtime }}</h3>
-      <h6></h6> -->
       <p class="label">Film:</p>
       <h3>{{ viewing.movie }} | {{ movieDetails.runtime }} | {{ movieDetails.rated }}</h3>
       <p class="label">Datum, tid och bokade säten:</p>
@@ -112,7 +106,6 @@ export default {
     setBookingViewing() {
     let tempViewing = this.viewing
     tempViewing.seatsTaken +=  this.seatAmount
-    console.log("NewBooking3 tempviewing seatstaken: ", tempViewing.seatsTaken)
 
     this.$store.commit("setBookingViewing", tempViewing);
     }
@@ -217,23 +210,4 @@ export default {
     font-weight: 600;
     border: 1px solid rgba(238, 238, 238, 0.1);
   }
-  /* .title-container {
-
-  }
-
-  .booking-seats-detail {
-
-  }
-
-  .booking-movie-details {
-
-  }
-
-  .booking-id-container {
-
-  }
-
-  .buttons {
-
-  } */
 </style>

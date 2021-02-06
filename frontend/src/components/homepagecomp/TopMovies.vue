@@ -81,12 +81,10 @@ img {
   color: white;
   position: relative;
   bottom: 10px;
-  /* padding-left: 5px; */
   padding: 5px 5px 0 8px;
   height: 20px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  /* text-align: center; */
 }
 
 .more {

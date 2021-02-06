@@ -212,8 +212,6 @@ hr {
   text-align: center;
   box-shadow: 0 0 10px 2px black; 
   cursor: pointer;
-  /* letter-spacing: 2px;
-  text-transform: uppercase; */
 } 
 
 .trailer-button:hover {
@@ -256,12 +254,9 @@ h5 {
   position: relative;
   bottom: 25px;
   width: 50%;
-  /* height: 400px; */
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* border: 1px solid #333;
-  border-radius: 5px; */
 }
 
 .viewing {
@@ -280,14 +275,8 @@ h5 {
 }
 
 .viewing:hover {
-  /* background: rgba(255, 255, 255, 0.082); */
-  /* opacity: 0.1; */
   border: 1px solid #333;
 }
-
-/* .viewing:active {
-  background: rgba(238, 238, 238, 0.062);
-} */
 
 .boka {
   width: 100px;
@@ -311,18 +300,4 @@ h5 {
   height:500px;
   margin: 20px auto;
 }
-/* ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(37, 37, 37);
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333; 
-  border-radius: 8px;
-  border: 1px solid #0f0f0f;
-} */
 </style>

@@ -39,7 +39,4 @@ export default {
 .titel {
   color: black;
 }
-/* .contain {
-  text-align: center;
-} */
 </style>
