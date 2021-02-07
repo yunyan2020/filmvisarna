@@ -34,4 +34,9 @@ export default {
   box-sizing: border-box;
   background: black;
 }
+@media only screen and (max-width: 600px){
+.grid{
+  grid-template-rows: 56px 1fr 45px;
+}
+}
 </style>
