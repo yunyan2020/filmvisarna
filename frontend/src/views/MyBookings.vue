@@ -4,13 +4,13 @@
       <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}
-            Film: {{ booking.viewing.movie }} 
-            Tid:{{ booking.viewing.date }} 
-            {{ booking.viewing.time }} 
-            Salon: {{ booking.viewing.screen }} 
-            Bokningsnummer: {{ booking.bookingRef }}
-            </h4>            
+          <h4>
+            Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }} Film:
+            {{ booking.viewing.movie }} Tid:{{ booking.viewing.date }}
+            {{ booking.viewing.time }}
+            Salon: {{ booking.viewing.screen }} Bokningsnummer:
+            {{ booking.bookingRef }}
+          </h4>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
   height: 200px;
   display: flex;
   padding: 2em;
-  left: 50%;
+  left: 35%;
   top: 20%;
   margin-top: 1em;
   margin-right: 0.1em;
@@ -52,7 +52,7 @@ export default {
   letter-spacing: 2px;
 }
 
-.booking{
+.booking {
   text-align: left;
   border: 1px solid #333;
   display: flex;
