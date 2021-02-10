@@ -4,7 +4,15 @@
       <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}
+          <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }} </h4>  
+          <div class="Seats-detail">
+           <span 
+              v-for="(seat,i) in booking.viewing.bookedSeats" :key=i
+              class="Seats"
+              >Platser: {{ seat.row }} {{ seat.seats }}
+            </span>
+            </div>
+            <h4>
             Film: {{ booking.viewing.movie }} 
             Tid:{{ booking.viewing.date }} 
             {{ booking.viewing.time }} 

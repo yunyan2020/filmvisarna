@@ -2,6 +2,8 @@ package com.company.models;
 import express.database.Model;
 import org.dizitart.no2.objects.Id;
 
+import java.util.ArrayList;
+
 @Model
 public class Booking {
 
@@ -12,6 +14,7 @@ public class Booking {
     private int nrOfSeats;
     private int price;
     private String bookingRef;
+    private ArrayList<BookedSeat> bookedSeat;
 
     public Booking(){}
 
@@ -63,6 +66,13 @@ public class Booking {
         this.bookingRef = bookingRef;
     }
 
+    public ArrayList<BookedSeat> getBookedSeat() {
+        return bookedSeat;
+    }
+
+    public void setBookedSeat(ArrayList<BookedSeat> bookedSeat) {
+        this.bookedSeat = bookedSeat;
+    }
 
     @Override
     public String toString() {
@@ -73,6 +83,7 @@ public class Booking {
                 ", nrOfSeats=" + nrOfSeats +
                 ", price=" + price +
                 ", bookingRef='" + bookingRef + '\'' +
+                ", bookedSeat=" + bookedSeat +
                 '}';
     }
 }

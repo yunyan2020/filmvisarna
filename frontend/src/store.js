@@ -7,7 +7,7 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: "" },
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: ""},
   myBookings: [],
   bookingDetails: {},
   bookedSeat: { row: [], seats: [] }
@@ -18,8 +18,8 @@ const mutations = {
   updateViewings(state, viewing) {
     let tempViewing = state.allViewings.filter((v) => v.id == viewing.id)[0]  
     tempViewing.seatsTaken = viewing.seatsTaken
-
-    console.log(state.allViewings.filter((v) => v.id == viewing.id)[0]) // Test!
+    tempViewing.bookedSeat = viewing.bookedSeat
+    console.log('store viewing',state.allViewings.filter((v) => v.id == viewing.id)[0]) // Test!
     
    },
   setMovie(state, list) {
@@ -88,7 +88,6 @@ const actions = {
   async fetchViewings(store) {
     let list = await fetch('/rest/viewings')
     list = await list.json()
-
     store.commit('setViewings', list)
   },
   async login(store, credentials) { 

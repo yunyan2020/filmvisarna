@@ -111,11 +111,18 @@ export default {
     },
     setBookingViewing() {
     let tempViewing = this.viewing
-    tempViewing.seatsTaken +=  this.seatAmount
-    console.log("NewBooking3 tempviewing seatstaken: ", tempViewing.seatsTaken)
+      tempViewing.seatsTaken +=  this.seatAmount
+      console.log("this.seating.row",this.seating.row);
+      console.log("this.seating.seats",this.seating.seats);
+      for(let i=0;i<this.seatAmount;i++){
+        tempViewing.bookedSeat.push({row:this.seating.row[i],seats:this.seating.seats[i]}) 
+      }  
+      console.log('tempViewing',tempViewing) 
 
-    this.$store.commit("setBookingViewing", tempViewing);
-    }
+      console.log("NewBooking3 tempviewing bookedSeat: ", tempViewing.bookedSeat)
+      this.$store.commit("setBookingViewing", tempViewing);
+      console.log("NewBooking3 tempviewing ", tempViewing);
+      }
   } 
 }
 </script>
