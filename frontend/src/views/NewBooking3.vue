@@ -95,6 +95,11 @@ export default {
     },
     completeBooking() {
     this.$store.commit('setBookingRef', this.bookingId)
+    let bookedSeat = []
+    for(let i=0;i<this.seatAmount;i++){
+        bookedSeat.push({row:this.seating.row[i],seats:this.seating.seats[i]}) 
+      }  
+    this.$store.commit('setBookingBookedSeat',bookedSeat)  
     this.setBookingViewing()
     let booking = this.$store.state.booking
 
@@ -105,10 +110,12 @@ export default {
     },
     setBookingViewing() {
     let tempViewing = this.viewing
-    tempViewing.seatsTaken +=  this.seatAmount
-
-    this.$store.commit("setBookingViewing", tempViewing);
-    }
+      tempViewing.seatsTaken +=  this.seatAmount
+      for(let i=0;i<this.seatAmount;i++){
+        tempViewing.bookedSeat.push({row:this.seating.row[i],seats:this.seating.seats[i]}) 
+      } 
+      this.$store.commit("setBookingViewing", tempViewing);
+      }
   } 
 }
 </script>

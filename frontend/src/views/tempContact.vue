@@ -41,7 +41,8 @@ export default {};
 }
 .content {
   padding-top: 50px;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
+color:rgb(133, 133, 136);
 }
 </style>

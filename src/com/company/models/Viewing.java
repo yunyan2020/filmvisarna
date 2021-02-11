@@ -3,6 +3,8 @@ package com.company.models;
 import express.database.Model;
 import org.dizitart.no2.objects.Id;
 
+import java.util.ArrayList;
+
 @Model
 public class Viewing {
 
@@ -14,6 +16,7 @@ public class Viewing {
     private String date;
     private String time;
     private int seatsTaken;
+    private ArrayList<BookedSeat> bookedSeat;
 
     public Viewing() {}
 
@@ -65,6 +68,14 @@ public class Viewing {
         this.seatsTaken = seatsTaken;
     }
 
+    public ArrayList<BookedSeat> getBookedSeat() {
+        return bookedSeat;
+    }
+
+    public void setBookedSeat(ArrayList<BookedSeat> bookedSeat) {
+        this.bookedSeat = bookedSeat;
+    }
+
     @Override
     public String toString() {
         return "Viewing{" +
@@ -74,6 +85,7 @@ public class Viewing {
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", seatsTaken=" + seatsTaken +
+                ", bookedSeat=" + bookedSeat +
                 '}';
     }
 
