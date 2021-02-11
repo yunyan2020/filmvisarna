@@ -76,7 +76,6 @@ export default {
       ageGroup.counter += 1;
       this.counter += 1;
 
-      console.log(this.anySeatsLeft())
     },
     remove(price, ageGroup) {
       if (ageGroup.counter == 0) {
@@ -86,7 +85,6 @@ export default {
       ageGroup.counter -= 1;
       this.counter--;
 
-      console.log(this.anySeatsLeft())
     },
     addBookingInfo() {
       this.$store.commit("setBookingPrice", this.sum);
@@ -141,7 +139,7 @@ hr {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-
+  margin-top: 8em;
 }
 .title {
   border-bottom: 1px solid rgba(51, 51, 51, 0.3);
@@ -220,11 +218,6 @@ hr {
   margin: 5px 0 5px 0;
 }
 
-/* .submit-exit {
-  position: absolute;
-  margin: 0 auto;
-} */
-
 .submit-exit button {
   font-family: "Poppins", sans-serif;
   display: block;
@@ -243,7 +236,7 @@ hr {
   margin-bottom: 10px;
   font-size: 25px;
   font-weight: 900;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .submit-exit .avsluta {
@@ -270,14 +263,6 @@ hr {
   opacity: 0.5;
   cursor: pointer;
 }
-
-/* .vidare {
-  width: auto;
-}
-
-.avsluta {
-  width: 100px;
-} */
 
 .error {
   color: crimson;

@@ -50,7 +50,7 @@ export default {
   height: 200px;
   display: flex;
   padding: 2em;
-  left: 50%;
+  left: 35%;
   top: 20%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -58,7 +58,7 @@ export default {
   grid-gap: 1em;
 }
 
-.booking{
+.booking {
   text-align: left;
   border: 1px solid white;
   border-radius: 8px;

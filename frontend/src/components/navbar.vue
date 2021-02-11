@@ -44,7 +44,6 @@ export default {
   methods: {
     toggleLoginPage() {
       this.showLogin = !this.showLogin;
-      console.log("Show login: ", this.showLogin);
     },
     toggleMemberPage() {
       this.showMemberPage = !this.showMemberPage;

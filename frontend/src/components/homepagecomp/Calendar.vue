@@ -73,8 +73,6 @@ export default {
       return this.$store.state.movie
     },
     thisMovieAfterTomorrow() {
-      /* let test = this.movies.filter((movie) => movie.titel === this.movieToday.title)
-      return test */
       return this.movieAfterTomorrow
     },
     movieToday() {
@@ -112,10 +110,7 @@ export default {
 
       this.today = tday.toJSON().slice(0, 10).replace(/-/g, "/");
       this.tomorrow = tmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
-      this.afterTomorrow = afterTmorrow
-        .toJSON()
-        .slice(0, 10)
-        .replace(/-/g, "/");
+      this.afterTomorrow = afterTmorrow.toJSON().slice(0, 10).replace(/-/g, "/");
     }
   },
   mounted() {
@@ -157,8 +152,6 @@ h5 {
 }
 
 .dates {
-  /* display: flex;
-  justify-content: space-around; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1em;

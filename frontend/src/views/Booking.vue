@@ -1,16 +1,14 @@
 <template>
-  <div class="wrapper">
-    <div class="contain">
-      <NewBooking1
-        @close1="(showPage1 = false), (showPage2 = true)"
-        v-if="showPage1"
-      />
-      <NewBooking2
-        @close2="(showPage2 = false), (showPage3 = true)"
-        v-if="showPage2"
-      />
-      <NewBooking3 v-if="showPage3" />
-    </div>
+  <div class="contain">
+    <NewBooking1
+      @close1="(showPage1 = false), (showPage2 = true)"
+      v-if="showPage1"
+    />
+    <NewBooking2
+      @close2="(showPage2 = false), (showPage3 = true)"
+      v-if="showPage2"
+    />
+    <NewBooking3 v-if="showPage3" />
   </div>
 </template>
 
@@ -32,14 +30,4 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  height: 800px;
-  background-color: black;
-}
-.titel {
-  color: black;
-}
-/* .contain {
-  text-align: center;
-} */
 </style>

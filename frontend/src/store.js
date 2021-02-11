@@ -1,4 +1,3 @@
-import { registerRuntimeCompiler } from 'vue'
 import { createStore } from 'vuex'
 
 const state = {
@@ -35,7 +34,7 @@ const mutations = {
     state.currentUser = currentUser
   },
   setCurrentUserBooking(state, booking) { 
-    state.currentUser.booking = booking  // Test
+    state.currentUser.booking = booking
   },
   setBookingCustomer(state, customer) { 
     state.booking.customer = customer
@@ -86,7 +85,6 @@ const actions = {
     let list = await fetch('/rest/movieshow')
     list = await list.json()
 
-    console.log(list)
     store.commit('setMovie', list)
   },
   async fetchViewings(store) {
@@ -101,7 +99,6 @@ const actions = {
     })
     try {
       customer = await customer.json()
-      console.log(customer)
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Fel uppgifter")
@@ -114,7 +111,6 @@ const actions = {
     })
     try {
       customer = await customer.json()
-      console.log(customer)
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Fel uppgifter")
@@ -124,7 +120,6 @@ const actions = {
     let customer = await fetch('/api/whoami') 
     try {
       customer = await customer.json()
-      console.log(customer)
       store.commit('setCurrentUser', customer)
     } catch { 
       console.warn("Inte inloggad")
@@ -151,15 +146,12 @@ const actions = {
     })
     try {
       newBooking = await newBooking.json()
-      /*store.commit('setCurrentUserBooking', newBooking) // Test
-      store.dispatch('fetchMyBookings') // Test*/
     } catch { 
       console.warn("Booking failed")
 
     }
   },
   async updateViewing(store, viewing) { 
-    console.log("Viewing i updateViewing: ", viewing.seatsTaken)
     let res = await fetch("/rest/viewings/" + viewing.id,
     {
       method: "PUT",

@@ -1,17 +1,4 @@
 <template>
-  <!-- <div class="rootElement">
-    <h1>Aktuella Filmer</h1>
-    <div class="container">
-      <div class="movie-list" v-for="item of movie" :key="item.id">
-        <router-link :to="'/movieshow/details/' + item.id">
-          <div class="movie-details">
-            <img :src="item.poster" alt="" />
-            <h3 class="movie-name">{{ item.title }}</h3>
-          </div>
-        </router-link>
-      </div>
-    </div>
-  </div> -->
   <div class="container">
     <h1 class="page-title">Aktuella filmer</h1>
     <div class="movies">
@@ -72,9 +59,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background: #0f0f0f; */
   background: black;
-  /* border: 1px solid white; */
 }
 
 .page-title {
@@ -115,7 +100,6 @@ img:hover {
 
 .movie-details {
   margin: 5px auto 0 0;
-  /* margin: auto auto 0 auto; */
 }
 
 .links {
@@ -133,15 +117,6 @@ img:hover {
   margin-right: 20px;
   cursor: pointer;
 }
-
-/* .fa-youtube:hover {
-  color: #ff0000;
-}
-
-.fa-imdb:hover {
-  color: #f0a500;
-} */
-
 .fas {
   margin-right: 5px;
 }

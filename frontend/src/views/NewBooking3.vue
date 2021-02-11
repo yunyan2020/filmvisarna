@@ -217,23 +217,4 @@ export default {
     font-weight: 600;
     border: 1px solid rgba(238, 238, 238, 0.1);
   }
-  /* .title-container {
-
-  }
-
-  .booking-seats-detail {
-
-  }
-
-  .booking-movie-details {
-
-  }
-
-  .booking-id-container {
-
-  }
-
-  .buttons {
-
-  } */
 </style>

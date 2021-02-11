@@ -39,11 +39,9 @@ export default {
       this.showMemberPage = false;
     },
     toggleMyBookings() {
-     // this.showMyBookings = !this.showMyBookings;
       this.$router.push("/MyBookings");
     },
     toggleProfile() {
-    //  this.showMyProfile = !this.showMyProfile;
       this.$router.push("/MyProfile");
     },
     logout() {

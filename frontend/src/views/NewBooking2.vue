@@ -9,7 +9,7 @@
       <h4>{{ viewing.screen }}</h4>
       <p class="label topmarg">Pris:</p>
       <h5>{{ price }}kr</h5>
-      <!-- <p>{{ viewing.date }} {{ viewing.time }} {{ price }}SEK</p> -->
+
     </div>
     <hr>
     <div class="selection">
@@ -28,13 +28,6 @@
       <router-link :to="'/'" class="router-link">
         <button class="avsluta">Avsluta</button>
       </router-link>
-      <!-- <router-link :to="{ name: 'Bokning3', params: { id: viewing.id } }">
-        <button class="vidare">Vidare</button>
-      </router-link>  
-      <div v-if="mustLogin" class="error">{{ mustLogin }}</div>
-      <router-link :to="'/'">
-        <button class="avsluta" v-on:click="resetBookingInfo()">Avsluta</button>
-      </router-link> -->
     </div>
     <div class="whitespace"></div>
   </div>
@@ -84,18 +77,7 @@ export default {
         this.mustLogin = "Du måste logga in för att fortsätta"
       }
     },
-    mark(row, i) {
-      console.log("index: " + i)
-      console.log("row length: " + row)
-      console.log(this.nrOfSeats);
-      
-      /* if(this.seatCount >= this.seatAmount) {
-        return
-      } else {
-        this.marked.push({row, i})
-        this.seatCount++
-      } */
-      
+    mark(row, i) {  
       let index = this.marked.findIndex((seat) => {
         return seat.row === row && seat.i === i;
       });
@@ -108,8 +90,6 @@ export default {
           this.seatCount++
           this.seatsDetails.row.push(row + 1)
           this.seatsDetails.seats.push(i + 1)
-          console.log(this.seatsDetails)
-          console.log("seatCount: " + this.seatCount);
         }
         
       } else {
@@ -118,9 +98,6 @@ export default {
         this.seatsDetails.seats.splice(index, 1)
         this.seatCount--
       }
-
-      /* this.marked.push({row, i})
-      console.log(this.seatAmount); */
     },
     checkSeat(row, i) {
       return this.marked.some((markedSeat) => {
@@ -271,18 +248,6 @@ h1 p {
   font-weight: 900;
   padding: 2px;
 }
-
-/* .submit-exit .avsluta {
-  width: 100px;
-  font-size: 13px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  border-radius: 15px;
-  background: black;
-  color: white;
-  border: 1px solid rgba(238, 238, 238, 0.1);
-  margin: 0 auto;
-} */
 
 .submit-exit .router-link {
   margin: 0 auto;
