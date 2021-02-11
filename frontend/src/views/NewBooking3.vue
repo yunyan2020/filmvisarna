@@ -11,15 +11,9 @@
         <h3>{{customer.label}}</h3>
         <h3>{{customer.counter}}</h3>
       </div>
-      <!-- <div><h3>{{getBookingDetails.label}}</h3></div>
-      <div></div>
-      <div></div> -->
     </div>
     <div class="breakline"></div>
     <div class="booking-movie-details" v-if="viewing">
-      <!-- <h1>{{viewing.movie}}</h1>
-      <h3>{{ movieDetails.runtime }}</h3>
-      <h6></h6> -->
       <p class="label">Film:</p>
       <h3>{{ viewing.movie }} | {{ movieDetails.runtime }} | {{ movieDetails.rated }}</h3>
       <p class="label">Datum, tid och bokade säten:</p>
@@ -101,6 +95,11 @@ export default {
     },
     completeBooking() {
     this.$store.commit('setBookingRef', this.bookingId)
+    let bookedSeat = []
+    for(let i=0;i<this.seatAmount;i++){
+        bookedSeat.push({row:this.seating.row[i],seats:this.seating.seats[i]}) 
+      }  
+    this.$store.commit('setBookingBookedSeat',bookedSeat)  
     this.setBookingViewing()
     let booking = this.$store.state.booking
 
@@ -112,16 +111,10 @@ export default {
     setBookingViewing() {
     let tempViewing = this.viewing
       tempViewing.seatsTaken +=  this.seatAmount
-      console.log("this.seating.row",this.seating.row);
-      console.log("this.seating.seats",this.seating.seats);
       for(let i=0;i<this.seatAmount;i++){
         tempViewing.bookedSeat.push({row:this.seating.row[i],seats:this.seating.seats[i]}) 
-      }  
-      console.log('tempViewing',tempViewing) 
-
-      console.log("NewBooking3 tempviewing bookedSeat: ", tempViewing.bookedSeat)
+      } 
       this.$store.commit("setBookingViewing", tempViewing);
-      console.log("NewBooking3 tempviewing ", tempViewing);
       }
   } 
 }

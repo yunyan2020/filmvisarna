@@ -4,21 +4,18 @@
       <h3>Mina beställningar</h3>
       <div v-if="myBookings">
         <div v-for="booking in myBookings" :key="booking.id" class="booking">
-          <h4>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }} </h4>  
-          <div class="Seats-detail">
-           <span 
-              v-for="(seat,i) in booking.viewing.bookedSeats" :key=i
-              class="Seats"
-              >Platser: {{ seat.row }} {{ seat.seats }}
-            </span>
-            </div>
-            <h4>
-            Film: {{ booking.viewing.movie }} 
-            Tid:{{ booking.viewing.date }} 
-            {{ booking.viewing.time }} 
-            Salon: {{ booking.viewing.screen }} 
-            Bokningsnummer: {{ booking.bookingRef }}
-            </h4>            
+          <h4> Film: {{ booking.viewing.movie }} </h4>
+          <p>Tid:{{ booking.viewing.date }} {{ booking.viewing.time }}</p>  
+          <p>Salon: {{ booking.viewing.screen }}</p>           
+          <h4>Bokningsnummer: {{ booking.bookingRef }}</h4> 
+          <p>Pris: {{ booking.price }} Platser: {{ booking.nrOfSeats }}  </p> 
+           <div class="Seats">
+              <h4>Säten detaljer </h4>  
+              <div v-for="(seat,i) in booking.bookedSeat" :key=i
+                  class="Seats-detail" >              
+                  <p> Rad   :{{ seat.row }} Kolumn:{{ seat.seats }} </p>
+              </div>              
+            </div>           
         </div>
       </div>
     </div>
@@ -47,30 +44,31 @@ export default {
 <style scoped>
 .myBookings {
   position: absolute;
-  text-align: center;
+  text-align: center;  
+  box-shadow: 0 0 10px 2px black;
   width: 500px;
   height: 200px;
   display: flex;
   padding: 2em;
   left: 50%;
   top: 20%;
-  margin-top: 1em;
-  margin-right: 0.1em;
-  padding: 1em;
-  letter-spacing: 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 200px;
+  grid-gap: 1em;
 }
 
 .booking{
   text-align: left;
-  border: 1px solid #333;
-  display: flex;
+  border: 1px solid white;
   border-radius: 8px;
-  box-shadow: 0 0 10px 2px black;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 150px;
-  grid-gap: 1em;
+  width: 400px;
 }
+.Seats{
+  padding: 1em;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin:0.5em;
+  }
 </style>
 

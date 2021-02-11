@@ -7,7 +7,7 @@ const state = {
   currentUser: null,
   screens: [],
   loggedIn: false,
-  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: ""},
+  booking: { customer: {}, viewing: {}, nrOfSeats: 0, price: 0, bookingRef: "",bookedSeat:{}},
   myBookings: [],
   bookingDetails: {},
   bookedSeat: { row: [], seats: [] }
@@ -66,7 +66,11 @@ const mutations = {
   },
   setSeat(state, seat) {
     state.bookedSeat.seats = seat
-  }
+  },
+  setBookingBookedSeat(state, bookedSeat) {
+    state.booking.bookedSeat = bookedSeat
+    console.log('state.booking.bookedSeat', state.booking.bookedSeat) // Test!
+  },
 }
 
 //async network requests
