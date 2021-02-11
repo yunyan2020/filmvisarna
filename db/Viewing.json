@@ -1,0 +1,673 @@
+[ {
+  "id" : "dgfbkhvN021daxXkDLn2i",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/09",
+  "time" : "18:13",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "hxwCLAKbwXmAJtC68Rnwg",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/11",
+  "time" : "20:46",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "-4DbpPtJRdTIjH4k71den",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/12",
+  "time" : "22:43",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "md5MWTzYhzyfbLY0koBqR",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/02",
+  "time" : "17:20",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "lL5Yxy6E4ZxsPWLNmrVHf",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/20",
+  "time" : "16:29",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "EPTRrUOCAlz-k-l4EAqO5",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/12",
+  "time" : "14:48",
+  "seatsTaken" : 4,
+  "bookedSeat" : null
+}, {
+  "id" : "3J4L-CZUWdNm388yMWDA0",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/01",
+  "time" : "22:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "-PY3Gnc59GTH38IErOvSJ",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/15",
+  "time" : "17:40",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "FzY2uavjjNTeaANN7PiIG",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/29",
+  "time" : "18:00",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "HypmVjppm5Uq8wn-Te98g",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/08",
+  "time" : "19:59",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "cGsKuMKGDK-btRvJn8FEs",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/24",
+  "time" : "13:01",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "ViFFlWTC4nLfY6XS8Cu-I",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/11",
+  "time" : "23:37",
+  "seatsTaken" : 4,
+  "bookedSeat" : null
+}, {
+  "id" : "1PnWvI69o2u_ixKDbe7Mk",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/11",
+  "time" : "23:30",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "SJcI4Htxc_sUkAXNOxAYI",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/30",
+  "time" : "13:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "K_rx3t3UMVVVhRmm73TBC",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/12",
+  "time" : "22:27",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "Far98TqrhWUks7WlCaC1D",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/11",
+  "time" : "15:24",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "oC2za1IlVaa7t0pci3kG5",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/16",
+  "time" : "19:59",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "k22XfvA_zUxxGsCf3zSzF",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/31",
+  "time" : "18:40",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "xXG0ZVYdWk7-wMK6ts9dI",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/04",
+  "time" : "20:06",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "WLIsZQvSrdumzrOynMl5f",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/06",
+  "time" : "14:00",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "ozLrv31_0cdHd4h69L9hv",
+  "screen" : "Stora Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/01",
+  "time" : "15:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "yNTf10OTkfwNalUp1PxfY",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/15",
+  "time" : "22:18",
+  "seatsTaken" : 3,
+  "bookedSeat" : null
+}, {
+  "id" : "cLwAOj5fLQz7HCe34BRpL",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/20",
+  "time" : "21:28",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "nHcf-8IiFEP3uQCkcQrHc",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/01/31",
+  "time" : "13:47",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "SkLWB5rI96X3D2CbyyBZu",
+  "screen" : "Lilla Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/10",
+  "time" : "23:25",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "L7j0VOEqOXJs-gPBGReNe",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/30",
+  "time" : "13:09",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "IBX_OqGXfi26NbmOlrGa1",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/07",
+  "time" : "16:09",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "ywwwoxCoDShUuXzIlzM7h",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/31",
+  "time" : "22:13",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "0m3IHGye0435D0aI3GMfO",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/01/25",
+  "time" : "17:48",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "cWpMhGxUSWvzmEcNK1BYc",
+  "screen" : "Lilla Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/02",
+  "time" : "14:44",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "HpGXPV0gQTL8KLd6kSntD",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/01/29",
+  "time" : "21:10",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "Ju11AUOSZGzDzYOKnfbbJ",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/08",
+  "time" : "18:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "zYp3BOrQwxJ-jwHRGVa_h",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/26",
+  "time" : "21:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "JM4fe79S_QOeSxgRLN7wL",
+  "screen" : "Lilla Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/11",
+  "time" : "13:07",
+  "seatsTaken" : 2,
+  "bookedSeat" : null
+}, {
+  "id" : "wZH1C0Y3jQZU-tXh_xerb",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/01/22",
+  "time" : "17:27",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "5gl8CnGy0vaQWfMjHf6dm",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/27",
+  "time" : "18:44",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "W5ZV92RhERMVqwihkSS4K",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/01/24",
+  "time" : "19:33",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "IGqdaifUnfGBuYxQn7B5J",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/08",
+  "time" : "22:46",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "NQuGlbJ5LP6D0iNQHVUBS",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/06",
+  "time" : "18:44",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "e9EvRARBFwfneYCbBJlkJ",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/16",
+  "time" : "16:02",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "y4s9WqJ9opG_1Zs_159TR",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/11",
+  "time" : "14:32",
+  "seatsTaken" : 3,
+  "bookedSeat" : null
+}, {
+  "id" : "W4OJDNIqjk5JStdgNdwTb",
+  "screen" : "Lilla Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/01/25",
+  "time" : "17:41",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "-wiCkKBr3eEYfdie23GAN",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/03",
+  "time" : "23:51",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "63jbj7XD0y2Yy1D-h9Q13",
+  "screen" : "Stora Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/14",
+  "time" : "22:28",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "sY3dx_kUg5gWbq4P2n_IJ",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/15",
+  "time" : "21:23",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "7K4CvO0TkpS4pNmuFFSSR",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/20",
+  "time" : "13:15",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "QB5Arc0C3HS7RdBlnmTAX",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/11",
+  "time" : "22:40",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "3HQTG2L4HVzwQvwowz79-",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/13",
+  "time" : "16:15",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "O_hw0lrkDuwOx7EriQYB8",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/16",
+  "time" : "23:37",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "8ErXSLXoxd5cF7gc1RWGP",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/01/28",
+  "time" : "20:53",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "cBPH6Tl3NmUOpuDBQs6xG",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/06",
+  "time" : "23:26",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "fDwEOws4J32JHieir4U4q",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/29",
+  "time" : "17:03",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "Ehvx41S5JEk5woPmrmK31",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/06",
+  "time" : "21:40",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "K9xCM1p4PIcCPM_1SuYLV",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/02",
+  "time" : "22:29",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "I8_i8HN4oYnSbEJ6fGEGG",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/14",
+  "time" : "19:46",
+  "seatsTaken" : 7,
+  "bookedSeat" : null
+}, {
+  "id" : "gBSBcLsbpKOjHa2-UMUNI",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/01/23",
+  "time" : "23:13",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "4wWAAhg8SVubCjgPbKm47",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/04",
+  "time" : "23:52",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "HzuIlAd-k_VLJyGPhIml8",
+  "screen" : "Stora Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/30",
+  "time" : "21:52",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "_gnGQL5hqSBeYWf1vbD_D",
+  "screen" : "Stora Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/16",
+  "time" : "13:22",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "Te12zloo9M84El530C49y",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/02",
+  "time" : "19:07",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "vdUh4atcMTByPClNUdukp",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/04",
+  "time" : "19:31",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "tDJHrl9anCZbO7G3WTQxZ",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/16",
+  "time" : "13:54",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "7ZwWF2NldS9fr21ddWSyv",
+  "screen" : "Stora Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/01/28",
+  "time" : "21:47",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "iy6ZgSr6sJsAKXyHq8oxp",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/06",
+  "time" : "13:16",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "mFgFuv3FV4QnSSqTC4xn4",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/01/28",
+  "time" : "22:59",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "sO0CJ7eor3MYJEI9k2Amd",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/06",
+  "time" : "13:25",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "KlWnhA5WuKuavY8t1acCb",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/09",
+  "time" : "18:36",
+  "seatsTaken" : 8,
+  "bookedSeat" : null
+}, {
+  "id" : "UC7ugpsIyX3hSyl-Lyio9",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/01/29",
+  "time" : "22:50",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "mjrmzePkUnU-dC7y1Cfyn",
+  "screen" : "Lilla Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/10",
+  "time" : "23:33",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "O4KfHReaeUnYV06O3Yu4y",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/11",
+  "time" : "20:08",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "i2pw1facJvZAYtxq_OhUm",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/25",
+  "time" : "19:34",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "OevloW8jASy6ZsBhef90U",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/16",
+  "time" : "20:19",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "TsLNkBKSXfhlbHs2RIG9T",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/02/03",
+  "time" : "22:55",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "sCtHRpid7e3nMKDukman3",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/30",
+  "time" : "15:46",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "4QlGvupJpQAeYTjZ5zh1v",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/08",
+  "time" : "15:10",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "AZhuNbeFao4LimHDcS2uC",
+  "screen" : "Stora Salongen",
+  "movie" : "The Lord of the Rings",
+  "date" : "2021/01/29",
+  "time" : "21:05",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "7r6cM3KT8ZnwpV8kGaAL9",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/02",
+  "time" : "17:08",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "jKWlRlU-8fukdKeJPj07M",
+  "screen" : "Stora Salongen",
+  "movie" : "Robocop",
+  "date" : "2021/02/03",
+  "time" : "17:56",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "vdaL4VSjmZQj49Av_iHjs",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/09",
+  "time" : "20:20",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "BRB8FU2j8t_rTzMPx8nHN",
+  "screen" : "Lilla Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/02/05",
+  "time" : "16:11",
+  "seatsTaken" : 3,
+  "bookedSeat" : null
+}, {
+  "id" : "Icced4nenhWROPEjE0jWM",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/30",
+  "time" : "13:22",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "7-1FjZ1RBqLQMuxrcDIaK",
+  "screen" : "Stora Salongen",
+  "movie" : "The Avengers",
+  "date" : "2021/02/03",
+  "time" : "21:10",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "ojzQbmxl5V9-MpXv-X1tK",
+  "screen" : "Lilla Salongen",
+  "movie" : "I Am Legend",
+  "date" : "2021/02/15",
+  "time" : "18:41",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+}, {
+  "id" : "h8qLu1wF5ZjO79fKjfHNE",
+  "screen" : "Stora Salongen",
+  "movie" : "Titanic",
+  "date" : "2021/01/21",
+  "time" : "15:31",
+  "seatsTaken" : 0,
+  "bookedSeat" : null
+} ]
