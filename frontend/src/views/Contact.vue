@@ -1,17 +1,31 @@
 <template>
-  <div class="grid-container">
-    <div class="grid-item grid-item-1">
-      <p><b>Tel.nr:</b> 0123456789</p>
+  <div class="content">
+    <h1 class="title">Kontakta oss</h1>
+    <div class="textContent">
+      <p>
+        Kundtjänst via email: support@filmvisarna.se eller via
+        kontaktformuläret.
+      </p>
       <br />
-      <p><b>Emial:</b> Snälla.maila@intehit.com</p>
-      <br />
-      <p><b>Adress:</b> Skogen</p>
+      <P>
+      Glöm inte Nya rutiner med anledning av corona:)
+      </P>
+      <br/>
+      <p>
+      Vi som har jobbat med projektet är:
 
-      <p></p>
+      Denis,Yunyan,Hanan,Ermin,Edvin och Tobias
+      </p>
+      <br/>
+
+      <p>
+        Filmvisarna <br />
+        Box 829<br />
+        211 20 Malmö<br />
+        Sverige<br />
+        Org.nr: 42051-5555
+      </p>
     </div>
-    <!--<div class="grid-item grid-item-2">
-      <p></p>
-    </div> -->
   </div>
 </template>
 
@@ -20,6 +34,14 @@ export default {};
 </script>
 
 <style scoped>
+.title {
+  padding-bottom: 20px;
+}
+.content {
+  padding-top: 50px;
+  font-size: 5 px;
+}
+
 * {
   box-sizing: border-box;
 }
